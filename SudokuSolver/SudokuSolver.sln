@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "SudokuSolver", "SudokuSolver.pyproj", "{DCE86ED3-9A13-4290-A4F2-7865A3CAA6BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCE86ED3-9A13-4290-A4F2-7865A3CAA6BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCE86ED3-9A13-4290-A4F2-7865A3CAA6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC9326EC-A746-43F6-BD9B-EFF69E930A3F}
+	EndGlobalSection
+EndGlobal
