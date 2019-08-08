@@ -1,0 +1,2 @@
+1) Navigate to directory containing qt file
+2) pyuic5 -x <name> -o <name of .py file to create>

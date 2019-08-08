@@ -1,0 +1,144 @@
+  <tr>
+    <th>Spell</th>
+    <th>Casting</th>
+    <th>Range</th>
+    <th>Duration</th>
+    <th>Ritual</th>
+    <th>Con</th>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Animal-Shapes" target="_blank">Animal Shapes</a></td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Con, up to 24 hours</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Antimagic-Field" target="_blank">Antimagic Field</a></td>
+    <td>Action</td>
+    <td>Self (10-foot-radius sphere)</td>
+    <td>Con, up to 1 hour</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Clone" target="_blank">Clone</a></td>
+    <td>1 hour</td>
+    <td>Touch</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Control-Weather" target="_blank">Control Weather</a></td>
+    <td>10 min.</td>
+    <td>Self (5-mile radius)</td>
+    <td>Con, up to 8 hours</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Demiplane" target="_blank">Demiplane</a></td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>1 hour</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Dominate-Monster" target="_blank">Dominate Monster</a></td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Con, up to 1 hour</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Earthquake" target="_blank">Earthquake</a></td>
+    <td>Action</td>
+    <td>500 feet</td>
+    <td>Con, up to 1 min</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Feeblemind" target="_blank">Feeblemind</a></td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Glibness" target="_blank">Glibness</a></td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>1 hour</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Holy-Aura" target="_blank">Holy Aura</a></td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Con, up to 1 min</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Incendiary-Cloud" target="_blank">Incendiary Cloud</a></td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Con, up to 1 min</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Maze" target="_blank">Maze</a></td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Con, up to 10 min</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Mind-Blank" target="_blank">Mind Blank</a></td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>24 Hours</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Power-Word-Stun" target="_blank">Power Word Stun</a></td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Sunburst" target="_blank">Sunburst</a></td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Telepathy" target="_blank">Telepathy</a></td>
+    <td>Action</td>
+    <td>Unlimited</td>
+    <td>24 Hours</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Tsunami" target="_blank">Tsunami</a></td>
+    <td>1 minute</td>
+    <td>Sight</td>
+    <td>Con, up to 6 rounds</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>

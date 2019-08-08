@@ -1,0 +1,6035 @@
+  <tr>
+    <td>Absorb Elements</td>
+    <td>level1lvl1</td>
+    <td>Abjuration</td>
+    <td>Reaction</td>
+    <td>Self</td>
+    <td>1round</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Ranger, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Acid Splash</td>
+    <td>level0lvl0</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Aganazzar's Scorcher</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Aid</td>
+    <td>level2lvl2</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Paladin, Artificer (UA), Domain (Protection), Domain (Solidarity)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Alarm</td>
+    <td>level1lvl1</td>
+    <td>Abjuration</td>
+    <td>1 minute</td>
+    <td>30 feet</td>
+    <td>8hours</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Ranger, Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Alter Self</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Animal Friendship</td>
+    <td>level1lvl1</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>24hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Domain (Nature), Druid, Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Animal Messenger</td>
+    <td>level2lvl2</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>24hours</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Bard, Druid, Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Animal Shapes</td>
+    <td>level8lvl8</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto24hours</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Animate Dead</td>
+    <td>level3lvl3</td>
+    <td>Necromancy</td>
+    <td>1 minute</td>
+    <td>10 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Domain (Death), Oath (Oathbreaker), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Animate Objects</td>
+    <td>level5lvl5</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Sorcerer, Wizard, Domain (Forge)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Antilife Shell</td>
+    <td>level5lvl5</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Self (10-foot radius)</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Death), Druid, Domain (Protection), Domain (Grave)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Antimagic Field</td>
+    <td>level8lvl8</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Self (10-foot-radius sphere)</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Antipathy/Sympathy</td>
+    <td>level8lvl8</td>
+    <td>Enchantment</td>
+    <td>1 hour</td>
+    <td>60 feet</td>
+    <td>10days</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Arcane Eye</td>
+    <td>level4lvl4</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Arcana), Domain (Knowledge), Wizard, Artificer (UA), Patron (Seeker)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Arcane Gate</td>
+    <td>level6lvl6</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>500 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Arcane Lock</td>
+    <td>level2lvl2</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Untildispelled</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Armor of Agathys</td>
+    <td>level1lvl1</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Warlock, Oath (Conquest)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Arms of Hadar</td>
+    <td>level1lvl1</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>Self (10-foot radius)</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Warlock</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Astral Projection</td>
+    <td>level9lvl9</td>
+    <td>Necromancy</td>
+    <td>1 hour</td>
+    <td>10 feet</td>
+    <td>Special</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Augury</td>
+    <td>level2lvl2</td>
+    <td>Divination</td>
+    <td>1 minute</td>
+    <td>Self</td>
+    <td>Instantaneous</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Cleric, Domain (Knowledge)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Aura of Life</td>
+    <td>level4lvl4</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Self (30-foot radius)</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Paladin, Patron (Undying), Domain (Solidarity)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Aura of Purity</td>
+    <td>level4lvl4</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Self (30-foot radius)</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Paladin</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Aura of Vitality</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self (30-foot radius)</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Paladin, Oath (Crown)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Awaken</td>
+    <td>level5lvl5</td>
+    <td>Transmutation</td>
+    <td>8 hrs.</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Bane</td>
+    <td>level1lvl1</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Cleric, Oath (Vengeance), Domain (Grave), Domain (Ambition)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Banishing Smite</td>
+    <td>level5lvl5</td>
+    <td>Abjuration</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Paladin</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Banishment</td>
+    <td>level4lvl4</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Paladin, Oath (Crown), Oath (Vengeance), Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Barkskin</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Nature), Druid, Circle (Forest), Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Beacon of Hope</td>
+    <td>level3lvl3</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Domain (Life), Oath (Devotion), Domain (Solidarity)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Beast Bond</td>
+    <td>level1lvl1</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Ranger</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Beast Sense</td>
+    <td>level2lvl2</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1hour</td>
+    <td>Ritual</td>
+    <td>Concentration</td>
+    <td>Druid, Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Bestow Curse</td>
+    <td>level3lvl3</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Cleric, Oath (Oathbreaker), Wizard, Domain (Ambition)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Bigby's Hand</td>
+    <td>level5lvl5</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Blade Barrier</td>
+    <td>level6lvl6</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Blade Ward</td>
+    <td>level0lvl0</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>1round</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Bless</td>
+    <td>level1lvl1</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Domain (Life), Paladin, Domain (Solidarity)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Blight</td>
+    <td>level4lvl4</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Domain (Death), Druid, Circle (Desert), Oath (Oathbreaker), Sorcerer, Warlock, Wizard, Domain (Grave), Oath (Conquest)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Blinding Smite</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Paladin, Origin (Stone)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Blindness/Deafness</td>
+    <td>level2lvl2</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Domain (Death), Sorcerer, Patron (Fiend), Patron (Undying), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Blink</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Domain (Trickery), Sorcerer, Patron (Archfey), Wizard, Artificer (UA), Patron (Hexblade)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Blur</td>
+    <td>level2lvl2</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Circle (Desert), Sorcerer, Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Booming Blade</td>
+    <td>level0lvl0</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>5 feet</td>
+    <td>1round</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>SCAG</td>
+  </tr>
+  <tr>
+    <td>Branding Smite</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Paladin, Patron (Hexblade), Origin (Stone)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Burning Hands</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self (15-foot cone)</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Domain (Light), Sorcerer, Patron (Fiend), Wizard, Patron (Celestial), Patron (Undying Light)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Call Lightning</td>
+    <td>level3lvl3</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Tempest), Druid, Circle (Forest)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Calm Emotions</td>
+    <td>level2lvl2</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Cleric, Patron (Archfey)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Catapult</td>
+    <td>level1lvl1</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Chain Lightning</td>
+    <td>level6lvl6</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Charm Person</td>
+    <td>level1lvl1</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Domain (Trickery), Druid, Sorcerer, Warlock, Wizard, Oath (Treachery)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Chill Touch</td>
+    <td>level0lvl0</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>1round</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Chromatic Orb</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Circle of Death</td>
+    <td>level6lvl6</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Circle of Power</td>
+    <td>level5lvl5</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Self (30-foot radius)</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Paladin, Oath (Crown), Domain (Solidarity)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Clairvoyance</td>
+    <td>level3lvl3</td>
+    <td>Divination</td>
+    <td>10 min.</td>
+    <td>1 mile</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Cleric, Sorcerer, Patron (Great Old One), Wizard, Patron (Seeker)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Clone</td>
+    <td>level8lvl8</td>
+    <td>Necromancy</td>
+    <td>1 hour</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Cloud of Daggers</td>
+    <td>level2lvl2</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Cloudkill</td>
+    <td>level5lvl5</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Death), Circle (Underdark), Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Color Spray</td>
+    <td>level1lvl1</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>Self (15-foot cone)</td>
+    <td>1round</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Command</td>
+    <td>level1lvl1</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>1round</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Domain (Knowledge), Paladin, Oath (Crown), Patron (Fiend), Oath (Conquest)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Commune</td>
+    <td>level5lvl5</td>
+    <td>Divination</td>
+    <td>1 minute</td>
+    <td>Self</td>
+    <td>1minute</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Cleric, Oath (Devotion), Patron (Raven Queen)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Commune with Nature</td>
+    <td>level5lvl5</td>
+    <td>Divination</td>
+    <td>1 minute</td>
+    <td>Self</td>
+    <td>Instantaneous</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Druid, Circle (Arctic), Circle (Forest), Oath (Ancients), Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Compelled Duel</td>
+    <td>level1lvl1</td>
+    <td>Enchantment</td>
+    <td>Bonus Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Paladin, Oath (Crown), Domain (Protection), Origin (Stone)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Comprehend Languages</td>
+    <td>level1lvl1</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>1hour</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Warlock, Wizard, Domain (City)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Compulsion</td>
+    <td>level4lvl4</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Cone of Cold</td>
+    <td>level5lvl5</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self (60-foot cone)</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Circle (Arctic), Sorcerer, Wizard, Patron (Hexblade)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Confusion</td>
+    <td>level4lvl4</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Domain (Knowledge), Druid, Oath (Oathbreaker), Sorcerer, Wizard, Oath (Treachery)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Conjure Animals</td>
+    <td>level3lvl3</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Conjure Barrage</td>
+    <td>level3lvl3</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>Self (60-foot cone)</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Conjure Celestial</td>
+    <td>level7lvl7</td>
+    <td>Conjuration</td>
+    <td>1 minute</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Conjure Elemental</td>
+    <td>level5lvl5</td>
+    <td>Conjuration</td>
+    <td>1 minute</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Circle (Coast), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Conjure Fey</td>
+    <td>level6lvl6</td>
+    <td>Conjuration</td>
+    <td>1 minute</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Warlock</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Conjure Minor Elementals</td>
+    <td>level4lvl4</td>
+    <td>Conjuration</td>
+    <td>1 minute</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Conjure Volley</td>
+    <td>level5lvl5</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Conjure Woodland Beings</td>
+    <td>level4lvl4</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Contact Other Plane</td>
+    <td>level5lvl5</td>
+    <td>Divination</td>
+    <td>1 minute</td>
+    <td>Self</td>
+    <td>1minute</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Contagion</td>
+    <td>level5lvl5</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>7days</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Druid, Oath (Oathbreaker), Patron (Undying)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Contingency</td>
+    <td>level6lvl6</td>
+    <td>Evocation</td>
+    <td>10 min.</td>
+    <td>Self</td>
+    <td>10days</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Continual Flame</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Untildispelled</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Control Flames</td>
+    <td>level0lvl0</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneousor1hour(seebelow)</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Control Water</td>
+    <td>level4lvl4</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>300 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Domain (Tempest), Druid, Circle (Coast), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Control Weather</td>
+    <td>level8lvl8</td>
+    <td>Transmutation</td>
+    <td>10 min.</td>
+    <td>Self (5-mile radius)</td>
+    <td>Concentration,upto8hours</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Druid, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Cordon of Arrows</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>5 feet</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Counterspell</td>
+    <td>level3lvl3</td>
+    <td>Abjuration</td>
+    <td>Reaction</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Create Bonfire</td>
+    <td>level0lvl0</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Warlock, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Create Food and Water</td>
+    <td>level3lvl3</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Circle (Desert), Paladin</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Create Undead</td>
+    <td>level6lvl6</td>
+    <td>Necromancy</td>
+    <td>1 minute</td>
+    <td>10 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Create or Destroy Water</td>
+    <td>level1lvl1</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Creation</td>
+    <td>level5lvl5</td>
+    <td>Illusion</td>
+    <td>1 minute</td>
+    <td>30 feet</td>
+    <td>Special</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard, Domain (Forge)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Crown of Madness</td>
+    <td>level2lvl2</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Oath (Oathbreaker), Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Crusader's Mantle</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (War), Paladin, Domain (Solidarity)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Cure Wounds</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Domain (Life), Druid, Paladin, Ranger, Artificer (UA), Patron (Celestial)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Dancing Lights</td>
+    <td>level0lvl0</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Darkness</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Circle (Swamp), Oath (Oathbreaker), Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Darkvision</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Ranger, Sorcerer, Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Daylight</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Domain (Light), Druid, Circle (Grassland), Paladin, Ranger, Sorcerer, Patron (Celestial), Patron (Undying Light)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Death Ward</td>
+    <td>level4lvl4</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Domain (Death), Domain (Life), Paladin, Patron (Undying), Artificer (UA), Domain (Grave), Domain (Ambition)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Delayed Blast Fireball</td>
+    <td>level7lvl7</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Demiplane</td>
+    <td>level8lvl8</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Destructive Wave</td>
+    <td>level5lvl5</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self (30-foot radius)</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Domain (Tempest), Paladin, Patron (Hexblade), Domain (Strength), Domain (Zeal)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Detect Evil and Good</td>
+    <td>level1lvl1</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Paladin</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Detect Magic</td>
+    <td>level1lvl1</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>Ritual</td>
+    <td>Concentration</td>
+    <td>Bard, Cleric, Domain (Arcana), Druid, Paladin, Ranger, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Detect Poison and Disease</td>
+    <td>level1lvl1</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Druid, Paladin, Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Detect Thoughts</td>
+    <td>level2lvl2</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Sorcerer, Patron (Great Old One), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Dimension Door</td>
+    <td>level4lvl4</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>500 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Domain (Trickery), Oath (Vengeance), Sorcerer, Warlock, Wizard, Domain (Ambition)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Disguise Self</td>
+    <td>level1lvl1</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Domain (Trickery), Sorcerer, Wizard, Artificer (UA), Domain (Ambition)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Disintegrate</td>
+    <td>level6lvl6</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Dispel Evil and Good</td>
+    <td>level5lvl5</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Paladin</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Dispel Magic</td>
+    <td>level3lvl3</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Domain (Arcana), Domain (Trickery), Druid, Paladin, Oath (Devotion), Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Dissonant Whispers</td>
+    <td>level1lvl1</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Patron (Great Old One)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Divination</td>
+    <td>level4lvl4</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Instantaneous</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Cleric, Circle (Forest), Circle (Grassland)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Divine Favor</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (War), Paladin, Domain (Strength)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Divine Word</td>
+    <td>level7lvl7</td>
+    <td>Evocation</td>
+    <td>Bonus Action</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Dominate Beast</td>
+    <td>level4lvl4</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Nature), Druid, Sorcerer, Patron (Archfey), Patron (Great Old One), Oath (Conquest), Domain (Strength)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Dominate Monster</td>
+    <td>level8lvl8</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Dominate Person</td>
+    <td>level5lvl5</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Domain (Trickery), Oath (Oathbreaker), Sorcerer, Patron (Archfey), Patron (Great Old One), Wizard, Oath (Conquest), Oath (Treachery), Domain (Ambition)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Drawmij's Instant Summon</td>
+    <td>level6lvl6</td>
+    <td>Conjuration</td>
+    <td>1 minute</td>
+    <td>Touch</td>
+    <td>Untildispelled</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Dream</td>
+    <td>level5lvl5</td>
+    <td>Illusion</td>
+    <td>1 minute</td>
+    <td>Special</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Circle (Grassland), Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Druidcraft</td>
+    <td>level0lvl0</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Dust Devil</td>
+    <td>level2lvl2</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Earth Tremor</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self (10-foot radius)</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Druid, Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Earthquake</td>
+    <td>level8lvl8</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>500 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Druid, Sorcerer</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Eldritch Blast</td>
+    <td>level0lvl0</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Warlock</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Elemental Weapon</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Paladin, Domain (Forge), Patron (Hexblade), Origin (Stone), Origin (Stone)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Enhance Ability</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Cleric, Druid, Sorcerer, Artificer (UA), Domain (Strength)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Enlarge/Reduce</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Ensnaring Strike</td>
+    <td>level1lvl1</td>
+    <td>Conjuration</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Oath (Ancients), Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Entangle</td>
+    <td>level1lvl1</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Enthrall</td>
+    <td>level2lvl2</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Warlock</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Etherealness</td>
+    <td>level7lvl7</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Upto8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Evard's Black Tentacles</td>
+    <td>level4lvl4</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Patron (Great Old One), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Expeditious Retreat</td>
+    <td>level1lvl1</td>
+    <td>Transmutation</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Warlock, Wizard, Artificer (UA), Oath (Treachery)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Eyebite</td>
+    <td>level6lvl6</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Fabricate</td>
+    <td>level4lvl4</td>
+    <td>Transmutation</td>
+    <td>10 min.</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard, Artificer (UA), Domain (Forge)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Faerie Fire</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Domain (Light), Druid, Patron (Archfey)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>False Life</td>
+    <td>level1lvl1</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Domain (Death), Sorcerer, Patron (Undying), Wizard, Artificer (UA), Domain (Grave), Patron (Raven Queen)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Fear</td>
+    <td>level3lvl3</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>Self (30-foot cone)</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Sorcerer, Warlock, Wizard, Oath (Conquest)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Feather Fall</td>
+    <td>level1lvl1</td>
+    <td>Transmutation</td>
+    <td>Reaction</td>
+    <td>60 feet</td>
+    <td>1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Wizard, Patron (Seeker)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Feeblemind</td>
+    <td>level8lvl8</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Druid, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Feign Death</td>
+    <td>level3lvl3</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>1hour</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Bard, Cleric, Druid, Patron (Undying), Wizard, Patron (Raven Queen)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Find Familiar</td>
+    <td>level1lvl1</td>
+    <td>Conjuration</td>
+    <td>1 hour</td>
+    <td>10 feet</td>
+    <td>Instantaneous</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Find Greater Steed</td>
+    <td>level4lvl4</td>
+    <td>Conjuration</td>
+    <td>10 min.</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Paladin</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Find Steed</td>
+    <td>level2lvl2</td>
+    <td>Conjuration</td>
+    <td>10 min.</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Paladin</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Find Traps</td>
+    <td>level2lvl2</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Druid, Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Find the Path</td>
+    <td>level6lvl6</td>
+    <td>Divination</td>
+    <td>1 minute</td>
+    <td>Self</td>
+    <td>Concentration,upto1day</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Cleric, Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Finger of Death</td>
+    <td>level7lvl7</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Fire Bolt</td>
+    <td>level0lvl0</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Fire Shield</td>
+    <td>level4lvl4</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>10minutes</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Patron (Fiend), Wizard, Patron (Celestial), Patron (Undying Light), Domain (Zeal)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Fire Storm</td>
+    <td>level7lvl7</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Druid, Sorcerer</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Fireball</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Domain (Light), Sorcerer, Patron (Fiend), Wizard, Domain (Zeal)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Flame Arrows</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Ranger, Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Flame Blade</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Flame Strike</td>
+    <td>level5lvl5</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Domain (Light), Domain (War), Oath (Devotion), Patron (Fiend), Patron (Celestial), Patron (Undying Light), Domain (Zeal)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Flaming Sphere</td>
+    <td>level2lvl2</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Light), Druid, Wizard, Patron (Celestial), Patron (Undying Light)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Flesh to Stone</td>
+    <td>level6lvl6</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Fly</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Warlock, Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Fog Cloud</td>
+    <td>level1lvl1</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Tempest), Druid, Ranger, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Forbiddance</td>
+    <td>level6lvl6</td>
+    <td>Abjuration</td>
+    <td>10 min.</td>
+    <td>Touch</td>
+    <td>1day</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Forcecage</td>
+    <td>level7lvl7</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>100 feet</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Foresight</td>
+    <td>level9lvl9</td>
+    <td>Divination</td>
+    <td>1 minute</td>
+    <td>Touch</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Druid, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Freedom of Movement</td>
+    <td>level4lvl4</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Domain (War), Druid, Circle (Arctic), Circle (Coast), Circle (Forest), Circle (Grassland), Circle (Swamp), Oath (Devotion), Ranger, Artificer (UA), Domain (Zeal)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Friends</td>
+    <td>level0lvl0</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Frostbite</td>
+    <td>level0lvl0</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Sorcerer, Warlock, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Gaseous Form</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Circle (Underdark), Sorcerer, Warlock, Wizard, Artificer (UA), Oath (Treachery)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Gate</td>
+    <td>level9lvl9</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Geas</td>
+    <td>level5lvl5</td>
+    <td>Enchantment</td>
+    <td>1 minute</td>
+    <td>60 feet</td>
+    <td>30days</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Druid, Paladin, Oath (Crown), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Gentle Repose</td>
+    <td>level2lvl2</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>10days</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Cleric, Wizard, Domain (Grave)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Giant Insect</td>
+    <td>level4lvl4</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Glibness</td>
+    <td>level8lvl8</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Warlock</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Globe of Invulnerability</td>
+    <td>level6lvl6</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Self (10-foot radius)</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Glyph of Warding</td>
+    <td>level3lvl3</td>
+    <td>Abjuration</td>
+    <td>1 hour</td>
+    <td>Touch</td>
+    <td>Untildispelledortriggered</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Goodberry</td>
+    <td>level1lvl1</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Grasping Vine</td>
+    <td>level4lvl4</td>
+    <td>Conjuration</td>
+    <td>Bonus Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Nature), Druid, Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Grease</td>
+    <td>level1lvl1</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Greater Invisibility</td>
+    <td>level4lvl4</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Circle (Underdark), Sorcerer, Patron (Archfey), Wizard, Oath (Treachery)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Greater Restoration</td>
+    <td>level5lvl5</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Druid, Patron (Celestial)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Green-Flame Blade</td>
+    <td>level0lvl0</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>5 feet</td>
+    <td>1round</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>SCAG</td>
+  </tr>
+  <tr>
+    <td>Guardian of Faith</td>
+    <td>level4lvl4</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Domain (Life), Domain (Light), Oath (Crown), Oath (Devotion), Domain (Protection), Domain (Solidarity), Patron (Celestial)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Guards and Wards</td>
+    <td>level6lvl6</td>
+    <td>Abjuration</td>
+    <td>10 min.</td>
+    <td>Touch</td>
+    <td>24hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Guidance</td>
+    <td>level0lvl0</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Guiding Bolt</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>1round</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Domain (Solidarity)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Gust of Wind</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self (60-foot line)</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Tempest), Druid, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Hail of Thorns</td>
+    <td>level1lvl1</td>
+    <td>Conjuration</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Hallow</td>
+    <td>level5lvl5</td>
+    <td>Evocation</td>
+    <td>24 hrs.</td>
+    <td>Touch</td>
+    <td>Untildispelled</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Patron (Fiend)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Hallucinatory Terrain</td>
+    <td>level4lvl4</td>
+    <td>Illusion</td>
+    <td>10 min.</td>
+    <td>300 feet</td>
+    <td>24hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Druid, Circle (Desert), Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Harm</td>
+    <td>level6lvl6</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Haste</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Circle (Grassland), Oath (Vengeance), Sorcerer, Wizard, Artificer (UA), Oath (Treachery), Domain (Strength), Domain (Zeal)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Heal</td>
+    <td>level6lvl6</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Healing Word</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Bonus Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Heat Metal</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Druid, Domain (City), Domain (Forge)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Hellish Rebuke</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Reaction</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Oath (Oathbreaker), Warlock</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Heroes' Feast</td>
+    <td>level6lvl6</td>
+    <td>Conjuration</td>
+    <td>10 min.</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Heroism</td>
+    <td>level1lvl1</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Paladin</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Hex</td>
+    <td>level1lvl1</td>
+    <td>Enchantment</td>
+    <td>Bonus Action</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Hold Monster</td>
+    <td>level5lvl5</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Domain (War), Oath (Vengeance), Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Hold Person</td>
+    <td>level2lvl2</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Cleric, Druid, Circle (Arctic), Oath (Vengeance), Sorcerer, Warlock, Wizard, Oath (Conquest)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Holy Aura</td>
+    <td>level8lvl8</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Hunger of Hadar</td>
+    <td>level3lvl3</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Hunter's Mark</td>
+    <td>level1lvl1</td>
+    <td>Divination</td>
+    <td>Bonus Action</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Oath (Vengeance), Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Hypnotic Pattern</td>
+    <td>level3lvl3</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Ice Knife</td>
+    <td>level1lvl1</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Ice Storm</td>
+    <td>level4lvl4</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>300 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Domain (Tempest), Druid, Circle (Arctic), Oath (Ancients), Sorcerer, Wizard, Patron (Raven Queen)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Identify</td>
+    <td>level1lvl1</td>
+    <td>Divination</td>
+    <td>1 minute</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Bard, Domain (Knowledge), Domain(Forge), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Illusory Script</td>
+    <td>level1lvl1</td>
+    <td>Illusion</td>
+    <td>1 minute</td>
+    <td>Touch</td>
+    <td>10days</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Bard, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Immolation</td>
+    <td>level5lvl5</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Imprisonment</td>
+    <td>level9lvl9</td>
+    <td>Abjuration</td>
+    <td>1 minute</td>
+    <td>30 feet</td>
+    <td>Untildispelled</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Incendiary Cloud</td>
+    <td>level8lvl8</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Inflict Wounds</td>
+    <td>level1lvl1</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Oath (Oathbreaker)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Insect Plague</td>
+    <td>level5lvl5</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>300 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Domain (Nature), Domain (Tempest), Druid, Circle (Desert), Circle (Grassland), Circle (Swamp), Circle (Underdark), Sorcerer, Oath (Conquest), Domain (Strength)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Investiture of Flame</td>
+    <td>level6lvl6</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Warlock, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Investiture of Ice</td>
+    <td>level6lvl6</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Warlock, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Investiture of Stone</td>
+    <td>level6lvl6</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Warlock, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Investiture of Wind</td>
+    <td>level6lvl6</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Warlock, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Invisibility</td>
+    <td>level2lvl2</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Circle (Grassland), Sorcerer, Warlock, Wizard, Artificer (UA), Oath (Treachery)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Jump</td>
+    <td>level1lvl1</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Ranger, Sorcerer, Wizard, Artificer (UA), Patron (Seeker)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Knock</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Legend Lore</td>
+    <td>level5lvl5</td>
+    <td>Divination</td>
+    <td>10 min.</td>
+    <td>Self</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Domain (Knowledge), Patron (Undying), Wizard, Patron (Seeker)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Leomund's Secret Chest</td>
+    <td>level4lvl4</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Domain (Arcana), Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Leomund's Tiny Hut</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>1 minute</td>
+    <td>Self (10-foot-radius hemisphere)</td>
+    <td>8hours</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Bard, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Lesser Restoration</td>
+    <td>level2lvl2</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Domain (Life), Druid, Paladin, Oath (Devotion), Ranger, Artificer (UA), Patron (Celestial)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Levitate</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Wizard, Patron (Seeker)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Light</td>
+    <td>level0lvl0</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Lightning Arrow</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Lightning Bolt</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self (100-foot line)</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Circle (Mountain), Sorcerer, Wizard, Domain (City)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Lightning Lure</td>
+    <td>level0lvl0</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>15 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>SCAG</td>
+  </tr>
+  <tr>
+    <td>Locate Animals or Plants</td>
+    <td>level2lvl2</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Instantaneous</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Bard, Druid, Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Locate Creature</td>
+    <td>level4lvl4</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Cleric, Druid, Circle (Swamp), Paladin, Ranger, Wizard, Domain (City), Patron (Raven Queen), Patron (Seeker)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Locate Object</td>
+    <td>level2lvl2</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Cleric, Druid, Paladin, Ranger, Wizard, Patron (Seeker)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Longstrider</td>
+    <td>level1lvl1</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Druid, Ranger, Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Maelstrom</td>
+    <td>level5lvl5</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Mage Armor</td>
+    <td>level1lvl1</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Mage Hand</td>
+    <td>level0lvl0</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Magic Circle</td>
+    <td>level3lvl3</td>
+    <td>Abjuration</td>
+    <td>1 minute</td>
+    <td>10 feet</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Domain (Arcana), Paladin, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Magic Jar</td>
+    <td>level6lvl6</td>
+    <td>Necromancy</td>
+    <td>1 minute</td>
+    <td>Self</td>
+    <td>Untildispelled</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Magic Missile</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Domain (Arcana), Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Magic Mouth</td>
+    <td>level2lvl2</td>
+    <td>Illusion</td>
+    <td>1 minute</td>
+    <td>30 feet</td>
+    <td>Untildispelled</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Bard, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Magic Stone</td>
+    <td>level0lvl0</td>
+    <td>Transmutation</td>
+    <td>Bonus Action</td>
+    <td>Touch</td>
+    <td>1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Warlock</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Magic Weapon</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Bonus Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Arcana), Domain (War), Paladin, Wizard, Artificer (UA), Domain (Forge), Patron (Hexblade), Origin (Stone), Domain (Zeal)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Major Image</td>
+    <td>level3lvl3</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Mass Cure Wounds</td>
+    <td>level5lvl5</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Domain (Life), Druid, Domain (Solidarity)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Mass Heal</td>
+    <td>level9lvl9</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Mass Healing Word</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>Bonus Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Mass Suggestion</td>
+    <td>level6lvl6</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>24hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Maximilian's Earthen Grasp</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Maze</td>
+    <td>level8lvl8</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Meld into Stone</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>8hours</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Cleric, Druid, Circle (Mountain)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Melf's Acid Arrow</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Circle (Swamp), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Melf's Minute Meteors</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Mending</td>
+    <td>level0lvl0</td>
+    <td>Transmutation</td>
+    <td>1 minute</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Druid, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Message</td>
+    <td>level0lvl0</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>1round</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Meteor Swarm</td>
+    <td>level9lvl9</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>1 mile</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Mind Blank</td>
+    <td>level8lvl8</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>24hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Minor Illusion</td>
+    <td>level0lvl0</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Mirage Arcane</td>
+    <td>level7lvl7</td>
+    <td>Illusion</td>
+    <td>10 min.</td>
+    <td>Sight</td>
+    <td>10days</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Druid, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Mirror Image</td>
+    <td>level2lvl2</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Domain (Trickery), Circle (Coast), Sorcerer, Warlock, Wizard, Oath (Treachery), Domain (Ambition)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Mislead</td>
+    <td>level5lvl5</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Misty Step</td>
+    <td>level2lvl2</td>
+    <td>Conjuration</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Circle (Coast), Oath (Ancients), Oath (Vengeance), Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Modify Memory</td>
+    <td>level5lvl5</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Domain (Trickery), Wizard, Domain (Ambition)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Mold Earth</td>
+    <td>level0lvl0</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instantaneousor1hour(seebelow)</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Moonbeam</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Oath (Ancients)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Mordenkainen's Faithful Hound</td>
+    <td>level4lvl4</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Mordenkainen's Magnificent Mansion</td>
+    <td>level7lvl7</td>
+    <td>Conjuration</td>
+    <td>1 minute</td>
+    <td>300 feet</td>
+    <td>24hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Mordenkainen's Private Sanctum</td>
+    <td>level4lvl4</td>
+    <td>Abjuration</td>
+    <td>10 min.</td>
+    <td>120 feet</td>
+    <td>24hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Mordenkainen's Sword</td>
+    <td>level7lvl7</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Move Earth</td>
+    <td>level6lvl6</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto2hours</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Nondetection</td>
+    <td>level3lvl3</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Domain (Knowledge), Ranger, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Nystul's Magic Aura</td>
+    <td>level2lvl2</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>24hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Domain (Arcana), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Otiluke's Freezing Sphere</td>
+    <td>level6lvl6</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>300 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Otiluke's Resilient Sphere</td>
+    <td>level4lvl4</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard, Artificer (UA), Domain (Protection)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Otto's Irresistible Dance</td>
+    <td>level6lvl6</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Pass Without Trace</td>
+    <td>level2lvl2</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Trickery), Druid, Circle (Grassland), Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Passwall</td>
+    <td>level5lvl5</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Circle (Mountain), Wizard, Patron (Seeker), Oath (Treachery)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Phantasmal Force</td>
+    <td>level2lvl2</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Sorcerer, Patron (Archfey), Patron (Great Old One), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Phantasmal Killer</td>
+    <td>level4lvl4</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard, Patron (Hexblade)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Phantom Steed</td>
+    <td>level3lvl3</td>
+    <td>Illusion</td>
+    <td>1 minute</td>
+    <td>30 feet</td>
+    <td>1hour</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Planar Ally</td>
+    <td>level6lvl6</td>
+    <td>Conjuration</td>
+    <td>10 min.</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Planar Binding</td>
+    <td>level5lvl5</td>
+    <td>Abjuration</td>
+    <td>1 hour</td>
+    <td>60 feet</td>
+    <td>24hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Domain (Arcana), Druid, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Plane Shift</td>
+    <td>level7lvl7</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Druid, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Plant Growth</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>Action or 8 hrs.</td>
+    <td>150 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Domain (Nature), Druid, Circle (Forest), Oath (Ancients), Ranger, Patron (Archfey)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Poison Spray</td>
+    <td>level0lvl0</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>10 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Polymorph</td>
+    <td>level4lvl4</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Domain (Trickery), Druid, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Power Word Heal</td>
+    <td>level9lvl9</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Power Word Kill</td>
+    <td>level9lvl9</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Power Word Stun</td>
+    <td>level8lvl8</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Prayer of Healing</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>10 min.</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Prestidigitation</td>
+    <td>level0lvl0</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>10 feet</td>
+    <td>Upto1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Prismatic Spray</td>
+    <td>level7lvl7</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self (60-foot cone)</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Prismatic Wall</td>
+    <td>level9lvl9</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>10minutes</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Produce Flame</td>
+    <td>level0lvl0</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>10minutes</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Programmed Illusion</td>
+    <td>level6lvl6</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Untildispelled</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Project Image</td>
+    <td>level7lvl7</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>500 miles</td>
+    <td>Concentration,upto1day</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Protection from Energy</td>
+    <td>level3lvl3</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Druid, Circle (Desert), Oath (Ancients), Oath (Vengeance), Ranger, Sorcerer, Wizard, Artificer (UA), Domain (Forge), Domain (Protection), Domain (Strength)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Protection from Evil and Good</td>
+    <td>level1lvl1</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Paladin, Oath (Devotion), Warlock, Wizard, Domain (Protection)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Protection from Poison</td>
+    <td>level2lvl2</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Druid, Paladin, Ranger, Artificer (UA), Domain (Strength)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Purify Food and Drink</td>
+    <td>level1lvl1</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>10 feet</td>
+    <td>Instantaneous</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Cleric, Druid, Paladin</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Pyrotechnics</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Raise Dead</td>
+    <td>level5lvl5</td>
+    <td>Necromancy</td>
+    <td>1 hour</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Domain (Life), Paladin, Domain (Grave)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Rary's Telepathic Bond</td>
+    <td>level5lvl5</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>1hour</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Ray of Enfeeblement</td>
+    <td>level2lvl2</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Death), Warlock, Wizard, Domain (Grave), Domain (Ambition)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Ray of Frost</td>
+    <td>level0lvl0</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Ray of Sickness</td>
+    <td>level1lvl1</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Domain (Death), Sorcerer, Patron (Undying), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Regenerate</td>
+    <td>level7lvl7</td>
+    <td>Transmutation</td>
+    <td>1 minute</td>
+    <td>Touch</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Reincarnate</td>
+    <td>level5lvl5</td>
+    <td>Transmutation</td>
+    <td>1 hour</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Remove Curse</td>
+    <td>level3lvl3</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Paladin, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Resistance</td>
+    <td>level0lvl0</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Resurrection</td>
+    <td>level7lvl7</td>
+    <td>Necromancy</td>
+    <td>1 hour</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Reverse Gravity</td>
+    <td>level7lvl7</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>100 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Revivify</td>
+    <td>level3lvl3</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Domain (Life), Paladin, Artificer (UA), Domain (Grave), Patron (Celestial)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Rope Trick</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Sacred Flame</td>
+    <td>level0lvl0</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Sanctuary</td>
+    <td>level1lvl1</td>
+    <td>Abjuration</td>
+    <td>Bonus Action</td>
+    <td>30 feet</td>
+    <td>1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Oath (Devotion), Artificer (UA), Patron (Raven Queen)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Scorching Ray</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Domain (Light), Sorcerer, Patron (Fiend), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Scrying</td>
+    <td>level5lvl5</td>
+    <td>Divination</td>
+    <td>10 min.</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Cleric, Domain (Knowledge), Domain (Light), Druid, Circle (Coast), Circle (Swamp), Oath (Vengeance), Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Searing Smite</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Paladin, Domain (Forge), Origin (Stone), Domain (Zeal)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>See Invisibility</td>
+    <td>level2lvl2</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Seeming</td>
+    <td>level5lvl5</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Patron (Archfey), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Sending</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Unlimited</td>
+    <td>1round</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Patron (Great Old One), Wizard, Patron (Seeker)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Sequester</td>
+    <td>level7lvl7</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Untildispelled</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Shapechange</td>
+    <td>level9lvl9</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Shatter</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Domain (Tempest), Sorcerer, Warlock, Wizard, Domain (Zeal)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Shield</td>
+    <td>level1lvl1</td>
+    <td>Abjuration</td>
+    <td>Reaction</td>
+    <td>Self</td>
+    <td>1round</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard, Domain (Forge, UA Only), Patron (Hexblade)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Shield of Faith</td>
+    <td>level1lvl1</td>
+    <td>Abjuration</td>
+    <td>Bonus Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Domain (War), Paladin, Artificer (UA), Domain (Strength)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Shillelagh</td>
+    <td>level0lvl0</td>
+    <td>Transmutation</td>
+    <td>Bonus Action</td>
+    <td>Touch</td>
+    <td>1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Shocking Grasp</td>
+    <td>level0lvl0</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Silence</td>
+    <td>level2lvl2</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>Ritual</td>
+    <td>Concentration</td>
+    <td>Bard, Cleric, Circle (Desert), Ranger, Patron (Undying), Patron (Raven Queen)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Silent Image</td>
+    <td>level1lvl1</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto10minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Simulacrum</td>
+    <td>level7lvl7</td>
+    <td>Illusion</td>
+    <td>12 hrs.</td>
+    <td>Touch</td>
+    <td>Untildispelled</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Sleep</td>
+    <td>level1lvl1</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Patron (Archfey), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Sleet Storm</td>
+    <td>level3lvl3</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Tempest), Druid, Circle (Arctic), Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Slow</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Circle (Arctic), Sorcerer, Wizard, Domain (Protection)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Snilloc's Snowball Swarm</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Spare the Dying</td>
+    <td>level0lvl0</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Speak with Animals</td>
+    <td>level1lvl1</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>10minutes</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Bard, Domain (Nature), Druid, Oath (Ancients), Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Speak with Dead</td>
+    <td>level3lvl3</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>10 feet</td>
+    <td>10minutes</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Domain (Knowledge), Patron (Undying), Patron (Raven Queen)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Speak with Plants</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self (30-foot radius)</td>
+    <td>10minutes</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Druid, Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Spider Climb</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Circle (Forest), Circle (Mountain), Circle (Underdark), Sorcerer, Warlock, Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Spike Growth</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Nature), Druid, Circle (Arctic), Circle (Mountain), Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Spirit Guardians</td>
+    <td>level3lvl3</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>Self (15-foot radius)</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Domain (War), Oath (Crown)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Spiritual Weapon</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>Bonus Action</td>
+    <td>60 feet</td>
+    <td>1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Domain (Life), Domain (War), Patron (Raven Queen)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Staggering Smite</td>
+    <td>level4lvl4</td>
+    <td>Evocation</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Paladin, Patron (Hexblade), Origin (Stone)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Stinking Cloud</td>
+    <td>level3lvl3</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Circle (Swamp), Circle (Underdark), Sorcerer, Patron (Fiend), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Stone Shape</td>
+    <td>level4lvl4</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Druid, Circle (Mountain), Circle (Underdark), Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Stoneskin</td>
+    <td>level4lvl4</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (War), Druid, Circle (Mountain), Oath (Ancients), Ranger, Sorcerer, Wizard, Artificer (UA), Domain (Strength)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Storm of Vengeance</td>
+    <td>level9lvl9</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>Sight</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Suggestion</td>
+    <td>level2lvl2</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto8hours</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Domain (Knowledge), Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Sunbeam</td>
+    <td>level6lvl6</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self (60-foot line)</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Sunburst</td>
+    <td>level8lvl8</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Swift Quiver</td>
+    <td>level5lvl5</td>
+    <td>Transmutation</td>
+    <td>Bonus Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Sword Burst</td>
+    <td>level0lvl0</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>5 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>SCAG</td>
+  </tr>
+  <tr>
+    <td>Symbol</td>
+    <td>level7lvl7</td>
+    <td>Abjuration</td>
+    <td>1 minute</td>
+    <td>Touch</td>
+    <td>Untildispelledortriggered</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Tasha's Hideous Laughter</td>
+    <td>level1lvl1</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Patron (Great Old One), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Telekinesis</td>
+    <td>level5lvl5</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Patron (Great Old One), Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Telepathy</td>
+    <td>level8lvl8</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Unlimited</td>
+    <td>24hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Teleport</td>
+    <td>level7lvl7</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>10 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Teleportation Circle</td>
+    <td>level5lvl5</td>
+    <td>Conjuration</td>
+    <td>1 minute</td>
+    <td>10 feet</td>
+    <td>1round</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Domain (Arcana), Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Tenser's Floating Disk</td>
+    <td>level1lvl1</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>1hour</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Thaumaturgy</td>
+    <td>level0lvl0</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Upto1minute</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Thorn Whip</td>
+    <td>level0lvl0</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Thunderclap</td>
+    <td>level0lvl0</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self (5-foot radius)</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Druid, Sorcerer, Warlock, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Thunderous Smite</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Paladin, Origin (Stone), Domain (Zeal)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Thunderwave</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self (15-foot cube)</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Domain (Tempest), Druid, Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Time Stop</td>
+    <td>level9lvl9</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Tongues</td>
+    <td>level3lvl3</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Transmute Rock</td>
+    <td>level5lvl5</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Transport via Plants</td>
+    <td>level6lvl6</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>10 feet</td>
+    <td>1round</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Tree Stride</td>
+    <td>level5lvl5</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Nature), Druid, Circle (Forest), Oath (Ancients), Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>True Polymorph</td>
+    <td>level9lvl9</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>True Resurrection</td>
+    <td>level9lvl9</td>
+    <td>Necromancy</td>
+    <td>1 hour</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>True Seeing</td>
+    <td>level6lvl6</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>True Strike</td>
+    <td>level0lvl0</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1round</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Tsunami</td>
+    <td>level8lvl8</td>
+    <td>Conjuration</td>
+    <td>1 minute</td>
+    <td>Sight</td>
+    <td>Concentration,upto6rounds</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Unseen Servant</td>
+    <td>level1lvl1</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>1hour</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Bard, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Vampiric Touch</td>
+    <td>level3lvl3</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Death), Warlock, Wizard, Domain (Grave), Domain (Ambition)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Vicious Mockery</td>
+    <td>level0lvl0</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Vitriolic Sphere</td>
+    <td>level4lvl4</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Wall of Fire</td>
+    <td>level4lvl4</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Light), Druid, Sorcerer, Patron (Fiend), Wizard, Domain (Forge), Patron (Celestial)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Wall of Force</td>
+    <td>level5lvl5</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard, Domain (Protection)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Wall of Ice</td>
+    <td>level6lvl6</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Wall of Sand</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Wall of Stone</td>
+    <td>level5lvl5</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Circle (Desert), Circle (Mountain), Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Wall of Thorns</td>
+    <td>level6lvl6</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Wall of Water</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Warding Bond</td>
+    <td>level2lvl2</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Oath (Crown), Domain (Solidarity)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Water Breathing</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>24hours</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Druid, Circle (Coast), Ranger, Sorcerer, Wizard, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Water Walk</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>1hour</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Cleric, Druid, Circle (Coast), Circle (Swamp), Ranger, Sorcerer, Artificer (UA)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Web</td>
+    <td>level2lvl2</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Circle (Underdark), Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Weird</td>
+    <td>level9lvl9</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Whirlwind</td>
+    <td>level7lvl7</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>300 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Wizard</td>
+    <td>ElementalEvil</td>
+  </tr>
+  <tr>
+    <td>Wind Walk</td>
+    <td>level6lvl6</td>
+    <td>Transmutation</td>
+    <td>1 minute</td>
+    <td>30 feet</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Wind Wall</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Domain (Nature), Druid, Ranger</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Wish</td>
+    <td>level9lvl9</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Witch Bolt</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Word of Recall</td>
+    <td>level6lvl6</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>5 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Wrathful Smite</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Paladin, Patron (Hexblade), Origin (Stone)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Zone of Truth</td>
+    <td>level2lvl2</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>10minutes</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Cleric, Paladin, Oath (Devotion), Oath (Crown)</td>
+    <td>PHB</td>
+  </tr>
+  <tr>
+    <td>Conjure Barlgura (UA)</td>
+    <td>level4lvl4</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Upto10minutes</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard, Sorcerer</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Conjure Hezrou (UA)</td>
+    <td>level7lvl7</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard, Sorcerer</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Conjure Lesser Demon (UA)</td>
+    <td>level3lvl3</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard, Sorcerer</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Conjure Shadow Demon (UA)</td>
+    <td>level4lvl4</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard, Sorcerer</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Conjure Vrock (UA)</td>
+    <td>level5lvl5</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard, Sorcerer</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Arcane Hacking (UA)</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Sorcerer, Wizard, Patron (Ghost in the Machine)</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Commune with City (UA)</td>
+    <td>level5lvl5</td>
+    <td>Divination</td>
+    <td>1 minute</td>
+    <td>Self</td>
+    <td>Instantaneous</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Warlock, Sorcerer, Wizard, Domain (City)</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Conjure Knowbot (UA)</td>
+    <td>level4lvl4</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>10minutes</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Warlock, Sorcerer, Wizard, Patron (Ghost in the Machine)</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Digital Phantom (UA)</td>
+    <td>level2lvl2</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Sorcerer, Wizard, Patron (Ghost in the Machine)</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Find Vehicle (UA)</td>
+    <td>level2lvl2</td>
+    <td>Conjuration</td>
+    <td>10 min.</td>
+    <td>30 feet</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Warlock, Sorcerer, Wizard, Domain (City)</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Haywire (UA)</td>
+    <td>level3lvl3</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Sorcerer, Wizard, Patron (Ghost in the Machine)</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Infallible Relay (UA)</td>
+    <td>level1lvl1</td>
+    <td>Divination</td>
+    <td>1 minute</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Sorcerer, Wizard, Patron (Ghost in the Machine)</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Invisibility to Cameras (UA)</td>
+    <td>level3lvl3</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>10 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Sorcerer, Wizard, Patron (Ghost in the Machine)</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>On/Off (UA)</td>
+    <td>level0lvl0</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Warlock, Sorcerer, Wizard</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Protection from Ballistics (UA)</td>
+    <td>level3lvl3</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Sorcerer, Wizard, Domain (City)</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Remote Access (UA)</td>
+    <td>level1lvl1</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>10minutes</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Warlock, Sorcerer, Wizard, Domain (City), Patron (Ghost in the Machine)</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Shutdown (UA)</td>
+    <td>level5lvl5</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Sorcerer, Wizard, Domain (City), Patron (Ghost in the Machine)</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Synchronicity (UA)</td>
+    <td>level4lvl4</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Sorcerer, Wizard, Domain (City), Patron (Ghost in the Machine)</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>System Backdoor (UA)</td>
+    <td>level4lvl4</td>
+    <td>Transmutation</td>
+    <td>1 minute</td>
+    <td>Self</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Sorcerer, Wizard, Patron (Ghost in the Machine)</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Cause Fear (UA)</td>
+    <td>level1lvl1</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Wizard</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Ceremony (UA)</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>1 hour</td>
+    <td>Touch</td>
+    <td>Instantaneous(seetext)</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Cleric, Paladin</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Chaos Bolt (UA)</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Guiding Hand (UA)</td>
+    <td>level1lvl1</td>
+    <td>Divination</td>
+    <td>1 minute</td>
+    <td>5 feet</td>
+    <td>Concentration,upto8hours</td>
+    <td>Ritual</td>
+    <td>Concentration</td>
+    <td>Bard, Cleric, Druid, Wizard</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Hand of Radiance (UA)</td>
+    <td>level0lvl0</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self (5-foot radius)</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Healing Elixir (UA)</td>
+    <td>level1lvl1</td>
+    <td>Conjuration</td>
+    <td>1 minute</td>
+    <td>Self</td>
+    <td>24hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Warlock, Wizard</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Infestation (UA)</td>
+    <td>level0lvl0</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Sorcerer, Warlock, Wizard</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Primal Savagery (UA)</td>
+    <td>level0lvl0</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Puppet (UA)</td>
+    <td>level1lvl1</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Warlock, Wizard</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Sense Emotion (UA)</td>
+    <td>level1lvl1</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Wizard</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Snare (UA)</td>
+    <td>level1lvl1</td>
+    <td>Abjuration</td>
+    <td>1 minute</td>
+    <td>Touch</td>
+    <td>Untildispelledortriggered</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Ranger, Wizard</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Sudden Awakening (UA)</td>
+    <td>level1lvl1</td>
+    <td>Enchantment</td>
+    <td>Bonus Action</td>
+    <td>10 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Ranger, Sorcerer, Wizard</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Toll the Dead (UA)</td>
+    <td>level0lvl0</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Warlock</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Unearthly Chorus (UA)</td>
+    <td>level1lvl1</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>Self (30-foot radius)</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Virtue (UA)</td>
+    <td>level0lvl0</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>1round</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Wild Cunning (UA)</td>
+    <td>level1lvl1</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Druid, Ranger</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Zephyr Strike (UA)</td>
+    <td>level1lvl1</td>
+    <td>Transmutation</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Ranger</td>
+    <td>UA</td>
+  </tr>
+  <tr>
+    <td>Abi-Dalzim's Horrid Wilting</td>
+    <td>level8lvl8</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+    <td>Aganazzar's Scorcher</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Beast Bond</td>
+    <td>level1lvl1</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Ranger</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Bones of the Earth</td>
+    <td>level6lvl6</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Catapult</td>
+    <td>level1lvl1</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Catnap</td>
+    <td>level3lvl3</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>10minutes</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Cause Fear</td>
+    <td>level1lvl1</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Ceremony</td>
+    <td>level1lvl1</td>
+    <td>Abjuration</td>
+    <td>1 hour</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>Ritual</td>
+    <td>-</td>
+    <td>Cleric, Paladin</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Chaos Bolt</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Charm Monster</td>
+    <td>level4lvl4</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Druid, Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Control Winds</td>
+    <td>level5lvl5</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>300 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Create Bonfire</td>
+    <td>level0lvl0</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Create Homunculus</td>
+    <td>level6lvl6</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Crown of Stars</td>
+    <td>level7lvl7</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>1hour</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Danse Macabre</td>
+    <td>level5lvl5</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Dawn</td>
+    <td>level5lvl5</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Dragon's Breath</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Bonus Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Druid Grove</td>
+    <td>level6lvl6</td>
+    <td>Abjuration</td>
+    <td>10 min.</td>
+    <td>Touch</td>
+    <td>24hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Earthbind</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>300 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Earth Tremor</td>
+    <td>level1lvl1</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>10 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Bard, Druid, Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Elemental Bane</td>
+    <td>level4lvl4</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Enemies Abound</td>
+    <td>level3lvl3</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Enervation</td>
+    <td>level5lvl5</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Erupting Earth</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Far Step</td>
+    <td>level5lvl5</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Guardian of Nature</td>
+    <td>level4lvl4</td>
+    <td>Transmutation</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,uptoaminute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Ranger</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Healing Spirit</td>
+    <td>level2lvl2</td>
+    <td>Conjuration</td>
+    <td>Bonus Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Ranger</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Holy Weapon</td>
+    <td>level5lvl5</td>
+    <td>Evocation</td>
+    <td>Bonus Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Cleric, Paladin</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Ice Knife</td>
+    <td>level1lvl1</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Illusory Dragon</td>
+    <td>level8lvl8</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Infernal Calling</td>
+    <td>level5lvl5</td>
+    <td>Conjuration</td>
+    <td>1 minute</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Infestation</td>
+    <td>level0lvl0</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Invulnerability</td>
+    <td>level9lvl9</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Life Transference</td>
+    <td>level3lvl3</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Maddening Darkness</td>
+    <td>level8lvl8</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Mass Polymorph</td>
+    <td>level9lvl9</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Maximilian's Earthen Grasp</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Mental Prison</td>
+    <td>level6lvl6</td>
+    <td>Illusion</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Mighty Fortress</td>
+    <td>level8lvl8</td>
+    <td>Conjuration</td>
+    <td>1 minute</td>
+    <td>1 mile</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Mind Spike</td>
+    <td>level2lvl2</td>
+    <td>Divination</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Negative Energy Flood</td>
+    <td>level5lvl5</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Power Word Pain</td>
+    <td>level7lvl7</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Primal Savagery</td>
+    <td>level0lvl0</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Primordial Ward</td>
+    <td>level6lvl6</td>
+    <td>Abjuration</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Psychic Scream</td>
+    <td>level9lvl9</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Scatter</td>
+    <td>level6lvl6</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Shadow Blade</td>
+    <td>level2lvl2</td>
+    <td>Illusion</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Shadow of Moil</td>
+    <td>level4lvl4</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Shape Water</td>
+    <td>level0lvl0</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instantaneousor1hour(seebelow)</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Sickening Radiance</td>
+    <td>level4lvl4</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Skill Empowerment</td>
+    <td>level5lvl5</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Skywrite</td>
+    <td>level2lvl2</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Sight</td>
+    <td>Concentration,upto1hour</td>
+    <td>Ritual</td>
+    <td>Concentration</td>
+    <td>Bard, Druid, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Snare</td>
+    <td>level1lvl1</td>
+    <td>Abjuration</td>
+    <td>1 minute</td>
+    <td>Touch</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Ranger, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Soul Cage</td>
+    <td>level6lvl6</td>
+    <td>Necromancy</td>
+    <td>Reaction</td>
+    <td>60 feet</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Steel Wind Strike</td>
+    <td>level5lvl5</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Ranger, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Storm Sphere</td>
+    <td>level4lvl4</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Summon Greater Demon</td>
+    <td>level4lvl4</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Summon Lesser Demons</td>
+    <td>level3lvl3</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto1hour</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Synaptic Static</td>
+    <td>level5lvl5</td>
+    <td>Enchantment</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Temple of the Gods</td>
+    <td>level7lvl7</td>
+    <td>Conjuration</td>
+    <td>1 hour</td>
+    <td>120 feet</td>
+    <td>24hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Tenser's Transformation</td>
+    <td>level6lvl6</td>
+    <td>Transmutation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Thunder Step</td>
+    <td>level3lvl3</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Tidal Wave</td>
+    <td>level3lvl3</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Druid, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Tiny Servant</td>
+    <td>level3lvl3</td>
+    <td>Transmutation</td>
+    <td>1 minute</td>
+    <td>Touch</td>
+    <td>8hours</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Toll the Dead</td>
+    <td>level0lvl0</td>
+    <td>Necromancy</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instantaneous</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Cleric, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Wall of Light</td>
+    <td>level5lvl5</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Sorcerer, Warlock, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Wall of Sand</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Wall of Water</td>
+    <td>level3lvl3</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Warding Wind</td>
+    <td>level2lvl2</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Concentration,upto10minutes</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Bard, Druid, Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Watery Sphere</td>
+    <td>level4lvl4</td>
+    <td>Conjuration</td>
+    <td>Action</td>
+    <td>90 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Sorcerer, Wizard</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Wrath of Nature</td>
+    <td>level5lvl5</td>
+    <td>Evocation</td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Druid, Ranger</td>
+    <td>XGE</td>
+  </tr>
+  <tr>
+    <td>Zephyr Strike</td>
+    <td>level1lvl1</td>
+    <td>Transmutation</td>
+    <td>Bonus Action</td>
+    <td>Self</td>
+    <td>Concentration,upto1minute</td>
+    <td>-</td>
+    <td>Concentration</td>
+    <td>Ranger</td>
+    <td>XGE</td>
+  </tr>

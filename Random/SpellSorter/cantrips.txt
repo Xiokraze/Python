@@ -1,0 +1,280 @@
+  <tr>
+    <th>Spell</th>
+    <th>Casting</th>
+    <th>Range</th>
+    <th>Duration</th>
+    <th>Ritual</th>
+    <th>Con</th>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Acid-Splash" target="_blank">Acid Splash</a></td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Blade-Ward" target="_blank">Blade Ward</a></td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>1 round</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Booming-Blade" target="_blank">Booming Blade</a></td>
+    <td>Action</td>
+    <td>5 feet</td>
+    <td>1 round</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Chill-Touch" target="_blank">Chill Touch</a></td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>1 round</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Control-Flames" target="_blank">Control Flames</a></td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instant/1 hour</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Create-Bonfire" target="_blank">Create Bonfire</a></td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Con, up to 1 min</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Dancing-Lights" target="_blank">Dancing Lights</a></td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Con, up to 1 min</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Druidcraft" target="_blank">Druidcraft</a></td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Eldritch-Blast" target="_blank">Eldritch Blast</a></td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Fire-Bolt" target="_blank">Fire Bolt</a></td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Friends" target="_blank">Friends</a></td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Con, up to 1 min</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Frostbite" target="_blank">Frostbite</a></td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Guidance" target="_blank">Guidance</a></td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Con, up to 1 min</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Light" target="_blank">Light</a></td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>1 hour</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Lightning-Lure" target="_blank">Lightning Lure</a></td>
+    <td>Action</td>
+    <td>15 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Mage-Hand" target="_blank">Mage Hand</a></td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>1 min</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Magic-Stone" target="_blank">Magic Stone</a></td>
+    <td>Bonus Action</td>
+    <td>Touch</td>
+    <td>1 min</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Mending" target="_blank">Mending</a></td>
+    <td>1 minute</td>
+    <td>Touch</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Message" target="_blank">Message</a></td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>1 round</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Minor-Illusion" target="_blank">Minor Illusion</a></td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>1 min</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Mold-Earth" target="_blank">Mold Earth</a></td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instant/1 hour</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Poison-Spray" target="_blank">Poison Spray</a></td>
+    <td>Action</td>
+    <td>10 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Prestidigitation" target="_blank">Prestidigitation</a></td>
+    <td>Action</td>
+    <td>10 feet</td>
+    <td>Up to 1 hour</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Produce-Flame" target="_blank">Produce Flame</a></td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>10 Minutes</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Resistance" target="_blank">Resistance</a></td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Con, up to 1 min</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Sacred-Flame" target="_blank">Sacred Flame</a></td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Shillelagh" target="_blank">Shillelagh</a></td>
+    <td>Bonus Action</td>
+    <td>Touch</td>
+    <td>1 min</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Shocking-Grasp" target="_blank">Shocking Grasp</a></td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Sword-Burst" target="_blank">Sword Burst</a></td>
+    <td>Action</td>
+    <td>5 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Thaumaturgy" target="_blank">Thaumaturgy</a></td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Up to 1 min</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Thorn-Whip" target="_blank">Thorn Whip</a></td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Thunderclap" target="_blank">Thunderclap</a></td>
+    <td>Action</td>
+    <td>Self (5-foot radius)</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/True-Strike" target="_blank">True Strike</a></td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Con, up to 1 round</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Vicious-Mockery" target="_blank">Vicious Mockery</a></td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>

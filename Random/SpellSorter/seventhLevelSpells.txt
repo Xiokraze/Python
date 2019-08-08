@@ -1,0 +1,152 @@
+  <tr>
+    <th>Spell</th>
+    <th>Casting</th>
+    <th>Range</th>
+    <th>Duration</th>
+    <th>Ritual</th>
+    <th>Con</th>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Conjure-Celestial" target="_blank">Conjure Celestial</a></td>
+    <td>1 minute</td>
+    <td>90 feet</td>
+    <td>Con, up to 1 hour</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Delayed-Blast-Fireball" target="_blank">Delayed Blast Fireball</a></td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Con, up to 1 min</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Divine-Word" target="_blank">Divine Word</a></td>
+    <td>Bonus Action</td>
+    <td>30 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Etherealness" target="_blank">Etherealness</a></td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Upto8hours</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Fire-Storm" target="_blank">Fire Storm</a></td>
+    <td>Action</td>
+    <td>150 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Forcecage" target="_blank">Forcecage</a></td>
+    <td>Action</td>
+    <td>100 feet</td>
+    <td>1 hour</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Mirage-Arcane" target="_blank">Mirage Arcane</a></td>
+    <td>10 min.</td>
+    <td>Sight</td>
+    <td>10 Days</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Plane-Shift" target="_blank">Plane Shift</a></td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Prismatic-Spray" target="_blank">Prismatic Spray</a></td>
+    <td>Action</td>
+    <td>Self (60-foot cone)</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Project-Image" target="_blank">Project Image</a></td>
+    <td>Action</td>
+    <td>500 miles</td>
+    <td>Con, up to 1 day</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Regenerate" target="_blank">Regenerate</a></td>
+    <td>1 minute</td>
+    <td>Touch</td>
+    <td>1 hour</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Resurrection" target="_blank">Resurrection</a></td>
+    <td>1 hour</td>
+    <td>Touch</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Reverse-Gravity" target="_blank">Reverse Gravity</a></td>
+    <td>Action</td>
+    <td>100 feet</td>
+    <td>Con, up to 1 min</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Sequester" target="_blank">Sequester</a></td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Until Dispelled</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Simulacrum" target="_blank">Simulacrum</a></td>
+    <td>12 hrs.</td>
+    <td>Touch</td>
+    <td>Until Dispelled</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Symbol" target="_blank">Symbol</a></td>
+    <td>1 minute</td>
+    <td>Touch</td>
+    <td>Until Dispelled/Triggered</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Teleport" target="_blank">Teleport</a></td>
+    <td>Action</td>
+    <td>10 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Whirlwind" target="_blank">Whirlwind</a></td>
+    <td>Action</td>
+    <td>300 feet</td>
+    <td>Con, up to 1 min</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
