@@ -1,0 +1,128 @@
+  <tr>
+    <th>Spell</th>
+    <th>Casting</th>
+    <th>Range</th>
+    <th>Duration</th>
+    <th>Ritual</th>
+    <th>Con</th>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Astral-Projection" target="_blank">Astral Projection</a></td>
+    <td>1 hour</td>
+    <td>10 feet</td>
+    <td>Special</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Foresight" target="_blank">Foresight</a></td>
+    <td>1 minute</td>
+    <td>Touch</td>
+    <td>8 Hours</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Gate" target="_blank">Gate</a></td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Con, up to 1 min</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Imprisonment" target="_blank">Imprisonment</a></td>
+    <td>1 minute</td>
+    <td>30 feet</td>
+    <td>Until Dispelled</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Mass-Heal" target="_blank">Mass Heal</a></td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Meteor-Swarm" target="_blank">Meteor Swarm</a></td>
+    <td>Action</td>
+    <td>1 mile</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Power-Word-Heal" target="_blank">Power Word Heal</a></td>
+    <td>Action</td>
+    <td>Touch</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Power-Word-Kill" target="_blank">Power Word Kill</a></td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Prismatic-Wall" target="_blank">Prismatic Wall</a></td>
+    <td>Action</td>
+    <td>60 feet</td>
+    <td>10 Minutes</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Shapechange" target="_blank">Shapechange</a></td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Con, up to 1 hour</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Time-Stop" target="_blank">Time Stop</a></td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/True-Polymorph" target="_blank">True Polymorph</a></td>
+    <td>Action</td>
+    <td>30 feet</td>
+    <td>Con, up to 1 hour</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/True-Resurrection" target="_blank">True Resurrection</a></td>
+    <td>1 hour</td>
+    <td>Touch</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Weird" target="_blank">Weird</a></td>
+    <td>Action</td>
+    <td>120 feet</td>
+    <td>Con, up to 1 min</td>
+    <td>-</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a class="magicItem" href="https://www.dndbeyond.com/spells/Wish" target="_blank">Wish</a></td>
+    <td>Action</td>
+    <td>Self</td>
+    <td>Instant</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
