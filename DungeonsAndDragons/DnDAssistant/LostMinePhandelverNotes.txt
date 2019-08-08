@@ -1,0 +1,133 @@
+Lost Mine of Phandelver
+Joshua Worthington
+Source: https://www.dndbeyond.com/sources/lmop/introduction
+
+Introduction
+	Lost Mine of Phandelver is an adventure for four to five characters of 1st level.
+	During the course of the adventure, the characters will advance to 5th level. The 
+	adventure is set a short distance from the city of Neverwinter in the Sword Coast 
+	region of the Forgotten Realms setting. The Sword Coast is part of the North — a 
+	vast realm of free settlements surrounded by wilderness and adventure. You don’t 
+	need to be a Forgotten Realms expert to run the adventure; everything you need to 
+	know about the setting is contained in this content.
+	
+1-1
+	The adventure begins as the player characters are escorting a wagon full of provisions 
+	and supplies from Neverwinter to Phandalin. The journey takes them south along the High 
+	Road to the Triboar Trail, which heads east (as shown on the overland map). When they’re 
+	a half-day’s march from Phandalin, they run into trouble with goblin raiders from the 
+	Cragmaw tribe.
+
+	Read the boxed text (1-2) when you’re ready to start. If you create a different adventure hook, 
+	skip to the second paragraph and adjust the details as necessary, ignoring the information 
+	about driving the wagon.
+	
+1-2
+	In the city of Neverwinter, a dwarf named Gundren Rockseeker asked you to bring a wagonload 
+	of provisions to the rough-and-tumble settlement of Phandalin, a couple of days’ travel 
+	southeast of the city. Gundren was clearly excited and more than a little secretive about 
+	his reasons for the trip, saying only that he and his brothers had found “something big,” 
+	and that he’d pay you ten gold pieces each for escorting his supplies safely to Barthen’s 
+	Provisions, a trading post in Phandalin. He then set out ahead of you on horse, along with 
+	a warrior escort named Sildar Hallwinter, claiming he needed to arrive early to “take care 
+	of business.”
+
+	You’ve spent the last few days following the High Road south from Neverwinter, and you’ve 
+	just recently veered east along the Triboar Trail. You’ve encountered no trouble so far, but 
+	this territory can be dangerous. Bandits and outlaws have been known to lurk along the trail.
+	
+1-3
+	Any character can drive a wagon, and no particular skill is necessary. Two oxen pull the wagon. 
+	If no one is holding the reins, the oxen stop where they are.
+
+	The wagon is packed full of an assortment of mining supplies and food. This includes a dozen
+	sacks of flour, several casks of salted pork, two kegs of strong ale, shovels, picks, and 
+	crowbars (about a dozen each), and five lanterns with a small barrel of oil (about fifty 
+	flasks in volume). The total value of the cargo is 100 gp.
+	
+1-4
+	You’ve been on the Triboar Trail for about half a day. As you come around a bend, you spot 
+	two dead horses sprawled about fifty feet ahead of you, blocking the path. Each has several 
+	black-feathered arrows sticking out of it. The woods press close to the trail here, with a 
+	steep embankment and dense thickets on either side.
+	
+1-5
+	If you are using the “Meet Me in Phandalin” adventure hook, then any character who approaches 
+	to make a closer investigation can identify the horses as belonging to Gundren Rockseeker and 
+	Sildar Hallwinter. They’ve been dead about a day, and it’s clear that arrows killed the horses. 
+	When the characters inspect the scene closer, read the following: (read 1-6)
+	
+1-6
+	The saddlebags have been looted. Nearby lies an empty leather map case.
+		
+2-1
+	You’ve been on the Triboar Trail for about half a day. As you come around a bend, you spot 
+	two dead horses sprawled about fifty feet ahead of you, blocking the path. Each has several 
+	black-feathered arrows sticking out of it. The woods press close to the trail here, with a 
+	steep embankment and dense thickets on either side.
+		
+2-2
+	If you are using the “Meet Me in Phandalin” adventure hook, then any character who approaches 
+	to make a closer investigation can identify the horses as belonging to Gundren Rockseeker and 
+	Sildar Hallwinter. They’ve been dead about a day, and it’s clear that arrows killed the horses. 
+	When the characters inspect the scene closer, read the following to the party:
+
+	The saddlebags have been looted. Nearby lies an empty leather map case.
+	
+2-3
+	4 Goblins are about to ambush the party, 2 on each side of the road.
+	Determine if any in the party are surprised:
+		- Roll 1 d20 for all the goblins and add their stealth modifier
+		- Any in the party whos passive perception is lower than the goblins' steal roll is surprised
+			- Surprised characters cannot act in the first round of combat
+	
+2-4
+	Pick any 2 of the goblins to rush forward for melee attacks
+	The other 2 stay at range with their bows
+	If it looks like the Goblins are losing, one attempts to flee toward the goblin trail
+	
+2-5
+	If the players are defeated, they are left unconscious and looted, not killed. The goblins
+	loot the wagon and head back to Cragmaw hideout. The party can continue to Phandalin,
+	buy new gear at Barthen's Provisions, and return to the ambush site to find the gobin's trail.
+	
+2-6
+	The characters might capture one or more goblins by knocking them unconscious instead of 
+	killing them. A character can use any melee weapon to knock a goblin unconscious, succeeding 
+	if the attack deals enough damage to drop the goblin to 0 hit points. Once it regains 
+	consciousness after a few minutes, a captured goblin can be convinced to share what it knows. 
+	A goblin can also be persuaded to lead the party to the Cragmaw hideout while avoiding 
+	traps along the way.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
