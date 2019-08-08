@@ -1,0 +1,93 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>2e314a69-0310-4df6-9f08-0a2c4bc77aae</ProjectGuid>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>LearningPygame.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>LearningPygame</Name>
+    <RootNamespace>PythonApplication1</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Functions.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LearningPygame.py" />
+    <Compile Include="Media.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Screen.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Media\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Media\bg.jpg" />
+    <Content Include="Media\L1.png" />
+    <Content Include="Media\L10E.png" />
+    <Content Include="Media\L11E.png" />
+    <Content Include="Media\L1E.png" />
+    <Content Include="Media\L2.png" />
+    <Content Include="Media\L2E.png" />
+    <Content Include="Media\L3.png" />
+    <Content Include="Media\L3E.png" />
+    <Content Include="Media\L4.png" />
+    <Content Include="Media\L4E.png" />
+    <Content Include="Media\L5.png" />
+    <Content Include="Media\L5E.png" />
+    <Content Include="Media\L6.png" />
+    <Content Include="Media\L6E.png" />
+    <Content Include="Media\L7.png" />
+    <Content Include="Media\L7E.png" />
+    <Content Include="Media\L8.png" />
+    <Content Include="Media\L8E.png" />
+    <Content Include="Media\L9.png" />
+    <Content Include="Media\L9E.png" />
+    <Content Include="Media\music.mp3" />
+    <Content Include="Media\R1.png" />
+    <Content Include="Media\R10E.png" />
+    <Content Include="Media\R11E.png" />
+    <Content Include="Media\R1E.png" />
+    <Content Include="Media\R2.png" />
+    <Content Include="Media\R2E.png" />
+    <Content Include="Media\R3.png" />
+    <Content Include="Media\R3E.png" />
+    <Content Include="Media\R4.png" />
+    <Content Include="Media\R4E.png" />
+    <Content Include="Media\R5.png" />
+    <Content Include="Media\R5E.png" />
+    <Content Include="Media\R6.png" />
+    <Content Include="Media\R6E.png" />
+    <Content Include="Media\R7.png" />
+    <Content Include="Media\R7E.png" />
+    <Content Include="Media\R8.png" />
+    <Content Include="Media\R8E.png" />
+    <Content Include="Media\R9.png" />
+    <Content Include="Media\R9E.png" />
+    <Content Include="Media\standing.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
