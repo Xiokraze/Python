@@ -11,8 +11,8 @@ bottomBoxH = 50
 borderWidth = 2
 screenGameH = screenH - bottomBoxH
 windowBGColor = (0,0,0)
-maxFPS = 30
-maxFallSpeed = 6
+maxFPS = 40
+maxFallSpeed = 1
 clock = pygame.time.Clock()
 
 #Fonts
@@ -24,7 +24,11 @@ textColor = (0,255,0)
 #Input Box
 inputPrompt = "Input: "
 scorePrompt = "Score: "
+gwpmPrompt = "GWPM: "
 inputLeftPadding = 20
+
+class Time:
+    seconds = 0
 
 def getScreen():
     pygame.display.set_caption("TypingGame")
@@ -32,8 +36,25 @@ def getScreen():
 
 def drawWords(screen, words):
     for word in words:
-        wordText = wordFont.render(word.value, 1, word.textColor)
-        screen.blit(wordText, (word.x, word.y))
+        try:
+            wordText = wordFont.render(word.value, 1, word.textColor)
+            screen.blit(wordText, (word.x, word.y))
+        except:
+            break
+    return
+
+def drawWordsPerMin(screen):
+    chars = Word.charsTyped
+    gwpm = 0
+    if (chars != 0 and Time.seconds != 0):
+        gwpm = (chars/5) / (Time.seconds/60)
+    gwpm = round(gwpm)
+
+    font = ImageFont.truetype(masterFont, fontSize)
+    fontSizePixels = font.getsize(gwpmPrompt + str(gwpm))
+    positionX =  center - (fontSizePixels[0] / 2)
+    text = wordFont.render(gwpmPrompt + str(gwpm), 1, textColor)
+    screen.blit(text, (positionX, getBottomOffset()))
     return
 
 def drawBottomBox(screen):
@@ -59,13 +80,11 @@ def getInputOffset():
     return inputLeftPadding + fontSizePixels[0]
 
 def drawInputText(screen):
-    fontText = pygame.font.Font(masterFont, fontSize)
     text = wordFont.render(inputPrompt, 1, textColor)
     screen.blit(text, (inputLeftPadding, getBottomOffset()))
     return
 
 def drawScoreText(screen):
-    fontText = pygame.font.Font(masterFont, fontSize)
     text = wordFont.render(scorePrompt + str(Player.score), 1, textColor)
     screen.blit(text, (getRightOffset(), getBottomOffset()))
     return
@@ -77,6 +96,7 @@ def drawScreen(screen, words, inputTextBox):
     drawBottomBox(screen)
     drawInputText(screen)
     drawScoreText(screen)
+    drawWordsPerMin(screen)
     screen.blit(inputTextBox, (getInputOffset(), getBottomOffset()))
     pygame.display.update()
     return

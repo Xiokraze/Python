@@ -8,6 +8,7 @@ class Player:
 
 class Word(object):
     maxCharHeight = 0
+    charsTyped = 0
     def __init__(self, value):
         self.value = value
         self.textColor = Screen.textColor
@@ -20,15 +21,15 @@ class Word(object):
 
     def getFallSpeed(self, wordLength):
         if (wordLength == 2):
-            return Screen.maxFallSpeed
+            return max(Screen.maxFallSpeed, 1)
         if (wordLength == 3):
-            return Screen.maxFallSpeed - 1
+            return max(Screen.maxFallSpeed - 1, 1)
         if (wordLength == 4 or wordLength == 5):
-            return Screen.maxFallSpeed - 2
+            return max(Screen.maxFallSpeed - 2, 1)
         if (wordLength == 6 or wordLength == 7):
-            return Screen.maxFallSpeed - 3
+            return max(Screen.maxFallSpeed - 3, 1)
         else:
-            return Screen.maxFallSpeed - 4
+            return max(Screen.maxFallSpeed - 4, 1)
 
     def getWidthHeight(self):
         font = ImageFont.truetype(Screen.masterFont, Screen.fontSize)
@@ -51,12 +52,15 @@ def wordObjects(words):
 def fallingWords(words):
     if (len(words) > 0):
         for word in words:
-            fall = word.y + word.fallSpeed
-            if (fall < Screen.screenGameH - word.height):
-                word.y += word.fallSpeed
-            else:
-                Player.score -= len(word.value)
-                words.remove(word)
+            try:
+                fall = word.y + word.fallSpeed
+                if (fall < Screen.screenGameH - word.height):
+                    word.y += word.fallSpeed
+                else:
+                    Player.score -= len(word.value)
+                    words.remove(word)
+            except:
+                break
     return
 
 def removeWords(words, playerInput):
@@ -64,5 +68,6 @@ def removeWords(words, playerInput):
         if (playerInput == word.value):
             words.remove(word)
             Player.score += len(word.value)
+            Word.charsTyped += len(word.value) + 1 # include return key (simulates entering a space)
             break
     return words

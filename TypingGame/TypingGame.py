@@ -29,14 +29,16 @@ def main():
         words = removeWords(words, playerInput)
 
         inputTextBox = userInput.get_surface()
-        drawScreen(screen, words, inputTextBox)
-        fallingWords(words)
-        frameCount += .5
+
+        frameCount += 1
         if (frameCount == maxFPS):
             words.append(choice(wordbank))
             frameCount = 0
+            Time.seconds += 1
 
-        
+
+        drawScreen(screen, words, inputTextBox)
+        fallingWords(words)
         
         
     
