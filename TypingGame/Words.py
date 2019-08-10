@@ -3,19 +3,19 @@ from random import randint
 import WordBanks
 from PIL import ImageFont
 
+class Player:
+    score = 0
 
 class Word(object):
     maxCharHeight = 0
-    print(maxCharHeight)
     def __init__(self, value):
         self.value = value
         self.textColor = Screen.textColor
         self.fallSpeed = self.getFallSpeed(len(value))
-        self.width, self.height = self.getHeightWidth()
+        self.width, self.height = self.getWidthHeight()
         xOffset = Screen.screenW - self.width - Screen.borderWidth
         self.x = randint(0, xOffset)
         self.y = 0
-        print(f"{self.height} ::: {Word.maxCharHeight}")
         Word.maxCharHeight = max(self.height, Word.maxCharHeight)
 
     def getFallSpeed(self, wordLength):
@@ -30,7 +30,7 @@ class Word(object):
         else:
             return Screen.maxFallSpeed - 4
 
-    def getHeightWidth(self):
+    def getWidthHeight(self):
         font = ImageFont.truetype(Screen.masterFont, Screen.fontSize)
         fontSizePixels = font.getsize(self.value)
         return fontSizePixels[0], fontSizePixels[1]
@@ -55,13 +55,14 @@ def fallingWords(words):
             if (fall < Screen.screenGameH - word.height):
                 word.y += word.fallSpeed
             else:
+                Player.score -= len(word.value)
                 words.remove(word)
-                #TODO detrement score or something
     return
 
 def removeWords(words, playerInput):
     for word in words:
         if (playerInput == word.value):
             words.remove(word)
+            Player.score += len(word.value)
             break
     return words

@@ -4,7 +4,7 @@ Borrowed from https://github.com/Nearoo/pygame-text-input under the MIT license.
 """
 
 
-from Screen import textColor, inputLocation
+from Screen import textColor, fontSize, masterFont #inputLocation
 
 import os.path
 
@@ -23,14 +23,17 @@ class TextInput:
     def __init__(
             self,
             initial_string="",
-            font_family="",
-            font_size=35,
+            #font_family="",
+            #font_size=35,
+            font_family=masterFont,
+            font_size=fontSize,
             antialias=True,
 
             #text_color=(0, 0, 0),
             text_color = textColor,
 
-            cursor_color=(0, 0, 1),
+            #cursor_color=(0, 0, 1),
+            cursor_color=textColor,
             repeat_keys_initial_ms=400,
             repeat_keys_interval_ms=35
         ):
@@ -57,8 +60,8 @@ class TextInput:
         self.font_object = pygame.font.Font(font_family, font_size)
 
         # Text-surface will be created during the first update call:
-        #self.surface = pygame.Surface((1, 1))
-        self.surface = pygame.Surface(inputLocation)
+        self.surface = pygame.Surface((1, 1))
+        #self.surface = pygame.Surface(inputLocation)
         self.surface.set_alpha()
 
         ## Vars to make keydowns repeat after user pressed a key for some time:
@@ -67,7 +70,8 @@ class TextInput:
         #self.keyrepeat_interval_ms = repeat_keys_interval_ms
 
         # Things cursor:
-        self.cursor_surface = pygame.Surface((int(self.font_size/20+1), self.font_size))
+        #self.cursor_surface = pygame.Surface((int(fontSize/20+1), self.font_size))
+        self.cursor_surface = pygame.Surface((2, fontSize))
         self.cursor_surface.fill(cursor_color)
         self.cursor_position = len(initial_string)  # Inside text
         self.cursor_visible = True  # Switches every self.cursor_switch_ms ms
@@ -168,7 +172,8 @@ class TextInput:
             # Without this, the cursor is invisible when self.cursor_position > 0:
             if self.cursor_position > 0:
                 cursor_y_pos -= self.cursor_surface.get_width()
-            self.surface.blit(self.cursor_surface, (cursor_y_pos, 0))
+            #self.surface.blit(self.cursor_surface, (cursor_y_pos, 0))
+            self.surface.blit(self.cursor_surface, (cursor_y_pos, 5))
 
         self.clock.tick()
         return False

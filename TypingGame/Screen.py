@@ -1,11 +1,13 @@
 import pygame
 from random import randint
-from Words import Word
+from Words import Word, Player
+from PIL import ImageFont
 
 #Screen
 screenW = 800
 screenH = 600
-bottomBoxH = 100
+center = screenW // 2
+bottomBoxH = 50
 borderWidth = 2
 screenGameH = screenH - bottomBoxH
 windowBGColor = (0,0,0)
@@ -19,8 +21,10 @@ fontSize = 20
 wordFont = pygame.font.Font(masterFont, fontSize)
 textColor = (0,255,0)
 
-#Bottom Box
-inputLocation = (1, screenGameH + 1)
+#Input Box
+inputPrompt = "Input: "
+scorePrompt = "Score: "
+inputLeftPadding = 20
 
 def getScreen():
     pygame.display.set_caption("TypingGame")
@@ -34,16 +38,45 @@ def drawWords(screen, words):
 
 def drawBottomBox(screen):
     height = screenH - bottomBoxH
-    bottomBox = (0, height, screenW, height)
+    leftBorder = 0
+    topBorder = height - borderWidth
+    rightBorder = screenW - borderWidth + 1
+    bottomBorder = bottomBoxH
+    bottomBox = (leftBorder, topBorder, rightBorder, bottomBorder)
     pygame.draw.rect(screen, textColor, bottomBox, borderWidth)
 
+def getBottomOffset():
+    return screenH - int((bottomBoxH + borderWidth * 2) / 4 * 3)
+
+def getRightOffset():
+    font = ImageFont.truetype(masterFont, fontSize)
+    fontSizePixels = font.getsize(scorePrompt + str(Player.score) + str(borderWidth))
+    return screenW - fontSizePixels[0]
+
+def getInputOffset():
+    font = ImageFont.truetype(masterFont, fontSize)
+    fontSizePixels = font.getsize(inputPrompt)
+    return inputLeftPadding + fontSizePixels[0]
+
+def drawInputText(screen):
+    fontText = pygame.font.Font(masterFont, fontSize)
+    text = wordFont.render(inputPrompt, 1, textColor)
+    screen.blit(text, (inputLeftPadding, getBottomOffset()))
+    return
+
+def drawScoreText(screen):
+    fontText = pygame.font.Font(masterFont, fontSize)
+    text = wordFont.render(scorePrompt + str(Player.score), 1, textColor)
+    screen.blit(text, (getRightOffset(), getBottomOffset()))
+    return
+
 def drawScreen(screen, words, inputTextBox):
-    center = screenW // 2
     clock.tick(maxFPS)
     screen.fill(windowBGColor)
     drawWords(screen, words)
     drawBottomBox(screen)
-    bottomTxtOffset = Word.maxCharHeight
-    screen.blit(inputTextBox, (center, screenH - bottomTxtOffset))
+    drawInputText(screen)
+    drawScoreText(screen)
+    screen.blit(inputTextBox, (getInputOffset(), getBottomOffset()))
     pygame.display.update()
     return
