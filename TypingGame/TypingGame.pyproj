@@ -28,6 +28,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="TypingGame.py" />
+    <Compile Include="WordBanks.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Words.py">
       <SubType>Code</SubType>
     </Compile>

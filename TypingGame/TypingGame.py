@@ -7,24 +7,28 @@ import PlayerInput
 
 def main():
     screen = getScreen()
-    words = wordbank
+    wordbank = getWordBank()
+    words = ["begin"]
     frameCount = 0
-    playerInput = PlayerInput.TextInput()
-    pInput = ""
+    userInput = PlayerInput.TextInput()
+    playerInput = ""
     running = True
+
     while(running):
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.QUIT:
                 running = False
-        if playerInput.update(events):
-            pInput = playerInput.get_text()
-            playerInput.input_string = ""
-            playerInput.cursor_position = 0
-        words = wordObjects(words) 
-        words = removeWords(words, pInput)
 
-        inputTextBox = playerInput.get_surface()
+        if userInput.update(events):
+            playerInput = userInput.get_text()
+            userInput.input_string = ""
+            userInput.cursor_position = 0
+
+        words = wordObjects(words) 
+        words = removeWords(words, playerInput)
+
+        inputTextBox = userInput.get_surface()
         drawScreen(screen, words, inputTextBox)
         fallingWords(words)
         frameCount += .5
