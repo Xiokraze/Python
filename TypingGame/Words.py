@@ -37,16 +37,22 @@ class Word(object):
         return fontSizePixels[0], fontSizePixels[1]
 
 def getWordBank():
-    return WordBanks.firstGrade
+    return WordBanks.vocab1stGrade
     #TODO add functionality for different word banks
 
-def wordObjects(words):
+def wordObjects(words, playerInput):
     newWords = []
     for word in words:
         if (type(word) is str):
             newWords.append(Word(word))
         else:
             newWords.append(word)
+    for word in newWords:
+        if (playerInput == word.value):
+            newWords.remove(word)
+            Player.score += len(word.value)
+            Word.charsTyped += len(word.value) + 1 # include return key (simulates entering a space)
+            break
     return newWords
 
 def fallingWords(words):
@@ -62,12 +68,3 @@ def fallingWords(words):
             except:
                 break
     return
-
-def removeWords(words, playerInput):
-    for word in words:
-        if (playerInput == word.value):
-            words.remove(word)
-            Player.score += len(word.value)
-            Word.charsTyped += len(word.value) + 1 # include return key (simulates entering a space)
-            break
-    return words

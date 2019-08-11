@@ -1,5 +1,5 @@
 import pygame
-from random import randint
+from random import randint, choice
 from Words import Word, Player
 from PIL import ImageFont
 
@@ -29,6 +29,11 @@ inputLeftPadding = 20
 
 class Time:
     seconds = 0
+    running = True
+
+class Frames:
+    frameCount = 0
+    fall = False
 
 def getScreen():
     pygame.display.set_caption("TypingGame")
@@ -43,13 +48,20 @@ def drawWords(screen, words):
             break
     return
 
+def drawUpdateWords(words, wordbank):
+    Frames.frameCount += 1
+    if (Frames.frameCount == maxFPS):
+        words.append(choice(wordbank))
+        Frames.frameCount = 0
+        Time.seconds += 1
+    return words
+
 def drawWordsPerMin(screen):
     chars = Word.charsTyped
     gwpm = 0
     if (chars != 0 and Time.seconds != 0):
         gwpm = (chars/5) / (Time.seconds/60)
     gwpm = round(gwpm)
-
     font = ImageFont.truetype(masterFont, fontSize)
     fontSizePixels = font.getsize(gwpmPrompt + str(gwpm))
     positionX =  center - (fontSizePixels[0] / 2)
