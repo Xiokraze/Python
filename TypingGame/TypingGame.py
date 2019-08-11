@@ -4,6 +4,7 @@ from Screen import *
 from Words import *
 import PlayerInput as P
 from WordBanks import startGame
+import Menu
 
 
 def checkPlayerQuit(events):
@@ -20,12 +21,11 @@ def updateInputVars(userInput):
     userInput.cursor_position = 0
     return playerInput
 
-def playGame():
+def playGame(wordbank):
     screen = getScreen()
     userInput = P.TextInput()
     playerInput = ""
     words = startGame
-    wordbank = getWordBank() #TODO pass difficulty parameter to return appripriate word bank
     while(Time.running):
         events = pygame.event.get()
         checkPlayerQuit(events)
@@ -41,7 +41,8 @@ def playGame():
 
 
 def main():
-    playGame()
+    wordbank = Menu.menu()
+    playGame(wordbank)
     pygame.quit()
         
 

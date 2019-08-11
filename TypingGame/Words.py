@@ -36,10 +36,6 @@ class Word(object):
         fontSizePixels = font.getsize(self.value)
         return fontSizePixels[0], fontSizePixels[1]
 
-def getWordBank():
-    return WordBanks.vocab1stGrade
-    #TODO add functionality for different word banks
-
 def getUpdatedWords(words, wordbank):
     Screen.Frames.frameCount += 1
     if (Screen.Frames.frameCount == Screen.maxFPS):
