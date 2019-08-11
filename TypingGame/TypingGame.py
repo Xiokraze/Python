@@ -2,7 +2,7 @@ import pygame
 pygame.init()
 from Screen import *
 from Words import *
-import PlayerInput
+import PlayerInput as P
 from WordBanks import startGame
 
 
@@ -22,11 +22,10 @@ def updateInputVars(userInput):
 
 def playGame():
     screen = getScreen()
-    userInput = PlayerInput.TextInput()
+    userInput = P.TextInput()
     playerInput = ""
     words = startGame
     wordbank = getWordBank() #TODO pass difficulty parameter to return appripriate word bank
-
     while(Time.running):
         events = pygame.event.get()
         checkPlayerQuit(events)
@@ -34,10 +33,12 @@ def playGame():
             playerInput = updateInputVars(userInput)
         words = wordObjects(words, playerInput)
         if (Frames.fall):
-            words = drawUpdateWords(words, wordbank)
+            words = getUpdatedWords(words, wordbank)
             fallingWords(words)
         drawScreen(screen, words, userInput.get_surface())
     return
+
+
 
 def main():
     playGame()

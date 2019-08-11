@@ -1,5 +1,5 @@
 import Screen
-from random import randint
+from random import randint, choice
 import WordBanks
 from PIL import ImageFont
 
@@ -40,6 +40,14 @@ def getWordBank():
     return WordBanks.vocab1stGrade
     #TODO add functionality for different word banks
 
+def getUpdatedWords(words, wordbank):
+    Screen.Frames.frameCount += 1
+    if (Screen.Frames.frameCount == Screen.maxFPS):
+        words.append(choice(wordbank))
+        Screen.Frames.frameCount = 0
+        Screen.Time.seconds += 1
+    return words
+
 def wordObjects(words, playerInput):
     newWords = []
     for word in words:
@@ -47,12 +55,15 @@ def wordObjects(words, playerInput):
             newWords.append(Word(word))
         else:
             newWords.append(word)
+
+    playerInput = playerInput.split(' ')
     for word in newWords:
-        if (playerInput == word.value):
-            newWords.remove(word)
-            Player.score += len(word.value)
-            Word.charsTyped += len(word.value) + 1 # include return key (simulates entering a space)
-            break
+        for pword in playerInput:
+            if (pword == word.value):
+                newWords.remove(word)
+                Player.score += len(word.value)
+                Word.charsTyped += len(word.value) + 1 # include return key (simulates entering a space)
+                break
     return newWords
 
 def fallingWords(words):

@@ -1,5 +1,5 @@
 import pygame
-from random import randint, choice
+from random import randint
 from Words import Word, Player
 from PIL import ImageFont
 
@@ -7,7 +7,7 @@ from PIL import ImageFont
 screenW = 800
 screenH = 600
 center = screenW // 2
-bottomBoxH = 50
+bottomBoxH = 35
 borderWidth = 2
 screenGameH = screenH - bottomBoxH
 windowBGColor = (0,0,0)
@@ -24,7 +24,7 @@ textColor = (0,255,0)
 #Input Box
 inputPrompt = "Input: "
 scorePrompt = "Score: "
-gwpmPrompt = "GWPM: "
+gwpmPrompt = "gwpm: "
 inputLeftPadding = 20
 
 class Time:
@@ -47,14 +47,6 @@ def drawWords(screen, words):
         except:
             break
     return
-
-def drawUpdateWords(words, wordbank):
-    Frames.frameCount += 1
-    if (Frames.frameCount == maxFPS):
-        words.append(choice(wordbank))
-        Frames.frameCount = 0
-        Time.seconds += 1
-    return words
 
 def drawWordsPerMin(screen):
     chars = Word.charsTyped
@@ -79,7 +71,10 @@ def drawBottomBox(screen):
     pygame.draw.rect(screen, textColor, bottomBox, borderWidth)
 
 def getBottomOffset():
-    return screenH - int((bottomBoxH + borderWidth * 2) / 4 * 3)
+    font = ImageFont.truetype(masterFont, fontSize)
+    fontSizePixels = font.getsize(scorePrompt + str(Player.score) + str(borderWidth))
+    fontHeight = fontSizePixels[1]
+    return screenH - fontHeight - borderWidth * 3 - ((bottomBoxH - fontHeight) // 2)
 
 def getRightOffset():
     font = ImageFont.truetype(masterFont, fontSize)
