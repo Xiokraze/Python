@@ -37,7 +37,7 @@ class Word(object):
         return fontSizePixels[0], fontSizePixels[1]
 
 def getWordBank():
-    return WordBanks.kindergarten
+    return WordBanks.firstGrade
     #TODO add functionality for different word banks
 
 def wordObjects(words):
