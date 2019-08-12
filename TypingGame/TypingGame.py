@@ -15,8 +15,8 @@ def checkPlayerQuit(events):
 
 def updateInputVars(userInput):
     playerInput = userInput.get_text()
-    if (playerInput == "begin"):
-        Frames.fall = True
+    if (playerInput == startGame[0]):
+        Word.falling = True
     userInput.input_string = ""
     userInput.cursor_position = 0
     return playerInput
@@ -32,13 +32,15 @@ def playGame(wordbank):
         if userInput.update(events):
             playerInput = updateInputVars(userInput)
         words = wordObjects(words, playerInput)
-        if (Frames.fall):
-            words = getUpdatedWords(words, wordbank)
+        if (Word.falling):
+            if (Screen.Time.started):
+                words.append(choice(wordbank))
+                Screen.Time.started = False
+            if (Screen.Time.updateSeconds()):
+                words.append(choice(wordbank))
             fallingWords(words)
         drawScreen(screen, words, userInput.get_surface())
     return
-
-
 
 def main():
     wordbank = Menu.menu()

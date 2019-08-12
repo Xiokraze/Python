@@ -7,41 +7,45 @@ class Player:
     score = 0
 
 class Word(object):
+    falling = False
     maxCharHeight = 0
     charsTyped = 0
     def __init__(self, value):
         self.value = value
         self.textColor = Screen.textColor
-        self.fallSpeed = self.getFallSpeed(len(value))
-        self.width, self.height = self.getWidthHeight()
+        self.fallSpeed = getFallSpeed(len(value))
+
+        # Calculate px value for word width and height
+        fontSizePixels = Screen.font.getsize(self.value)
+        self.width = fontSizePixels[0]
+        self.height = fontSizePixels[1]
+
+        # Get px offset from right border to keep the word on the screen
         xOffset = Screen.screenW - self.width - Screen.borderWidth
         self.x = randint(0, xOffset)
         self.y = 0
+
         Word.maxCharHeight = max(self.height, Word.maxCharHeight)
 
-    def getFallSpeed(self, wordLength):
-        if (wordLength == 2):
-            return max(Screen.maxFallSpeed, 1)
-        if (wordLength == 3):
-            return max(Screen.maxFallSpeed - 1, 1)
-        if (wordLength == 4 or wordLength == 5):
-            return max(Screen.maxFallSpeed - 2, 1)
-        if (wordLength == 6 or wordLength == 7):
-            return max(Screen.maxFallSpeed - 3, 1)
-        else:
-            return max(Screen.maxFallSpeed - 4, 1)
+def getFallSpeed(wordLength):
+    maxSpeed = Screen.maxFallSpeed
+    if (wordLength == 2): return maxSpeed 
+    elif (wordLength == 3): return maxSpeed * .8
+    elif (wordLength == 4): return maxSpeed * .6
+    elif (wordLength == 5): return maxSpeed * .5
+    elif (wordLength == 6): return maxSpeed * .3
+    elif (wordLength == 7): return maxSpeed * .3
+    else: return maxSpeed * .2
 
-    def getWidthHeight(self):
-        font = ImageFont.truetype(Screen.masterFont, Screen.fontSize)
-        fontSizePixels = font.getsize(self.value)
-        return fontSizePixels[0], fontSizePixels[1]
-
-def getUpdatedWords(words, wordbank):
-    Screen.Frames.frameCount += 1
-    if (Screen.Frames.frameCount == Screen.maxFPS):
-        words.append(choice(wordbank))
-        Screen.Frames.frameCount = 0
-        Screen.Time.seconds += 1
+def removeWords(words, playerInput):
+    playerInput = playerInput.split(' ')
+    for word in words:
+        for pword in playerInput:
+            if (pword == word.value):
+                words.remove(word)
+                Player.score += len(word.value)
+                Word.charsTyped += len(word.value) + 1
+                break
     return words
 
 def wordObjects(words, playerInput):
@@ -51,27 +55,17 @@ def wordObjects(words, playerInput):
             newWords.append(Word(word))
         else:
             newWords.append(word)
-
-    playerInput = playerInput.split(' ')
-    for word in newWords:
-        for pword in playerInput:
-            if (pword == word.value):
-                newWords.remove(word)
-                Player.score += len(word.value)
-                Word.charsTyped += len(word.value) + 1 # include return key (simulates entering a space)
-                break
-    return newWords
-
+    return removeWords(newWords, playerInput)
+    
 def fallingWords(words):
-    if (len(words) > 0):
-        for word in words:
-            try:
-                fall = word.y + word.fallSpeed
-                if (fall < Screen.screenGameH - word.height):
-                    word.y += word.fallSpeed
-                else:
-                    Player.score -= len(word.value)
-                    words.remove(word)
-            except:
-                break
+    for word in words:
+        try:
+            fall = word.y + word.fallSpeed
+            if (fall < Screen.screenGameH - word.height):
+                word.y += word.fallSpeed
+            else:
+                Player.score -= len(word.value)
+                words.remove(word)
+        except AttributeError:
+            break
     return

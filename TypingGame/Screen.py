@@ -12,13 +12,14 @@ borderWidth = 2
 screenGameH = screenH - bottomBoxH
 windowBGColor = (0,0,0)
 maxFPS = 40
-maxFallSpeed = 1
+maxFallSpeed = 2
 clock = pygame.time.Clock()
 
 #Fonts
 masterFont = "ariblk.ttf"
 fontSize = 20
 wordFont = pygame.font.Font(masterFont, fontSize)
+font = ImageFont.truetype(masterFont, fontSize)
 textColor = (0,255,0)
 
 #Input Box
@@ -28,12 +29,18 @@ gwpmPrompt = "gwpm: "
 inputLeftPadding = 20
 
 class Time:
+    frameTracker = 0
     seconds = 0
     running = True
-
-class Frames:
-    frameCount = 0
-    fall = False
+    started = True
+    delaySeconds = 2
+    def updateSeconds():
+        Time.frameTracker += 1
+        if (Time.frameTracker == maxFPS * Time.delaySeconds):
+            Time.frameTracker = 0
+            Time.seconds += 1
+            return True
+        return False
 
 def getScreen():
     pygame.display.set_caption("TypingGame")
@@ -54,7 +61,6 @@ def drawWordsPerMin(screen):
     if (chars != 0 and Time.seconds != 0):
         gwpm = (chars/5) / (Time.seconds/60)
     gwpm = round(gwpm)
-    font = ImageFont.truetype(masterFont, fontSize)
     fontSizePixels = font.getsize(gwpmPrompt + str(gwpm))
     positionX =  center - (fontSizePixels[0] / 2)
     text = wordFont.render(gwpmPrompt + str(gwpm), 1, textColor)
@@ -71,18 +77,15 @@ def drawBottomBox(screen):
     pygame.draw.rect(screen, textColor, bottomBox, borderWidth)
 
 def getBottomOffset():
-    font = ImageFont.truetype(masterFont, fontSize)
     fontSizePixels = font.getsize(scorePrompt + str(Player.score) + str(borderWidth))
     fontHeight = fontSizePixels[1]
     return screenH - fontHeight - borderWidth * 3 - ((bottomBoxH - fontHeight) // 2)
 
 def getRightOffset():
-    font = ImageFont.truetype(masterFont, fontSize)
     fontSizePixels = font.getsize(scorePrompt + str(Player.score) + str(borderWidth))
     return screenW - fontSizePixels[0]
 
 def getInputOffset():
-    font = ImageFont.truetype(masterFont, fontSize)
     fontSizePixels = font.getsize(inputPrompt)
     return inputLeftPadding + fontSizePixels[0]
 
