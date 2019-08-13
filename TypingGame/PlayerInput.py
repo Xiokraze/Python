@@ -5,11 +5,11 @@ import os
 
 
 class Button:
-    def __init__(self, x, y, text, isVisible=True):
+    def __init__(self, x, y, text, height, isVisible):
         self.x = x + S.borderW
         self.y = y + S.borderW
         self.width = S.buttonW
-        self.height = S.buttonH
+        self.height = height
         self.text = text
         self.textColor = S.btnColor
         self.color = S.textColor
@@ -54,8 +54,8 @@ def initializeGameButtons():
     x = S.screenW - S.buttonW - S.borderW*2
     y = S.getBottomOffset() - S.buttonH - S.borderW * 3
 
-    pauseButton = Button(x, y, "Pause", False)
-    startButton = Button(S.screenW/2, S.screenH/2, "Start")
+    pauseButton = Button(x, y, "Pause", S.buttonH, False)
+    startButton = Button(S.screenW/2, S.screenH/2, "Start", S.buttonH, True)
     return [pauseButton, startButton]
 
 
