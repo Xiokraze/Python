@@ -37,8 +37,8 @@ class Button:
         return False
 
 def resetInputTextBox(userInput):
-    userInput.input_string = ""
-    userInput.cursor_position = 0
+    userInput.inputString = ""
+    userInput.cursorPosition = 0
     return
 
 def drawStartButton(screen, buttons, userInput):
@@ -65,170 +65,95 @@ def initializeGameButtons():
 #################################################################################
 # Modified code from the follow source to handle pygame text input from players #
 #################################################################################
-
 """
 Copyright 2017, Silas Gyger, silasgyger@gmail.com, All rights reserved.
 Modified from https://github.com/Nearoo/pygame-text-input under the MIT license.
 """
 class TextInput:
-
-    """
-    This class lets the user input a piece of text, e.g. a name or a message.
-    This class let's the user input a short, one-lines piece of text at a blinking cursor
-    that can be moved using the arrow-keys. Delete, home and end work as well.
-    """
     def __init__(
             self,
-            initial_string="",
-            #font_family="",
-            #font_size=35,
-            font_family=S.masterFont,
-            font_size=S.fontSize,
+            initialString="",
+            fontFamily=S.masterFont,
+            fontSize=S.fontSize,
             antialias=True,
-            #text_color=(0, 0, 0),
             text_color = S.textColor,
-            #cursor_color=(0, 0, 1),
             cursor_color=S.textColor,
-            repeat_keys_initial_ms=400,
-            repeat_keys_interval_ms=35
         ):
-        """
-        :param initial_string: Initial text to be displayed
-        :param font_family: name or list of names for font (see pygame.font.match_font for precise format)
-        :param font_size:  Size of font in pixels
-        :param antialias: Determines if antialias is applied to font (uses more processing power)
-        :param text_color: Color of text (duh)
-        :param cursor_color: Color of cursor
-        :param repeat_keys_initial_ms: Time in ms before keys are repeated when held
-        :param repeat_keys_interval_ms: Interval between key press repetition when helpd
-        """
 
         # Text related vars:
         self.antialias = antialias
-        self.text_color = text_color
-        self.font_size = font_size
-        self.input_string = initial_string  # Inputted text
+        self.textColor = text_color
+        self.font_size = fontSize
+        self.inputString = initialString  # Inputted text
+        self.fontObject = pygame.font.Font(fontFamily, fontSize)
 
-        if not os.path.isfile(font_family):
-            font_family = pygame.font.match_font(font_family)
+        # Cursor related vars:
+        self.cursorSurface = pygame.Surface((2, S.fontSize))
+        self.cursorSurface.fill(cursor_color)
+        self.cursorPosition = len(initialString)  # Inside text
+        self.cursorVisible = True  # Switches every self.cursor_switch_ms ms
+        self.cursorMS = 400
+        self.cursorMSCounter = 0
+        self.clock = S.clock
 
-        self.font_object = pygame.font.Font(font_family, font_size)
+        def shiftKey():
+            self.inputString = (
+                self.inputString[:self.cursorPosition]
+                    + event.unicode
+                    + self.inputString[self.cursorPosition:]
+                ).upper()
+            return
 
-        # Text-surface will be created during the first update call:
-        self.surface = pygame.Surface((1, 1))
-        #self.surface = pygame.Surface(inputLocation)
-        self.surface.set_alpha()
+        def backspace():
+            self.inputString = (
+                self.inputString[:max(self.cursorPosition - 1, 0)]
+                + self.inputString[self.cursorPosition:]
+            )
+            return
 
-        ## Vars to make keydowns repeat after user pressed a key for some time:
-        #self.keyrepeat_counters = {}  # {event.key: (counter_int, event.unicode)} (look for "***")
-        #self.keyrepeat_intial_interval_ms = repeat_keys_initial_ms
-        #self.keyrepeat_interval_ms = repeat_keys_interval_ms
-
-        # Things cursor:
-        #self.cursor_surface = pygame.Surface((int(fontSize/20+1), self.font_size))
-        self.cursor_surface = pygame.Surface((2, S.fontSize))
-        self.cursor_surface.fill(cursor_color)
-        self.cursor_position = len(initial_string)  # Inside text
-        self.cursor_visible = True  # Switches every self.cursor_switch_ms ms
-        self.cursor_switch_ms = 500  # /|\
-        self.cursor_ms_counter = 0
-
-        self.clock = pygame.time.Clock()
+        def addKeyToInput():
+            self.inputString = (
+                self.inputString[:self.cursorPosition]
+                + event.unicode
+                + self.inputString[self.cursorPosition:]
+            )
+            self.cursorPosition += len(event.unicode)  # Some are empty, e.g. K_UP
+            return
 
     def update(self, events):
         for event in events:
             if event.type == pygame.KEYDOWN:
-                self.cursor_visible = True  # So the user sees where he writes
-
-                ## If none exist, create counter for that key:
-                #if event.key not in self.keyrepeat_counters:
-                #    self.keyrepeat_counters[event.key] = [0, event.unicode]
-
+                self.cursorVisible = True
                 if event.key == pl.K_BACKSPACE:
-                    self.input_string = (
-                        self.input_string[:max(self.cursor_position - 1, 0)]
-                        + self.input_string[self.cursor_position:]
-                    )
-
+                    self.backspace()
                     # Subtract one from cursor_pos, but do not go below zero:
-                    self.cursor_position = max(self.cursor_position - 1, 0)
-                elif event.key == pl.K_DELETE:
-                    self.input_string = (
-                        self.input_string[:self.cursor_position]
-                        + self.input_string[self.cursor_position + 1:]
-                    )
-
+                    self.cursorPosition = max(self.cursorPosition - 1, 0)
                 elif (event.key == pl.KMOD_LSHIFT or event.key == pl.KMOD_RSHIFT):
                     if(False):
                         pass
                     else:
-                        self.input_string = (
-                            self.input_string[:self.cursor_position]
-                            + event.unicode
-                            + self.input_string[self.cursor_position:]
-                        ).upper()
-
+                        self.shiftKey()
                 elif event.key == pl.K_RETURN:
                     return True
-
-                #elif event.key == pl.K_RIGHT:
-                #    # Add one to cursor_pos, but do not exceed len(input_string)
-                #    self.cursor_position = min(self.cursor_position + 1, len(self.input_string))
-
-                #elif event.key == pl.K_LEFT:
-                #    # Subtract one from cursor_pos, but do not go below zero:
-                #    self.cursor_position = max(self.cursor_position - 1, 0)
-
-                #elif event.key == pl.K_END:
-                #    self.cursor_position = len(self.input_string)
-
-                #elif event.key == pl.K_HOME:
-                #    self.cursor_position = 0
-
                 else:
-                    # If no special key is pressed, add unicode of key to input_string
-                    self.input_string = (
-                        self.input_string[:self.cursor_position]
-                        + event.unicode
-                        + self.input_string[self.cursor_position:]
-                    )
-                    self.cursor_position += len(event.unicode)  # Some are empty, e.g. K_UP
-
-            #elif event.type == pl.KEYUP:
-            #    # *** Because KEYUP doesn't include event.unicode, this dict is stored in such a weird way
-            #    if event.key in self.keyrepeat_counters:
-            #        del self.keyrepeat_counters[event.key]
-
-        ## Update key counters:
-        #for key in self.keyrepeat_counters:
-        #    self.keyrepeat_counters[key][0] += self.clock.get_time()  # Update clock
-
-        #    # Generate new key events if enough time has passed:
-        #    if self.keyrepeat_counters[key][0] >= self.keyrepeat_intial_interval_ms:
-        #        self.keyrepeat_counters[key][0] = (
-        #            self.keyrepeat_intial_interval_ms
-        #            - self.keyrepeat_interval_ms
-        #        )
-
-        #        event_key, event_unicode = key, self.keyrepeat_counters[key][1]
-        #        pygame.event.post(pygame.event.Event(pl.KEYDOWN, key=event_key, unicode=event_unicode))
+                    self.addKeyToInput() # TODO FIX
 
         # Re-render text surface:
-        self.surface = self.font_object.render(self.input_string, self.antialias, self.text_color)
+        self.surface = self.fontObject.render(self.inputString, self.antialias, self.textColor)
 
         # Update self.cursor_visible
-        self.cursor_ms_counter += self.clock.get_time()
-        if self.cursor_ms_counter >= self.cursor_switch_ms:
-            self.cursor_ms_counter %= self.cursor_switch_ms
-            self.cursor_visible = not self.cursor_visible
+        self.cursorMSCounter += self.clock.get_time()
+        if self.cursorMSCounter >= self.cursorMS:
+            self.cursorMSCounter %= self.cursorMS
+            self.cursorVisible = not self.cursorVisible
 
-        if self.cursor_visible:
-            cursor_y_pos = self.font_object.size(self.input_string[:self.cursor_position])[0]
+        if self.cursorVisible:
+            cursor_y_pos = self.fontObject.size(self.inputString[:self.cursorPosition])[0]
             # Without this, the cursor is invisible when self.cursor_position > 0:
-            if self.cursor_position > 0:
-                cursor_y_pos -= self.cursor_surface.get_width()
+            if self.cursorPosition > 0:
+                cursor_y_pos -= self.cursorSurface.get_width()
             #self.surface.blit(self.cursor_surface, (cursor_y_pos, 0))
-            self.surface.blit(self.cursor_surface, (cursor_y_pos, 5))
+            self.surface.blit(self.cursorSurface, (cursor_y_pos, 5))
 
         self.clock.tick()
         return False
@@ -237,17 +162,17 @@ class TextInput:
         return self.surface
 
     def get_text(self):
-        return self.input_string
+        return self.inputString
 
     def get_cursor_position(self):
-        return self.cursor_position
+        return self.cursorPosition
 
     def set_text_color(self, color):
-        self.text_color = color
+        self.textColor = color
 
     def set_cursor_color(self, color):
-        self.cursor_surface.fill(color)
+        self.cursorSurface.fill(color)
 
     def clear_text(self):
-        self.input_string = ""
-        self.cursor_position = 0
+        self.inputString = ""
+        self.cursorPosition = 0
