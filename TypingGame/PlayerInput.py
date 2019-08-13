@@ -1,20 +1,90 @@
+import pygame
+import Screen as S
+import pygame.locals as pl
+import os
+
+
+class Button:
+    def __init__(self, x, y, text):
+        self.x = x
+        self.y = y
+        self.width = S.buttonW
+        self.height = S.buttonH
+        self.text = text
+        self.textColor = S.btnColor
+        self.color = S.textColor
+
+    def draw(self, screen, hover=None):
+        if (hover):
+            pygame.draw.rect(screen, self.color, (self.x-2, self.y-2, self.width+4, self.height+4), 0)
+            text = S.wordFont.render(self.text, 1, self.color)
+        else:
+            pygame.draw.rect(screen, self.color, (self.x-2, self.y-2, self.width+4, self.height+4), 0)
+            text = S.wordFont.render(self.text, 1, self.textColor)
+        fontSizePixels = S.font.getsize(self.text)
+        fontWidth = fontSizePixels[0]
+        fontHeight = fontSizePixels[1]
+        screen.blit(text, (self.x + (self.width/2 - fontWidth/2), self.y + (self.height/2 - fontHeight/2)))
+        return
+
+    def isOver(self, pos):
+        #Pos is the mouse position or a tuple of (x,y) coordinates
+        if pos[0] > self.x and pos[0] < self.x + self.width:
+            if pos[1] > self.y and pos[1] < self.y + self.height:
+                return True
+            
+        return False
+
+def initializeButtons():
+    pauseButton = Button(0, 0, "Pause")
+    return [pauseButton]
+
+
+def printMenu():
+    wordsByGrade = ("1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th")
+    wordsByLength = ("3", "4", "5", "6", "7", "8", "9+")
+    num = 1
+    print("Wordbank Menu")
+    for word in wordsByGrade:
+        print(f" {num}) {word} Grade Vocabulary")
+        num += 1
+    for word in wordsByLength:
+        print(f" {num}) {word} Letter Words")
+        num += 1
+    return num
+
+def getInput():
+    clearScreen = lambda: os.system('cls')
+    while (True):
+        try:
+            numChoices = printMenu()
+            userInput = int(input("Enter Menu Number: "))
+            if (userInput > 0 and userInput <= numChoices):
+                break
+        except ValueError:
+            clearScreen()
+    clearScreen()
+    return userInput
+
+def menu(allWords):
+    playerInput = getInput()
+    wordbank = allWords[playerInput - 1]
+    return wordbank
+
+
+
+
+
+#################################################################################
+# Modified code from the follow source to handle pygame text input from players #
+#################################################################################
+
 """
 Copyright 2017, Silas Gyger, silasgyger@gmail.com, All rights reserved.
-Borrowed from https://github.com/Nearoo/pygame-text-input under the MIT license.
+Modified from https://github.com/Nearoo/pygame-text-input under the MIT license.
 """
-
-
-from Screen import textColor, fontSize, masterFont #inputLocation
-
-import os.path
-
-import pygame
-import pygame.locals as pl
-
-pygame.font.init()
-
-
 class TextInput:
+
     """
     This class lets the user input a piece of text, e.g. a name or a message.
     This class let's the user input a short, one-lines piece of text at a blinking cursor
@@ -25,15 +95,13 @@ class TextInput:
             initial_string="",
             #font_family="",
             #font_size=35,
-            font_family=masterFont,
-            font_size=fontSize,
+            font_family=S.masterFont,
+            font_size=S.fontSize,
             antialias=True,
-
             #text_color=(0, 0, 0),
-            text_color = textColor,
-
+            text_color = S.textColor,
             #cursor_color=(0, 0, 1),
-            cursor_color=textColor,
+            cursor_color=S.textColor,
             repeat_keys_initial_ms=400,
             repeat_keys_interval_ms=35
         ):
@@ -71,7 +139,7 @@ class TextInput:
 
         # Things cursor:
         #self.cursor_surface = pygame.Surface((int(fontSize/20+1), self.font_size))
-        self.cursor_surface = pygame.Surface((2, fontSize))
+        self.cursor_surface = pygame.Surface((2, S.fontSize))
         self.cursor_surface.fill(cursor_color)
         self.cursor_position = len(initial_string)  # Inside text
         self.cursor_visible = True  # Switches every self.cursor_switch_ms ms

@@ -1,6 +1,5 @@
-import Screen
+import Screen as S
 from random import randint, choice
-import WordBanks
 from PIL import ImageFont
 
 class Player:
@@ -12,23 +11,23 @@ class Word(object):
     charsTyped = 0
     def __init__(self, value):
         self.value = value
-        self.textColor = Screen.textColor
+        self.textColor = S.textColor
         self.fallSpeed = getFallSpeed(len(value))
 
         # Calculate px value for word width and height
-        fontSizePixels = Screen.font.getsize(self.value)
+        fontSizePixels = S.font.getsize(self.value)
         self.width = fontSizePixels[0]
         self.height = fontSizePixels[1]
 
         # Get px offset from right border to keep the word on the screen
-        xOffset = Screen.screenW - self.width - Screen.borderWidth
+        xOffset = S.screenW - self.width - S.borderWidth
         self.x = randint(0, xOffset)
         self.y = 0
 
         Word.maxCharHeight = max(self.height, Word.maxCharHeight)
 
 def getFallSpeed(wordLength):
-    maxSpeed = Screen.maxFallSpeed
+    maxSpeed = S.maxFallSpeed
     if (wordLength == 2): return maxSpeed 
     elif (wordLength == 3): return maxSpeed * .8
     elif (wordLength == 4): return maxSpeed * .6
@@ -61,7 +60,7 @@ def fallingWords(words):
     for word in words:
         try:
             fall = word.y + word.fallSpeed
-            if (fall < Screen.screenGameH - word.height):
+            if (fall < S.screenGameH - word.height):
                 word.y += word.fallSpeed
             else:
                 Player.score -= len(word.value)

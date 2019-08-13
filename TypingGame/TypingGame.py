@@ -1,49 +1,63 @@
 import pygame
 pygame.init()
-from Screen import *
-from Words import *
+import Screen as S
+import Words as W
 import PlayerInput as P
-from WordBanks import startGame
-import Menu
+import WordBanks as WB
+import random
 
-
-def checkPlayerQuit(events):
+def checkEvents(events, buttons):
+    mousePosition = pygame.mouse.get_pos()
     for event in events:
-        if event.type == pygame.QUIT:
-            Time.running = False
+        if (event.type == pygame.QUIT):
+            pygame.quit()
+            quit()
+        elif (event.type == pygame.MOUSEBUTTONDOWN):
+            for button in buttons:
+                if (button.isOver(mousePosition)):
+                    print("Clicked")
+        elif (event.type == pygame.MOUSEMOTION):
+            for button in buttons:
+                if (button.isOver(mousePosition)):
+                    button.color = S.btnColor
+                    button.textColor = S.textColor
+                else:
+                    button.color = S.textColor
+                    button.textColor = S.btnColor
     return
 
 def updateInputVars(userInput):
     playerInput = userInput.get_text()
-    if (playerInput == startGame[0]):
-        Word.falling = True
+    if (playerInput == WB.startGame[0]):
+        W.Word.falling = True
     userInput.input_string = ""
     userInput.cursor_position = 0
     return playerInput
 
 def playGame(wordbank):
-    screen = getScreen()
+    screen = S.getScreen()
     userInput = P.TextInput()
+    buttons = P.initializeButtons()
     playerInput = ""
-    words = startGame
-    while(Time.running):
+    words = WB.startGame
+    while(True):
         events = pygame.event.get()
-        checkPlayerQuit(events)
+        checkEvents(events, buttons)
         if userInput.update(events):
             playerInput = updateInputVars(userInput)
-        words = wordObjects(words, playerInput)
-        if (Word.falling):
-            if (Screen.Time.started):
-                words.append(choice(wordbank))
-                Screen.Time.started = False
-            if (Screen.Time.updateSeconds()):
-                words.append(choice(wordbank))
-            fallingWords(words)
-        drawScreen(screen, words, userInput.get_surface())
+        words = W.wordObjects(words, playerInput)
+        if (W.Word.falling):
+            if (S.Time.started):
+                words.append(random.choice(wordbank))
+                S.Time.started = False
+            if (S.Time.updateSeconds()):
+                words.append(random.choice(wordbank))
+            W.fallingWords(words)
+        S.drawScreen(screen, words, W.Word.charsTyped, userInput.get_surface(), W.Player.score, buttons)
     return
 
 def main():
-    wordbank = Menu.menu()
+    wordbank = P.menu(WB.allWords)
     playGame(wordbank)
     pygame.quit()
         
