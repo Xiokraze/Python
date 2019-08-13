@@ -20,7 +20,7 @@ class Word(object):
         self.height = fontSizePixels[1]
 
         # Get px offset from right border to keep the word on the screen
-        xOffset = S.screenW - self.width - S.borderWidth
+        xOffset = S.screenW - self.width - S.borderW * 4 - S.buttonW
         self.x = randint(0, xOffset)
         self.y = 0
 

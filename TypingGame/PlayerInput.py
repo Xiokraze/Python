@@ -5,71 +5,58 @@ import os
 
 
 class Button:
-    def __init__(self, x, y, text):
-        self.x = x
-        self.y = y
+    def __init__(self, x, y, text, isVisible=True):
+        self.x = x + S.borderW
+        self.y = y + S.borderW
         self.width = S.buttonW
         self.height = S.buttonH
         self.text = text
         self.textColor = S.btnColor
         self.color = S.textColor
+        self.isVisible = isVisible
+        self.hovering = False
+        self.buttonBorder = (self.x-2, self.y-2, self.width+4, self.height+4)
 
     def draw(self, screen, hover=None):
-        if (hover):
-            pygame.draw.rect(screen, self.color, (self.x-2, self.y-2, self.width+4, self.height+4), 0)
-            text = S.wordFont.render(self.text, 1, self.color)
-        else:
-            pygame.draw.rect(screen, self.color, (self.x-2, self.y-2, self.width+4, self.height+4), 0)
+        if (self.isVisible):
+            pygame.draw.rect(screen, self.color, self.buttonBorder, 0)
+            if (self.hovering):
+                pygame.draw.rect(screen, S.textColor, self.buttonBorder, S.borderW)
             text = S.wordFont.render(self.text, 1, self.textColor)
-        fontSizePixels = S.font.getsize(self.text)
-        fontWidth = fontSizePixels[0]
-        fontHeight = fontSizePixels[1]
-        screen.blit(text, (self.x + (self.width/2 - fontWidth/2), self.y + (self.height/2 - fontHeight/2)))
+            fontSizePixels = S.font.getsize(self.text)
+            fontWidth = fontSizePixels[0]
+            fontHeight = fontSizePixels[1] + S.fontSize / 2
+            screen.blit(text, (self.x + (self.width/2 - fontWidth/2), self.y + (self.height/2 - fontHeight/2)))
         return
 
     def isOver(self, pos):
         #Pos is the mouse position or a tuple of (x,y) coordinates
         if pos[0] > self.x and pos[0] < self.x + self.width:
             if pos[1] > self.y and pos[1] < self.y + self.height:
-                return True
-            
+                return True         
         return False
 
-def initializeButtons():
-    pauseButton = Button(0, 0, "Pause")
-    return [pauseButton]
+def resetInputTextBox(userInput):
+    userInput.input_string = ""
+    userInput.cursor_position = 0
+    return
 
+def drawStartButton(screen, buttons, userInput):
+    for button in buttons:
+        if (button.text == "Start" and button.isVisible):
+            button.draw(screen)
+            pygame.display.update()
+            resetInputTextBox(userInput)
+            break
+    return
 
-def printMenu():
-    wordsByGrade = ("1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th")
-    wordsByLength = ("3", "4", "5", "6", "7", "8", "9+")
-    num = 1
-    print("Wordbank Menu")
-    for word in wordsByGrade:
-        print(f" {num}) {word} Grade Vocabulary")
-        num += 1
-    for word in wordsByLength:
-        print(f" {num}) {word} Letter Words")
-        num += 1
-    return num
+def initializeGameButtons():
+    x = S.screenW - S.buttonW - S.borderW*2
+    y = S.getBottomOffset() - S.buttonH - S.borderW * 3
 
-def getInput():
-    clearScreen = lambda: os.system('cls')
-    while (True):
-        try:
-            numChoices = printMenu()
-            userInput = int(input("Enter Menu Number: "))
-            if (userInput > 0 and userInput <= numChoices):
-                break
-        except ValueError:
-            clearScreen()
-    clearScreen()
-    return userInput
-
-def menu(allWords):
-    playerInput = getInput()
-    wordbank = allWords[playerInput - 1]
-    return wordbank
+    pauseButton = Button(x, y, "Pause", False)
+    startButton = Button(S.screenW/2, S.screenH/2, "Start")
+    return [pauseButton, startButton]
 
 
 

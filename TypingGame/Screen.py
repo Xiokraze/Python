@@ -2,13 +2,13 @@ import pygame
 from PIL import ImageFont
 
 #Screen
-screenW = 800
+screenW = 950
 screenH = 600
 center = screenW // 2
 bottomBoxH = 35
-borderWidth = 2
-buttonW = 100
-buttonH = 50
+borderW = 2
+buttonW = 150
+buttonH = 75
 screenGameH = screenH - bottomBoxH
 windowBGColor = (0,0,0)
 maxFPS = 40
@@ -21,7 +21,7 @@ fontSize = 20
 wordFont = pygame.font.Font(masterFont, fontSize)
 font = ImageFont.truetype(masterFont, fontSize)
 textColor = (0,255,0)
-btnColor = (255,255,255)
+btnColor = (0,0,0)
 
 #Input Box
 inputPrompt = "Input: "
@@ -33,6 +33,7 @@ class Time:
     frameTracker = 0
     seconds = 0
     started = True
+    running = True
     delaySeconds = 1                                                    # changes seconds interval for printing words
     def updateSeconds():
         Time.frameTracker += 1
@@ -74,20 +75,20 @@ def drawButtons(screen, buttons):
 def drawBottomBox(screen):
     height = screenH - bottomBoxH
     leftBorder = 0
-    topBorder = height - borderWidth
-    rightBorder = screenW - borderWidth + 1
+    topBorder = height - borderW
+    rightBorder = screenW - borderW + 1
     bottomBorder = bottomBoxH
     bottomBox = (leftBorder, topBorder, rightBorder, bottomBorder)
-    pygame.draw.rect(screen, textColor, bottomBox, borderWidth)
+    pygame.draw.rect(screen, textColor, bottomBox, borderW)
 
-def getBottomOffset(playerScore):
-    fontSizePixels = font.getsize(scorePrompt + str(playerScore) + str(borderWidth))
+def getBottomOffset(playerScore=""):
+    fontSizePixels = font.getsize(scorePrompt + str(playerScore) + str(borderW))
     fontHeight = fontSizePixels[1]
-    return screenH - fontHeight - borderWidth * 3 - ((bottomBoxH - fontHeight) // 2)
+    return screenH - fontHeight - borderW * 3 - ((bottomBoxH - fontHeight) // 2)
 
 def getRightOffset(playerScore):
-    fontSizePixels = font.getsize(scorePrompt + str(playerScore) + str(borderWidth))
-    return screenW - fontSizePixels[0]
+    fontSizePixels = font.getsize(scorePrompt + str(playerScore) + str(borderW))
+    return screenW - buttonW - fontSizePixels[0]
 
 def getInputOffset():
     fontSizePixels = font.getsize(inputPrompt)
@@ -100,7 +101,7 @@ def drawInputText(screen, playerScore):
 
 def drawScoreText(screen, playerScore):
     text = wordFont.render(scorePrompt + str(playerScore), 1, textColor)
-    screen.blit(text, (getRightOffset(playerScore), getBottomOffset(playerScore)))
+    screen.blit(text, (getRightOffset(playerScore) + buttonW, getBottomOffset(playerScore)))
     return
 
 def drawScreen(screen, words, chars, inputTextBox, playerScore, buttons):
