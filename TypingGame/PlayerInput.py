@@ -58,7 +58,29 @@ def initializeGameButtons():
     startButton = Button(S.screenW/2, S.screenH/2, "Start", S.buttonH, True)
     return [pauseButton, startButton]
 
+def shiftKey(self):
+    self.inputString = (
+        self.inputString[:self.cursorPosition]
+            + event.unicode
+            + self.inputString[self.cursorPosition:]
+        ).upper()
+    return
 
+def backspace(self):
+    self.inputString = (
+        self.inputString[:max(self.cursorPosition - 1, 0)]
+        + self.inputString[self.cursorPosition:]
+    )
+    return
+
+def addKeyToInput(self, event):
+    self.inputString = (
+        self.inputString[:self.cursorPosition]
+        + event.unicode
+        + self.inputString[self.cursorPosition:]
+    )
+    self.cursorPosition += len(event.unicode)  # Some are empty, e.g. K_UP
+    return
 
 
 
@@ -78,7 +100,8 @@ class TextInput:
             antialias=True,
             text_color = S.textColor,
             cursor_color=S.textColor,
-        ):
+            ):
+
 
         # Text related vars:
         self.antialias = antialias
@@ -96,47 +119,23 @@ class TextInput:
         self.cursorMSCounter = 0
         self.clock = S.clock
 
-        def shiftKey():
-            self.inputString = (
-                self.inputString[:self.cursorPosition]
-                    + event.unicode
-                    + self.inputString[self.cursorPosition:]
-                ).upper()
-            return
-
-        def backspace():
-            self.inputString = (
-                self.inputString[:max(self.cursorPosition - 1, 0)]
-                + self.inputString[self.cursorPosition:]
-            )
-            return
-
-        def addKeyToInput():
-            self.inputString = (
-                self.inputString[:self.cursorPosition]
-                + event.unicode
-                + self.inputString[self.cursorPosition:]
-            )
-            self.cursorPosition += len(event.unicode)  # Some are empty, e.g. K_UP
-            return
-
     def update(self, events):
         for event in events:
             if event.type == pygame.KEYDOWN:
                 self.cursorVisible = True
                 if event.key == pl.K_BACKSPACE:
-                    self.backspace()
+                    backspace(self)
                     # Subtract one from cursor_pos, but do not go below zero:
                     self.cursorPosition = max(self.cursorPosition - 1, 0)
                 elif (event.key == pl.KMOD_LSHIFT or event.key == pl.KMOD_RSHIFT):
                     if(False):
                         pass
                     else:
-                        self.shiftKey()
+                        shiftKey(self)
                 elif event.key == pl.K_RETURN:
                     return True
                 else:
-                    self.addKeyToInput() # TODO FIX
+                    addKeyToInput(self, event) # TODO FIX
 
         # Re-render text surface:
         self.surface = self.fontObject.render(self.inputString, self.antialias, self.textColor)
