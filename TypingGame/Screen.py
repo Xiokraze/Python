@@ -11,6 +11,7 @@ buttonW = 150
 buttonH = 75
 screenGameH = screenH - bottomBoxH
 windowBGColor = (0,0,0)
+windowBGImg = pygame.image.load('underwater.jpg')           # Load background
 maxFPS = 40
 maxFallSpeed = 2
 clock = pygame.time.Clock()
@@ -20,8 +21,10 @@ masterFont = "ariblk.ttf"
 fontSize = 20
 wordFont = pygame.font.Font(masterFont, fontSize)
 font = ImageFont.truetype(masterFont, fontSize)
-textColor = (0,255,0)
-btnColor = (0,0,0)
+textColor = (255,255,255)
+btnTextColor = (255,255,255)
+btnColor = (44, 150, 199)
+btnHoverColor = (194,178,128)
 
 #Input Box
 inputPrompt = "Input: "
@@ -106,7 +109,8 @@ def drawScoreText(screen, playerScore):
 
 def drawScreen(screen, words, chars, inputTextBox, playerScore, buttons):
     clock.tick(maxFPS)
-    screen.fill(windowBGColor)
+    #screen.fill(windowBGColor)
+    screen.blit(windowBGImg, (0,0))
     drawWords(screen, words)
     drawButtons(screen, buttons)
     drawBottomBox(screen)

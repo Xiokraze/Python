@@ -48,6 +48,9 @@ def drawStartButton(screen, buttons, userInput):
             pygame.display.update()
             resetInputTextBox(userInput)
             break
+    if (S.Time.started):
+        screen.blit(S.windowBGImg, (0,0))
+        pygame.display.update()
     return
 
 def initializeGameButtons():
