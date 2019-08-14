@@ -3,6 +3,7 @@ pygame.init()
 import Screen as S
 import MainMenu as MM
 import Words as W
+import time
 import PlayerInput as P
 import WordBanks as WB
 import random
@@ -22,21 +23,21 @@ def checkButton(button, buttons):
             if (b.text != "Start"):
                 b.isVisible = True
     elif (button.text == "1st"):
-        WB.GameWords.gw = WB.allWords[1]
+        WB.GameWords.gw = WB.allWords[0]
     elif (button.text == "2nd"):
-        WB.GameWords.gw = WB.allWords[2]
+        WB.GameWords.gw = WB.allWords[1]
     elif (button.text == "3rd"):
-        WB.GameWords.gw = WB.allWords[3]
+        WB.GameWords.gw = WB.allWords[2]
     elif (button.text == "4th"):
-        WB.GameWords.gw = WB.allWords[4]
+        WB.GameWords.gw = WB.allWords[3]
     elif (button.text == "5th"):
-        WB.GameWords.gw = WB.allWords[5]
+        WB.GameWords.gw = WB.allWords[4]
     elif (button.text == "6th"):
-        WB.GameWords.gw = WB.allWords[6]
+        WB.GameWords.gw = WB.allWords[5]
     elif (button.text == "7th"):
-        WB.GameWords.gw = WB.allWords[7]
+        WB.GameWords.gw = WB.allWords[6]
     elif (button.text == "8th"):
-        WB.GameWords.gw = WB.allWords[8]
+        WB.GameWords.gw = WB.allWords[7]
     return
 
 def checkMousePosition(mousePosition, button):
@@ -44,10 +45,14 @@ def checkMousePosition(mousePosition, button):
         button.color = S.btnHoverColor
         button.textColor = S.btnTextColor
         button.hovering = True
+        if (button.playSound):
+            S.menuBtnHover.play()
+            button.playSound = False
     else:
         button.color = S.btnColor
         button.textColor = S.btnTextColor
         button.hovering = False
+        button.playSound = True
     return
 
 def checkEvents(events, buttons):
@@ -78,12 +83,15 @@ def playGame(wordbank):
     playerInput = ""
     words = [""]
     S.Time.running = True
+    music = S.gameMusic
+    pygame.mixer.music.play(-1) 
     while(S.Time.running):
         events = pygame.event.get()
         checkEvents(events, buttons)
         if userInput.update(events):
             playerInput = updateInputVars(userInput)
         words = W.wordObjects(words, playerInput)
+        words = W.checkCount(words, wordbank)
         if (W.Word.falling):
             if (S.Time.updateSeconds()):
                 words.append(random.choice(wordbank))

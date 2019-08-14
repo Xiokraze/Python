@@ -15,6 +15,7 @@ class Button:
         self.color = S.btnColor
         self.isVisible = isVisible
         self.hovering = False
+        self.playSound = True
         self.buttonBorder = (self.x-2, self.y-2, self.width+4, self.height+4)
 
     def draw(self, screen, hover=None):

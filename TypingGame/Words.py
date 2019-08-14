@@ -47,6 +47,11 @@ def removeWords(words, playerInput):
                 break
     return words
 
+def checkCount(words, wordbank):
+    if (len(words) < 1):
+        words.append(choice(wordbank))
+    return words
+
 def wordObjects(words, playerInput):
     newWords = []
     for word in words:

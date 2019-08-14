@@ -11,13 +11,16 @@ buttonW = 150
 buttonH = 75
 screenGameH = screenH - bottomBoxH
 windowBGColor = (0,0,0)
-windowBGImg = pygame.image.load('underwater.jpg')           # Load background
+windowBGImg = pygame.image.load('Media/underwater.jpg')             # Load background
+menuBtnHover = pygame.mixer.Sound('Media/bubble.ogg')
+gameMusic = pygame.mixer.music.load("Media/gameMusic1.mp3")         #https://www.dl-sounds.com/royalty-free/andromeda-journey/
+#menuBtnSelect = 
 maxFPS = 40
 maxFallSpeed = 2
 clock = pygame.time.Clock()
 
 #Fonts
-masterFont = "ariblk.ttf"
+masterFont = "Media/ariblk.ttf"
 fontSize = 20
 wordFont = pygame.font.Font(masterFont, fontSize)
 font = ImageFont.truetype(masterFont, fontSize)
@@ -36,7 +39,7 @@ class Time:
     frameTracker = 0
     seconds = 0
     running = True
-    delaySeconds = 3                                                    # changes seconds interval for printing words
+    delaySeconds = 1                                                  # changes seconds interval for printing words
     def updateSeconds():
         Time.frameTracker += 1
         if (Time.frameTracker == maxFPS * Time.delaySeconds):
