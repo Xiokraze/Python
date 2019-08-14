@@ -53,7 +53,10 @@ def menu(allWords):
             S.Time.running = False
         drawMenu(screen, buttons)
     S.Time.running = True
-    buttons = [P.Button(S.screenW/2, S.screenH/2, "Start", S.buttonH, True)]
+    fontSizePixels = S.font.getsize("Start")
+    x = S.screenW/2 - S.buttonW / 2
+    y = S.screenH/2 - S.buttonH / 2
+    buttons = [P.Button(x, y, "Start", S.buttonH, True)]
     while (S.Time.running):
         events = pygame.event.get()
         playerInput = checkEvents(events, buttons)
