@@ -80,7 +80,7 @@ def playGame(wordbank):
     screen = S.getScreen()
     userInput = P.TextInput()
     buttons = P.initializeGameButtons()
-    playerInput = ""
+    playerInput = None
     words = [""]
     S.Time.running = True
     music = S.gameMusic
@@ -91,7 +91,7 @@ def playGame(wordbank):
         if userInput.update(events):
             playerInput = updateInputVars(userInput)
         words = W.wordObjects(words, playerInput)
-        words = W.checkCount(words, wordbank)
+        words = W.checkCount(words, wordbank, S.numWords)
         if (W.Word.falling):
             if (S.Time.updateSeconds()):
                 words.append(random.choice(wordbank))

@@ -29,6 +29,9 @@ btnTextColor = (255,255,255)
 btnColor = (44, 150, 199)
 btnHoverColor = (194,178,128)
 
+#Falling Words
+numWords = 3
+
 #Input Box
 inputPrompt = "Input: "
 scorePrompt = "Score: "
@@ -39,7 +42,7 @@ class Time:
     frameTracker = 0
     seconds = 0
     running = True
-    delaySeconds = 1                                                  # changes seconds interval for printing words
+    delaySeconds = 1  # changes seconds interval for printing words
     def updateSeconds():
         Time.frameTracker += 1
         if (Time.frameTracker == maxFPS * Time.delaySeconds):
@@ -64,8 +67,8 @@ def drawWords(screen, words):
 def drawWordsPerMin(screen, chars, playerScore):
     gwpm = 0
     if (chars != 0 and Time.seconds != 0):
-        gwpm = (chars/5) / (Time.seconds/60)
-    gwpm = round(gwpm)
+        gwpm = round((chars/5) / (Time.seconds/60))
+    print(gwpm)
     fontSizePixels = font.getsize(gwpmPrompt + str(gwpm))
     positionX =  center - (fontSizePixels[0] / 2)
     text = wordFont.render(gwpmPrompt + str(gwpm), 1, textColor)

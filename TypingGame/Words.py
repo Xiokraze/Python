@@ -37,19 +37,21 @@ def getFallSpeed(wordLength):
     else: return maxSpeed * .2
 
 def removeWords(words, playerInput):
-    playerInput = playerInput.split(' ')
-    for word in words:
-        for pword in playerInput:
-            if (pword == word.value):
-                words.remove(word)
-                Player.score += len(word.value)
-                Word.charsTyped += len(word.value) + 1
-                break
+    if (playerInput):
+        playerInput = playerInput.split(' ')
+        for word in words:
+            for p in playerInput:
+                if (p == word.value):
+                    words.remove(word)
+                    Player.score += len(word.value)
+                    Word.charsTyped += len(word.value) + 1
+                    break
     return words
 
-def checkCount(words, wordbank):
-    if (len(words) < 1):
-        words.append(choice(wordbank))
+def checkCount(words, wordbank, numWords):
+    if (len(words) < numWords):
+        for i in range(numWords):
+            words.append(choice(wordbank))
     return words
 
 def wordObjects(words, playerInput):
