@@ -9,6 +9,8 @@ bottomBoxH = 35
 borderW = 2
 buttonW = 150
 buttonH = 75
+menuButtonW = 100
+menuButtonH = 50
 screenGameH = screenH - bottomBoxH
 windowBGColor = (0,0,0)
 windowBGImg = pygame.image.load('Media/underwater.jpg')             # Load background
@@ -42,6 +44,7 @@ class Time:
     frameTracker = 0
     seconds = 0
     running = True
+    playBGMusic = True
     delaySeconds = 1  # changes seconds interval for printing words
     def updateSeconds():
         Time.frameTracker += 1
@@ -68,7 +71,6 @@ def drawWordsPerMin(screen, chars, playerScore):
     gwpm = 0
     if (chars != 0 and Time.seconds != 0):
         gwpm = round((chars/5) / (Time.seconds/60))
-    print(gwpm)
     fontSizePixels = font.getsize(gwpmPrompt + str(gwpm))
     positionX =  center - (fontSizePixels[0] / 2)
     text = wordFont.render(gwpmPrompt + str(gwpm), 1, textColor)

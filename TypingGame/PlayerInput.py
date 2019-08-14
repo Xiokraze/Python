@@ -5,10 +5,10 @@ import os
 
 
 class Button:
-    def __init__(self, x, y, text, height, isVisible):
+    def __init__(self, x, y, text, width, height, isVisible):
         self.x = x + S.borderW
         self.y = y + S.borderW
-        self.width = S.buttonW
+        self.width = width
         self.height = height
         self.text = text
         self.textColor = S.textColor
@@ -20,7 +20,7 @@ class Button:
 
     def draw(self, screen, hover=None):
         if (self.isVisible):
-            pygame.draw.rect(screen, self.color, self.buttonBorder, 0)
+            pygame.draw.rect(screen, self.color, self.buttonBorder, S.borderW)
             if (self.hovering):
                 pygame.draw.rect(screen, S.textColor, self.buttonBorder, S.borderW)
             text = S.wordFont.render(self.text, 1, self.textColor)
@@ -31,9 +31,9 @@ class Button:
         return
 
     def isOver(self, pos):
-        #Pos is the mouse position or a tuple of (x,y) coordinates
-        if pos[0] > self.x and pos[0] < self.x + self.width:
-            if pos[1] > self.y and pos[1] < self.y + self.height:
+        #Pos is the mouse position (x,y) coordinates
+        if (pos[0] > self.x and pos[0] < self.x + self.width):
+            if (pos[1] > self.y and pos[1] < self.y + self.height):
                 return True         
         return False
 
@@ -41,8 +41,9 @@ def initializeGameButtons():
     x = S.screenW - S.buttonW - S.borderW*2
     y = S.getBottomOffset() - S.buttonH - S.borderW * 3
 
-    pauseButton = Button(x, y, "Pause", S.buttonH, True)
-    return [pauseButton]
+    pauseButton = Button(x, y, "Pause", S.buttonW, S.buttonH, True)
+    muteButton = Button(x, y-S.buttonH-S.borderW*2, "Mute", S.buttonW, S.buttonH, True)
+    return [pauseButton, muteButton]
 
 def shiftKey(self):
     self.inputString = (

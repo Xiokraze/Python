@@ -15,13 +15,20 @@ def checkButton(button, buttons):
             W.Word.falling = False
         else:
             W.Word.falling = True
-    if (button.text == "Start"): 
+    elif (button.text == "Start"): 
         W.Word.falling = True
         S.Time.running = False
         button.isVisible = False
         for b in buttons:
             if (b.text != "Start"):
                 b.isVisible = True
+    elif (button.text == "Mute"):
+        if (S.Time.playBGMusic):
+            pygame.mixer.music.pause()
+            S.Time.playBGMusic = False
+        else:
+            pygame.mixer.music.unpause() 
+            S.Time.playBGMusic = True
     elif (button.text == "1st"):
         WB.GameWords.gw = WB.allWords[0]
     elif (button.text == "2nd"):
