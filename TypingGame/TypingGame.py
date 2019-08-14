@@ -6,6 +6,7 @@ import Words as W
 import PlayerInput as P
 import WordBanks as WB
 import random
+import sys
 
 def checkButton(button, buttons):
     if (button.text == "Pause"):
@@ -15,6 +16,7 @@ def checkButton(button, buttons):
             W.Word.falling = True
     if (button.text == "Start"): 
         W.Word.falling = True
+        S.Time.running = False
         button.isVisible = False
         for b in buttons:
             if (b.text != "Start"):
@@ -53,7 +55,8 @@ def checkEvents(events, buttons):
     for event in events:
         if (event.type == pygame.QUIT):
             S.Time.running = False
-            break
+            pygame.quit()
+            sys.exit(0)
         elif (event.type == pygame.MOUSEMOTION):
             for button in buttons:
                 checkMousePosition(mousePosition, button)
@@ -82,15 +85,17 @@ def playGame(wordbank):
             playerInput = updateInputVars(userInput)
         words = W.wordObjects(words, playerInput)
         if (W.Word.falling):
-            if (S.Time.started):
-                words.append(random.choice(wordbank))
-                S.Time.started = False
             if (S.Time.updateSeconds()):
                 words.append(random.choice(wordbank))
             W.fallingWords(words)
-            S.drawScreen(screen, words, W.Word.charsTyped, userInput.get_surface(), W.Player.score, buttons)
-        else:
-            P.drawStartButton(screen, buttons, userInput)
+            S.drawScreen(
+                screen, 
+                words, 
+                W.Word.charsTyped, 
+                userInput.get_surface(), 
+                W.Player.score, 
+                buttons
+            )
     return
 
 def main():

@@ -35,9 +35,8 @@ inputLeftPadding = 20
 class Time:
     frameTracker = 0
     seconds = 0
-    started = True
     running = True
-    delaySeconds = 1                                                    # changes seconds interval for printing words
+    delaySeconds = 3                                                    # changes seconds interval for printing words
     def updateSeconds():
         Time.frameTracker += 1
         if (Time.frameTracker == maxFPS * Time.delaySeconds):

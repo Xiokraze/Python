@@ -11,8 +11,8 @@ class Button:
         self.width = S.buttonW
         self.height = height
         self.text = text
-        self.textColor = S.btnColor
-        self.color = S.textColor
+        self.textColor = S.textColor
+        self.color = S.btnColor
         self.isVisible = isVisible
         self.hovering = False
         self.buttonBorder = (self.x-2, self.y-2, self.width+4, self.height+4)
@@ -36,30 +36,12 @@ class Button:
                 return True         
         return False
 
-def resetInputTextBox(userInput):
-    userInput.inputString = ""
-    userInput.cursorPosition = 0
-    return
-
-def drawStartButton(screen, buttons, userInput):
-    for button in buttons:
-        if (button.text == "Start" and button.isVisible):
-            button.draw(screen)
-            pygame.display.update()
-            resetInputTextBox(userInput)
-            break
-    if (S.Time.started):
-        screen.blit(S.windowBGImg, (0,0))
-        pygame.display.update()
-    return
-
 def initializeGameButtons():
     x = S.screenW - S.buttonW - S.borderW*2
     y = S.getBottomOffset() - S.buttonH - S.borderW * 3
 
-    pauseButton = Button(x, y, "Pause", S.buttonH, False)
-    startButton = Button(S.screenW/2, S.screenH/2, "Start", S.buttonH, True)
-    return [pauseButton, startButton]
+    pauseButton = Button(x, y, "Pause", S.buttonH, True)
+    return [pauseButton]
 
 def shiftKey(self):
     self.inputString = (
@@ -83,6 +65,11 @@ def addKeyToInput(self, event):
         + self.inputString[self.cursorPosition:]
     )
     self.cursorPosition += len(event.unicode)  # Some are empty, e.g. K_UP
+    return
+
+def resetInputTextBox(userInput):
+    userInput.inputString = ""
+    userInput.cursorPosition = 0
     return
 
 
