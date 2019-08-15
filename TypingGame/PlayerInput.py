@@ -20,14 +20,22 @@ class Button:
 
     def draw(self, screen, hover=None):
         if (self.isVisible):
-            pygame.draw.rect(screen, self.color, self.buttonBorder, S.borderW)
+            #pygame.draw.rect(screen, self.color, self.buttonBorder, S.borderW)
             if (self.hovering):
                 pygame.draw.rect(screen, S.textColor, self.buttonBorder, S.borderW)
             text = S.wordFont.render(self.text, 1, self.textColor)
             fontSizePixels = S.font.getsize(self.text)
             fontWidth = fontSizePixels[0]
             fontHeight = fontSizePixels[1] + S.fontSize / 2
-            screen.blit(text, (self.x + (self.width/2 - fontWidth/2), self.y + (self.height/2 - fontHeight/2)))
+            if (self.text == "Pause"):
+                size = S.pauseText.get_size()
+                width = size[0]
+                height = size[1]
+                leftPadding = S.screenW - S.buttonW + (S.buttonW - width) / 2
+                topPadding = S.screenH - S.buttonH - S.bottomBoxH + (S.buttonH - height) / 2
+                screen.blit(S.pauseText, (leftPadding, topPadding))
+            else:
+                screen.blit(text, (self.x + (self.width/2 - fontWidth/2), self.y + (self.height/2 - fontHeight/2)))
         return
 
     def isOver(self, pos):

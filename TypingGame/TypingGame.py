@@ -9,6 +9,11 @@ import WordBanks as WB
 import random
 import sys
 
+def quitGame():
+    S.Time.running = False
+    pygame.quit()
+    sys.exit(0)
+
 def checkButton(button, buttons):
     if (button.text == "Pause"):
         if (W.Word.falling):
@@ -65,17 +70,22 @@ def checkMousePosition(mousePosition, button):
 def checkEvents(events, buttons):
     mousePosition = pygame.mouse.get_pos()
     for event in events:
-        if (event.type == pygame.QUIT):
-            S.Time.running = False
-            pygame.quit()
-            sys.exit(0)
-        elif (event.type == pygame.MOUSEMOTION):
-            for button in buttons:
-                checkMousePosition(mousePosition, button)
-        elif (event.type == pygame.MOUSEBUTTONDOWN):
-            for button in buttons:
-                if (button.isOver(mousePosition)):
-                    checkButton(button, buttons)
+        if (buttons == None):
+            if (event.type == pygame.KEYDOWN):
+                if (event.key == pygame.K_RETURN):
+                    S.Time.running = False
+            if (event.type == pygame.QUIT):
+                quitGame()
+        else:
+            if (event.type == pygame.QUIT):
+                quitGame()
+            elif (event.type == pygame.MOUSEMOTION):
+                for button in buttons:
+                    checkMousePosition(mousePosition, button)
+            elif (event.type == pygame.MOUSEBUTTONDOWN):
+                for button in buttons:
+                    if (button.isOver(mousePosition)):
+                        checkButton(button, buttons)
     return
 
 def updateInputVars(userInput):
@@ -114,6 +124,7 @@ def playGame(wordbank):
     return
 
 def main():
+    MM.titleScreen()
     MM.menu(WB.allWords)
     playGame(WB.GameWords.gw)
     pygame.quit()

@@ -6,7 +6,10 @@ import WordBanks as WB
 
 
 gradeVocabPrompt = "Grade Level Vocabulary"
+titleScreenPrompt = "Press Enter"
+padTop = 100
 gradeMenuX = S.screenW / 2 - S.menuButtonW / 2
+
 
 
 def initializeMenuButtons(screen):
@@ -55,8 +58,8 @@ def menu(allWords):
         drawMenu(screen, buttons)
     S.Time.running = True
     fontSizePixels = S.font.getsize("Start")
-    x = S.screenW/2 - S.buttonW / 2
-    y = S.screenH/2 - S.buttonH / 2
+    x = S.screenW / 2 - S.buttonW / 2
+    y = S.screenH / 2 - S.buttonH / 2
     buttons = [P.Button(x, y, "Start", S.buttonW, S.buttonH, True)]
     while (S.Time.running):
         events = pygame.event.get()
@@ -64,4 +67,39 @@ def menu(allWords):
         screen.blit(S.windowBGImg, (0,0))
         buttons[0].draw(screen)
         pygame.display.update()
+    return
+
+def drawTitleScreen(screen, textX, textY):
+    text = S.wordFont.render(titleScreenPrompt, 1, S.textColor)
+    screen.blit(text, (textX, textY))
+    return
+
+def drawTitle(screen):
+    size = S.mainScreenText.get_size()
+    width = size[0]
+    leftPadding = (S.screenW - width) / 2
+    screen.blit(S.mainScreenText, (leftPadding, padTop))
+    return
+
+def titleScreen():
+    textOn = True
+    screen = S.getScreen()
+    buttons = None
+    fontSizePixels = S.font.getsize(titleScreenPrompt)
+    textX = S.screenW / 2 - fontSizePixels[0] / 2
+    textY = S.screenH / 2 - fontSizePixels[1] / 2 + padTop
+    while (S.Time.running):
+        events = pygame.event.get()
+        playerInput = checkEvents(events, buttons)
+        screen.blit(S.windowBGImg, (0,0))
+        drawTitle(screen)
+        if (S.Time.updateSeconds(2)):
+            if (textOn):
+                textOn = False
+            else:
+                textOn = True
+        if (textOn):
+            drawTitleScreen(screen, textX, textY)  
+        pygame.display.update()
+    S.Time.running = True
     return
