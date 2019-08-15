@@ -18,6 +18,13 @@ menuBtnHover = pygame.mixer.Sound("Media/bubble.ogg")
 gameMusic = pygame.mixer.music.load("Media/gameMusic1.mp3")         #https://www.dl-sounds.com/royalty-free/andromeda-journey/
 mainScreenText = pygame.image.load("Media/mainScreenText.png") 
 pauseText = pygame.image.load("Media/pause.png")
+muteText = pygame.image.load("Media/mute.png")
+# Bubbles: https://www.gamedeveloperstudio.com/graphics/viewgraphic.php?item=1u5l0o9z5m3s6b612j
+bubblePop = [pygame.image.load("Media/bubbles/b%s.png" % img)
+           for img in range(2,8)
+]
+bubblePopSound = pygame.mixer.Sound("Media/bubblePop.ogg")
+bubble = pygame.image.load("Media/bubbles/b1.png")
 maxFPS = 40
 maxFallSpeed = 2
 clock = pygame.time.Clock()
@@ -81,6 +88,14 @@ def drawButtons(screen, buttons):
     for button in buttons:
         button.draw(screen)
 
+def drawGameMenuButton(screen, img, heightMultiplier):
+    size = img.get_size()
+    width = size[0]
+    height = size[1]
+    x = screenW - buttonW + (buttonW - width) / 2
+    y = screenH - heightMultiplier - bottomBoxH + (buttonH - height) / 2
+    screen.blit(img, (x, y))
+    return
 
 def drawBottomBox(screen):
     height = screenH - bottomBoxH

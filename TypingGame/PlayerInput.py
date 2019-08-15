@@ -20,6 +20,7 @@ class Button:
 
     def draw(self, screen, hover=None):
         if (self.isVisible):
+            # Border around visible buttonus
             #pygame.draw.rect(screen, self.color, self.buttonBorder, S.borderW)
             if (self.hovering):
                 pygame.draw.rect(screen, S.textColor, self.buttonBorder, S.borderW)
@@ -28,12 +29,11 @@ class Button:
             fontWidth = fontSizePixels[0]
             fontHeight = fontSizePixels[1] + S.fontSize / 2
             if (self.text == "Pause"):
-                size = S.pauseText.get_size()
-                width = size[0]
-                height = size[1]
-                leftPadding = S.screenW - S.buttonW + (S.buttonW - width) / 2
-                topPadding = S.screenH - S.buttonH - S.bottomBoxH + (S.buttonH - height) / 2
-                screen.blit(S.pauseText, (leftPadding, topPadding))
+                heightMultiplier = S.buttonH
+                S.drawGameMenuButton(screen, S.pauseText, heightMultiplier)
+            elif (self.text == "Mute"):
+                heightMultiplier = S.buttonH * 2 + S.borderW * 2
+                S.drawGameMenuButton(screen, S.muteText, heightMultiplier)
             else:
                 screen.blit(text, (self.x + (self.width/2 - fontWidth/2), self.y + (self.height/2 - fontHeight/2)))
         return
@@ -48,7 +48,6 @@ class Button:
 def initializeGameButtons():
     x = S.screenW - S.buttonW - S.borderW*2
     y = S.getBottomOffset() - S.buttonH - S.borderW * 3
-
     pauseButton = Button(x, y, "Pause", S.buttonW, S.buttonH, True)
     muteButton = Button(x, y-S.buttonH-S.borderW*2, "Mute", S.buttonW, S.buttonH, True)
     return [pauseButton, muteButton]
