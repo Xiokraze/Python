@@ -1,30 +1,8 @@
 import Screen as S
+import Classes as C
 from random import randint, choice
 from PIL import ImageFont
 
-class Player:
-    score = 0
-
-class Word(object):
-    falling = False
-    maxCharHeight = 0
-    charsTyped = 0
-    def __init__(self, value):
-        self.value = value
-        self.textColor = S.textColor
-        self.fallSpeed = getFallSpeed(len(value))
-
-        # Calculate px value for word width and height
-        fontSizePixels = S.font.getsize(self.value)
-        self.width = fontSizePixels[0]
-        self.height = fontSizePixels[1]
-
-        # Get px offset from right border to keep the word on the screen
-        xOffset = S.screenW - self.width - S.borderW * 4 - S.buttonW
-        self.x = randint(0, xOffset)
-        self.y = 0
-
-        Word.maxCharHeight = max(self.height, Word.maxCharHeight)
 
 def getFallSpeed(wordLength):
     maxSpeed = S.maxFallSpeed
@@ -43,8 +21,8 @@ def removeWords(words, playerInput):
             for p in playerInput:
                 if (p == word.value):
                     words.remove(word)
-                    Player.score += len(word.value)
-                    Word.charsTyped += len(word.value) + 1
+                    C.Player.score += len(word.value)
+                    C.Word.charsTyped += len(word.value) + 1
                     break
     return words
 
@@ -58,7 +36,7 @@ def wordObjects(words, playerInput):
     newWords = []
     for word in words:
         if (type(word) is str):
-            newWords.append(Word(word))
+            newWords.append(C.Word(word))
         else:
             newWords.append(word)
     return removeWords(newWords, playerInput)
@@ -70,7 +48,7 @@ def fallingWords(words):
             if (fall < S.screenGameH - word.height):
                 word.y += word.fallSpeed
             else:
-                Player.score -= len(word.value)
+                C.Player.score -= len(word.value)
                 words.remove(word)
         except AttributeError:
             break

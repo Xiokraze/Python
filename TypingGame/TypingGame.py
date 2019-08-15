@@ -1,13 +1,14 @@
 import pygame
 pygame.init()
+import PlayerInput as P
 import Screen as S
 import MainMenu as MM
 import Words as W
 import time
-import PlayerInput as P
 import WordBanks as WB
 import random
 import sys
+import Classes as C
 
 def quitGame():
     S.Time.running = False
@@ -16,12 +17,12 @@ def quitGame():
 
 def checkButton(button, buttons):
     if (button.text == "Pause"):
-        if (W.Word.falling):
-            W.Word.falling = False
+        if (C.Word.falling):
+            C.Word.falling = False
         else:
             W.Word.falling = True
     elif (button.text == "Start"): 
-        W.Word.falling = True
+        C.Word.falling = True
         S.Time.running = False
         button.isVisible = False
         for b in buttons:
@@ -109,16 +110,16 @@ def playGame(wordbank):
             playerInput = updateInputVars(userInput)
         words = W.wordObjects(words, playerInput)
         words = W.checkCount(words, wordbank, S.numWords)
-        if (W.Word.falling):
+        if (C.Word.falling):
             if (S.Time.updateSeconds()):
                 words.append(random.choice(wordbank))
             W.fallingWords(words)
             S.drawScreen(
                 screen, 
                 words, 
-                W.Word.charsTyped, 
+                C.Word.charsTyped, 
                 userInput.get_surface(), 
-                W.Player.score, 
+                C.Player.score, 
                 buttons
             )
     return

@@ -1,5 +1,6 @@
 import pygame
 from PIL import ImageFont
+from Classes import Time
 
 #Screen
 screenW = 950
@@ -56,18 +57,6 @@ gradeVocabPrompt = "Grade Level Vocabulary"
 wordsByGrade = ("1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th")
 inputLeftPadding = 20
 
-class Time:
-    frameTracker = 0
-    seconds = 0
-    running = True
-    playBGMusic = True
-    def updateSeconds(delaySeconds=1): # changes seconds interval for printing words
-        Time.frameTracker += 1
-        if (Time.frameTracker == maxFPS * delaySeconds):
-            Time.frameTracker = 0
-            Time.seconds += 1
-            return True
-        return False
 
 def getFontSizePixels(text):
     return font.getsize(text)

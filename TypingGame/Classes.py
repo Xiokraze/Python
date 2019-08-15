@@ -1,6 +1,7 @@
 import PlayerInput as P # need to move classes to here
 import Screen as S
 import random
+import Words as W
 
 class Bubble:
     bubbles = []
@@ -63,6 +64,42 @@ class Buttons:
         )
         return
 
+class Player:
+    score = 0
+
 class TextBlink:
     textOn = True
 
+class Time:
+    frameTracker = 0
+    seconds = 0
+    running = True
+    playBGMusic = True
+    def updateSeconds(delaySeconds=1): # changes seconds interval for printing words
+        Time.frameTracker += 1
+        if (Time.frameTracker == S.maxFPS * delaySeconds):
+            Time.frameTracker = 0
+            Time.seconds += 1
+            return True
+        return False
+
+class Word(object):
+    falling = False
+    maxCharHeight = 0
+    charsTyped = 0
+    def __init__(self, value):
+        self.value = value
+        self.textColor = S.textColor
+        self.fallSpeed = W.getFallSpeed(len(value))
+
+        # Calculate px value for word width and height
+        fontSizePx = S.getFontSizePixels(self.value)
+        self.width = fontSizePx[0]
+        self.height = fontSizePx[1]
+
+        # Get px offset from right border to keep the word on the screen
+        xOffset = S.screenW - self.width - S.borderW * 4 - S.buttonW
+        self.x = random.randint(0, xOffset)
+        self.y = 0
+
+        Word.maxCharHeight = max(self.height, Word.maxCharHeight)
