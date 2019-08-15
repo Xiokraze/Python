@@ -76,6 +76,9 @@ def getScreen():
     pygame.display.set_caption("TypingGame")
     return (pygame.display.set_mode((screenW, screenH)))
 
+def getEvents():
+    return pygame.event.get()
+
 def drawWords(screen, words):
     for word in words:
         try:

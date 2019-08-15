@@ -7,15 +7,14 @@ from TypingGame import checkEvents
 import WordBanks as WB
 
 
+#############################
+#       Title Screen        #
+#############################
+
 def playMusic():
     music = S.titleScreenMusic
     pygame.mixer.music.play(-1)
     return
-
-
-#############################
-#       Title Screen        #
-#############################
 
 def drawTitle(screen):
     size = S.mainScreenText.get_size()
@@ -43,8 +42,7 @@ def blinkText(screen):
     return
 
 def handleTitleScreen(screen):
-    events = pygame.event.get()
-    playerInput = checkEvents(events, C.Buttons.buttons)
+    playerInput = checkEvents(S.getEvents(), C.Buttons.buttons)
     screen.blit(S.windowBGImg, (0,0))
     drawTitle(screen)
     blinkText(screen)
@@ -77,14 +75,10 @@ def handleBubbles(screen, frameCount):
 #############################
 
 def initializeMenuButtons(screen):
-    #buttons = []
-    buttonGap = 10 # number of pixels between buttons
     fontSizePixels = S.getFontSizePixels(S.gradeVocabPrompt)
     topPadding = fontSizePixels[1] + S.borderW
     btnPadding = S.borderW*4
-    numBorders = 2
-    #numButtons = 0
-    
+    numBorders = 2   
     for index in range(len(S.wordsByGrade)):
         numButtons = C.Buttons.numButtons
         if (index == 0):
@@ -93,7 +87,6 @@ def initializeMenuButtons(screen):
         else:
             y = topPadding + S.menuButtonH*numButtons + btnPadding*numBorders
             C.Buttons.addButton(y, index)
-        #numButtons += 1
         numBorders += 2
     C.Buttons.numButtons = []
     return
@@ -116,8 +109,7 @@ def drawMenu(screen):
 def handleMenu(screen, frameCount):
     initializeMenuButtons(screen)
     while (S.Time.running):
-        events = pygame.event.get()
-        playerInput = checkEvents(events, C.Buttons.buttons)
+        playerInput = checkEvents(S.getEvents(), C.Buttons.buttons)
         if (WB.GameWords.gw != None): 
             S.Time.running = False
         frameCount = handleBubbles(screen, frameCount)
@@ -139,8 +131,7 @@ def handleStartScreen(screen):
     y = S.screenH / 2 - S.buttonH / 2
     buttons = [P.Button(x, y, S.startPrompt, S.buttonW, S.buttonH, True)]
     while (S.Time.running):
-        events = pygame.event.get()
-        playerInput = checkEvents(events, buttons)
+        playerInput = checkEvents(S.getEvents(), buttons)
         screen.blit(S.windowBGImg, (0,0))
         buttons[0].draw(screen)
         pygame.display.update()

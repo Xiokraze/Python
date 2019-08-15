@@ -65,3 +65,4 @@ class Buttons:
 
 class TextBlink:
     textOn = True
+
