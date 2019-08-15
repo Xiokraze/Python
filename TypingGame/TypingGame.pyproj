@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Classes.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainMenu.py">
       <SubType>Code</SubType>
     </Compile>

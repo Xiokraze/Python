@@ -70,7 +70,7 @@ def checkMousePosition(mousePosition, button):
 def checkEvents(events, buttons):
     mousePosition = pygame.mouse.get_pos()
     for event in events:
-        if (buttons == None):
+        if (buttons == []):
             if (event.type == pygame.KEYDOWN):
                 if (event.key == pygame.K_RETURN):
                     S.Time.running = False
@@ -100,7 +100,7 @@ def playGame(wordbank):
     playerInput = None
     words = [""]
     S.Time.running = True
-    music = S.gameMusic
+    music = pygame.mixer.music.load("Media/gameMusic1.mp3")
     pygame.mixer.music.play(-1) 
     while(S.Time.running):
         events = pygame.event.get()
@@ -125,7 +125,7 @@ def playGame(wordbank):
 
 def main():
     MM.titleScreen()
-    MM.menu(WB.allWords)
+    #MM.menu(WB.allWords)
     playGame(WB.GameWords.gw)
     pygame.quit()
         

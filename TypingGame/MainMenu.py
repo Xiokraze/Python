@@ -1,170 +1,163 @@
-import pygame
-import Screen as S
+import Classes as C
 import PlayerInput as P
+import pygame
+import random
+import Screen as S
 from TypingGame import checkEvents
 import WordBanks as WB
-import random
 
 
-gradeVocabPrompt = "Grade Level Vocabulary"
-titleScreenPrompt = "Press Enter"
-padTop = 100
-gradeMenuX = S.screenW / 2 - S.menuButtonW / 2
-bubbles = []
+def playMusic():
+    music = S.titleScreenMusic
+    pygame.mixer.music.play(-1)
+    return
 
 
-class Bubble:
-    def __init__(self):
-        self.img = S.bubble
-        size = self.img.get_size()
-        self.width = size[0]
-        self.height = size[1]
-        self.x = random.randint(0, S.screenW - self.width)
-        self.startX = self.x
-        self.y = S.screenH + self.height
-        self.speed = random.uniform(.5, 1.5)
-        self.maxWobble = 6
-        direction = random.choice(["right", "left"])
-        self.direction = direction
-        self.popCount = 1
-        self.popping = False
-        self.popFPS = 5
+#############################
+#       Title Screen        #
+#############################
 
-    def draw(self, screen):
-        if not (self.popping):
-            screen.blit(self.img, (self.x, self.y))
-            self.y -= self.speed
-            if (self.y <= 0 - S.fontSize - S.borderW):
-                self.popping = True
-        return
+def drawTitle(screen):
+    size = S.mainScreenText.get_size()
+    width = size[0]
+    leftPadding = (S.screenW - width) / 2
+    screen.blit(S.mainScreenText, (leftPadding, S.titleScreenTopPadding))
+    return
 
-    def updateWobble(self):
-        if not (self.popping):
-            if (self.direction == "right"):
-                self.x += .2
-                if (self.x >= 0 + self.startX + self.maxWobble):
-                    self.direction = "left"
-            else:
-                self.x -= .2
-                if (self.x <= self.startX - self.maxWobble):
-                    self.direction = "right"
-        return
+def drawTitleScreen(screen, x, y):
+    text = S.wordFont.render(S.titleScreenPrompt, 1, S.textColor)
+    screen.blit(text, (x, y))
+    return
 
-    def popBubble(self, screen):
-        if (self.popping):
-            screen.blit(S.bubblePop[self.popCount // self.popFPS], (self.x, self.y))
-            self.popCount += 1
-            if (self.popCount > len(S.bubblePop) + 1):
-                return True
-        return False
+def blinkText(screen):
+    if (S.Time.updateSeconds(S.blinkDelay)):
+        if (C.TextBlink.textOn):
+            C.TextBlink.textOn = False
+        else:
+            C.TextBlink.textOn = True
+    if (C.TextBlink.textOn):
+        fontSizePx = S.getFontSizePixels(S.titleScreenPrompt)
+        x = S.screenW / 2 - fontSizePx[0] / 2
+        y = S.screenH / 2 - fontSizePx[1] / 2 + S.titleScreenTopPadding
+        drawTitleScreen(screen, x, y)
+    return
+
+def handleTitleScreen(screen):
+    events = pygame.event.get()
+    playerInput = checkEvents(events, C.Buttons.buttons)
+    screen.blit(S.windowBGImg, (0,0))
+    drawTitle(screen)
+    blinkText(screen)
+    return
+
+#############################
+#          Bubbles          #
+#############################
+
+def drawBubbles(screen):
+    for b in C.Bubble.bubbles:
+        if not (b.draw(screen)):
+            if (b.popBubble(screen)):
+                C.Bubble.bubbles.remove(b)
+    return
+
+def handleBubbles(screen, frameCount):
+    drawBubbles(screen)
+    pygame.display.update()
+    for b in C.Bubble.bubbles:
+        b.updateWobble()
+    if (frameCount == 30):
+        C.Bubble.bubbles.append(C.Bubble())
+        frameCount = 0
+    frameCount += 1
+    return frameCount
+
+#############################
+#      Difficulty Menu      #
+#############################
 
 def initializeMenuButtons(screen):
-    wordsByGrade = ("1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th")
-    buttons = []
-    fontSizePixels = S.font.getsize(gradeVocabPrompt)
+    #buttons = []
     buttonGap = 10 # number of pixels between buttons
+    fontSizePixels = S.getFontSizePixels(S.gradeVocabPrompt)
     topPadding = fontSizePixels[1] + S.borderW
     btnPadding = S.borderW*4
     numBorders = 2
-    numButtons = 0
+    #numButtons = 0
     
-    for i in range(len(wordsByGrade)):
-        if (i == 0):
+    for index in range(len(S.wordsByGrade)):
+        numButtons = C.Buttons.numButtons
+        if (index == 0):
             y = topPadding + S.menuButtonH*numButtons + btnPadding*numBorders
-            buttons.append(P.Button(gradeMenuX, y, wordsByGrade[i], S.menuButtonW, S.menuButtonH, True))
+            C.Buttons.addButton(y, index)
         else:
             y = topPadding + S.menuButtonH*numButtons + btnPadding*numBorders
-            buttons.append(P.Button(gradeMenuX, y, wordsByGrade[i], S.menuButtonW, S.menuButtonH, True))
-        numButtons += 1
+            C.Buttons.addButton(y, index)
+        #numButtons += 1
         numBorders += 2
-    return buttons
-
-def drawGradeHeading(screen):
-    fontSizePixels = S.font.getsize(gradeVocabPrompt)
-    xPadding = (S.menuButtonW - fontSizePixels[0]) / 2
-    text = S.wordFont.render(gradeVocabPrompt, 1, S.textColor)
-    screen.blit(text, (gradeMenuX + xPadding, 0))
+    C.Buttons.numButtons = []
     return
 
-def drawMenu(screen, buttons):
+def drawGradeHeading(screen):
+    fontSizePx = S.getFontSizePixels(S.gradeVocabPrompt)
+    xPadding = (S.menuButtonW - fontSizePx[0]) / 2
+    text = S.wordFont.render(S.gradeVocabPrompt, 1, S.textColor)
+    screen.blit(text, (S.gradeVocabX + xPadding, 0))
+    return
+
+def drawMenu(screen):
     screen.blit(S.windowBGImg, (0,0))
     drawGradeHeading(screen)
-    for button in buttons:
+    for button in C.Buttons.buttons:
         button.draw(screen)
     pygame.display.update()
+    return
 
-def menu(allWords):
-    screen = S.getScreen()
-    buttons = initializeMenuButtons(screen)
+def handleMenu(screen, frameCount):
+    initializeMenuButtons(screen)
     while (S.Time.running):
         events = pygame.event.get()
-        playerInput = checkEvents(events, buttons)
+        playerInput = checkEvents(events, C.Buttons.buttons)
         if (WB.GameWords.gw != None): 
             S.Time.running = False
-        drawMenu(screen, buttons)
+        frameCount = handleBubbles(screen, frameCount)
+        drawMenu(screen)
     S.Time.running = True
-    fontSizePixels = S.font.getsize("Start")
+    return
+
+def menu(screen, frameCount, bubbles):
+    handleMenu(screen, frameCount)
+    handleStartScreen(screen)
+    return
+
+#############################
+#        Start Screen       #
+#############################
+
+def handleStartScreen(screen):
     x = S.screenW / 2 - S.buttonW / 2
     y = S.screenH / 2 - S.buttonH / 2
-    buttons = [P.Button(x, y, "Start", S.buttonW, S.buttonH, True)]
+    buttons = [P.Button(x, y, S.startPrompt, S.buttonW, S.buttonH, True)]
     while (S.Time.running):
         events = pygame.event.get()
         playerInput = checkEvents(events, buttons)
         screen.blit(S.windowBGImg, (0,0))
         buttons[0].draw(screen)
         pygame.display.update()
-    return
 
-def drawTitleScreen(screen, textX, textY):
-    text = S.wordFont.render(titleScreenPrompt, 1, S.textColor)
-    screen.blit(text, (textX, textY))
-    return
-
-def drawTitle(screen):
-    size = S.mainScreenText.get_size()
-    width = size[0]
-    leftPadding = (S.screenW - width) / 2
-    screen.blit(S.mainScreenText, (leftPadding, padTop))
-    return
-
-def drawBubbles(screen):
-    for b in bubbles:
-        if not (b.draw(screen)):
-            if (b.popBubble(screen)):
-                bubbles.remove(b)
-                S.bubblePopSound.play()
-    print(len(bubbles))
-    return
+#############################
+#     Title Screen Main     #
+#############################
 
 def titleScreen():
-    textOn = True
     screen = S.getScreen()
-    buttons = None
+    playMusic() 
     frameCount = 1
-    fontSizePixels = S.font.getsize(titleScreenPrompt)
-    textX = S.screenW / 2 - fontSizePixels[0] / 2
-    textY = S.screenH / 2 - fontSizePixels[1] / 2 + padTop
     while (S.Time.running):
-        events = pygame.event.get()
-        playerInput = checkEvents(events, buttons)
-        screen.blit(S.windowBGImg, (0,0))
-        drawTitle(screen)
-        if (S.Time.updateSeconds(1)):
-            if (textOn):
-                textOn = False
-            else:
-                textOn = True
-        if (textOn):
-            drawTitleScreen(screen, textX, textY)
-        drawBubbles(screen)
-        pygame.display.update()
-        for b in bubbles:
-                b.updateWobble()
-        if (frameCount == 30):
-            bubbles.append(Bubble())
-            #for b in bubbles:
-            #    b.updateWobble()
-            frameCount = 1
-        frameCount += 1
+        handleTitleScreen(screen)
+        frameCount = handleBubbles(screen, frameCount)
+        
+    frameCount = 1
     S.Time.running = True
+    menu(screen, frameCount, C.Bubble.bubbles)
     return

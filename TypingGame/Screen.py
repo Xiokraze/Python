@@ -13,21 +13,24 @@ menuButtonW = 100
 menuButtonH = 50
 screenGameH = screenH - bottomBoxH
 windowBGColor = (0,0,0)
-windowBGImg = pygame.image.load("Media/underwater.jpg")             # Load background
+windowBGImg = pygame.image.load("Media/underwater.jpg")
 menuBtnHover = pygame.mixer.Sound("Media/bubble.ogg")
-gameMusic = pygame.mixer.music.load("Media/gameMusic1.mp3")         #https://www.dl-sounds.com/royalty-free/andromeda-journey/
+gameMusic = pygame.mixer.music.load("Media/gameMusic1.mp3")
 mainScreenText = pygame.image.load("Media/mainScreenText.png") 
 pauseText = pygame.image.load("Media/pause.png")
 muteText = pygame.image.load("Media/mute.png")
-# Bubbles: https://www.gamedeveloperstudio.com/graphics/viewgraphic.php?item=1u5l0o9z5m3s6b612j
-bubblePop = [pygame.image.load("Media/bubbles/b%s.png" % img)
-           for img in range(2,8)
-]
-bubblePopSound = pygame.mixer.Sound("Media/bubblePop.ogg")
-bubble = pygame.image.load("Media/bubbles/b1.png")
 maxFPS = 40
 maxFallSpeed = 2
 clock = pygame.time.Clock()
+
+#Title Screen
+titleScreenTopPadding = 100
+gradeVocabX = screenW / 2 - menuButtonW / 2
+titleScreenMusic = pygame.mixer.music.load("Media/titleScreenMusic.mp3")
+bubblePop = [pygame.image.load("Media/bubbles/b%s.png" % img)
+           for img in range(2,8)
+]
+bubble = pygame.image.load("Media/bubbles/b1.png")
 
 #Fonts
 masterFont = "Media/ariblk.ttf"
@@ -42,10 +45,15 @@ btnHoverColor = (194,178,128)
 #Falling Words
 numWords = 3
 
-#Input Box
+# Prompts
+blinkDelay = 1
 inputPrompt = "Input: "
 scorePrompt = "Score: "
 gwpmPrompt = "gwpm: "
+startPrompt = "Start"
+titleScreenPrompt = "Press Enter"
+gradeVocabPrompt = "Grade Level Vocabulary"
+wordsByGrade = ("1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th")
 inputLeftPadding = 20
 
 class Time:
@@ -60,6 +68,9 @@ class Time:
             Time.seconds += 1
             return True
         return False
+
+def getFontSizePixels(text):
+    return font.getsize(text)
 
 def getScreen():
     pygame.display.set_caption("TypingGame")
@@ -78,7 +89,7 @@ def drawWordsPerMin(screen, chars, playerScore):
     gwpm = 0
     if (chars != 0 and Time.seconds != 0):
         gwpm = round((chars/5) / (Time.seconds/60))
-    fontSizePixels = font.getsize(gwpmPrompt + str(gwpm))
+    fontSizePixels = getFontSizePixels(gwpmPrompt + str(gwpm))
     positionX =  center - (fontSizePixels[0] / 2)
     text = wordFont.render(gwpmPrompt + str(gwpm), 1, textColor)
     screen.blit(text, (positionX, getBottomOffset(playerScore)))
@@ -107,16 +118,16 @@ def drawBottomBox(screen):
     pygame.draw.rect(screen, textColor, bottomBox, borderW)
 
 def getBottomOffset(playerScore=""):
-    fontSizePixels = font.getsize(scorePrompt + str(playerScore) + str(borderW))
+    fontSizePixels = getFontSizePixels(scorePrompt + str(playerScore) + str(borderW))
     fontHeight = fontSizePixels[1]
     return screenH - fontHeight - borderW * 3 - ((bottomBoxH - fontHeight) // 2)
 
 def getRightOffset(playerScore):
-    fontSizePixels = font.getsize(scorePrompt + str(playerScore) + str(borderW))
+    fontSizePixels = getFontSizePixels(scorePrompt + str(playerScore) + str(borderW))
     return screenW - buttonW - fontSizePixels[0]
 
 def getInputOffset():
-    fontSizePixels = font.getsize(inputPrompt)
+    fontSizePixels = getFontSizePixels(inputPrompt)
     return inputLeftPadding + fontSizePixels[0]
 
 def drawInputText(screen, playerScore):

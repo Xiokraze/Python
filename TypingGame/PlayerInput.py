@@ -2,6 +2,7 @@ import pygame
 import Screen as S
 import pygame.locals as pl
 import os
+import Classes as C
 
 
 class Button:
