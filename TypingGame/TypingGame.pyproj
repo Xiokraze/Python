@@ -24,15 +24,6 @@
     <Compile Include="Classes.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainMenu.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PlayerInput.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Screen.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="TypingGame.py" />
     <Compile Include="Variables.py">
       <SubType>Code</SubType>

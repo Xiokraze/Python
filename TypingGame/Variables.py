@@ -1,25 +1,5 @@
 import pygame
-
-#############################
-#      Game Input Box       #
-#############################
-bottomBoxH = 35
-
-
-#############################
-#           Screen          #
-#############################
-screenW = 950
-screenH = 600
-borderW = 2
-screenGameH = screenH - bottomBoxH
-
-
-#############################
-#           Fonts           #
-#############################
-masterFont = "Media/ariblk.ttf"
-
+from PIL import ImageFont
 
 #############################
 #          Buttons          #
@@ -31,11 +11,73 @@ menuButtonH = 50
 
 
 #############################
+#      Game Input Box       #
+#############################
+bottomBoxH = 35
+inputLeftPadding = 20
+
+
+#############################
+#          Screen           #
+#############################
+windowTitle = "Type Master"
+screenW = 950
+screenH = 600
+borderW = 2
+screenGameH = screenH - bottomBoxH
+maxFPS = 40
+maxFallSpeed = 2
+clock = pygame.time.Clock()
+addWordsTrigger = 3
+
+
+#############################
+#     Title Screen/Menu     #
+#############################
+blinkDelay = 1
+titleScreenTopPadding = 100
+menuX = screenW / 2 - menuButtonW / 2
+
+
+#############################
+#     Fonts/Colors/Text     #
+#############################
+masterFont = "Media/ariblk.ttf"
+fontSize = 20
+wordFont = pygame.font.Font(masterFont, fontSize)
+font = ImageFont.truetype(masterFont, fontSize)
+textColor = (255,255,255)
+btnTextColor = (255,255,255)
+btnColor = (44, 150, 199)
+btnHoverColor = (194,178,128)
+cursorWidth = 2
+
+#############################
+#          Prompts          #
+#############################
+inputPrompt = "Input: "
+scorePrompt = "Score: "
+gwpmPrompt = "gwpm: "
+startPrompt = "Start"
+titleScreenPrompt = "Press Enter"
+gradeVocabPrompt = "Grade Level Vocabulary"
+wordsByGrade = ("1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th")
+
+
+#############################
 #           Media           #
 #############################
 windowBGImg = pygame.image.load("Media/underwater.jpg")
+mainScreenText = pygame.image.load("Media/mainScreenText.png") 
+pauseText = pygame.image.load("Media/pause.png")
+muteText = pygame.image.load("Media/mute.png")
 menuBtnHover = pygame.mixer.Sound("Media/bubble.ogg")
 gameMusic = "Media/gameMusic1.mp3"
+titleScreenMusic = "Media/titleScreenMusic.mp3"
+bubble = pygame.image.load("Media/bubbles/b1.png")
+bubblePop = [
+    pygame.image.load("Media/bubbles/b%s.png" % img) for img in range(2,8)
+]
 
 
 #############################
