@@ -12,8 +12,9 @@ def main():
     buttons = Button.initializeGameButtons()
     Events.playMusic(gameMusic)
     while(Time.running):
-        Events.checkEvents(Get.events(), buttons)
-        if userInput.update(Get.events()):
+        events = Get.events()
+        Events.checkEvents(events, buttons)
+        if userInput.update(events):
             Words.playerInput = Events.updateInputVars(userInput)
         Words.updateWords()
         if (Word.falling):

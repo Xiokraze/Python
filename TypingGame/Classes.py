@@ -458,6 +458,7 @@ class TextInput:
                         TextInput.shiftKey(self)
                 elif event.key == pl.K_RETURN:
                     return True
+                #elif event.key == pl.ESCAPE: #TODO clear current input if esc is hit
                 else:
                     TextInput.addKeyToInput(self, event) # TODO FIX
 
