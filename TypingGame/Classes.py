@@ -121,7 +121,6 @@ class Button:
         fontSizePixels = font.getsize(scorePrompt + str(Words.score) + str(borderW))
         fontHeight = fontSizePixels[1]
         bottomOffset = screenH - fontHeight - borderW * 3 - ((bottomBoxH - fontHeight) // 2)
-
         y = bottomOffset - buttonH - borderW * 3
         pauseButton = Button(x, y, "Pause", buttonW, buttonH, True)
         muteButton = Button(x, y-buttonH-borderW*2, "Mute", buttonW, buttonH, True)
@@ -244,15 +243,15 @@ class Draw:
         return
 
 class Events:
+    def playMusic(musicFile):
+        music = pygame.mixer.music.load(musicFile)
+        pygame.mixer.music.play(-1) 
+        return
+
     def quitGame():
         Time.running = False
         pygame.quit()
         sys.exit(0)
-
-    def playMusic():
-        music = pygame.mixer.music.load(titleScreenMusic)
-        pygame.mixer.music.play(-1)
-        return
 
     def checkButton(button, buttons):
         if (button.text == "Pause"):
@@ -390,15 +389,15 @@ class Menu:
 
     def titleScreen():
         screen = Get.screen()
-        Events.playMusic() 
+        Events.playMusic(titleScreenMusic) 
         frameCount = 1
         while (Time.running):
             Menu.handleTitleScreen(screen)
-            frameCount = Bubble.handleBubbles(screen, frameCount)
-        
+            frameCount = Bubble.handleBubbles(screen, frameCount)      
         frameCount = 1
         Time.running = True
         Menu.menu(screen, frameCount, Bubble.bubbles)
+        Time.running = True
         return
 
 class TextBlink: 
@@ -567,6 +566,8 @@ class Word(object):
 class Words:
     gameWords = None
     score = 0
+    playerInput = None
+    words = [""]
     def getFallSpeed(wordLength):
         maxSpeed = maxFallSpeed
         if (wordLength == 2): return maxSpeed 
@@ -615,4 +616,9 @@ class Words:
                     words.remove(word)
             except AttributeError:
                 break
+        return
+
+    def updateWords():
+        Words.words = Words.wordObjects(Words.words, Words.playerInput)
+        Words.words = Words.checkCount(Words.words, Words.gameWords, addWordsTrigger)
         return
