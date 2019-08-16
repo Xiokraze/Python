@@ -1,10 +1,8 @@
 import Classes as C
-import PlayerInput as P
 import pygame
 import random
 import Screen as S
 from TypingGame import checkEvents
-import WordBanks as WB
 import Variables as V
 
 
@@ -111,7 +109,7 @@ def handleMenu(screen, frameCount):
     initializeMenuButtons(screen)
     while (S.Time.running):
         playerInput = checkEvents(S.getEvents(), C.Buttons.buttons)
-        if (WB.GameWords.gw != None): 
+        if (C.GameWords.gw != None): 
             S.Time.running = False
         frameCount = handleBubbles(screen, frameCount)
         drawMenu(screen)
@@ -130,7 +128,7 @@ def menu(screen, frameCount, bubbles):
 def handleStartScreen(screen):
     x = V.screenW / 2 - V.buttonW / 2
     y = V.screenH / 2 - V.buttonH / 2
-    buttons = [P.Button(x, y, S.startPrompt, V.buttonW, V.buttonH, True)]
+    buttons = [C.Button(x, y, S.startPrompt, V.buttonW, V.buttonH, True)]
     while (S.Time.running):
         playerInput = checkEvents(S.getEvents(), buttons)
         screen.blit(V.windowBGImg, (0,0))

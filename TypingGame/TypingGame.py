@@ -1,11 +1,8 @@
 import pygame
 pygame.init()
-import PlayerInput as P
 import Screen as S
 import MainMenu as MM
-import Words as W
 import time
-import WordBanks as WB
 import random
 import sys
 import Classes as C
@@ -21,7 +18,7 @@ def checkButton(button, buttons):
         if (C.Word.falling):
             C.Word.falling = False
         else:
-            W.Word.falling = True
+            C.Word.falling = True
     elif (button.text == "Start"): 
         C.Word.falling = True
         S.Time.running = False
@@ -37,21 +34,21 @@ def checkButton(button, buttons):
             pygame.mixer.music.unpause() 
             S.Time.playBGMusic = True
     elif (button.text == "1st"):
-        WB.GameWords.gw = WB.allWords[0]
+        C.GameWords.gw = V.vocab1stGrade
     elif (button.text == "2nd"):
-        WB.GameWords.gw = WB.allWords[1]
+        C.GameWords.gw = V.vocab2ndGrade
     elif (button.text == "3rd"):
-        WB.GameWords.gw = WB.allWords[2]
+        C.GameWords.gw = V.vocab3rdGrade
     elif (button.text == "4th"):
-        WB.GameWords.gw = WB.allWords[3]
+        C.GameWords.gw = V.vocab4thGrade
     elif (button.text == "5th"):
-        WB.GameWords.gw = WB.allWords[4]
+        C.GameWords.gw = V.vocab5thGrade
     elif (button.text == "6th"):
-        WB.GameWords.gw = WB.allWords[5]
+        C.GameWords.gw = V.vocab6thGrade
     elif (button.text == "7th"):
-        WB.GameWords.gw = WB.allWords[6]
+        C.GameWords.gw = V.vocab7thGrade
     elif (button.text == "8th"):
-        WB.GameWords.gw = WB.allWords[7]
+        C.GameWords.gw = V.vocab8thGrade
     return
 
 def checkMousePosition(mousePosition, button):
@@ -97,8 +94,8 @@ def updateInputVars(userInput):
 
 def playGame(wordbank):
     screen = S.getScreen()
-    userInput = P.TextInput()
-    buttons = P.initializeGameButtons()
+    userInput = C.TextInput()
+    buttons = C.Buttons.initializeGameButtons()
     playerInput = None
     words = [""]
     S.Time.running = True
@@ -109,12 +106,12 @@ def playGame(wordbank):
         checkEvents(events, buttons)
         if userInput.update(events):
             playerInput = updateInputVars(userInput)
-        words = W.wordObjects(words, playerInput)
-        words = W.checkCount(words, wordbank, S.numWords)
+        words = C.Words.wordObjects(words, playerInput)
+        words = C.Words.checkCount(words, wordbank, S.numWords)
         if (C.Word.falling):
             if (S.Time.updateSeconds()):
                 words.append(random.choice(wordbank))
-            W.fallingWords(words)
+            C.Words.fallingWords(words)
             S.drawScreen(
                 screen, 
                 words, 
@@ -128,7 +125,7 @@ def playGame(wordbank):
 def main():
     MM.titleScreen()
     #MM.menu(WB.allWords)
-    playGame(WB.GameWords.gw)
+    playGame(C.GameWords.gw)
     pygame.quit()
         
 
