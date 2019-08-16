@@ -2,12 +2,12 @@ import pygame
 import Screen as S
 import pygame.locals as pl
 import os
-
+import Variables as V
 
 class Button:
     def __init__(self, x, y, text, width, height, isVisible):
-        self.x = x + S.borderW
-        self.y = y + S.borderW
+        self.x = x + V.borderW
+        self.y = y + V.borderW
         self.width = width
         self.height = height
         self.text = text
@@ -21,23 +21,23 @@ class Button:
     def draw(self, screen, hover=None):
         if (self.isVisible):
             # Border around visible buttonus
-            #pygame.draw.rect(screen, self.color, self.buttonBorder, S.borderW)
+            #pygame.draw.rect(screen, self.color, self.buttonBorder, V.borderW)
             if (self.hovering):
-                pygame.draw.rect(screen, S.textColor, self.buttonBorder, S.borderW)
+                pygame.draw.rect(screen, S.textColor, self.buttonBorder, V.borderW)
             text = S.wordFont.render(self.text, 1, self.textColor)
             fontSizePixels = S.font.getsize(self.text)
             fontWidth = fontSizePixels[0]
             fontHeight = fontSizePixels[1] + S.fontSize / 2
             if (self.text == "Pause"):
-                heightMultiplier = S.buttonH
+                heightMultiplier = V.buttonH
                 S.drawGameMenuButton(screen, S.pauseText, heightMultiplier)
             elif (self.text == "Mute"):
-                heightMultiplier = S.buttonH * 2 + S.borderW * 2
+                heightMultiplier = V.buttonH * 2 + V.borderW * 2
                 S.drawGameMenuButton(screen, S.muteText, heightMultiplier)
             else:
                 screen.blit(text, (self.x + (self.width/2 - fontWidth/2), self.y + (self.height/2 - fontHeight/2)))
         return
-
+    
     def isOver(self, pos):
         #Pos is the mouse position (x,y) coordinates
         if (pos[0] > self.x and pos[0] < self.x + self.width):
@@ -46,10 +46,10 @@ class Button:
         return False
 
 def initializeGameButtons():
-    x = S.screenW - S.buttonW - S.borderW*2
-    y = S.getBottomOffset() - S.buttonH - S.borderW * 3
-    pauseButton = Button(x, y, "Pause", S.buttonW, S.buttonH, True)
-    muteButton = Button(x, y-S.buttonH-S.borderW*2, "Mute", S.buttonW, S.buttonH, True)
+    x = V.screenW - V.buttonW - V.borderW*2
+    y = S.getBottomOffset() - V.buttonH - V.borderW * 3
+    pauseButton = Button(x, y, "Pause", V.buttonW, V.buttonH, True)
+    muteButton = Button(x, y-V.buttonH-V.borderW*2, "Mute", V.buttonW, V.buttonH, True)
     return [pauseButton, muteButton]
 
 def shiftKey(self):

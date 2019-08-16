@@ -9,6 +9,7 @@ import WordBanks as WB
 import random
 import sys
 import Classes as C
+import Variables as V
 
 def quitGame():
     S.Time.running = False
@@ -59,7 +60,7 @@ def checkMousePosition(mousePosition, button):
         button.textColor = S.btnTextColor
         button.hovering = True
         if (button.playSound):
-            S.menuBtnHover.play()
+            V.menuBtnHover.play()
             button.playSound = False
     else:
         button.color = S.btnColor
@@ -101,7 +102,7 @@ def playGame(wordbank):
     playerInput = None
     words = [""]
     S.Time.running = True
-    music = pygame.mixer.music.load("Media/gameMusic1.mp3")
+    music = pygame.mixer.music.load(V.gameMusic)
     pygame.mixer.music.play(-1) 
     while(S.Time.running):
         events = pygame.event.get()

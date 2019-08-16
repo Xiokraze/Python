@@ -2,6 +2,7 @@ import PlayerInput as P # need to move classes to here
 import Screen as S
 import random
 import Words as W
+import Variables as V
 
 class Bubble:
     bubbles = []
@@ -10,9 +11,9 @@ class Bubble:
         size = self.img.get_size()
         self.width = size[0]
         self.height = size[1]
-        self.x = random.randint(0, S.screenW - self.width)
+        self.x = random.randint(0, V.screenW - self.width)
         self.startX = self.x
-        self.y = S.screenH + self.height
+        self.y = V.screenH + self.height
         self.speed = random.uniform(.5, 1.5)
         self.maxWobble = 6
         direction = random.choice(["right", "left"])
@@ -25,7 +26,7 @@ class Bubble:
         if not (self.popping):
             screen.blit(self.img, (self.x, self.y))
             self.y -= self.speed
-            if (self.y <= 0 - S.fontSize - S.borderW):
+            if (self.y <= 0 - S.fontSize - V.borderW):
                 self.popping = True
         return
 
@@ -58,8 +59,8 @@ class Buttons:
             S.gradeVocabX, 
             y, 
             S.wordsByGrade[index], 
-            S.menuButtonW, 
-            S.menuButtonH, 
+            V.menuButtonW, 
+            V.menuButtonH, 
             True)
         )
         return
@@ -98,7 +99,7 @@ class Word(object):
         self.height = fontSizePx[1]
 
         # Get px offset from right border to keep the word on the screen
-        xOffset = S.screenW - self.width - S.borderW * 4 - S.buttonW
+        xOffset = V.screenW - self.width - V.borderW * 4 - V.buttonW
         self.x = random.randint(0, xOffset)
         self.y = 0
 

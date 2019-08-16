@@ -5,6 +5,7 @@ import random
 import Screen as S
 from TypingGame import checkEvents
 import WordBanks as WB
+import Variables as V
 
 
 #############################
@@ -19,7 +20,7 @@ def playMusic():
 def drawTitle(screen):
     size = S.mainScreenText.get_size()
     width = size[0]
-    leftPadding = (S.screenW - width) / 2
+    leftPadding = (V.screenW - width) / 2
     screen.blit(S.mainScreenText, (leftPadding, S.titleScreenTopPadding))
     return
 
@@ -36,14 +37,14 @@ def blinkText(screen):
             C.TextBlink.textOn = True
     if (C.TextBlink.textOn):
         fontSizePx = S.getFontSizePixels(S.titleScreenPrompt)
-        x = S.screenW / 2 - fontSizePx[0] / 2
-        y = S.screenH / 2 - fontSizePx[1] / 2 + S.titleScreenTopPadding
+        x = V.screenW / 2 - fontSizePx[0] / 2
+        y = V.screenH / 2 - fontSizePx[1] / 2 + S.titleScreenTopPadding
         drawTitleScreen(screen, x, y)
     return
 
 def handleTitleScreen(screen):
     playerInput = checkEvents(S.getEvents(), C.Buttons.buttons)
-    screen.blit(S.windowBGImg, (0,0))
+    screen.blit(V.windowBGImg, (0,0))
     drawTitle(screen)
     blinkText(screen)
     return
@@ -76,16 +77,16 @@ def handleBubbles(screen, frameCount):
 
 def initializeMenuButtons(screen):
     fontSizePixels = S.getFontSizePixels(S.gradeVocabPrompt)
-    topPadding = fontSizePixels[1] + S.borderW
-    btnPadding = S.borderW*4
+    topPadding = fontSizePixels[1] + V.borderW
+    btnPadding = V.borderW*4
     numBorders = 2   
     for index in range(len(S.wordsByGrade)):
         numButtons = C.Buttons.numButtons
         if (index == 0):
-            y = topPadding + S.menuButtonH*numButtons + btnPadding*numBorders
+            y = topPadding + V.menuButtonH*numButtons + btnPadding*numBorders
             C.Buttons.addButton(y, index)
         else:
-            y = topPadding + S.menuButtonH*numButtons + btnPadding*numBorders
+            y = topPadding + V.menuButtonH*numButtons + btnPadding*numBorders
             C.Buttons.addButton(y, index)
         numBorders += 2
     C.Buttons.numButtons = []
@@ -93,13 +94,13 @@ def initializeMenuButtons(screen):
 
 def drawGradeHeading(screen):
     fontSizePx = S.getFontSizePixels(S.gradeVocabPrompt)
-    xPadding = (S.menuButtonW - fontSizePx[0]) / 2
+    xPadding = (V.menuButtonW - fontSizePx[0]) / 2
     text = S.wordFont.render(S.gradeVocabPrompt, 1, S.textColor)
     screen.blit(text, (S.gradeVocabX + xPadding, 0))
     return
 
 def drawMenu(screen):
-    screen.blit(S.windowBGImg, (0,0))
+    screen.blit(V.windowBGImg, (0,0))
     drawGradeHeading(screen)
     for button in C.Buttons.buttons:
         button.draw(screen)
@@ -127,12 +128,12 @@ def menu(screen, frameCount, bubbles):
 #############################
 
 def handleStartScreen(screen):
-    x = S.screenW / 2 - S.buttonW / 2
-    y = S.screenH / 2 - S.buttonH / 2
-    buttons = [P.Button(x, y, S.startPrompt, S.buttonW, S.buttonH, True)]
+    x = V.screenW / 2 - V.buttonW / 2
+    y = V.screenH / 2 - V.buttonH / 2
+    buttons = [P.Button(x, y, S.startPrompt, V.buttonW, V.buttonH, True)]
     while (S.Time.running):
         playerInput = checkEvents(S.getEvents(), buttons)
-        screen.blit(S.windowBGImg, (0,0))
+        screen.blit(V.windowBGImg, (0,0))
         buttons[0].draw(screen)
         pygame.display.update()
 

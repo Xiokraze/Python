@@ -1,22 +1,9 @@
 import pygame
 from PIL import ImageFont
 from Classes import Time
+import Variables as V
 
 #Screen
-screenW = 950
-screenH = 600
-center = screenW // 2
-bottomBoxH = 35
-borderW = 2
-buttonW = 150
-buttonH = 75
-menuButtonW = 100
-menuButtonH = 50
-screenGameH = screenH - bottomBoxH
-windowBGColor = (0,0,0)
-windowBGImg = pygame.image.load("Media/underwater.jpg")
-menuBtnHover = pygame.mixer.Sound("Media/bubble.ogg")
-gameMusic = pygame.mixer.music.load("Media/gameMusic1.mp3")
 mainScreenText = pygame.image.load("Media/mainScreenText.png") 
 pauseText = pygame.image.load("Media/pause.png")
 muteText = pygame.image.load("Media/mute.png")
@@ -26,7 +13,7 @@ clock = pygame.time.Clock()
 
 #Title Screen
 titleScreenTopPadding = 100
-gradeVocabX = screenW / 2 - menuButtonW / 2
+gradeVocabX = V.screenW / 2 - V.menuButtonW / 2
 titleScreenMusic = pygame.mixer.music.load("Media/titleScreenMusic.mp3")
 bubblePop = [pygame.image.load("Media/bubbles/b%s.png" % img)
            for img in range(2,8)
@@ -63,7 +50,7 @@ def getFontSizePixels(text):
 
 def getScreen():
     pygame.display.set_caption("TypingGame")
-    return (pygame.display.set_mode((screenW, screenH)))
+    return (pygame.display.set_mode((V.screenW, V.screenH)))
 
 def getEvents():
     return pygame.event.get()
@@ -82,7 +69,7 @@ def drawWordsPerMin(screen, chars, playerScore):
     if (chars != 0 and Time.seconds != 0):
         gwpm = round((chars/5) / (Time.seconds/60))
     fontSizePixels = getFontSizePixels(gwpmPrompt + str(gwpm))
-    positionX =  center - (fontSizePixels[0] / 2)
+    positionX =  V.screenW // 2 - (fontSizePixels[0] / 2)
     text = wordFont.render(gwpmPrompt + str(gwpm), 1, textColor)
     screen.blit(text, (positionX, getBottomOffset(playerScore)))
     return
@@ -95,28 +82,28 @@ def drawGameMenuButton(screen, img, heightMultiplier):
     size = img.get_size()
     width = size[0]
     height = size[1]
-    x = screenW - buttonW + (buttonW - width) / 2
-    y = screenH - heightMultiplier - bottomBoxH + (buttonH - height) / 2
+    x = V.screenW - V.buttonW + (V.buttonW - width) / 2
+    y = V.screenH - heightMultiplier - V.bottomBoxH + (V.buttonH - height) / 2
     screen.blit(img, (x, y))
     return
 
 def drawBottomBox(screen):
-    height = screenH - bottomBoxH
+    height = V.screenH - V.bottomBoxH
     leftBorder = 0
-    topBorder = height - borderW
-    rightBorder = screenW - borderW + 1
-    bottomBorder = bottomBoxH
+    topBorder = height - V.borderW
+    rightBorder = V.screenW - V.borderW + 1
+    bottomBorder = V.bottomBoxH
     bottomBox = (leftBorder, topBorder, rightBorder, bottomBorder)
-    pygame.draw.rect(screen, textColor, bottomBox, borderW)
+    pygame.draw.rect(screen, textColor, bottomBox, V.borderW)
 
 def getBottomOffset(playerScore=""):
-    fontSizePixels = getFontSizePixels(scorePrompt + str(playerScore) + str(borderW))
+    fontSizePixels = getFontSizePixels(scorePrompt + str(playerScore) + str(V.borderW))
     fontHeight = fontSizePixels[1]
-    return screenH - fontHeight - borderW * 3 - ((bottomBoxH - fontHeight) // 2)
+    return V.screenH - fontHeight - V.borderW * 3 - ((V.bottomBoxH - fontHeight) // 2)
 
 def getRightOffset(playerScore):
-    fontSizePixels = getFontSizePixels(scorePrompt + str(playerScore) + str(borderW))
-    return screenW - buttonW - fontSizePixels[0]
+    fontSizePixels = getFontSizePixels(scorePrompt + str(playerScore) + str(V.borderW))
+    return V.screenW - V.buttonW - fontSizePixels[0]
 
 def getInputOffset():
     fontSizePixels = getFontSizePixels(inputPrompt)
@@ -129,13 +116,12 @@ def drawInputText(screen, playerScore):
 
 def drawScoreText(screen, playerScore):
     text = wordFont.render(scorePrompt + str(playerScore), 1, textColor)
-    screen.blit(text, (getRightOffset(playerScore) + buttonW, getBottomOffset(playerScore)))
+    screen.blit(text, (getRightOffset(playerScore) + V.buttonW, getBottomOffset(playerScore)))
     return
 
 def drawScreen(screen, words, chars, inputTextBox, playerScore, buttons):
     clock.tick(maxFPS)
-    #screen.fill(windowBGColor)
-    screen.blit(windowBGImg, (0,0))
+    screen.blit(V.windowBGImg, (0,0))
     drawWords(screen, words)
     drawButtons(screen, buttons)
     drawBottomBox(screen)

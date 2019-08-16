@@ -2,6 +2,7 @@ import Screen as S
 import Classes as C
 from random import randint, choice
 from PIL import ImageFont
+import Variables as V
 
 
 def getFallSpeed(wordLength):
@@ -45,7 +46,7 @@ def fallingWords(words):
     for word in words:
         try:
             fall = word.y + word.fallSpeed
-            if (fall < S.screenGameH - word.height):
+            if (fall < V.screenGameH - word.height):
                 word.y += word.fallSpeed
             else:
                 C.Player.score -= len(word.value)
