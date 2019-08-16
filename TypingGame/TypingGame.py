@@ -20,7 +20,7 @@ def playGame(wordbank):
         if userInput.update(events):
             playerInput = Events.updateInputVars(userInput)
         words = Words.wordObjects(words, playerInput)
-        words = Words.checkCount(words, wordbank, len(words))
+        words = Words.checkCount(words, wordbank, addWordsTrigger)
         if (Word.falling):
             if (Time.updateSeconds()):
                 words.append(random.choice(wordbank))

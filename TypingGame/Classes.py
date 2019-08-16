@@ -598,7 +598,6 @@ class Words:
                 newWords.append(word)
         return Words.removeWords(newWords, playerInput)
 
-    
     def checkCount(words, wordbank, numWords):
         if (len(words) < numWords):
             for i in range(numWords):
