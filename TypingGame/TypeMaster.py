@@ -18,9 +18,9 @@ class Game():
         self.bottom_boxH = 35
         self.screenW = 950
         self.screenH = 600
-        self.screen_gameH = self.screenH - self.bottom_boxH
         self.title = "Type Master"
         self.top_padding = 100
+        self.game_menu_bottom_padding = 200
 
         # Fonts/Colors
         self.button_color = (44, 150, 199)
@@ -56,7 +56,7 @@ class Game():
         self.characters_typed = 0
         self.current_words = [""]
         self.gross_words_per_min = 0
-        self.max_y_speed = 2
+        self.max_y_speed = 1
         self.wordbank = [""]
 
         # Frames
@@ -84,11 +84,42 @@ class Game():
         self.bg_image = pygame.image.load("Media/underwater.jpg")
         self.button_hover_sound = pygame.mixer.Sound("Media/bubble.ogg")
         self.game_music = "Media/gameMusic1.mp3"
+        self.grade_1st = pygame.image.load("Media/1st_grade.png")
+        self.grade_2nd = pygame.image.load("Media/2nd_grade.png")
+        self.grade_3rd = pygame.image.load("Media/3rd_grade.png")
+        self.grade_4th = pygame.image.load("Media/4th_grade.png")
+        self.grade_5th = pygame.image.load("Media/5th_grade.png")
+        self.grade_6th = pygame.image.load("Media/6th_grade.png")
+        self.grade_7th = pygame.image.load("Media/7th_grade.png")
+        self.grade_8th = pygame.image.load("Media/8th_grade.png")
+        self.grade_1st_hovering = pygame.image.load("Media/1st_grade_hovering.png")
+        self.grade_2nd_hovering = pygame.image.load("Media/2nd_grade_hovering.png")
+        self.grade_3rd_hovering = pygame.image.load("Media/3rd_grade_hovering.png")
+        self.grade_4th_hovering = pygame.image.load("Media/4th_grade_hovering.png")
+        self.grade_5th_hovering = pygame.image.load("Media/5th_grade_hovering.png")
+        self.grade_6th_hovering = pygame.image.load("Media/6th_grade_hovering.png")
+        self.grade_7th_hovering = pygame.image.load("Media/7th_grade_hovering.png")
+        self.grade_8th_hovering = pygame.image.load("Media/8th_grade_hovering.png")
+        self.all_vocab = (self.grade_1st, self.grade_2nd, self.grade_3rd, self.grade_4th, self.grade_5th, self.grade_6th, self.grade_7th, self.grade_8th)
         self.menu_header = pygame.image.load("Media/menu_prompt.png")
         self.mute_image = pygame.image.load("Media/mute.png")
         self.pause_image = pygame.image.load("Media/pause.png")
+        self.mute_hovering = pygame.image.load("Media/mute_hovering.png")
+        self.pause_hovering = pygame.image.load("Media/pause_hovering.png")
         self.title_music = "Media/titleScreenMusic.mp3"
         self.title_text = pygame.image.load("Media/title_image.png")
+
+        # Menu Parameters
+        self.x_menu_col_1 = self.screenW / 4
+        self.x_menu_col_2 = self.screenW / 4 * 2
+        self.x_menu_col_3 = self.screenW / 4 * 3
+        self.x_menu_col_3a = self.screenW / 3
+        self.x_menu_col_3b = self.screenW / 3 * 2
+        self.y_menu_col_1 = self.screenH / 4
+        self.y_menu_col_2 = self.screenH / 4 * 2
+        self.y_menu_col_3 = self.screenH / 4 * 3
+        self.x_game_menu = self.screenW - self.buttonW
+        self.y_game_menu_base = self.screenH - self.border_width * 2 - self.bottom_boxH
 
 
     #####################
@@ -102,6 +133,9 @@ class Game():
 
     def get_game_buttons(self):
         return But.Button.get_game_buttons(self)
+
+    def get_num_buttons(self):
+        return But.Button.num_buttons
 
     def get_screen(self):
         pygame.display.set_caption(self.title)

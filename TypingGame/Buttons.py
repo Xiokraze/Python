@@ -4,9 +4,9 @@ import pygame
 class Button:
     buttons = []
     num_buttons = 0
-    def __init__(self, x, y, text, visible, game, menu_button=False):
+    def __init__(self, x, y, text, visible, game, is_menu_button, image_size=None):
         self.x = x
-        self.y = y + game.border_width
+        self.y = y
         self.text = text
         self.visible = visible
         self.text_color = game.text_color
@@ -15,12 +15,11 @@ class Button:
         self.play_sound = True
         
         # Menu/Game Button Parameters
-        if (menu_button):
-            self.height = game.menu_buttonH
-            self.width = game.menu_buttonW
+        if (is_menu_button):
+            self.width = image_size[0]
         else:
-            self.height = game.buttonH
             self.width = game.buttonW
+        self.height = image_size[1]
         self.border = (self.x-2, self.y-2, self.width+4, self.height+4)
 
 
@@ -28,36 +27,64 @@ class Button:
     #      Getters      #
     #####################
     def get_menu_buttons(game):
-        text_size = game.font.getsize(game.menu_prompt)
-        top_padding = text_size[1] + game.border_width
-        button_padding = game.border_width * 4
-        num_borders = 2
+        col = 1
+        row = 1
         for index in range(len(game.grade_levels)):
-            num_buttons = Button.num_buttons
-            buttonH_padding = game.menu_buttonH * num_buttons
-            border_padding = button_padding * num_borders
-            y = top_padding + buttonH_padding + border_padding
-            Button.addButton(y, index, game)
-            num_borders += 2
-        Button.num_buttons = 0
+            value = game.grade_levels[index]
+            if (row == 1):
+                y = game.y_menu_col_1
+                if (col == 1):
+                    image = game.grade_1st
+                    image_size = image.get_size()
+                    x = game.x_menu_col_1 - image_size[0] / 2
+                elif (col == 2):
+                    image = game.grade_2nd
+                    image_size = image.get_size()
+                    x = game.x_menu_col_2 - image_size[0] / 2
+                else:
+                    image = game.grade_3rd
+                    image_size = image.get_size()
+                    x = game.x_menu_col_3 - image_size[0] / 2
+                    col = 0
+                    row += 1
+            elif (row == 2):
+                y = game.y_menu_col_2
+                if (col == 1):
+                    image = game.grade_4th
+                    image_size = image.get_size()
+                    x = game.x_menu_col_1 - image_size[0] / 2
+                elif (col == 2):
+                    image = game.grade_5th
+                    image_size = image.get_size()
+                    x = game.x_menu_col_2 - image_size[0] / 2
+                else:
+                    image = game.grade_6th
+                    image_size = image.get_size()
+                    x = game.x_menu_col_3 - image_size[0] / 2
+                    col = 0
+                    row += 1
+            elif (row == 3):
+                y = game.y_menu_col_3
+                if (col == 1):
+                    image = game.grade_7th
+                    image_size = image.get_size()
+                    x = game.x_menu_col_3a - image_size[0] / 2
+                elif (col == 2):
+                    image = game.grade_8th
+                    image_size = image.get_size()
+                    x = game.x_menu_col_3b - image_size[0] / 2
+            col += 1
+            Button.add_button(x, y, value, True, image_size, game)
         return Button.buttons
 
-    def get_menu_button_y(game):
-        convert_text = str(game.player_score) + str(game.border_width)
-        textH = game.font.getsize(game.score_prompt + convert_text)
-        screen_and_textH = game.screenH - textH[1]
-        border_height = game.border_width * 3
-        bottom_box_and_textH = (game.bottom_boxH - textH[1]) // 2
-        bottom_padding = screen_and_textH - border_height - bottom_box_and_textH
-        y = bottom_padding - game.buttonH - (game.border_width * 3)
-        return y
-
     def get_game_buttons(game):
-        x = game.screenW - game.buttonW - (game.border_width * 2)
-        y = Button.get_menu_button_y(game)
-        Button.buttons.append(Button(x, y, "Pause", True, game))
-        y = y - (game.buttonH) - (game.border_width)
-        Button.buttons.append(Button(x, y, "Mute", True, game))
+        image_size = game.pause_image.get_size()
+        x = game.screenW - image_size[0] - game.border_width
+        y = game.y_game_menu_base - image_size[1]
+        Button.add_button(x, y, "Pause", False, image_size, game)
+        image_size = game.mute_image.get_size()
+        y = game.y_game_menu_base - image_size[1] * 2 - game.border_width * 5
+        Button.add_button(x, y, "Mute", False,  image_size, game)
         return Button.buttons
 
 
@@ -72,16 +99,16 @@ class Button:
                 return True         
         return False
 
-    def addButton(y, index, game):
+    def add_button(x, y, value, is_menu_button, image_size, game):
         Button.num_buttons += 1
-        x = game.screenW / 2 - game.menu_buttonW / 2 - game.border_width
         Button.buttons.append(Button(
             x, 
             y, 
-            game.grade_levels[index],
+            value,
             True,
             game,
-            True)
+            is_menu_button,
+            image_size)
         )
         return
    
@@ -101,19 +128,24 @@ class Button:
             # Draw rect here to add outline to visible buttons\
             #pygame.draw.rect(screen, self.color, self.border, game.border_width)
             if (self.hovering):
-                pygame.draw.rect(screen, game.text_color, self.border, game.border_width)
-            text = game.word_font.render(self.text, 1, self.text_color)
-            text_size = game.font.getsize(self.text)
-            fontW = text_size[0]
-            fontH = text_size[1] + game.font_size / 2
-            if (self.text == "Pause"):
-                height = game.buttonH
-                self.draw_button(screen, game.pause_image, height, game)
-            elif (self.text == "Mute"):
-                height = game.buttonH * 2 + game.border_width * 2
-                self.draw_button(screen, game.mute_image, height, game)
-            else:
-                x = self.x + (self.width / 2 - fontW / 2) + game.border_width
-                y = self.y + (self.height / 2 - fontH / 2)
-                screen.blit(text, (x,y))
+                if (self.text == "Pause"):
+                    screen.blit(game.pause_hovering, (self.x, self.y))
+                elif (self.text == "Mute"):
+                    screen.blit(game.mute_hovering, (self.x, self.y))
+                elif (self.text == "1st"):
+                    screen.blit(game.grade_1st_hovering, (self.x, self.y))
+                elif (self.text == "2nd"):
+                    screen.blit(game.grade_2nd_hovering, (self.x, self.y))
+                elif (self.text == "3rd"):
+                    screen.blit(game.grade_3rd_hovering, (self.x, self.y))
+                elif (self.text == "4th"):
+                    screen.blit(game.grade_4th_hovering, (self.x, self.y))
+                elif (self.text == "5th"):
+                    screen.blit(game.grade_5th_hovering, (self.x, self.y))
+                elif (self.text == "6th"):
+                    screen.blit(game.grade_6th_hovering, (self.x, self.y))
+                elif (self.text == "7th"):
+                    screen.blit(game.grade_7th_hovering, (self.x, self.y))
+                elif (self.text == "8th"):
+                    screen.blit(game.grade_8th_hovering, (self.x, self.y))
         return

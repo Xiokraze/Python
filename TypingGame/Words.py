@@ -17,7 +17,8 @@ class Word(object):
         xOffset = game.screenW - self.width - game.border_width * 4 - game.buttonW
         self.x = random.randint(0, xOffset)
         if (game.up_or_down == -1):
-            self.y = game.screenH
+            input_box_H = game.bottom_boxH - game.border_width * 2
+            self.y = game.screenH - input_box_H - self.height
         else:
             self.y = 0 - self.height
 

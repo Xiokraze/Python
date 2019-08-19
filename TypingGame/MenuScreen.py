@@ -62,17 +62,25 @@ def check_events(game, buttons):
 #      Drawing      #
 #####################
 def draw_menu_header(screen, game):
-    text_size = game.menu_header.get_size()
-    x = (game.screenW - text_size[0]) / 2
+    image_size = game.menu_header.get_size()
+    x = (game.screenW - image_size[0]) / 2
     y = 0
     screen.blit(game.menu_header, (x,y))
     return
 
-def draw_menu_screen(screen, game):
+def draw_menu(screen, game, buttons):
+    index = 0
+    for button in buttons:
+        screen.blit(game.all_vocab[index], (button.x, button.y))
+        index += 1     
+    return
+
+def draw_menu_screen(screen, game, buttons):
     game.frame_count += 1
     game.draw_bg_image(screen)
     game.draw_bubbles(screen, game)
     draw_menu_header(screen, game)
+    draw_menu(screen, game, buttons)
     game.draw_buttons(screen, game)
     pygame.display.update()
     game.check_frame_count()
@@ -88,7 +96,7 @@ def play(screen, game):
         game.clock.tick(game.max_FPS)
         if (check_events(game, buttons)):
             break
-        draw_menu_screen(screen, game)
+        draw_menu_screen(screen, game, buttons)
     game.clear_current_buttons()
     game.frame_count = 0
     return

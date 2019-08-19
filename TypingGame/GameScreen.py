@@ -33,6 +33,7 @@ def remove_words_from_screen(screen, game):
                     game.characters_typed += len(word.word) + 1
                     game.current_words.remove(word)
                     game.add_word_bubble(word, screen, game)
+                    game.button_hover_sound.play()
     return
 
 def check_word_count(game):
@@ -65,6 +66,7 @@ def move_word_up(word, screen, game):
         game.player_score -= len(word.word)
         game.current_words.remove(word)
         game.add_word_bubble(word, screen, game)
+        game.button_hover_sound.play()
     return
 
 def move_word_down(word, screen, game):
@@ -78,6 +80,7 @@ def move_word_down(word, screen, game):
         game.player_score -= len(word.word)
         game.current_words.remove(word)
         game.add_word_bubble(word, screen, game)
+        game.button_hover_sound.play()
     return
 
 def move_words(screen, game):
@@ -117,9 +120,10 @@ def toggle_mute(game):
     return
 
 def update_player_input(events, game):
-    if (game.player_input_obj.update(events)):
-        game.player_input = game.player_input_obj.get_text()
-        game.player_input_obj.reset_input_text()
+    if (game.words_moving):
+        if (game.player_input_obj.update(events)):
+            game.player_input = game.player_input_obj.get_text()
+            game.player_input_obj.reset_input_text()
     return
 
 def check_buttons(game, button):
@@ -181,8 +185,8 @@ def draw_words(screen, game):
 
 def draw_input_box(screen, game):
     left_border = 0
-    top_border = game.screenH - game.bottom_boxH - game.border_width
-    right_border = game.screenW - game.border_width + 1
+    top_border = game.screenH - game.bottom_boxH - game.border_width / 2
+    right_border = game.screenW - game.border_width / 2
     bottom_border = game.bottom_boxH
     box = (left_border, top_border, right_border, bottom_border)
     pygame.draw.rect(screen, game.text_color, box, game.border_width)
@@ -223,15 +227,24 @@ def draw_input(screen, game):
     screen.blit(player_input, (x,y))
     return
 
+def draw_game_menu_buttons(screen, game, buttons):
+    for button in buttons:
+        if (button.text == "Pause"):
+            screen.blit(game.pause_image, (button.x, button.y))
+        elif (button.text == "Mute"):
+            screen.blit(game.mute_image, (button.x, button.y))
+    return
+
 def draw_game_screen(screen, game, buttons):
     game.draw_bg_image(screen)
     draw_words(screen, game)
-    game.draw_buttons(screen, game)
+    draw_game_menu_buttons(screen, game, buttons)
     draw_input_box(screen, game)
     draw_input_text(screen, game)
     draw_score_text(screen, game)
     draw_words_per_min(screen, game)
     draw_input(screen, game)
+    game.draw_buttons(screen, game)
     pygame.display.update()
     return
 
