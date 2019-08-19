@@ -57,7 +57,7 @@ def play(screen, game):
 def start_screen(screen, game):
     while (True):
         if (check_events(game)):
-            game.words_falling = True
+            game.words_moving = True
             break
         draw_screen(screen, game, True)
     return

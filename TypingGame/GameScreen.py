@@ -23,7 +23,7 @@ def get_text(game):
 #####################
 #   Word Handling   #
 #####################   
-def remove_words_from_screen(game):
+def remove_words_from_screen(screen, game):
     if (game.player_input):
         player_input = game.player_input.split(' ')
         for word in game.current_words:
@@ -32,6 +32,7 @@ def remove_words_from_screen(game):
                     game.player_score += len(word.word)
                     game.characters_typed += len(word.word) + 1
                     game.current_words.remove(word)
+                    game.add_word_bubble(word, screen, game)
     return
 
 def check_word_count(game):
@@ -56,15 +57,36 @@ def add_word(game):
     game.current_words.append(new_word)
     return
 
-def move_words(game):
+def move_word_up(word, screen, game):
+    position = word.y + word.speed
+    if (position > 0):
+        word.y += word.speed
+    else:
+        game.player_score -= len(word.word)
+        game.current_words.remove(word)
+        game.add_word_bubble(word, screen, game)
+    return
+
+def move_word_down(word, screen, game):
+    position = word.y - word.speed
+    text_height = game.get_score_text_size(word.word, "height")
+    input_box_height = game.bottom_boxH - game.border_width * 2
+    height = game.screenH - text_height - input_box_height - game.font_size / 2
+    if (position < height):
+        word.y += word.speed
+    else:
+        game.player_score -= len(word.word)
+        game.current_words.remove(word)
+        game.add_word_bubble(word, screen, game)
+    return
+
+def move_words(screen, game):
     for word in game.current_words:
         try:
-            position = word.y + word.falling_speed
-            if (position < game.screen_gameH - word.height):
-                word.y += word.falling_speed
+            if (game.up_or_down == -1):
+                move_word_up(word, screen, game)
             else:
-                game.player_score -= len(word.word)
-                game.current_words.remove(word)
+                move_word_down(word, screen, game)
         except AttributeError:
             break
     return
@@ -74,15 +96,15 @@ def move_words(game):
 #   Event Handling  #
 #####################
 def start_game(button, game):
-    game.words_falling = True
+    game.words_moving = True
     button.visible = True
     return
 
 def toggle_pause(game):
-    if (game.words_falling):
-        game.words_falling = False
+    if (game.words_moving):
+        game.words_moving = False
     else:
-        game.words_falling = True
+        game.words_moving = True
     return
 
 def toggle_mute(game):
@@ -226,13 +248,14 @@ def play(screen, game):
         game.frame_count += 1
         if not (check_events(game, buttons)):
             break
-        if (game.words_falling):
+        if (game.words_moving):
             check_word_count(game)
             if (game.update_seconds(game.seconds_delay)):
                 add_word(game)
             word_str_to_obj(game)
-            remove_words_from_screen(game)
-            move_words(game)
+            remove_words_from_screen(screen, game)
+            move_words(screen, game)
+            game.pop_word_bubbles(screen)
             pygame.display.update()
         draw_game_screen(screen, game, buttons)
         game.check_frame_count()

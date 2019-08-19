@@ -7,20 +7,25 @@ class Bubbles:
     pygame.image.load("Media/bubbles/b%s.png" % img) for img in range(2,8)
     ]
     bubble_array = []
-    def __init__(self, game):
+    def __init__(self, game, word_bubble=False, word_x=0, word_y=0):
         self.img = Bubbles.bubble
         size = self.img.get_size()
         self.width = size[0]
         self.height = size[1]
         screenW, screenH = pygame.display.get_surface().get_size()
-        self.x = random.randint(0, (game.screenW - self.width))
-        self.y = game.screenH + self.height
-        self.startX = self.x
-        self.speed = random.uniform(.5, 1.5)
-        self.max_wobble = 6
-        self.direction = random.choice(["right", "left"])
+        if (word_bubble):
+            self.x = word_x
+            self.y = word_y
+            self.popping = True
+        else:
+            self.x = random.randint(0, (game.screenW - self.width))
+            self.y = game.screenH + self.height
+            self.popping = False
+            self.startX = self.x
+            self.speed = random.uniform(.5, 1.5)
+            self.max_wobble = 6
+            self.direction = random.choice(["right", "left"])
         self.pop_count = 1
-        self.popping = False
         self.pop_FPS = 5
 
 

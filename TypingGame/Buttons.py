@@ -117,4 +117,3 @@ class Button:
                 y = self.y + (self.height / 2 - fontH / 2)
                 screen.blit(text, (x,y))
         return
-    
