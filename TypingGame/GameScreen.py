@@ -2,14 +2,111 @@ import pygame
 import random
 
 
+#####################
+#      Getters      #
+##################### 
+def get_words_per_min(game):
+    gwpm = str(game.gross_words_per_min)
+    average_chars = game.characters_typed / 5
+    average_time = game.seconds / 60
+    gwpm = round(average_chars / average_time)
+    return gwpm
+
+def get_text(game):
+    gwpm = str(game.gross_words_per_min)
+    text_string = game.gwpm_prompt + str(gwpm)
+    text_size = game.font.getsize(text_string)
+    text = game.word_font.render(text_string, 1, game.text_color)
+    return text, text_size[0]
+
+
+#####################
+#   Word Handling   #
+#####################   
+def remove_words_from_screen(game):
+    if (game.player_input):
+        player_input = game.player_input.split(' ')
+        for word in game.current_words:
+            for player_word in player_input:
+                if (player_word == word.word):
+                    game.player_score += len(word.word)
+                    game.characters_typed += len(word.word) + 1
+                    game.current_words.remove(word)
+    return
+
+def check_word_count(game):
+    if (len(game.current_words) < game.add_words_trigger):
+        words_to_add = game.add_words_trigger - len(game.current_words)
+        for i in range(words_to_add):
+            game.current_words.append(random.choice(game.wordbank))
+    return
+
+def word_str_to_obj(game):
+    new_words = []
+    for word in game.current_words:
+        if (type(word) is str):
+            new_words.append(game.get_word_object(word))
+        else:
+            new_words.append(word)
+    game.current_words = new_words
+    return
+
+def add_word(game):
+    new_word = random.choice(game.wordbank)
+    game.current_words.append(new_word)
+    return
+
+def move_words(game):
+    for word in game.current_words:
+        try:
+            position = word.y + word.falling_speed
+            if (position < game.screen_gameH - word.height):
+                word.y += word.falling_speed
+            else:
+                game.player_score -= len(word.word)
+                game.current_words.remove(word)
+        except AttributeError:
+            break
+    return
+
+
+#####################
+#   Event Handling  #
+#####################
+def start_game(button, game):
+    game.words_falling = True
+    button.visible = True
+    return
+
+def toggle_pause(game):
+    if (game.words_falling):
+        game.words_falling = False
+    else:
+        game.words_falling = True
+    return
+
+def toggle_mute(game):
+    if (game.music_playing):
+        pygame.mixer.music.pause()
+        game.music_playing = False
+    else:
+        pygame.mixer.music.unpause()
+        game.music_playing = True
+    return
+
+def update_player_input(events, game):
+    if (game.player_input_obj.update(events)):
+        game.player_input = game.player_input_obj.get_text()
+        game.player_input_obj.reset_input_text()
+    return
 
 def check_buttons(game, button):
     if (button.text == "Start"):
-        game.start_game(button)
+        start_game(button, game)
     elif (button.text == "Pause"):
-        game.toggle_pause()
+        toggle_pause(game)
     elif (button.text == "Mute"):
-        game.toggle_mute()
+        toggle_mute(game)
     return
 
 def check_mouse_position(mouse_position, buttons, game):
@@ -46,66 +143,84 @@ def check_events(game, buttons):
             check_mouse_position(mouse_position, buttons, game)
         elif (event.type == pygame.MOUSEBUTTONDOWN):
             check_button_clicked(mouse_position, buttons, game)
-    game.update_player_input(events)
+    update_player_input(events, game)
         # TODO add functionality to return false and break the loop
     return True
-           
-def remove_words_from_screen(game):
-    if (game.player_input):
-        player_input = game.player_input.split(' ')
-        for word in game.current_words:
-            for player_word in player_input:
-                if (player_word == word.word):
-                    game.player_score += len(word.word)
-                    game.characters_typed += len(word.word) + 1
-                    game.current_words.remove(word)
-    return
 
-def check_word_count(game):
-    if (len(game.current_words) < game.add_words_trigger):
-        words_to_add = game.add_words_trigger - len(game.current_words)
-        for i in range(words_to_add):
-            game.current_words.append(random.choice(game.wordbank))
-    return
 
-def word_str_to_obj(game):
-    new_words = []
+#####################
+#      Drawing      #
+#####################
+def draw_words(screen, game):
     for word in game.current_words:
-        if (type(word) is str):
-            new_words.append(game.get_word_object(word))
-        else:
-            new_words.append(word)
-    game.current_words = new_words
+        text = game.word_font.render(word.word, 1, word.text_color)
+        screen.blit(text, (word.x, word.y))
     return
 
-def move_words(game):
-    for word in game.current_words:
-        try:
-            position = word.y + word.falling_speed
-            if (position < game.screen_gameH - word.height):
-                word.y += word.falling_speed
-            else:
-                game.player_score -= len(word.word)
-                game.current_words.remove(word)
-        except AttributeError:
-            break
+def draw_input_box(screen, game):
+    left_border = 0
+    top_border = game.screenH - game.bottom_boxH - game.border_width
+    right_border = game.screenW - game.border_width + 1
+    bottom_border = game.bottom_boxH
+    box = (left_border, top_border, right_border, bottom_border)
+    pygame.draw.rect(screen, game.text_color, box, game.border_width)
     return
-    
+
+def draw_input_text(screen, game):
+    text = game.word_font.render(game.input_prompt, 1, game.text_color)
+    x = game.input_left_padding
+    y = game.get_bottom_offset(game.player_score)
+    screen.blit(text, (x, y))
+    return
+
+def draw_score_text(screen, game):
+    text_string = game.score_prompt + str(game.player_score)
+    text = game.word_font.render(text_string, 1, game.text_color)
+    right_offset = game.get_right_offset(game.player_score)
+    x = right_offset + game.buttonW
+    y = game.get_bottom_offset(game.player_score)
+    screen.blit(text, (x,y))
+    return
+
+def draw_words_per_min(screen, game):
+    if (game.characters_typed != 0 and game.seconds != 0):
+        #TODO add tracking for actual average word length typed
+        gwpm = get_words_per_min(game)
+        game.gross_words_per_min = gwpm
+    text, text_width = get_text(game)
+    x = (game.screenW // 2) - (text_width / 2)
+    y = game.get_bottom_offset(game.player_score)
+    screen.blit(text, (x,y))
+    return
+
+def draw_input(screen, game):
+    player_input = game.player_input_obj.get_surface()
+    text_size = game.font.getsize(game.input_prompt)
+    x = game.input_left_padding + text_size[0]
+    y = game.get_bottom_offset(game.input_prompt)
+    screen.blit(player_input, (x,y))
+    return
+
 def draw_game_screen(screen, game, buttons):
     game.draw_bg_image(screen)
-    game.draw_words(screen)
+    draw_words(screen, game)
     game.draw_buttons(screen, game)
-    game.draw_input_box(screen)
-    game.draw_input_text(screen)
-    game.draw_score_text(screen)
-    game.draw_words_per_min(screen)
-    game.draw_input(screen)
+    draw_input_box(screen, game)
+    draw_input_text(screen, game)
+    draw_score_text(screen, game)
+    draw_words_per_min(screen, game)
+    draw_input(screen, game)
     pygame.display.update()
     return
 
+
+#####################
+#    Game Screen    #
+#####################
 def play(screen, game):
     game.play_music(game.game_music)
     buttons = game.get_game_buttons()
+    game.seconds = 0
     while(True):
         game.clock.tick(game.max_FPS)
         game.frame_count += 1
@@ -114,7 +229,7 @@ def play(screen, game):
         if (game.words_falling):
             check_word_count(game)
             if (game.update_seconds(game.seconds_delay)):
-                game.add_word()
+                add_word(game)
             word_str_to_obj(game)
             remove_words_from_screen(game)
             move_words(game)

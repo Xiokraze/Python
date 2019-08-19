@@ -13,6 +13,8 @@ class Button:
         self.color = game.button_color
         self.hovering = False
         self.play_sound = True
+        
+        # Menu/Game Button Parameters
         if (menu_button):
             self.height = game.menu_buttonH
             self.width = game.menu_buttonW
@@ -21,6 +23,72 @@ class Button:
             self.width = game.buttonW
         self.border = (self.x-2, self.y-2, self.width+4, self.height+4)
 
+
+    #####################
+    #      Getters      #
+    #####################
+    def get_menu_buttons(game):
+        text_size = game.font.getsize(game.menu_prompt)
+        top_padding = text_size[1] + game.border_width
+        button_padding = game.border_width * 4
+        num_borders = 2
+        for index in range(len(game.grade_levels)):
+            num_buttons = Button.num_buttons
+            buttonH_padding = game.menu_buttonH * num_buttons
+            border_padding = button_padding * num_borders
+            y = top_padding + buttonH_padding + border_padding
+            Button.addButton(y, index, game)
+            num_borders += 2
+        Button.num_buttons = 0
+        return Button.buttons
+
+    def get_menu_button_y(game):
+        convert_text = str(game.player_score) + str(game.border_width)
+        textH = game.font.getsize(game.score_prompt + convert_text)
+        screen_and_textH = game.screenH - textH[1]
+        border_height = game.border_width * 3
+        bottom_box_and_textH = (game.bottom_boxH - textH[1]) // 2
+        bottom_padding = screen_and_textH - border_height - bottom_box_and_textH
+        y = bottom_padding - game.buttonH - (game.border_width * 3)
+        return y
+
+    def get_game_buttons(game):
+        x = game.screenW - game.buttonW - (game.border_width * 2)
+        y = Button.get_menu_button_y(game)
+        Button.buttons.append(Button(x, y, "Pause", True, game))
+        y = y - (game.buttonH) - (game.border_width)
+        Button.buttons.append(Button(x, y, "Mute", True, game))
+        return Button.buttons
+
+
+    #####################
+    #   Event Handling  #
+    #####################
+    def is_over(self, mouse_position):
+        mouseX = mouse_position[0]
+        mouseY = mouse_position[1]
+        if (mouseX > self.x and mouseX < self.x + self.width):
+            if (mouseY > self.y and mouseY < self.y + self.height):
+                return True         
+        return False
+
+    def addButton(y, index, game):
+        Button.num_buttons += 1
+        x = game.screenW / 2 - game.menu_buttonW / 2 - game.border_width
+        Button.buttons.append(Button(
+            x, 
+            y, 
+            game.grade_levels[index],
+            True,
+            game,
+            True)
+        )
+        return
+   
+   
+    #####################
+    #      Drawing      #
+    #####################
     def draw_button(self, screen, image, height, game):
         size = image.get_size()
         x = game.screenW - game.buttonW + (game.buttonW - size[0]) / 2
@@ -50,46 +118,3 @@ class Button:
                 screen.blit(text, (x,y))
         return
     
-    def is_over(self, mouse_position):
-        mouseX = mouse_position[0]
-        mouseY = mouse_position[1]
-        if (mouseX > self.x and mouseX < self.x + self.width):
-            if (mouseY > self.y and mouseY < self.y + self.height):
-                return True         
-        return False
-
-    def addButton(y, index, game):
-        Button.num_buttons += 1
-        x = game.screenW / 2 - game.menu_buttonW / 2 - game.border_width
-        Button.buttons.append(Button(
-            x, 
-            y, 
-            game.grade_levels[index],
-            True,
-            game,
-            True)
-        )
-        return
-
-    def get_menu_buttons(game):
-        text_size = game.font.getsize(game.menu_prompt)
-        top_padding = text_size[1] + game.border_width
-        button_padding = game.border_width * 4
-        num_borders = 2
-        for index in range(len(game.grade_levels)):
-            num_buttons = Button.num_buttons
-            buttonH_padding = game.menu_buttonH * num_buttons
-            border_padding = button_padding * num_borders
-            y = top_padding + buttonH_padding + border_padding
-            Button.addButton(y, index, game)
-            num_borders += 2
-        Button.num_buttons = 0
-        return Button.buttons
-
-    def get_game_buttons(game):
-        x = game.get_menu_button_x()
-        y = game.get_menu_button_y()
-        Button.buttons.append(Button(x, y, "Pause", True, game))
-        y = y - (game.buttonH) - (game.border_width)
-        Button.buttons.append(Button(x, y, "Mute", True, game))
-        return Button.buttons

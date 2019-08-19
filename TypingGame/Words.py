@@ -21,6 +21,10 @@ class Word(object):
 
         Word.max_charH = max(self.height, Word.max_charH)
 
+
+    #####################
+    #      Getters      #
+    #####################
     def get_falling_speed(word_length, max_y_speed):
         if (word_length == 2): return max_y_speed 
         elif (word_length == 3): return max_y_speed * .8

@@ -2,6 +2,9 @@ import pygame
 import Wordbanks
 
 
+#####################
+#   Event Handling  #
+#####################
 def check_mouse_position(game, mouse_position, button):
     if (button.is_over(mouse_position)):
         button.color = game.button_hover_color
@@ -54,16 +57,31 @@ def check_events(game, buttons):
                         return True
     return False
 
+
+#####################
+#      Drawing      #
+#####################
+def draw_menu_header(screen, game):
+    text_size = game.menu_header.get_size()
+    x = (game.screenW - text_size[0]) / 2
+    y = 0
+    screen.blit(game.menu_header, (x,y))
+    return
+
 def draw_menu_screen(screen, game):
     game.frame_count += 1
     game.draw_bg_image(screen)
     game.draw_bubbles(screen, game)
-    game.draw_menu_header(screen, game)
+    draw_menu_header(screen, game)
     game.draw_buttons(screen, game)
     pygame.display.update()
     game.check_frame_count()
     return
 
+
+#####################
+#    Menu Screen    #
+#####################
 def play(screen, game):
     buttons = game.get_menu_buttons()
     while(True):

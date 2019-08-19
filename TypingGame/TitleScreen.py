@@ -1,6 +1,9 @@
 import pygame
 
 
+#####################
+#   Event Handling  #
+#####################
 def check_events(game):
     events = pygame.event.get()
     for event in events:
@@ -11,6 +14,17 @@ def check_events(game):
                 return True
     return False
 
+
+#####################
+#      Drawing      #
+#####################
+def draw_title(screen, game):
+    text_size = game.title_text.get_size()
+    x = (game.screenW - text_size[0]) / 2
+    y = game.top_padding
+    screen.blit(game.title_text, (x,y))
+    return
+
 def draw_screen(screen, game, start_screen=False):
     game.clock.tick(game.max_FPS)
     game.frame_count += 1
@@ -18,13 +32,16 @@ def draw_screen(screen, game, start_screen=False):
     if (start_screen):
         game.draw_text_blink(screen, game.start_prompt, start_screen)
     else:
-        game.draw_title(screen)
+        draw_title(screen, game)
         game.draw_text_blink(screen, game.title_prompt, start_screen)
     game.draw_bubbles(screen, game)
     pygame.display.update()
     game.check_frame_count()
     return
 
+#####################
+#    Title Screen   #
+#####################
 def play(screen, game):
     game.play_music(game.title_music)
     while (True):
@@ -33,6 +50,10 @@ def play(screen, game):
         draw_screen(screen, game)
     return
 
+
+#####################
+#    Start Screen   #
+#####################
 def start_screen(screen, game):
     while (True):
         if (check_events(game)):
