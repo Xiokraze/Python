@@ -2,15 +2,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>315ea402-d86f-448e-9d58-f9a29c3ca224</ProjectGuid>
+    <ProjectGuid>c2636d4f-1f7c-49c6-a6d4-2f4f939288fb</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>TypingGame.py</StartupFile>
+    <StartupFile>TypeMaster.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>TypingGame</Name>
-    <RootNamespace>TypingGame</RootNamespace>
+    <Name>TypeMaster</Name>
+    <RootNamespace>TypeMaster</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,11 +21,29 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Classes.py">
+    <Compile Include="Bubbles.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TypingGame.py" />
-    <Compile Include="Variables.py">
+    <Compile Include="Buttons.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GameScreen.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MenuScreen.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PlayerInput.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TitleScreen.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TypeMaster.py" />
+    <Compile Include="Words.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Wordbanks.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
