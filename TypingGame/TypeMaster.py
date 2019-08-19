@@ -40,7 +40,7 @@ class Game():
         self.menu_buttonW = 100
 
         # Important Variables
-        self.up_or_down = 1 # -1 for words up 1 for words down
+        self.up_or_down = -1 # -1 for words up 1 for words down
         self.seconds_delay = 1
         self.text_blink_delay = .5
         self.player_score = 0
@@ -215,7 +215,6 @@ class Game():
         image_size = game.menu_header.get_size()
         y_offset = word.y - image_size[1] / 2
         Bub.Bubbles.bubble_array.append(Bub.Bubbles(game, True, word.x, y_offset))
-        print(len(Bub.Bubbles.bubble_array))
         return
 
     def pop_word_bubbles(self, screen):
