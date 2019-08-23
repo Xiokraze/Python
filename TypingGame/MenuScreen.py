@@ -78,10 +78,10 @@ def draw_menu(screen, game, buttons):
 def draw_menu_screen(screen, game, buttons):
     game.frame_count += 1
     game.draw_bg_image(screen)
-    game.draw_bubbles(screen, game)
+    game.draw_bubbles(screen)
     draw_menu_header(screen, game)
     draw_menu(screen, game, buttons)
-    game.draw_buttons(screen, game)
+    game.draw_buttons(screen)
     pygame.display.update()
     game.check_frame_count()
     return
@@ -90,13 +90,13 @@ def draw_menu_screen(screen, game, buttons):
 #####################
 #    Menu Screen    #
 #####################
-def play(screen, game):
+def menu_screen(screen, game):
     buttons = game.get_menu_buttons()
     while(True):
         game.clock.tick(game.max_FPS)
         if (check_events(game, buttons)):
             break
         draw_menu_screen(screen, game, buttons)
-    game.clear_current_buttons()
+    game.reset_buttons()
     game.frame_count = 0
     return

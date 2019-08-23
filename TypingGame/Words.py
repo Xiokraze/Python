@@ -5,7 +5,7 @@ class Word(object):
         self.word = word
         self.text_color = game.text_color
 
-        speed = Word.get_speed(len(word), game.max_y_speed)
+        speed = Word.get_speed(len(word), game.max_word_speed)
         self.speed = speed * game.up_or_down
 
         # Calculate px size for word width and height
@@ -26,11 +26,10 @@ class Word(object):
     #####################
     #      Getters      #
     #####################
-    def get_speed(word_length, max_y_speed):
-        if (word_length == 2): return max_y_speed 
-        elif (word_length == 3): return max_y_speed * .8
-        elif (word_length == 4): return max_y_speed * .6
-        elif (word_length == 5): return max_y_speed * .5
-        elif (word_length == 6): return max_y_speed * .3
-        elif (word_length == 7): return max_y_speed * .3
-        else: return max_y_speed * .2
+    def get_speed(word_length, max_speed):
+        if (word_length == 2): return max_speed
+        elif (word_length == 3): return max_speed * .8
+        elif (word_length == 4): return max_speed * .7
+        elif (word_length == 5): return max_speed * .6
+        elif (word_length == 6): return max_speed * .5
+        else: return max_speed * .4

@@ -32,7 +32,7 @@ def remove_words_from_screen(screen, game):
                     game.player_score += len(word.word)
                     game.characters_typed += len(word.word) + 1
                     game.current_words.remove(word)
-                    game.add_word_bubble(word, screen, game)
+                    game.add_word_bubble(word, screen)
                     game.button_hover_sound.play()
     return
 
@@ -65,7 +65,7 @@ def move_word_up(word, screen, game):
     else:
         game.player_score -= len(word.word)
         game.current_words.remove(word)
-        game.add_word_bubble(word, screen, game)
+        game.add_word_bubble(word, screen)
         game.button_hover_sound.play()
     return
 
@@ -173,6 +173,16 @@ def check_events(game, buttons):
         # TODO add functionality to return false and break the loop
     return True
 
+def continue_game(screen, game):
+    check_word_count(game)
+    if (game.update_seconds(game.seconds_delay)):
+        add_word(game)
+    word_str_to_obj(game)
+    remove_words_from_screen(screen, game)
+    move_words(screen, game)
+    game.pop_word_bubbles(screen)
+    pygame.display.update()
+    return
 
 #####################
 #      Drawing      #
@@ -244,7 +254,7 @@ def draw_game_screen(screen, game, buttons):
     draw_score_text(screen, game)
     draw_words_per_min(screen, game)
     draw_input(screen, game)
-    game.draw_buttons(screen, game)
+    game.draw_buttons(screen)
     pygame.display.update()
     return
 
@@ -262,15 +272,8 @@ def play(screen, game):
         if not (check_events(game, buttons)):
             break
         if (game.words_moving):
-            check_word_count(game)
-            if (game.update_seconds(game.seconds_delay)):
-                add_word(game)
-            word_str_to_obj(game)
-            remove_words_from_screen(screen, game)
-            move_words(screen, game)
-            game.pop_word_bubbles(screen)
-            pygame.display.update()
+            continue_game(screen, game)
         draw_game_screen(screen, game, buttons)
         game.check_frame_count()
-    game.clear_current_buttons()
+    game.reset_buttons()
     return

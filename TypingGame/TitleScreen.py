@@ -30,11 +30,11 @@ def draw_screen(screen, game, start_screen=False):
     game.frame_count += 1
     game.draw_bg_image(screen)
     if (start_screen):
-        game.draw_text_blink(screen, game.start_prompt, start_screen)
+        game.blink_text(screen, game.start_prompt, start_screen)
     else:
         draw_title(screen, game)
-        game.draw_text_blink(screen, game.title_prompt, start_screen)
-    game.draw_bubbles(screen, game)
+        game.blink_text(screen, game.title_prompt, start_screen)
+    game.draw_bubbles(screen)
     pygame.display.update()
     game.check_frame_count()
     return
@@ -42,7 +42,7 @@ def draw_screen(screen, game, start_screen=False):
 #####################
 #    Title Screen   #
 #####################
-def play(screen, game):
+def title_screen(screen, game):
     game.play_music(game.title_music)
     while (True):
         if (check_events(game)):

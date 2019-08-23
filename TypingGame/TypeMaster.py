@@ -11,6 +11,10 @@ import PlayerInput as PI
 import Words as W
 import sys
 
+
+#####################
+#     Game Class    #
+#####################
 class Game():   
     def __init__(self):
         # Window
@@ -41,7 +45,8 @@ class Game():
 
         # Important Variables
         self.up_or_down = -1 # -1 for words up 1 for words down
-        self.seconds_delay = 1
+        self.seconds_delay = 2
+        self.max_word_speed = 1
         self.text_blink_delay = .5
         self.player_score = 0
         self.clock = pygame.time.Clock()
@@ -56,7 +61,6 @@ class Game():
         self.characters_typed = 0
         self.current_words = [""]
         self.gross_words_per_min = 0
-        self.max_y_speed = 1
         self.wordbank = [""]
 
         # Frames
@@ -77,7 +81,7 @@ class Game():
         self.input_prompt = "Input: "
         self.menu_prompt = "Grade Level Vocabulary"
         self.score_prompt = "Score: "
-        self.start_prompt = "Press Enter To Begin!"
+        self.start_prompt = "Press Enter When Ready!"
         self.title_prompt = "Press Enter"
 
         # Media
@@ -92,6 +96,16 @@ class Game():
         self.grade_6th = pygame.image.load("Media/6th_grade.png")
         self.grade_7th = pygame.image.load("Media/7th_grade.png")
         self.grade_8th = pygame.image.load("Media/8th_grade.png")
+        self.all_vocab = (
+            self.grade_1st,
+            self.grade_2nd,
+            self.grade_3rd,
+            self.grade_4th,
+            self.grade_5th,
+            self.grade_6th,
+            self.grade_7th,
+            self.grade_8th
+        )
         self.grade_1st_hovering = pygame.image.load("Media/1st_grade_hovering.png")
         self.grade_2nd_hovering = pygame.image.load("Media/2nd_grade_hovering.png")
         self.grade_3rd_hovering = pygame.image.load("Media/3rd_grade_hovering.png")
@@ -100,7 +114,6 @@ class Game():
         self.grade_6th_hovering = pygame.image.load("Media/6th_grade_hovering.png")
         self.grade_7th_hovering = pygame.image.load("Media/7th_grade_hovering.png")
         self.grade_8th_hovering = pygame.image.load("Media/8th_grade_hovering.png")
-        self.all_vocab = (self.grade_1st, self.grade_2nd, self.grade_3rd, self.grade_4th, self.grade_5th, self.grade_6th, self.grade_7th, self.grade_8th)
         self.menu_header = pygame.image.load("Media/menu_prompt.png")
         self.mute_image = pygame.image.load("Media/mute.png")
         self.pause_image = pygame.image.load("Media/pause.png")
@@ -137,10 +150,6 @@ class Game():
     def get_num_buttons(self):
         return But.Button.num_buttons
 
-    def get_screen(self):
-        pygame.display.set_caption(self.title)
-        return (pygame.display.set_mode((self.screenW, self.screenH)))
-
     def get_score_text_size(self, score, return_flag=None):
         convert_text = str(score) + str(self.border_width)
         text = self.score_prompt + convert_text
@@ -172,35 +181,44 @@ class Game():
         self.player_input_obj = PI.PlayerInput(self)
         return
 
+    def set_screen(self):
+        pygame.display.set_caption(self.title)
+        return (pygame.display.set_mode((self.screenW, self.screenH)))
+
+    def reset_buttons(self):
+        But.Button.buttons.clear()
+        return
+
 
     #####################
     #      Drawing      #
     #####################
-    def draw_buttons(self, screen, game):
+    def draw_buttons(self, screen):
         for button in But.Button.buttons:
-            button.draw(screen, game)
+            button.draw(screen, self)
         return
     
     def draw_bg_image(self, screen):
         screen.blit(self.bg_image, (0,0))
         return
-    
-    def draw_text_blink(self, screen, text, start_screen):
-        if (self.update_seconds(self.text_blink_delay)):
-            if (self.blinking):
-                self.blinking = False
-            else:
-                self.blinking = True
-        if (self.blinking):
-            self.blink_text(screen, text, start_screen)
+   
+    def draw_blink_text(self, screen, text, start_screen):
+        font_size = self.font.getsize(text)
+        x = ((self.screenW / 2) - (font_size[0] / 2))
+        if (start_screen):
+            y = (self.screenH / 2) - (font_size[1] / 2)
+        else:
+            y = ((self.screenH / 2) - (font_size[1] / 2) + self.top_padding)
+        text = self.word_font.render(text, 1, self.text_color)
+        screen.blit(text, (x,y))
         return
 
-    def draw_bubbles(self, screen, game):
+    def draw_bubbles(self, screen):
         for bubble in Bub.Bubbles.bubble_array:
-            if not (bubble.draw(screen, game)):
+            if not (bubble.draw(screen, self)):
                 if (bubble.pop_bubble(screen)):
                     Bub.Bubbles.bubble_array.remove(bubble)
-        Bub.Bubbles.update_bubbles(self, game)
+        Bub.Bubbles.update_bubbles(self, self)
         return
 
 
@@ -217,24 +235,19 @@ class Game():
         self.music_playing = True
         return
 
-    def blink_text(self, screen, text, start_screen):
-        font_size = self.font.getsize(text)
-        x = ((self.screenW / 2) - (font_size[0] / 2))
-        if (start_screen):
-            y = (self.screenH / 2) - (font_size[1] / 2)
-        else:
-            y = ((self.screenH / 2) - (font_size[1] / 2) + self.top_padding)
-        text = self.word_font.render(text, 1, self.text_color)
-        screen.blit(text, (x,y))
-        return
-
-    def clear_current_buttons(self):
-        But.Button.buttons.clear()
-        return
-
     def check_frame_count(self):
         if (self.frame_count == self.max_FPS):
             self.frame_count = 0
+        return
+
+    def blink_text(self, screen, text, start_screen):
+        if (self.update_seconds(self.text_blink_delay)):
+            if (self.blinking):
+                self.blinking = False
+            else:
+                self.blinking = True
+        if (self.blinking):
+            self.draw_blink_text(screen, text, start_screen)
         return
 
     def update_seconds(self, delay):
@@ -245,10 +258,10 @@ class Game():
             return True
         return False
 
-    def add_word_bubble(self, word, screen, game):
-        image_size = game.menu_header.get_size()
+    def add_word_bubble(self, word, screen):
+        image_size = self.menu_header.get_size()
         y_offset = word.y - image_size[1] / 2
-        Bub.Bubbles.bubble_array.append(Bub.Bubbles(game, True, word.x, y_offset))
+        Bub.Bubbles.bubble_array.append(Bub.Bubbles(self, True, word.x, y_offset))
         return
 
     def pop_word_bubbles(self, screen):
@@ -257,13 +270,17 @@ class Game():
                 Bub.Bubbles.bubble_array.remove(bubble)
         return
 
+
+#####################
+#        Main       #
+#####################
 def main():
     game = Game()
-    screen = game.get_screen()
+    screen = game.set_screen()
     game.set_player_input()
 
-    TitleScreen.play(screen, game)
-    MenuScreen.play(screen, game)
+    TitleScreen.title_screen(screen, game)
+    MenuScreen.menu_screen(screen, game)
     TitleScreen.start_screen(screen, game)
     GameScreen.play(screen, game)
 
