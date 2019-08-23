@@ -45,7 +45,7 @@ class Game():
         # Important Variables
         self.score_bonus = 1
         self.up_or_down = -1 # -1 for words up 1 for words down
-        self.seconds_delay = 1
+        self.seconds_delay = 1 # TODO add separate variable for when to add words
         self.max_word_speed = 1
         self.text_blink_delay = .5
         self.player_score = 0
@@ -123,12 +123,16 @@ class Game():
         self.menu_header = pygame.image.load("Media/menu_prompt.png")
         self.mute_image = pygame.image.load("Media/mute.png")
         self.pause_image = pygame.image.load("Media/pause.png")
+        self.speed_image = pygame.image.load("Media/speed.png")
         self.mute_hovering = pygame.image.load("Media/mute_hovering.png")
         self.pause_hovering = pygame.image.load("Media/pause_hovering.png")
+        self.speed_hovering = pygame.image.load("Media/speed_hovering.png")
         self.title_music = "Media/titleScreenMusic.mp3"
         self.title_text = pygame.image.load("Media/title_image.png")
         self.right_corner = pygame.image.load("Media/bubbles/right_bubble.png")
         self.left_corner = pygame.image.load("Media/bubbles/left_bubble.png")
+        self.game_button_left = pygame.image.load("Media/bubbles/game_button_left.png")
+        self.game_button_right = pygame.image.load("Media/bubbles/game_button_right.png")
 
         # Menu Parameters
         self.x_menu_col_1 = self.screenW / 4

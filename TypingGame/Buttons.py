@@ -79,12 +79,18 @@ class Button:
 
     def get_game_buttons(game):
         image_size = game.pause_image.get_size()
-        x = game.screenW - image_size[0]
+        x = 0
         y = game.screenH * .3
         Button.add_button(x, y, "Pause", False, image_size, game)
+
         image_size = game.mute_image.get_size()
         y = game.screenH * .6
         Button.add_button(x, y, "Mute", False,  image_size, game)
+
+        image_size = game.speed_image.get_size()
+        x = game.screenW - image_size[0]
+        y = game.screenH / 2 - image_size[1] / 2
+        Button.add_button(x, y, "Speed", False, image_size, game)
         return Button.buttons
 
 
@@ -132,6 +138,8 @@ class Button:
                     screen.blit(game.pause_hovering, (self.x, self.y))
                 elif (self.text == "Mute"):
                     screen.blit(game.mute_hovering, (self.x, self.y))
+                elif (self.text == "Speed"):
+                    screen.blit(game.speed_hovering, (self.x, self.y))
                 elif (self.text == "1st"):
                     screen.blit(game.grade_1st_hovering, (self.x, self.y))
                 elif (self.text == "2nd"):

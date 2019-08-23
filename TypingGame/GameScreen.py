@@ -19,13 +19,34 @@ def get_text(game):
     text = game.word_font.render(text_string, 1, game.text_color)
     return text, text_size[0]
 
-#def get_input_box(game):
-#    image_size = game.right_corner.get_size()
-#    left_border = 0 + image_size[0] * .79
-#    top_border = game.screenH - game.bottom_boxH - game.border_width / 2
-#    right_border = game.screenW - 316
-#    bottom_border = game.bottom_boxH
-#    return left_border, top_border, right_border, bottom_border
+def get_char_size(input_text, game):
+    if (len(input_text) > 0):
+        return game.font.getsize(input_text[0])
+    return [0]
+
+def get_reversed_input(input_text):
+    temp_string = ""
+    for i in range(len(input_text)):
+        temp_string = temp_string + input_text[i]
+    reversed_string = temp_string[::-1]
+    return reversed_string
+
+def get_sliced_input(reversed_input, char_size, game):
+    sliced_text = ""
+    total = 0
+    for i in range(len(reversed_input)):
+        size = game.font.getsize(reversed_input[i])
+        total += size[0]
+        if (total > game.input_width - char_size[0] * 2):
+            break
+        else:
+            sliced_text = reversed_input[i] + sliced_text
+    return sliced_text
+
+def get_surface(sliced_input, game):
+    font_obj = pygame.font.Font(game.master_font, game.font_size)
+    surface = font_obj.render(sliced_input, True, game.text_color)
+    return surface
 
 
 #####################
@@ -215,7 +236,7 @@ def draw_corner_bubble(screen, game, left_bubble=False):
         screen.blit(game.right_corner, (x,y))
     return
 
-def draw_input_bubbles(screen, game):
+def draw_input_top(screen, game):
     image_size = game.right_corner.get_size()
     x_start = 0 + image_size[0] * .75  #game.right_corner_x_offset
     x_end = game.screenW - image_size[0] * .75 #game.right_corner_x_offset
@@ -227,46 +248,19 @@ def draw_input_bubbles(screen, game):
 def draw_hud(screen, game):
     draw_corner_bubble(screen, game)
     draw_corner_bubble(screen, game, True)
-    draw_input_bubbles(screen, game)
+    draw_input_top(screen, game)
     return
 
-def draw_input_text(screen, game):  # TODO refractor
+def draw_input_text(screen, game):
     input_text = game.player_input_obj.get_text()
-    input_text_size = game.font.getsize(input_text)
-    if (len(input_text) > 0):
-        char_size = game.font.getsize(input_text[0])
-    else:
-        char_size = [0]
-    convert_to_string = ""
-    for i in range(len(input_text)):
-        convert_to_string = convert_to_string + input_text[i]
-    convert_to_string = convert_to_string[::-1]
-
-    sliced_text = ""
-    total = 0
-    for i in range(len(convert_to_string)):
-        size = game.font.getsize(convert_to_string[i])
-        total += size[0]
-        if (total > game.input_width - char_size[0] * 2):
-            break
-        else:
-            sliced_text = convert_to_string[i] + sliced_text
-
-    final_string_size = game.font.getsize(sliced_text)
+    char_size = get_char_size(input_text, game)
+    reversed_input = get_reversed_input(input_text)
+    sliced_input = get_sliced_input(reversed_input, char_size, game)
+    final_string_size = game.font.getsize(sliced_input)
+    surface = get_surface(sliced_input, game)
     x = game.screenW / 2 - final_string_size[0] / 2
-    y = game.get_bottom_offset(convert_to_string)
-    font_obj = pygame.font.Font(game.master_font, game.font_size)
-    surface = font_obj.render(sliced_text, True, game.text_color)
+    y = game.get_bottom_offset(reversed_input)
     screen.blit(surface, (x, y))
-    return
-
-def draw_input(screen, game):
-    player_input = game.player_input_obj.get_surface()
-    #text_size = game.font.getsize(game.input_prompt)
-    input_text_size = game.font.getsize(game.player_input_obj.get_text())
-    x = game.screenW / 2 - input_text_size[0] / 2 #+ text_size[0] / 2
-    y = game.get_bottom_offset(input_text_size) + game.border_width
-    screen.blit(player_input, (x,y))
     return
 
 def draw_score_text(screen, game):
@@ -289,23 +283,44 @@ def draw_words_per_min(screen, game):
     screen.blit(text, (x,y))
     return
 
-def draw_game_menu_buttons(screen, game, buttons):
+def draw_bubble(button, screen, game, left_side):
+    if (left_side):
+        image_size = game.game_button_left.get_size()
+        x = button.x - image_size[0] * game.left_corner_x_offset
+        text_size = game.font.getsize(button.text)
+        y = button.y - (image_size[1] - text_size[1]) / 2 + text_size[1] / 2
+        screen.blit(game.game_button_left, (x,y))
+    else:
+        image_size = game.game_button_right.get_size()
+        x = game.screenW - image_size[0] * game.right_corner_x_offset
+        text_size = game.font.getsize(button.text)
+        y = button.y - (image_size[1] - text_size[1]) / 2 + text_size[1] / 2
+        screen.blit(game.game_button_right, (x,y))
+    return
+
+def draw_button_bubbles(buttons, screen, game):
     for button in buttons:
         if (button.text == "Pause"):
             screen.blit(game.pause_image, (button.x, button.y))
+            draw_bubble(button, screen, game, True)
         elif (button.text == "Mute"):
             screen.blit(game.mute_image, (button.x, button.y))
+            draw_bubble(button, screen, game, True)
+        elif (button.text == "Speed"):
+            screen.blit(game.speed_image, (button.x, button.y))
+            draw_bubble(button, screen, game, False)
+
+
     return
 
 def draw_game_screen(screen, game, buttons):
     game.draw_bg_image(screen)
     draw_words(screen, game)
-    draw_game_menu_buttons(screen, game, buttons)
+    draw_button_bubbles(buttons, screen, game)
     draw_hud(screen, game)
     draw_score_text(screen, game)
     draw_words_per_min(screen, game)
     draw_input_text(screen, game)
-    #draw_input(screen, game)
     game.draw_buttons(screen)
     pygame.display.update()
     return

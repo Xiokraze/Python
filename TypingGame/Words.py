@@ -14,8 +14,13 @@ class Word(object):
         self.height = text_size[1]
 
         # Get px offset from right border to keep the word on the game screen
-        xOffset = game.screenW - self.width - game.border_width * 4 - game.buttonW
-        self.x = random.randint(0, xOffset)
+        image_size = game.right_corner.get_size()
+        image_x_offset = image_size[0] * game.right_corner_x_offset
+        word_size = game.font.getsize(self.word)
+        word_x_offset = word_size[0]
+        x_min = image_x_offset
+        x_max = game.screenW - image_x_offset - word_x_offset
+        self.x = random.randint(x_min, x_max)
         if (game.up_or_down == -1):
             input_box_H = game.bottom_boxH - game.border_width * 2
             self.y = game.screenH - input_box_H - self.height
