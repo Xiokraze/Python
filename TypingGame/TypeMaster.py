@@ -67,6 +67,7 @@ class Game():
         self.left_corner_x_offset = .15
         self.right_corner_x_offset = .85
         self.bubble_y_offset = .42
+        self.input_width = 0
 
         # Frames
         self.bubble_frame_count = 0

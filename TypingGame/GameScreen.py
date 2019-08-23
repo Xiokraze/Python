@@ -219,6 +219,7 @@ def draw_input_bubbles(screen, game):
     image_size = game.right_corner.get_size()
     x_start = 0 + image_size[0] * .75  #game.right_corner_x_offset
     x_end = game.screenW - image_size[0] * .75 #game.right_corner_x_offset
+    game.input_width = x_end - x_start
     y = game.screenH - game.bottom_boxH
     pygame.draw.line(screen, game.text_color, (x_start,y), (x_end,y), game.border_width)
     return
@@ -229,14 +230,34 @@ def draw_hud(screen, game):
     draw_input_bubbles(screen, game)
     return
 
-def draw_input_text(screen, game):
-    player_input = game.player_input_obj.get_surface()
-    text = game.word_font.render(game.input_prompt, 1, game.text_color)
-    input_text_size = game.font.getsize(game.player_input_obj.get_text())
-    text_size = game.font.getsize(game.input_prompt)
-    x = game.screenW / 2 - text_size[0] / 2 - input_text_size[0] / 2
-    y = game.get_bottom_offset(game.player_score)
-    screen.blit(text, (x, y))
+def draw_input_text(screen, game):  # TODO refractor
+    input_text = game.player_input_obj.get_text()
+    input_text_size = game.font.getsize(input_text)
+    if (len(input_text) > 0):
+        char_size = game.font.getsize(input_text[0])
+    else:
+        char_size = [0]
+    convert_to_string = ""
+    for i in range(len(input_text)):
+        convert_to_string = convert_to_string + input_text[i]
+    convert_to_string = convert_to_string[::-1]
+
+    sliced_text = ""
+    total = 0
+    for i in range(len(convert_to_string)):
+        size = game.font.getsize(convert_to_string[i])
+        total += size[0]
+        if (total > game.input_width - char_size[0] * 2):
+            break
+        else:
+            sliced_text = convert_to_string[i] + sliced_text
+
+    final_string_size = game.font.getsize(sliced_text)
+    x = game.screenW / 2 - final_string_size[0] / 2
+    y = game.get_bottom_offset(convert_to_string)
+    font_obj = pygame.font.Font(game.master_font, game.font_size)
+    surface = font_obj.render(sliced_text, True, game.text_color)
+    screen.blit(surface, (x, y))
     return
 
 def draw_input(screen, game):
@@ -283,8 +304,8 @@ def draw_game_screen(screen, game, buttons):
     draw_hud(screen, game)
     draw_score_text(screen, game)
     draw_words_per_min(screen, game)
-    #draw_input_text(screen, game)
-    draw_input(screen, game)
+    draw_input_text(screen, game)
+    #draw_input(screen, game)
     game.draw_buttons(screen)
     pygame.display.update()
     return
