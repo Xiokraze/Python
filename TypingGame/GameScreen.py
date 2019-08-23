@@ -19,6 +19,14 @@ def get_text(game):
     text = game.word_font.render(text_string, 1, game.text_color)
     return text, text_size[0]
 
+#def get_input_box(game):
+#    image_size = game.right_corner.get_size()
+#    left_border = 0 + image_size[0] * .79
+#    top_border = game.screenH - game.bottom_boxH - game.border_width / 2
+#    right_border = game.screenW - 316
+#    bottom_border = game.bottom_boxH
+#    return left_border, top_border, right_border, bottom_border
+
 
 #####################
 #   Word Handling   #
@@ -26,19 +34,22 @@ def get_text(game):
 def remove_words_from_screen(screen, game):
     if (game.player_input):
         player_input = game.player_input.split(' ')
-        for word in game.current_words:
+        for word in reversed(game.current_words):
             for player_word in player_input:
                 if (player_word == word.word):
-                    game.player_score += len(word.word)
+                    game.player_score += len(word.word) * game.score_bonus
                     game.characters_typed += len(word.word) + 1
-                    game.current_words.remove(word)
+                    try:
+                        game.current_words.remove(word)   # TODO fix (list.remove(x): x not in list) exception
+                    except:
+                        continue
                     game.add_word_bubble(word, screen)
                     game.button_hover_sound.play()
     return
 
 def check_word_count(game):
     if (len(game.current_words) < game.add_words_trigger):
-        words_to_add = game.add_words_trigger - len(game.current_words)
+        words_to_add = game.add_words_trigger - 1
         for i in range(words_to_add):
             game.current_words.append(random.choice(game.wordbank))
     return
@@ -193,20 +204,48 @@ def draw_words(screen, game):
         screen.blit(text, (word.x, word.y))
     return
 
-def draw_input_box(screen, game):
-    left_border = 0
-    top_border = game.screenH - game.bottom_boxH - game.border_width / 2
-    right_border = game.screenW - game.border_width / 2
-    bottom_border = game.bottom_boxH
-    box = (left_border, top_border, right_border, bottom_border)
-    pygame.draw.rect(screen, game.text_color, box, game.border_width)
+def draw_corner_bubble(screen, game, left_bubble=False):
+    image_size = game.right_corner.get_size()
+    y = game.screenH - image_size[1] * game.bubble_y_offset
+    if (left_bubble):
+        x = 0 - image_size[0] * game.left_corner_x_offset
+        screen.blit(game.left_corner, (x,y))
+    else:
+        x = game.screenW - image_size[0] * game.right_corner_x_offset
+        screen.blit(game.right_corner, (x,y))
+    return
+
+def draw_input_bubbles(screen, game):
+    image_size = game.right_corner.get_size()
+    x_start = 0 + image_size[0] * .75  #game.right_corner_x_offset
+    x_end = game.screenW - image_size[0] * .75 #game.right_corner_x_offset
+    y = game.screenH - game.bottom_boxH
+    pygame.draw.line(screen, game.text_color, (x_start,y), (x_end,y), game.border_width)
+    return
+
+def draw_hud(screen, game):
+    draw_corner_bubble(screen, game)
+    draw_corner_bubble(screen, game, True)
+    draw_input_bubbles(screen, game)
     return
 
 def draw_input_text(screen, game):
+    player_input = game.player_input_obj.get_surface()
     text = game.word_font.render(game.input_prompt, 1, game.text_color)
-    x = game.input_left_padding
+    input_text_size = game.font.getsize(game.player_input_obj.get_text())
+    text_size = game.font.getsize(game.input_prompt)
+    x = game.screenW / 2 - text_size[0] / 2 - input_text_size[0] / 2
     y = game.get_bottom_offset(game.player_score)
     screen.blit(text, (x, y))
+    return
+
+def draw_input(screen, game):
+    player_input = game.player_input_obj.get_surface()
+    #text_size = game.font.getsize(game.input_prompt)
+    input_text_size = game.font.getsize(game.player_input_obj.get_text())
+    x = game.screenW / 2 - input_text_size[0] / 2 #+ text_size[0] / 2
+    y = game.get_bottom_offset(input_text_size) + game.border_width
+    screen.blit(player_input, (x,y))
     return
 
 def draw_score_text(screen, game):
@@ -224,17 +263,9 @@ def draw_words_per_min(screen, game):
         gwpm = get_words_per_min(game)
         game.gross_words_per_min = gwpm
     text, text_width = get_text(game)
-    x = (game.screenW // 2) - (text_width / 2)
+    x = 0 + game.input_left_padding
     y = game.get_bottom_offset(game.player_score)
     screen.blit(text, (x,y))
-    return
-
-def draw_input(screen, game):
-    player_input = game.player_input_obj.get_surface()
-    text_size = game.font.getsize(game.input_prompt)
-    x = game.input_left_padding + text_size[0]
-    y = game.get_bottom_offset(game.input_prompt)
-    screen.blit(player_input, (x,y))
     return
 
 def draw_game_menu_buttons(screen, game, buttons):
@@ -249,10 +280,10 @@ def draw_game_screen(screen, game, buttons):
     game.draw_bg_image(screen)
     draw_words(screen, game)
     draw_game_menu_buttons(screen, game, buttons)
-    draw_input_box(screen, game)
-    draw_input_text(screen, game)
+    draw_hud(screen, game)
     draw_score_text(screen, game)
     draw_words_per_min(screen, game)
+    #draw_input_text(screen, game)
     draw_input(screen, game)
     game.draw_buttons(screen)
     pygame.display.update()

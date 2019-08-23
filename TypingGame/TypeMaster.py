@@ -24,7 +24,6 @@ class Game():
         self.screenH = 600
         self.title = "Type Master"
         self.top_padding = 100
-        self.game_menu_bottom_padding = 200
 
         # Fonts/Colors
         self.button_color = (44, 150, 199)
@@ -44,8 +43,9 @@ class Game():
         self.menu_buttonW = 100
 
         # Important Variables
+        self.score_bonus = 1
         self.up_or_down = -1 # -1 for words up 1 for words down
-        self.seconds_delay = 2
+        self.seconds_delay = 1
         self.max_word_speed = 1
         self.text_blink_delay = .5
         self.player_score = 0
@@ -62,6 +62,11 @@ class Game():
         self.current_words = [""]
         self.gross_words_per_min = 0
         self.wordbank = [""]
+
+        # HUD Variables
+        self.left_corner_x_offset = .15
+        self.right_corner_x_offset = .85
+        self.bubble_y_offset = .42
 
         # Frames
         self.bubble_frame_count = 0
@@ -121,6 +126,8 @@ class Game():
         self.pause_hovering = pygame.image.load("Media/pause_hovering.png")
         self.title_music = "Media/titleScreenMusic.mp3"
         self.title_text = pygame.image.load("Media/title_image.png")
+        self.right_corner = pygame.image.load("Media/bubbles/right_bubble.png")
+        self.left_corner = pygame.image.load("Media/bubbles/left_bubble.png")
 
         # Menu Parameters
         self.x_menu_col_1 = self.screenW / 4
@@ -131,8 +138,6 @@ class Game():
         self.y_menu_col_1 = self.screenH / 4
         self.y_menu_col_2 = self.screenH / 4 * 2
         self.y_menu_col_3 = self.screenH / 4 * 3
-        self.x_game_menu = self.screenW - self.buttonW
-        self.y_game_menu_base = self.screenH - self.border_width * 2 - self.bottom_boxH
 
 
     #####################

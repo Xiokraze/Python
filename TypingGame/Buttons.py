@@ -79,11 +79,11 @@ class Button:
 
     def get_game_buttons(game):
         image_size = game.pause_image.get_size()
-        x = game.screenW - image_size[0] - game.border_width
-        y = game.y_game_menu_base - image_size[1]
+        x = game.screenW - image_size[0]
+        y = game.screenH * .3
         Button.add_button(x, y, "Pause", False, image_size, game)
         image_size = game.mute_image.get_size()
-        y = game.y_game_menu_base - image_size[1] * 2 - game.border_width * 5
+        y = game.screenH * .6
         Button.add_button(x, y, "Mute", False,  image_size, game)
         return Button.buttons
 
