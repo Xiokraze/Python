@@ -12,6 +12,7 @@ class PlayerInput:
         self.text_color = game.text_color
         self.input_string = ""  # Inputted text
         self.font_obj = pygame.font.Font(game.master_font, game.font_size)
+        self.input_size = ()
 
         # Cursor related vars:
         self.cursor_surface = pygame.Surface((2, game.font_size))
@@ -76,7 +77,47 @@ class PlayerInput:
         self.cursor_pos += len(event.unicode)  # Some are empty, e.g. K_UP
         return
 
-    def update(self, events):
+
+    #######################################################
+    def get_char_size(self, input_text, game):
+        if (len(input_text) > 0):
+            return game.font.getsize(input_text[0])
+        return [0]
+
+    def get_reversed_input(self, input_text):
+        temp_string = ""
+        for i in range(len(input_text)):
+            temp_string = temp_string + input_text[i]
+        reversed_string = temp_string[::-1]
+        return reversed_string
+
+    def get_sliced_input(self, reversed_input, char_size, game):
+        sliced_text = ""
+        total = 0
+        for i in range(len(reversed_input)):
+            size = game.font.getsize(reversed_input[i])
+            total += size[0]
+            if (total > game.input_width - char_size[0] * 2):
+                break
+            else:
+                sliced_text = reversed_input[i] + sliced_text
+        return sliced_text
+
+    def modify_input_string(self, game):
+        input_text = self.input_string
+        char_size = self.get_char_size(input_text, game)
+        reversed_input = self.get_reversed_input(input_text)
+        sliced_input = self.get_sliced_input(reversed_input, char_size, game)
+        self.input_size = game.font.getsize(sliced_input)
+        return sliced_input
+
+
+
+    #######################################################
+
+
+
+    def update(self, events, game):
         for event in events:
             if event.type == pygame.KEYDOWN:
                 self.cursor_visible = True
@@ -95,8 +136,9 @@ class PlayerInput:
                 else:
                     PlayerInput.add_key_to_input(self, event) # TODO FIX
 
-        # Re-render text surface:
-        self.surface = self.font_obj.render(self.input_string, self.antialias, self.text_color)
+        # Re-render text surface:           # game.sliced_input
+        #self.surface = self.font_obj.render(self.input_string, self.antialias, self.text_color)
+        self.surface = self.font_obj.render(self.modify_input_string(game), self.antialias, self.text_color)
 
         # Update self.cursor_visible
         self.cursor_ms_counter += self.clock.get_time()

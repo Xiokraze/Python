@@ -12,41 +12,12 @@ def get_words_per_min(game):
     gwpm = round(average_chars / average_time)
     return gwpm
 
-def get_text(game):
+def get_gwpm_text_size(game):
     gwpm = str(game.gross_words_per_min)
     text_string = game.gwpm_prompt + str(gwpm)
     text_size = game.font.getsize(text_string)
     text = game.word_font.render(text_string, 1, game.text_color)
     return text, text_size[0]
-
-def get_char_size(input_text, game):
-    if (len(input_text) > 0):
-        return game.font.getsize(input_text[0])
-    return [0]
-
-def get_reversed_input(input_text):
-    temp_string = ""
-    for i in range(len(input_text)):
-        temp_string = temp_string + input_text[i]
-    reversed_string = temp_string[::-1]
-    return reversed_string
-
-def get_sliced_input(reversed_input, char_size, game):
-    sliced_text = ""
-    total = 0
-    for i in range(len(reversed_input)):
-        size = game.font.getsize(reversed_input[i])
-        total += size[0]
-        if (total > game.input_width - char_size[0] * 2):
-            break
-        else:
-            sliced_text = reversed_input[i] + sliced_text
-    return sliced_text
-
-def get_surface(sliced_input, game):
-    font_obj = pygame.font.Font(game.master_font, game.font_size)
-    surface = font_obj.render(sliced_input, True, game.text_color)
-    return surface
 
 
 #####################
@@ -153,7 +124,7 @@ def toggle_mute(game):
 
 def update_player_input(events, game):
     if (game.words_moving):
-        if (game.player_input_obj.update(events)):
+        if (game.player_input_obj.update(events, game)):
             game.player_input = game.player_input_obj.get_text()
             game.player_input_obj.reset_input_text()
     return
@@ -251,18 +222,6 @@ def draw_hud(screen, game):
     draw_input_top(screen, game)
     return
 
-def draw_input_text(screen, game):
-    input_text = game.player_input_obj.get_text()
-    char_size = get_char_size(input_text, game)
-    reversed_input = get_reversed_input(input_text)
-    sliced_input = get_sliced_input(reversed_input, char_size, game)
-    final_string_size = game.font.getsize(sliced_input)
-    surface = get_surface(sliced_input, game)
-    x = game.screenW / 2 - final_string_size[0] / 2
-    y = game.get_bottom_offset(reversed_input)
-    screen.blit(surface, (x, y))
-    return
-
 def draw_score_text(screen, game):
     text_string = game.score_prompt + str(game.player_score)
     text = game.word_font.render(text_string, 1, game.text_color)
@@ -277,7 +236,7 @@ def draw_words_per_min(screen, game):
         #TODO add tracking for actual average word length typed
         gwpm = get_words_per_min(game)
         game.gross_words_per_min = gwpm
-    text, text_width = get_text(game)
+    text, text_width = get_gwpm_text_size(game)
     x = 0 + game.input_left_padding
     y = game.get_bottom_offset(game.player_score)
     screen.blit(text, (x,y))
@@ -311,6 +270,14 @@ def draw_button_bubbles(buttons, screen, game):
             draw_bubble(button, screen, game, False)
 
 
+    return
+
+def draw_input_text(screen, game):
+    player_input = game.player_input_obj.get_surface()
+    size = game.player_input_obj.input_size
+    x = game.screenW / 2 - size[0] / 2
+    y = game.get_bottom_offset(game.score_prompt) + game.border_width
+    screen.blit(player_input, (x,y))
     return
 
 def draw_game_screen(screen, game, buttons):
