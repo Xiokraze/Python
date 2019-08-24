@@ -78,19 +78,39 @@ class Button:
         return Button.buttons
 
     def get_game_buttons(game):
+        # Pause
         image_size = game.pause_image.get_size()
         x = 0
-        y = game.screenH * .3
+        y = game.screenH * .3 # 1/3 screen height
         Button.add_button(x, y, "Pause", False, image_size, game)
 
+        # Mute
         image_size = game.mute_image.get_size()
-        y = game.screenH * .6
+        y = game.screenH * .6 # 2/3 screen height
         Button.add_button(x, y, "Mute", False,  image_size, game)
 
+        # Speed
         image_size = game.speed_image.get_size()
         x = game.screenW - image_size[0]
         y = game.screenH / 2 - image_size[1] / 2
         Button.add_button(x, y, "Speed", False, image_size, game)
+
+        # +
+        image_size = game.speed_image.get_size()
+        speed_image_size = game.game_button_right.get_size()
+        x = game.screenW - speed_image_size[0] / 2
+        y = game.screenH / 2 - speed_image_size[1] / 2 - image_size[0] / 2
+        Button.add_button(x, y, "+", False, image_size, game)
+
+        # -
+        image_size = game.speed_change.get_size()
+        speed_image_size = game.game_button_right.get_size()
+        x = game.screenW - speed_image_size[0] / 2
+        y = game.screenH / 2 + speed_image_size[1] / 2 + image_size[1] / 2 - 24
+        Button.add_button(x, y, "-", False, image_size, game)
+
+
+
         return Button.buttons
 
 
@@ -138,8 +158,10 @@ class Button:
                     screen.blit(game.pause_hovering, (self.x, self.y))
                 elif (self.text == "Mute"):
                     screen.blit(game.mute_hovering, (self.x, self.y))
-                elif (self.text == "Speed"):
-                    screen.blit(game.speed_hovering, (self.x, self.y))
+                elif (self.text == "+"):
+                    screen.blit(game.speed_up_hovering, (self.x, self.y))
+                elif (self.text == "-"):
+                    screen.blit(game.speed_down_hovering, (self.x, self.y))
                 elif (self.text == "1st"):
                     screen.blit(game.grade_1st_hovering, (self.x, self.y))
                 elif (self.text == "2nd"):

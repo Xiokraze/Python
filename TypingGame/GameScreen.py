@@ -61,15 +61,19 @@ def add_word(game):
     game.current_words.append(new_word)
     return
 
+def word_fail(word, screen, game):
+    game.player_score -= len(word.word)
+    game.current_words.remove(word)
+    game.add_word_bubble(word, screen)
+    game.button_hover_sound.play()
+    return
+
 def move_word_up(word, screen, game):
     position = word.y + word.speed
     if (position > 0):
         word.y += word.speed
     else:
-        game.player_score -= len(word.word)
-        game.current_words.remove(word)
-        game.add_word_bubble(word, screen)
-        game.button_hover_sound.play()
+        word_fail(word, screen, game)
     return
 
 def move_word_down(word, screen, game):
@@ -80,10 +84,7 @@ def move_word_down(word, screen, game):
     if (position < height):
         word.y += word.speed
     else:
-        game.player_score -= len(word.word)
-        game.current_words.remove(word)
-        game.add_word_bubble(word, screen, game)
-        game.button_hover_sound.play()
+        word_fail(word, screen, game)
     return
 
 def move_words(screen, game):
@@ -190,45 +191,12 @@ def continue_game(screen, game):
 #####################
 #      Drawing      #
 #####################
-def draw_words(screen, game):
-    for word in game.current_words:
-        text = game.word_font.render(word.word, 1, word.text_color)
-        screen.blit(text, (word.x, word.y))
-    return
-
-def draw_corner_bubble(screen, game, left_bubble=False):
-    image_size = game.right_corner.get_size()
-    y = game.screenH - image_size[1] * game.bubble_y_offset
-    if (left_bubble):
-        x = 0 - image_size[0] * game.left_corner_x_offset
-        screen.blit(game.left_corner, (x,y))
-    else:
-        x = game.screenW - image_size[0] * game.right_corner_x_offset
-        screen.blit(game.right_corner, (x,y))
-    return
-
-def draw_input_top(screen, game):
-    image_size = game.right_corner.get_size()
-    x_start = 0 + image_size[0] * .75  #game.right_corner_x_offset
-    x_end = game.screenW - image_size[0] * .75 #game.right_corner_x_offset
-    game.input_width = x_end - x_start
-    y = game.screenH - game.bottom_boxH
-    pygame.draw.line(screen, game.text_color, (x_start,y), (x_end,y), game.border_width)
-    return
-
-def draw_hud(screen, game):
-    draw_corner_bubble(screen, game)
-    draw_corner_bubble(screen, game, True)
-    draw_input_top(screen, game)
-    return
-
-def draw_score_text(screen, game):
-    text_string = game.score_prompt + str(game.player_score)
-    text = game.word_font.render(text_string, 1, game.text_color)
-    right_offset = game.get_right_offset(game.player_score)
-    x = right_offset + game.buttonW
-    y = game.get_bottom_offset(game.player_score)
-    screen.blit(text, (x,y))
+def draw_input_text(screen, game):
+    player_input = game.player_input_obj.get_surface()
+    size = game.player_input_obj.input_size
+    x = game.screenW / 2 - size[0] / 2
+    y = game.get_bottom_offset(game.score_prompt) + game.border_width
+    screen.blit(player_input, (x,y))
     return
 
 def draw_words_per_min(screen, game):
@@ -242,42 +210,98 @@ def draw_words_per_min(screen, game):
     screen.blit(text, (x,y))
     return
 
-def draw_bubble(button, screen, game, left_side):
-    if (left_side):
+def draw_score_text(screen, game):
+    text_string = game.score_prompt + str(game.player_score)
+    text = game.word_font.render(text_string, 1, game.text_color)
+    right_offset = game.get_right_offset(game.player_score)
+    x = right_offset + game.buttonW
+    y = game.get_bottom_offset(game.player_score)
+    screen.blit(text, (x,y))
+    return
+
+def draw_input_top(screen, game):
+    image_size = game.right_corner.get_size()
+    x_start = 0 + image_size[0] * .75  #game.right_corner_x_offset
+    x_end = game.screenW - image_size[0] * .75 #game.right_corner_x_offset
+    game.input_width = x_end - x_start
+    y = game.screenH - game.bottom_boxH
+    pygame.draw.line(screen, game.text_color, (x_start,y), (x_end,y), game.border_width)
+    return
+
+def draw_corner_bubble(screen, game, left_bubble=False):
+    image_size = game.right_corner.get_size()
+    y = game.screenH - image_size[1] * game.bubble_y_offset
+    if (left_bubble):
+        x = 0 - image_size[0] * game.left_corner_x_offset
+        screen.blit(game.left_corner, (x,y))
+    else:
+        x = game.screenW - image_size[0] * game.right_corner_x_offset
+        screen.blit(game.right_corner, (x,y))
+    return
+
+def draw_hud(screen, game):
+    draw_corner_bubble(screen, game)
+    draw_corner_bubble(screen, game, True)
+    draw_input_top(screen, game)
+    return
+
+def draw_bubble(button, screen, game): # TODO refractor
+    if (button.text == "Pause" or button.text == "Mute"):
         image_size = game.game_button_left.get_size()
         x = button.x - image_size[0] * game.left_corner_x_offset
         text_size = game.font.getsize(button.text)
         y = button.y - (image_size[1] - text_size[1]) / 2 + text_size[1] / 2
         screen.blit(game.game_button_left, (x,y))
-    else:
+    elif (button.text == "Speed"):
         image_size = game.game_button_right.get_size()
         x = game.screenW - image_size[0] * game.right_corner_x_offset
-        text_size = game.font.getsize(button.text)
-        y = button.y - (image_size[1] - text_size[1]) / 2 + text_size[1] / 2
+        y =  game.screenH / 2 - image_size[1] / 2
         screen.blit(game.game_button_right, (x,y))
+    elif (button.text == "+"):
+        pixel_offset = 24
+        image_size = game.speed_change.get_size()
+        speed_bubble_size = game.speed_image.get_size()
+        text_size = game.font.getsize(button.text)
+        x = button.x - text_size[0] - pixel_offset
+        text_size = game.font.getsize("Speed")
+        y =  game.screenH / 2 - image_size[1] - speed_bubble_size[1] - 20
+        screen.blit(game.speed_change, (x,y))
+    elif (button.text == "-"):
+        pixel_offset = 30
+        image_size = game.speed_change.get_size()
+        speed_bubble_size = game.speed_image.get_size()
+        text_size = game.font.getsize(button.text)
+        x = button.x - text_size[0] - pixel_offset
+        text_size = game.font.getsize("Speed")
+        y = button.y - speed_bubble_size[1] + text_size[1] / 2 + 5
+        screen.blit(game.speed_change, (x,y))
     return
 
 def draw_button_bubbles(buttons, screen, game):
     for button in buttons:
         if (button.text == "Pause"):
             screen.blit(game.pause_image, (button.x, button.y))
-            draw_bubble(button, screen, game, True)
+            draw_bubble(button, screen, game)
         elif (button.text == "Mute"):
             screen.blit(game.mute_image, (button.x, button.y))
-            draw_bubble(button, screen, game, True)
+            draw_bubble(button, screen, game)
         elif (button.text == "Speed"):
             screen.blit(game.speed_image, (button.x, button.y))
-            draw_bubble(button, screen, game, False)
+            draw_bubble(button, screen, game)
+        elif (button.text == "+"):
+            screen.blit(game.speed_up, (button.x, button.y))
+            draw_bubble(button, screen, game)
+        elif (button.text == "-"):
+            screen.blit(game.speed_down, (button.x, button.y))
+            draw_bubble(button, screen, game)
 
 
     return
 
-def draw_input_text(screen, game):
-    player_input = game.player_input_obj.get_surface()
-    size = game.player_input_obj.input_size
-    x = game.screenW / 2 - size[0] / 2
-    y = game.get_bottom_offset(game.score_prompt) + game.border_width
-    screen.blit(player_input, (x,y))
+def draw_words(screen, game):
+    for word in game.current_words:
+        text = game.word_font.render(word.word, 1, word.text_color)
+        screen.blit(text, (word.x, word.y))
     return
 
 def draw_game_screen(screen, game, buttons):

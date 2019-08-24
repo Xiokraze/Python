@@ -126,13 +126,17 @@ class Game():
         self.speed_image = pygame.image.load("Media/speed.png")
         self.mute_hovering = pygame.image.load("Media/mute_hovering.png")
         self.pause_hovering = pygame.image.load("Media/pause_hovering.png")
-        self.speed_hovering = pygame.image.load("Media/speed_hovering.png")
+        self.speed_up_hovering = pygame.image.load("Media/speed_up_hovering.png")
+        self.speed_down_hovering = pygame.image.load("Media/speed_down_hovering.png")
+        self.speed_up = pygame.image.load("Media/speed_up.png")
+        self.speed_down = pygame.image.load("Media/speed_down.png")
         self.title_music = "Media/titleScreenMusic.mp3"
         self.title_text = pygame.image.load("Media/title_image.png")
         self.right_corner = pygame.image.load("Media/bubbles/right_bubble.png")
         self.left_corner = pygame.image.load("Media/bubbles/left_bubble.png")
         self.game_button_left = pygame.image.load("Media/bubbles/game_button_left.png")
         self.game_button_right = pygame.image.load("Media/bubbles/game_button_right.png")
+        self.speed_change = pygame.image.load("Media/bubbles/speed_change.png")
 
         # Menu Parameters
         self.x_menu_col_1 = self.screenW / 4
