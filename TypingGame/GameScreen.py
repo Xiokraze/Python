@@ -29,7 +29,7 @@ def remove_words_from_screen(screen, game):
         for word in reversed(game.current_words):
             for player_word in player_input:
                 if (player_word == word.word):
-                    game.player_score += len(word.word) * game.score_bonus
+                    game.player_score += len(word.word) * game.get_score_multiplier()
                     game.characters_typed += len(word.word) + 1
                     try:
                         game.current_words.remove(word)   # TODO fix (list.remove(x): x not in list) exception
@@ -62,7 +62,7 @@ def add_word(game):
     return
 
 def word_fail(word, screen, game):
-    game.player_score -= len(word.word)
+    game.player_score -= len(word.word) * game.score_multiplier
     game.current_words.remove(word)
     game.add_word_bubble(word, screen)
     game.button_hover_sound.play()
@@ -137,6 +137,11 @@ def check_buttons(game, button):
         toggle_pause(game)
     elif (button.text == "Mute"):
         toggle_mute(game)
+    elif (button.text == "+"):
+        if (game.add_word_delay - 1 > 0):
+            game.add_word_delay -= 1
+    elif (button.text == "-"):
+        game.add_word_delay += 1
     return
 
 def check_mouse_position(mouse_position, buttons, game):
@@ -179,8 +184,9 @@ def check_events(game, buttons):
 
 def continue_game(screen, game):
     check_word_count(game)
-    if (game.update_seconds(game.seconds_delay)):
+    if (game.add_word_seconds >= game.add_word_delay):
         add_word(game)
+        game.add_word_seconds = 0
     word_str_to_obj(game)
     remove_words_from_screen(screen, game)
     move_words(screen, game)
@@ -245,7 +251,7 @@ def draw_hud(screen, game):
     draw_input_top(screen, game)
     return
 
-def draw_bubble(button, screen, game): # TODO refractor
+def draw_bubble(button, screen, game):
     if (button.text == "Pause" or button.text == "Mute"):
         image_size = game.game_button_left.get_size()
         x = button.x - image_size[0] * game.left_corner_x_offset
@@ -268,7 +274,6 @@ def draw_bubble(button, screen, game): # TODO refractor
         screen.blit(game.speed_change, (x,y))
     elif (button.text == "-"):
         pixel_offset = 30
-        image_size = game.speed_change.get_size()
         speed_bubble_size = game.speed_image.get_size()
         text_size = game.font.getsize(button.text)
         x = button.x - text_size[0] - pixel_offset

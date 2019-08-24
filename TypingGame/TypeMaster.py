@@ -43,9 +43,11 @@ class Game():
         self.menu_buttonW = 100
 
         # Important Variables
-        self.score_bonus = 1
+        self.score_multiplier = 1
         self.up_or_down = -1 # -1 for words up 1 for words down
-        self.seconds_delay = 1 # TODO add separate variable for when to add words
+        self.add_word_seconds = 0
+        self.add_word_delay_default = 3
+        self.add_word_delay = 3
         self.max_word_speed = 1
         self.text_blink_delay = .5
         self.player_score = 0
@@ -152,6 +154,24 @@ class Game():
     #####################
     #      Getters      #
     ##################### 
+    def get_score_multiplier(self): # TODO complete score calculations
+        score_multiplier = 0
+        multiplier = self.add_word_delay_default - self.add_word_delay
+        if (multiplier == 2):
+            score_multiplier = 2
+        elif (multiplier == 1):
+            print("1")
+            score_multiplier == 1.5
+        elif (multiplier == 0):
+            score_multiplier = 1
+        else:
+            for i in range(-1, -10, -1):
+                if (i == multiplier):
+                    score_multiplier = 1 + (1 - i * -1) / 10
+                    break
+        print(f"Delay: {self.add_word_delay} Multiplier: {score_multiplier}")
+        return score_multiplier
+
     def get_word_object(self, word):
         return W.Word(self, word)
 
@@ -252,6 +272,7 @@ class Game():
     def check_frame_count(self):
         if (self.frame_count == self.max_FPS):
             self.frame_count = 0
+            self.add_word_seconds += 1
         return
 
     def blink_text(self, screen, text, start_screen):
