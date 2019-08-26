@@ -29,7 +29,7 @@ def remove_words_from_screen(screen, game):
         for word in reversed(game.current_words):
             for player_word in player_input:
                 if (player_word == word.word):
-                    game.player_score += len(word.word) * game.get_score_multiplier()
+                    game.player_score += len(word.word) * game.score_multiplier
                     game.characters_typed += len(word.word) + 1
                     try:
                         game.current_words.remove(word)   # TODO fix (list.remove(x): x not in list) exception
@@ -62,7 +62,7 @@ def add_word(game):
     return
 
 def word_fail(word, screen, game):
-    game.player_score -= len(word.word) * game.score_multiplier
+    game.player_score -= len(word.word) #* game.score_multiplier
     game.current_words.remove(word)
     game.add_word_bubble(word, screen)
     game.button_hover_sound.play()
@@ -138,10 +138,9 @@ def check_buttons(game, button):
     elif (button.text == "Mute"):
         toggle_mute(game)
     elif (button.text == "+"):
-        if (game.add_word_delay - 1 > 0):
-            game.add_word_delay -= 1
+        game.set_game_speed_up()
     elif (button.text == "-"):
-        game.add_word_delay += 1
+        game.set_game_speed_down()
     return
 
 def check_mouse_position(mouse_position, buttons, game):
@@ -183,10 +182,15 @@ def check_events(game, buttons):
     return True
 
 def continue_game(screen, game):
-    check_word_count(game)
-    if (game.add_word_seconds >= game.add_word_delay):
+    #check_word_count(game)
+    if (game.add_word_delay < 1):
+        if (game.check_quick_frame_count()):
+            add_word(game)
+    elif (game.add_word_seconds >= game.add_word_delay):
+        game.quick_frame_count = 0
         add_word(game)
         game.add_word_seconds = 0
+    #print(f"delay: {game.add_word_delay} score mult: {game.word_delay_score_multiplier}")
     word_str_to_obj(game)
     remove_words_from_screen(screen, game)
     move_words(screen, game)
@@ -227,8 +231,8 @@ def draw_score_text(screen, game):
 
 def draw_input_top(screen, game):
     image_size = game.right_corner.get_size()
-    x_start = 0 + image_size[0] * .75  #game.right_corner_x_offset
-    x_end = game.screenW - image_size[0] * .75 #game.right_corner_x_offset
+    x_start = 0 + image_size[0] * .75
+    x_end = game.screenW - image_size[0] * .75
     game.input_width = x_end - x_start
     y = game.screenH - game.bottom_boxH
     pygame.draw.line(screen, game.text_color, (x_start,y), (x_end,y), game.border_width)
@@ -251,7 +255,7 @@ def draw_hud(screen, game):
     draw_input_top(screen, game)
     return
 
-def draw_bubble(button, screen, game):
+def draw_bubble(button, screen, game): # TODO refractor
     if (button.text == "Pause" or button.text == "Mute"):
         image_size = game.game_button_left.get_size()
         x = button.x - image_size[0] * game.left_corner_x_offset

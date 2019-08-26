@@ -43,11 +43,14 @@ class Game():
         self.menu_buttonW = 100
 
         # Important Variables
-        self.score_multiplier = 1
+        self.word_delay_score_multiplier = 1.0
         self.up_or_down = -1 # -1 for words up 1 for words down
         self.add_word_seconds = 0
-        self.add_word_delay_default = 3
-        self.add_word_delay = 3
+        self.add_word_delay_default = 3.0
+        self.add_word_delay = 3.0
+        self.add_words_trigger = 3
+        self.word_delay_low_cap = 10
+        self.word_delay_high_cap = .25
         self.max_word_speed = 1
         self.text_blink_delay = .5
         self.player_score = 0
@@ -59,7 +62,6 @@ class Game():
         self.words_moving = False
 
         # Word Handling
-        self.add_words_trigger = 3
         self.characters_typed = 0
         self.current_words = [""]
         self.gross_words_per_min = 0
@@ -75,6 +77,7 @@ class Game():
         self.bubble_frame_count = 0
         self.frame_count = 0
         self.frame_tracker = 0
+        self.quick_frame_count = 0
         self.max_FPS = 40
         self.seconds = 1
 
@@ -154,23 +157,26 @@ class Game():
     #####################
     #      Getters      #
     ##################### 
-    def get_score_multiplier(self): # TODO complete score calculations
-        score_multiplier = 0
-        multiplier = self.add_word_delay_default - self.add_word_delay
-        if (multiplier == 2):
-            score_multiplier = 2
-        elif (multiplier == 1):
-            print("1")
-            score_multiplier == 1.5
-        elif (multiplier == 0):
-            score_multiplier = 1
-        else:
-            for i in range(-1, -10, -1):
-                if (i == multiplier):
-                    score_multiplier = 1 + (1 - i * -1) / 10
-                    break
-        print(f"Delay: {self.add_word_delay} Multiplier: {score_multiplier}")
-        return score_multiplier
+    #def get_score_multiplier(self): # TODO complete score calculations
+    #    score_multiplier = 0
+    #    multiplier = self.add_word_delay_default - self.add_word_delay
+    #    if (multiplier >= 3):
+    #        score_multiplier = 3
+    #    elif (multiplier >= 2):
+    #        score_multiplier = 2
+    #    elif (multiplier >= 1):
+    #        print("1")
+    #        score_multiplier = 1.5
+    #    elif (multiplier == 0):
+    #        score_multiplier = 1
+    #    else:
+    #        for i in range(-1, -8, -1):
+    #            if (i == multiplier):
+    #                score_multiplier = 1 + (1 - i * -1) / 10
+    #                break
+    #    round(score_multiplier, 2)
+    #    print(f"Delay: {self.add_word_delay} Multiplier: {score_multiplier}")
+    #    return score_multiplier
 
     def get_word_object(self, word):
         return W.Word(self, word)
@@ -223,6 +229,45 @@ class Game():
         But.Button.buttons.clear()
         return
 
+    def set_game_speed_up(self):
+        # Decrease the word delay
+        if (self.add_word_delay > 1.0):
+            self.add_word_delay -= 1.0
+        elif (self.add_word_delay == .25):
+            pass
+        else:
+            self.add_word_delay -= .25
+
+        # Increase score multiplier
+        if (self.word_delay_score_multiplier == 6.0):
+            pass
+        elif (self.word_delay_score_multiplier >= 1.0):
+            self.word_delay_score_multiplier += 1.0
+        else:
+            self.word_delay_score_multiplier += .1
+        self.word_delay_score_multiplier = round(self.word_delay_score_multiplier, 2)
+        return
+
+    def set_game_speed_down(self):
+        # Increase word delay
+        if (self.add_word_delay == 10):
+            pass
+        elif (self.add_word_delay >= 1.0):
+            self.add_word_delay += 1.0
+        else:
+            self.add_word_delay += .25
+
+        # Decrease score multiplier
+        if (self.word_delay_score_multiplier == .3):
+            pass
+        elif (self.word_delay_score_multiplier <= 1.0):
+            self.word_delay_score_multiplier -= .1
+        else:
+            self.word_delay_score_multiplier -= 1.0
+        self.word_delay_score_multiplier = round(self.word_delay_score_multiplier, 2)
+        return
+
+
 
     #####################
     #      Drawing      #
@@ -274,6 +319,15 @@ class Game():
             self.frame_count = 0
             self.add_word_seconds += 1
         return
+
+    def check_quick_frame_count(self):
+        max_FPS_fraction = self.max_FPS * self.add_word_delay
+        if (self.quick_frame_count == max_FPS_fraction):
+            self.quick_frame_count = 0
+            return True
+        self.quick_frame_count += 1
+        #print(f"delay: {self.add_word_delay}   frame: {self.quick_frame_count}")
+        return False
 
     def blink_text(self, screen, text, start_screen):
         if (self.update_seconds(self.text_blink_delay)):
