@@ -295,7 +295,7 @@ class Game():
         return
 
     def check_frame_count(self):
-        if (self.frame_count == self.max_FPS):
+        if (self.frame_count >= self.max_FPS):
             self.frame_count = 0
             self.seconds += 1
             self.add_word_seconds += 1

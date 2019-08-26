@@ -20,6 +20,27 @@ def get_gwpm_text_size(game):
     text = game.word_font.render(text_string, 1, game.text_color)
     return text, text_size[0]
 
+def get_stopwatch_string(game):
+    game_seconds = game.seconds
+    seconds = game_seconds % 60
+    mins = game_seconds // 60
+    hours = game_seconds // 60 // 60
+    if (hours > 0):
+        stopwatch = (f"{hours:02}:{mins:02}:{seconds:02}")
+    elif (mins > 0):
+        stopwatch = (f"{mins:02}:{seconds:02}")
+        print("min")
+    else:
+        stopwatch = (f"{seconds:02}")
+    return stopwatch
+
+def get_stopwatch_location(game, text_size):
+    char_size = game.font.getsize("0")
+    bubble_size = game.right_corner.get_size()
+    x = 0 + (bubble_size[0] * game.right_corner_x_offset) / 2
+    x -= text_size[0] / 2 + char_size[0]
+    y = game.screenH - game.bottom_boxH * 2
+    return x, y
 
 #####################
 #   Word Handling   #
@@ -209,6 +230,14 @@ def draw_input_text(screen, game):
     screen.blit(player_input, (x,y))
     return
 
+def draw_elapsed_time(screen, game):
+    text_string = get_stopwatch_string(game)
+    text_size = game.font.getsize(text_string)
+    text = game.word_font.render(text_string, 1, game.text_color)
+    x, y = get_stopwatch_location(game, text_size)
+    screen.blit(text, (x,y))
+    return
+
 def draw_words_per_min(screen, game):
     if (game.characters_typed != 0 and game.seconds != 0):
         gwpm = get_words_per_min(game)
@@ -217,6 +246,7 @@ def draw_words_per_min(screen, game):
     x = 0 + game.input_left_padding
     y = game.get_bottom_offset(game.player_score)
     screen.blit(text, (x,y))
+    draw_elapsed_time(screen, game)
     return
 
 def draw_score_text(screen, game):
@@ -339,7 +369,7 @@ def play(screen, game):
             break
         if (game.words_moving):
             continue_game(screen, game)
+            game.check_frame_count()
         draw_game_screen(screen, game, buttons)
-        game.check_frame_count()
     game.reset_buttons()
     return
