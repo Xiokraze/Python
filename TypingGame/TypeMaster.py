@@ -73,6 +73,7 @@ class Game():
         self.right_corner_x_offset = .85
         self.bubble_y_offset = .42
         self.input_width = 0
+        self.button_padding = 10
 
         # Frames
         self.bubble_frame_count = 0
@@ -143,6 +144,20 @@ class Game():
         self.game_button_left = pygame.image.load("Media/bubbles/game_button_left.png")
         self.game_button_right = pygame.image.load("Media/bubbles/game_button_right.png")
         self.speed_change = pygame.image.load("Media/bubbles/speed_change.png")
+        self.game_menu_top_left = pygame.image.load("Media/bubbles/game_menu_top_left.png")
+        self.game_menu_top_right = pygame.image.load("Media/bubbles/game_menu_top_right.png")
+
+
+
+        self.test = pygame.image.load("Media/test.png")
+        self.test_hovering = pygame.image.load("Media/test_hover.png")
+
+
+
+
+
+
+
 
         # Menu Parameters
         self.x_menu_col_1 = self.screenW / 4

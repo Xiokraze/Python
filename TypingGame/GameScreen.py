@@ -29,7 +29,6 @@ def get_stopwatch_string(game):
         stopwatch = (f"{hours:02}:{mins:02}:{seconds:02}")
     elif (mins > 0):
         stopwatch = (f"{mins:02}:{seconds:02}")
-        print("min")
     else:
         stopwatch = (f"{seconds:02}")
     return stopwatch
@@ -42,6 +41,13 @@ def get_stopwatch_location(game, text_size):
     y = game.screenH - game.bottom_boxH * 2
     return x, y
 
+def get_score_multiplier_location(text_size, game):
+    char_size = game.font.getsize("0")
+    image_size = game.right_corner.get_size()
+    x = game.screenW - (image_size[0] * game.right_corner_x_offset) / 2
+    x -= text_size[0] / 2 - char_size[0]
+    y = game.screenH - game.bottom_boxH * 2
+    return x, y
 #####################
 #   Word Handling   #
 #####################   
@@ -63,9 +69,9 @@ def remove_words_from_screen(screen, game):
 
 def check_word_count(game):
     if (len(game.current_words) < game.add_words_trigger):
-        words_to_add = game.add_words_trigger - 1
-        for i in range(words_to_add):
-            game.current_words.append(random.choice(game.wordbank))
+        #words_to_add = game.add_words_trigger - 1
+        #for i in range(words_to_add):
+        game.current_words.append(random.choice(game.wordbank))
     return
 
 def word_str_to_obj(game):
@@ -204,7 +210,7 @@ def check_events(game, buttons):
     return True
 
 def continue_game(screen, game):
-    #check_word_count(game)
+    check_word_count(game)
     if (game.add_word_delay < 1):
         if (game.check_quick_frame_count()):
             add_word(game)
@@ -249,6 +255,15 @@ def draw_words_per_min(screen, game):
     draw_elapsed_time(screen, game)
     return
 
+def draw_score_multiplier(screen, game):
+    score_mult = game.word_delay_score_multiplier # TODO add functionality for correct words in a row
+    text_string = "x " + str(score_mult)
+    text = game.word_font.render(text_string, 1, game.text_color)
+    text_size = game.font.getsize(text_string)
+    x, y = get_score_multiplier_location(text_size, game)
+    screen.blit(text, (x,y))
+    return
+
 def draw_score_text(screen, game):
     text_string = game.score_prompt + str(game.player_score)
     text = game.word_font.render(text_string, 1, game.text_color)
@@ -256,6 +271,7 @@ def draw_score_text(screen, game):
     x = right_offset + game.buttonW
     y = game.get_bottom_offset(game.player_score)
     screen.blit(text, (x,y))
+    draw_score_multiplier(screen, game)
     return
 
 def draw_input_top(screen, game):
@@ -278,10 +294,33 @@ def draw_corner_bubble(screen, game, left_bubble=False):
         screen.blit(game.right_corner, (x,y))
     return
 
+def draw_left_game_menu_bubble(screen, game):
+    image_size = game.game_menu_top_left.get_size()
+    y = game.screenH - game.bottom_boxH - image_size[1]
+    image_size = game.right_corner.get_size()
+    x = 0 + image_size[0] * .75
+    screen.blit(game.game_menu_top_left, (x, y))
+    return
+
+def draw_right_game_menu_bubble(screen, game):
+    image_size = game.game_menu_top_right.get_size()
+    y = game.screenH - game.bottom_boxH - image_size[1]
+    x = game.screenW - image_size[0]
+    image_size = game.right_corner.get_size()
+    x -= image_size[0] * game.right_corner_x_offset
+    screen.blit(game.game_menu_top_right, (x, y))
+    return
+
+def draw_game_menu_bubbles(screen, game):
+    draw_left_game_menu_bubble(screen, game)
+    draw_right_game_menu_bubble(screen, game)
+    return
+
 def draw_hud(screen, game):
     draw_corner_bubble(screen, game)
     draw_corner_bubble(screen, game, True)
     draw_input_top(screen, game)
+    draw_game_menu_bubbles(screen, game)
     return
 
 def draw_bubble(button, screen, game): # TODO refractor
@@ -315,8 +354,13 @@ def draw_bubble(button, screen, game): # TODO refractor
         screen.blit(game.speed_change, (x,y))
     return
 
+
+# TODO update images
 def draw_button_bubbles(buttons, screen, game):
     for button in buttons:
+        #if (button.text == "Pause"):
+        #    screen.blit(game.pause_image, (button.x, button.y))
+        #    draw_bubble(button, screen, game)
         if (button.text == "Pause"):
             screen.blit(game.pause_image, (button.x, button.y))
             draw_bubble(button, screen, game)
@@ -331,6 +375,13 @@ def draw_button_bubbles(buttons, screen, game):
             draw_bubble(button, screen, game)
         elif (button.text == "-"):
             screen.blit(game.speed_down, (button.x, button.y))
+            draw_bubble(button, screen, game)
+
+
+
+
+        elif (button.text == "Test"):
+            screen.blit(game.test, (button.x, button.y))
             draw_bubble(button, screen, game)
 
 

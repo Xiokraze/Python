@@ -110,6 +110,16 @@ class Button:
         Button.add_button(x, y, "-", False, image_size, game)
 
 
+        # Pause Test
+        image_size = game.game_menu_top_left.get_size()
+        y = game.screenH - game.bottom_boxH
+        image_size = game.right_corner.get_size()
+        bubble_x = 0 + image_size[0] * .75
+        image_size = game.test.get_size()
+        x = bubble_x + image_size[0] / 2
+        y -= image_size[1] - game.button_padding
+        Button.add_button(x, y, "Test", False, image_size, game)
+
 
         return Button.buttons
 
@@ -178,4 +188,11 @@ class Button:
                     screen.blit(game.grade_7th_hovering, (self.x, self.y))
                 elif (self.text == "8th"):
                     screen.blit(game.grade_8th_hovering, (self.x, self.y))
+
+
+
+
+
+                elif (self.text == "Test"):
+                    screen.blit(game.test_hovering, (self.x, self.y))
         return
