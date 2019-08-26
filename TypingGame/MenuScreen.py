@@ -3,6 +3,18 @@ import Wordbanks
 
 
 #####################
+#      Getters      #
+#####################
+def get_avg_word_length(wordbank):
+    num_words = len(wordbank)
+    total = 0
+    for word in wordbank:
+        total += len(word)
+    avg_length = total / num_words
+    return avg_length
+
+
+#####################
 #   Event Handling  #
 #####################
 def check_mouse_position(game, mouse_position, button):
@@ -38,6 +50,8 @@ def check_button(game, button):
     elif (button.text == "8th"):
         game.wordbank = Wordbanks.vocab8thGrade
     if (game.wordbank != None):
+        avg_word_length = get_avg_word_length(game.wordbank)
+        game.avg_word_length = avg_word_length
         return True
     return False
 

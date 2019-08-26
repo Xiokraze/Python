@@ -62,6 +62,7 @@ class Game():
         self.words_moving = False
 
         # Word Handling
+        self.avg_word_length = 0
         self.characters_typed = 0
         self.current_words = [""]
         self.gross_words_per_min = 0
@@ -157,27 +158,6 @@ class Game():
     #####################
     #      Getters      #
     ##################### 
-    #def get_score_multiplier(self): # TODO complete score calculations
-    #    score_multiplier = 0
-    #    multiplier = self.add_word_delay_default - self.add_word_delay
-    #    if (multiplier >= 3):
-    #        score_multiplier = 3
-    #    elif (multiplier >= 2):
-    #        score_multiplier = 2
-    #    elif (multiplier >= 1):
-    #        print("1")
-    #        score_multiplier = 1.5
-    #    elif (multiplier == 0):
-    #        score_multiplier = 1
-    #    else:
-    #        for i in range(-1, -8, -1):
-    #            if (i == multiplier):
-    #                score_multiplier = 1 + (1 - i * -1) / 10
-    #                break
-    #    round(score_multiplier, 2)
-    #    print(f"Delay: {self.add_word_delay} Multiplier: {score_multiplier}")
-    #    return score_multiplier
-
     def get_word_object(self, word):
         return W.Word(self, word)
 
@@ -317,6 +297,7 @@ class Game():
     def check_frame_count(self):
         if (self.frame_count == self.max_FPS):
             self.frame_count = 0
+            self.seconds += 1
             self.add_word_seconds += 1
         return
 
@@ -326,7 +307,6 @@ class Game():
             self.quick_frame_count = 0
             return True
         self.quick_frame_count += 1
-        #print(f"delay: {self.add_word_delay}   frame: {self.quick_frame_count}")
         return False
 
     def blink_text(self, screen, text, start_screen):

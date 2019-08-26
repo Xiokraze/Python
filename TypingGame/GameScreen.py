@@ -6,9 +6,10 @@ import random
 #      Getters      #
 ##################### 
 def get_words_per_min(game):
+    one_min = 60
     gwpm = str(game.gross_words_per_min)
-    average_chars = game.characters_typed / 5
-    average_time = game.seconds / 60
+    average_chars = game.characters_typed / game.avg_word_length
+    average_time = game.seconds / one_min
     gwpm = round(average_chars / average_time)
     return gwpm
 
@@ -29,7 +30,7 @@ def remove_words_from_screen(screen, game):
         for word in reversed(game.current_words):
             for player_word in player_input:
                 if (player_word == word.word):
-                    game.player_score += len(word.word) * game.score_multiplier
+                    game.player_score += len(word.word) * game.word_delay_score_multiplier
                     game.characters_typed += len(word.word) + 1
                     try:
                         game.current_words.remove(word)   # TODO fix (list.remove(x): x not in list) exception
@@ -190,7 +191,6 @@ def continue_game(screen, game):
         game.quick_frame_count = 0
         add_word(game)
         game.add_word_seconds = 0
-    #print(f"delay: {game.add_word_delay} score mult: {game.word_delay_score_multiplier}")
     word_str_to_obj(game)
     remove_words_from_screen(screen, game)
     move_words(screen, game)
@@ -211,7 +211,6 @@ def draw_input_text(screen, game):
 
 def draw_words_per_min(screen, game):
     if (game.characters_typed != 0 and game.seconds != 0):
-        #TODO add tracking for actual average word length typed
         gwpm = get_words_per_min(game)
         game.gross_words_per_min = gwpm
     text, text_width = get_gwpm_text_size(game)
