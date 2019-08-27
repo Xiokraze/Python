@@ -132,7 +132,8 @@ class PlayerInput:
                         PlayerInput.key_shift(self)
                 elif event.key == pl.K_RETURN:
                     return True
-                #elif event.key == pl.ESCAPE: #TODO clear current input if esc is hit
+                elif event.key == pl.K_ESCAPE:
+                    pass
                 else:
                     PlayerInput.add_key_to_input(self, event) # TODO FIX
 

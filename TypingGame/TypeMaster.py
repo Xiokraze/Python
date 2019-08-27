@@ -60,6 +60,8 @@ class Game():
         self.blinking = True
         self.music_playing = False
         self.words_moving = False
+        self.pause_screen_drawn = False
+        self.pause_bubbles_drawn = False
 
         # Word Handling
         self.avg_word_length = 0
@@ -99,6 +101,7 @@ class Game():
 
         # Media
         self.bg_image = pygame.image.load("Media/underwater.jpg")
+        self.pause_bg = pygame.image.load("Media/underwater.jpg")
         self.button_hover_sound = pygame.mixer.Sound("Media/bubble.ogg")
         self.game_music = "Media/gameMusic1.mp3"
         self.grade_1st = pygame.image.load("Media/1st_grade.png")
@@ -262,6 +265,15 @@ class Game():
         self.word_delay_score_multiplier = round(self.word_delay_score_multiplier, 2)
         return
 
+    def set_game_buttons_visible(self):
+        for button in But.Button.buttons:
+            button.visible = True
+        return
+
+    def set_game_buttons_hidden(self):
+        for button in But.Button.buttons:
+            button.visible = False
+        return
 
 
     #####################
@@ -362,6 +374,7 @@ def main():
     game = Game()
     screen = game.set_screen()
     game.set_player_input()
+    game.pause_bg.set_alpha(200)
 
     TitleScreen.title_screen(screen, game)
     MenuScreen.menu_screen(screen, game)

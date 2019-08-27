@@ -4,11 +4,10 @@ import pygame
 class Button:
     buttons = []
     num_buttons = 0
-    def __init__(self, x, y, text, visible, game, is_menu_button, image_size=None):
+    def __init__(self, x, y, text, game, is_menu_button, image_size=None):
         self.x = x
         self.y = y
         self.text = text
-        self.visible = visible
         self.text_color = game.text_color
         self.color = game.button_color
         self.hovering = False
@@ -17,8 +16,10 @@ class Button:
         # Menu/Game Button Parameters
         if (is_menu_button):
             self.width = image_size[0]
+            self.visible = True
         else:
             self.width = game.buttonW
+            self.visible = False
         self.height = image_size[1]
         self.border = (self.x-2, self.y-2, self.width+4, self.height+4)
 
@@ -110,15 +111,15 @@ class Button:
         Button.add_button(x, y, "-", False, image_size, game)
 
 
-        # Pause Test
-        image_size = game.game_menu_top_left.get_size()
-        y = game.screenH - game.bottom_boxH
-        image_size = game.right_corner.get_size()
-        bubble_x = 0 + image_size[0] * .75
-        image_size = game.test.get_size()
-        x = bubble_x + image_size[0] / 2
-        y -= image_size[1] - game.button_padding
-        Button.add_button(x, y, "Test", False, image_size, game)
+        # Pause
+        #image_size = game.game_menu_top_left.get_size()
+        #y = game.screenH - game.bottom_boxH
+        #image_size = game.right_corner.get_size()
+        #bubble_x = 0 + image_size[0] * .75
+        #image_size = game.test.get_size()
+        #x = bubble_x + image_size[0] / 2
+        #y -= image_size[1] - game.button_padding
+        #Button.add_button(x, y, "Pause", False, image_size, game)
 
 
         return Button.buttons
@@ -141,7 +142,7 @@ class Button:
             x, 
             y, 
             value,
-            True,
+            #True,
             game,
             is_menu_button,
             image_size)
@@ -164,15 +165,7 @@ class Button:
             # Draw rect here to add outline to visible buttons\
             #pygame.draw.rect(screen, self.color, self.border, game.border_width)
             if (self.hovering):
-                if (self.text == "Pause"):
-                    screen.blit(game.pause_hovering, (self.x, self.y))
-                elif (self.text == "Mute"):
-                    screen.blit(game.mute_hovering, (self.x, self.y))
-                elif (self.text == "+"):
-                    screen.blit(game.speed_up_hovering, (self.x, self.y))
-                elif (self.text == "-"):
-                    screen.blit(game.speed_down_hovering, (self.x, self.y))
-                elif (self.text == "1st"):
+                if (self.text == "1st"):
                     screen.blit(game.grade_1st_hovering, (self.x, self.y))
                 elif (self.text == "2nd"):
                     screen.blit(game.grade_2nd_hovering, (self.x, self.y))
@@ -188,11 +181,14 @@ class Button:
                     screen.blit(game.grade_7th_hovering, (self.x, self.y))
                 elif (self.text == "8th"):
                     screen.blit(game.grade_8th_hovering, (self.x, self.y))
+                if (self.visible):
+                    if (self.text == "Pause"):
+                        screen.blit(game.pause_hovering, (self.x, self.y))
+                    elif (self.text == "Mute"):
+                        screen.blit(game.mute_hovering, (self.x, self.y))
+                    elif (self.text == "+"):
+                        screen.blit(game.speed_up_hovering, (self.x, self.y))
+                    elif (self.text == "-"):
+                        screen.blit(game.speed_down_hovering, (self.x, self.y))
 
-
-
-
-
-                elif (self.text == "Test"):
-                    screen.blit(game.test_hovering, (self.x, self.y))
         return

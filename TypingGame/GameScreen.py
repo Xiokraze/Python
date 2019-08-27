@@ -1,4 +1,5 @@
 import pygame
+import pygame.locals as pl
 import random
 
 
@@ -48,6 +49,8 @@ def get_score_multiplier_location(text_size, game):
     x -= text_size[0] / 2 - char_size[0]
     y = game.screenH - game.bottom_boxH * 2
     return x, y
+
+
 #####################
 #   Word Handling   #
 #####################   
@@ -173,18 +176,19 @@ def check_buttons(game, button):
 
 def check_mouse_position(mouse_position, buttons, game):
     for button in buttons:
-        if (button.is_over(mouse_position)):
-            button.color = game.button_hover_color
-            button.text_color = game.button_text_color
-            button.hovering = True
-            if (button.play_sound):
-                game.button_hover_sound.play()
-                button.play_sound = False
-        else:
-            button.color = game.button_color
-            button.text_color = game.button_text_color
-            button.hovering = False
-            button.play_sound = True
+        if (button.visible):
+            if (button.is_over(mouse_position)):
+                button.color = game.button_hover_color
+                button.text_color = game.button_text_color
+                button.hovering = True
+                if (button.play_sound):
+                    game.button_hover_sound.play()
+                    button.play_sound = False
+            else:
+                button.color = game.button_color
+                button.text_color = game.button_text_color
+                button.hovering = False
+                button.play_sound = True
     return
 
 def check_button_clicked(mouse_position, buttons, game):
@@ -200,7 +204,15 @@ def check_events(game, buttons):
         if (event.type == pygame.QUIT):
             game.quit_game()      
         elif (event.type == pygame.KEYDOWN):
-            pass
+            if event.key == pl.K_ESCAPE:
+                if (game.words_moving):
+                    game.words_moving = False
+                    game.pause_screen_drawn = False
+                    game.pause_bubbles_drawn = False
+                    game.set_game_buttons_visible()
+                else:
+                    game.words_moving = True
+                    game.set_game_buttons_hidden()
         elif (event.type == pygame.MOUSEMOTION):
             check_mouse_position(mouse_position, buttons, game)
         elif (event.type == pygame.MOUSEBUTTONDOWN):
@@ -294,33 +306,33 @@ def draw_corner_bubble(screen, game, left_bubble=False):
         screen.blit(game.right_corner, (x,y))
     return
 
-def draw_left_game_menu_bubble(screen, game):
-    image_size = game.game_menu_top_left.get_size()
-    y = game.screenH - game.bottom_boxH - image_size[1]
-    image_size = game.right_corner.get_size()
-    x = 0 + image_size[0] * .75
-    screen.blit(game.game_menu_top_left, (x, y))
-    return
+#def draw_left_game_menu_bubble(screen, game):
+#    image_size = game.game_menu_top_left.get_size()
+#    y = game.screenH - game.bottom_boxH - image_size[1]
+#    image_size = game.right_corner.get_size()
+#    x = 0 + image_size[0] * .75
+#    screen.blit(game.game_menu_top_left, (x, y))
+#    return
 
-def draw_right_game_menu_bubble(screen, game):
-    image_size = game.game_menu_top_right.get_size()
-    y = game.screenH - game.bottom_boxH - image_size[1]
-    x = game.screenW - image_size[0]
-    image_size = game.right_corner.get_size()
-    x -= image_size[0] * game.right_corner_x_offset
-    screen.blit(game.game_menu_top_right, (x, y))
-    return
+#def draw_right_game_menu_bubble(screen, game):
+#    image_size = game.game_menu_top_right.get_size()
+#    y = game.screenH - game.bottom_boxH - image_size[1]
+#    x = game.screenW - image_size[0]
+#    image_size = game.right_corner.get_size()
+#    x -= image_size[0] * game.right_corner_x_offset
+#    screen.blit(game.game_menu_top_right, (x, y))
+#    return
 
-def draw_game_menu_bubbles(screen, game):
-    draw_left_game_menu_bubble(screen, game)
-    draw_right_game_menu_bubble(screen, game)
-    return
+#def draw_game_menu_bubbles(screen, game):
+#    draw_left_game_menu_bubble(screen, game)
+#    draw_right_game_menu_bubble(screen, game)
+#    return
 
 def draw_hud(screen, game):
     draw_corner_bubble(screen, game)
     draw_corner_bubble(screen, game, True)
     draw_input_top(screen, game)
-    draw_game_menu_bubbles(screen, game)
+    #draw_game_menu_bubbles(screen, game)
     return
 
 def draw_bubble(button, screen, game): # TODO refractor
@@ -358,33 +370,19 @@ def draw_bubble(button, screen, game): # TODO refractor
 # TODO update images
 def draw_button_bubbles(buttons, screen, game):
     for button in buttons:
-        #if (button.text == "Pause"):
-        #    screen.blit(game.pause_image, (button.x, button.y))
-        #    draw_bubble(button, screen, game)
         if (button.text == "Pause"):
             screen.blit(game.pause_image, (button.x, button.y))
-            draw_bubble(button, screen, game)
         elif (button.text == "Mute"):
             screen.blit(game.mute_image, (button.x, button.y))
-            draw_bubble(button, screen, game)
         elif (button.text == "Speed"):
             screen.blit(game.speed_image, (button.x, button.y))
-            draw_bubble(button, screen, game)
         elif (button.text == "+"):
             screen.blit(game.speed_up, (button.x, button.y))
-            draw_bubble(button, screen, game)
         elif (button.text == "-"):
             screen.blit(game.speed_down, (button.x, button.y))
+        if not (game.pause_bubbles_drawn):
             draw_bubble(button, screen, game)
-
-
-
-
-        elif (button.text == "Test"):
-            screen.blit(game.test, (button.x, button.y))
-            draw_bubble(button, screen, game)
-
-
+    game.pause_bubbles_drawn = True
     return
 
 def draw_words(screen, game):
@@ -394,14 +392,19 @@ def draw_words(screen, game):
     return
 
 def draw_game_screen(screen, game, buttons):
-    game.draw_bg_image(screen)
-    draw_words(screen, game)
-    draw_button_bubbles(buttons, screen, game)
-    draw_hud(screen, game)
-    draw_score_text(screen, game)
-    draw_words_per_min(screen, game)
-    draw_input_text(screen, game)
-    game.draw_buttons(screen)
+    if (game.words_moving):
+        game.draw_bg_image(screen)
+        draw_words(screen, game)
+        draw_hud(screen, game)
+        draw_score_text(screen, game)
+        draw_words_per_min(screen, game)
+        draw_input_text(screen, game)
+    else:
+        if not (game.pause_screen_drawn):
+            screen.blit(game.pause_bg, (0,0))
+            game.pause_screen_drawn = True
+        draw_button_bubbles(buttons, screen, game)
+        game.draw_buttons(screen)
     pygame.display.update()
     return
 
