@@ -10,14 +10,14 @@ class PlayerInput:
         # Text related vars:
         self.antialias = True
         self.text_color = game.text_color
-        self.input_string = ""  # Inputted text
+        self.input_string = ""
         self.font_obj = pygame.font.Font(game.master_font, game.font_size)
         self.input_size = ()
 
         # Cursor related vars:
         self.cursor_surface = pygame.Surface((2, game.font_size))
         self.cursor_surface.fill(self.cursor_color)
-        self.cursor_pos = len(self.input_string)  # Inside text
+        self.cursor_pos = len(self.input_string)
         self.cursor_visible = True  # Switches every self.cursor_switch_ms ms
         self.cursor_ms = 400
         self.cursor_ms_counter = 0
@@ -74,7 +74,7 @@ class PlayerInput:
             + event.unicode
             + self.input_string[self.cursor_pos:]
         )
-        self.cursor_pos += len(event.unicode)  # Some are empty, e.g. K_UP
+        self.cursor_pos += len(event.unicode)
         return
 
 
@@ -137,7 +137,7 @@ class PlayerInput:
                 else:
                     PlayerInput.add_key_to_input(self, event) # TODO FIX
 
-        # Re-render text surface:           # game.sliced_input
+        # Re-render text surface:
         self.surface = self.font_obj.render(self.modify_input_string(game), self.antialias, self.text_color)
 
         # Update self.cursor_visible

@@ -97,7 +97,7 @@ class Bubbles:
         Bubbles.update_bubbles(self, game)
         return
 
-    def draw_button_bubble(button, screen, game): # TODO refractor
+    def draw_button_bubble(button, screen, game):
         text_size = game.font.getsize(button.text)
 
         if (button.text == "Mute"):

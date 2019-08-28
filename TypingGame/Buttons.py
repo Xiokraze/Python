@@ -143,7 +143,7 @@ class Button:
 
     def draw(self, screen, game, hover=None):
         if (self.visible):
-            # Draw rect here to add outline to visible buttons\
+            # Draw rect here to add outline to visible buttons
             #pygame.draw.rect(screen, self.color, self.border, game.border_width)
             if (self.hovering):
                 if (self.text == "1st"):
@@ -180,5 +180,4 @@ class Button:
                     screen.blit(game.speed_up, (self.x, self.y))
                 elif (self.text == "-"):
                     screen.blit(game.speed_down, (self.x, self.y))
-
         return
