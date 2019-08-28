@@ -160,28 +160,6 @@ def draw_game_screen(screen, game, buttons):
 #####################
 #    Game Screen    #
 #####################
-def check_button(game, button):
-    if (button.text == "1st"):
-        game.wordbank = Wordbanks.vocab1stGrade
-    elif (button.text == "2nd"):
-        game.wordbank = Wordbanks.vocab2ndGrade
-    elif (button.text == "3rd"):
-        game.wordbank = Wordbanks.vocab3rdGrade
-    elif (button.text == "4th"):
-        game.wordbank = Wordbanks.vocab4thGrade
-    elif (button.text == "5th"):
-        game.wordbank = Wordbanks.vocab5thGrade
-    elif (button.text == "6th"):
-        game.wordbank = Wordbanks.vocab6thGrade
-    elif (button.text == "7th"):
-        game.wordbank = Wordbanks.vocab7thGrade
-    elif (button.text == "8th"):
-        game.wordbank = Wordbanks.vocab8thGrade
-    if (game.wordbank != None):
-        avg_word_length = get_avg_word_length(game.wordbank)
-        game.avg_word_length = avg_word_length
-        return True
-    return False
 
 def play(screen, game):
     game.play_music(game.game_music)

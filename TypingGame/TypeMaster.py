@@ -316,7 +316,7 @@ class Game():
         return
 
     def check_quick_frame_count(self):
-        status = Events.check_quick_frame_count(game)
+        status = Events.check_quick_frame_count(self)
         return status
 
     def update_seconds(self, delay):

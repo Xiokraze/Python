@@ -123,7 +123,7 @@ def remove_words_from_screen(screen, game): # TODO fix error
         for word in reversed(game.current_words):
             for player_word in player_input:
                 if (player_word == word.word):
-                    value = len(word.word) * game.word_delay_score_multiplier
+                    value = int(len(word.word) * game.word_delay_score_multiplier)
                     game.player_score += value
                     game.characters_typed += len(word.word) + 1
                     try:
