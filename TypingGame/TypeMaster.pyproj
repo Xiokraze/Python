@@ -27,23 +27,17 @@
     <Compile Include="Buttons.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GameScreen.py">
+    <Compile Include="EventHandling.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MenuScreen.py">
+    <Compile Include="GameScreen.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlayerInput.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TitleScreen.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="TypeMaster.py" />
     <Compile Include="Words.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Wordbanks.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

@@ -60,6 +60,23 @@ class Bubbles:
             Bubbles.bubble_array.append(Bubbles(game))
         return
 
+    def add_word_bubble(game, word, screen):
+        image_size = game.menu_header.get_size()
+        y_offset = word.y - image_size[1] / 2
+        Bubbles.bubble_array.append(Bubbles(
+            game, 
+            True, 
+            word.x, 
+            y_offset)
+        )
+        return
+
+    def pop_word_bubbles(screen):
+        for bubble in Bubbles.bubble_array:
+            if (bubble.pop_bubble(screen)):
+                Bubbles.bubble_array.remove(bubble)
+        return
+
 
     #####################
     #      Drawing      #
@@ -70,4 +87,55 @@ class Bubbles:
             self.y -= self.speed
             if (self.y <= (0 - game.font_size - game.border_width)):
                 self.popping = True
+        return
+
+    def draw_bubbles(self, game, screen):
+        for bubble in Bubbles.bubble_array:
+            if not (bubble.draw(screen, game)):
+                if (bubble.pop_bubble(screen)):
+                    Bubbles.bubble_array.remove(bubble)
+        Bubbles.update_bubbles(self, game)
+        return
+
+    def draw_button_bubble(button, screen, game): # TODO refractor
+        text_size = game.font.getsize(button.text)
+
+        if (button.text == "Mute"):
+            image_size = game.game_button_left.get_size()
+            x = button.x - text_size[0] / 2
+            y = button.y - image_size[1] / 2 + text_size[1]
+            screen.blit(game.game_button_left, (x,y))
+        elif (button.text == "Speed"):
+            image_size = game.game_button_right.get_size()
+            x = button.x - text_size[0] / 2
+            y =  button.y - image_size[1] / 2 + text_size[1]
+            screen.blit(game.game_button_right, (x,y))
+        elif (button.text == "+"):
+            pixel_y_offset = 12
+            image_size = game.speed_up.get_size()
+            speed_bubble_size = game.speed_image.get_size()
+            x = button.x - image_size[0] + text_size[0]
+            text_size = game.font.getsize("Speed")
+            y =  button.y - speed_bubble_size[1] + text_size[1] / 2 + pixel_y_offset
+            screen.blit(game.speed_change, (x,y))
+        elif (button.text == "-"):
+            pixel_x_offset = 2
+            pixel_y_offset = 5
+            image_size = game.speed_down.get_size()
+            speed_bubble_size = game.speed_image.get_size()
+            x = button.x - image_size[0] / 2 - text_size[0] * 2 + pixel_x_offset
+            text_size = game.font.getsize("Speed")
+            y = button.y - speed_bubble_size[1] + text_size[1] / 2 + pixel_y_offset
+            screen.blit(game.speed_change, (x,y))
+        return
+
+    def draw_corner_bubble(screen, game, left_bubble=False):
+        image_size = game.right_corner.get_size()
+        y = game.screenH - image_size[1] * game.bubble_y_offset
+        if (left_bubble):
+            x = 0 - image_size[0] * game.left_corner_x_offset
+            screen.blit(game.left_corner, (x,y))
+        else:
+            x = game.screenW - image_size[0] * game.right_corner_x_offset
+            screen.blit(game.right_corner, (x,y))
         return

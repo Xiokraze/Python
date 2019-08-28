@@ -78,7 +78,9 @@ class PlayerInput:
         return
 
 
-    #######################################################
+    #####################
+    #   Input Handling  #
+    #####################
     def get_char_size(self, input_text, game):
         if (len(input_text) > 0):
             return game.font.getsize(input_text[0])
@@ -112,11 +114,9 @@ class PlayerInput:
         return sliced_input
 
 
-
-    #######################################################
-
-
-
+    #####################
+    #   Update Object   #
+    #####################
     def update(self, events, game):
         for event in events:
             if event.type == pygame.KEYDOWN:
@@ -138,7 +138,6 @@ class PlayerInput:
                     PlayerInput.add_key_to_input(self, event) # TODO FIX
 
         # Re-render text surface:           # game.sliced_input
-        #self.surface = self.font_obj.render(self.input_string, self.antialias, self.text_color)
         self.surface = self.font_obj.render(self.modify_input_string(game), self.antialias, self.text_color)
 
         # Update self.cursor_visible

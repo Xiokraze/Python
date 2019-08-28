@@ -12,14 +12,13 @@ class Button:
         self.color = game.button_color
         self.hovering = False
         self.play_sound = True
+        self.visible = True
         
         # Menu/Game Button Parameters
         if (is_menu_button):
             self.width = image_size[0]
-            self.visible = True
         else:
             self.width = game.buttonW
-            self.visible = False
         self.height = image_size[1]
         self.border = (self.x-2, self.y-2, self.width+4, self.height+4)
 
@@ -78,49 +77,32 @@ class Button:
             Button.add_button(x, y, value, True, image_size, game)
         return Button.buttons
 
-    def get_game_buttons(game):
-        # Pause
-        image_size = game.pause_image.get_size()
-        x = 0
-        y = game.screenH * .3 # 1/3 screen height
-        Button.add_button(x, y, "Pause", False, image_size, game)
+    def get_game_buttons(game): # TODO refractor
+        x_padding = 25
 
         # Mute
         image_size = game.mute_image.get_size()
-        y = game.screenH * .6 # 2/3 screen height
+        x = 0 + x_padding
+        y = game.screenH / 2 - image_size[1] / 2
         Button.add_button(x, y, "Mute", False,  image_size, game)
 
         # Speed
         image_size = game.speed_image.get_size()
-        x = game.screenW - image_size[0]
+        x = game.screenW - image_size[0] - x_padding
         y = game.screenH / 2 - image_size[1] / 2
         Button.add_button(x, y, "Speed", False, image_size, game)
 
         # +
-        image_size = game.speed_image.get_size()
-        speed_image_size = game.game_button_right.get_size()
-        x = game.screenW - speed_image_size[0] / 2
-        y = game.screenH / 2 - speed_image_size[1] / 2 - image_size[0] / 2
+        image_size = game.speed_change.get_size()
+        x = game.screenW - image_size[0]
+        y = game.screenH / 2 - image_size[1] * 1.25 # offset for extra image px
         Button.add_button(x, y, "+", False, image_size, game)
 
         # -
         image_size = game.speed_change.get_size()
-        speed_image_size = game.game_button_right.get_size()
-        x = game.screenW - speed_image_size[0] / 2
-        y = game.screenH / 2 + speed_image_size[1] / 2 + image_size[1] / 2 - 24
+        x = game.screenW - image_size[0]
+        y = game.screenH / 2 + image_size[1] * .9 # offset for extra image px
         Button.add_button(x, y, "-", False, image_size, game)
-
-
-        # Pause
-        #image_size = game.game_menu_top_left.get_size()
-        #y = game.screenH - game.bottom_boxH
-        #image_size = game.right_corner.get_size()
-        #bubble_x = 0 + image_size[0] * .75
-        #image_size = game.test.get_size()
-        #x = bubble_x + image_size[0] / 2
-        #y -= image_size[1] - game.button_padding
-        #Button.add_button(x, y, "Pause", False, image_size, game)
-
 
         return Button.buttons
 
@@ -142,7 +124,6 @@ class Button:
             x, 
             y, 
             value,
-            #True,
             game,
             is_menu_button,
             image_size)
@@ -182,13 +163,22 @@ class Button:
                 elif (self.text == "8th"):
                     screen.blit(game.grade_8th_hovering, (self.x, self.y))
                 if (self.visible):
-                    if (self.text == "Pause"):
-                        screen.blit(game.pause_hovering, (self.x, self.y))
-                    elif (self.text == "Mute"):
+                    if (self.text == "Mute"):
                         screen.blit(game.mute_hovering, (self.x, self.y))
                     elif (self.text == "+"):
                         screen.blit(game.speed_up_hovering, (self.x, self.y))
                     elif (self.text == "-"):
                         screen.blit(game.speed_down_hovering, (self.x, self.y))
+                    elif (self.text == "Speed"):
+                        screen.blit(game.speed_image, (self.x, self.y))
+            else:
+                if (self.text == "Mute"):
+                    screen.blit(game.mute_image, (self.x, self.y))
+                elif (self.text == "Speed"):
+                    screen.blit(game.speed_image, (self.x, self.y))
+                elif (self.text == "+"):
+                    screen.blit(game.speed_up, (self.x, self.y))
+                elif (self.text == "-"):
+                    screen.blit(game.speed_down, (self.x, self.y))
 
         return

@@ -1,14 +1,12 @@
 import pygame
 pygame.init()
-import TitleScreen
-import MenuScreen
 import GameScreen
 from PIL import ImageFont
 import random
 import Bubbles as Bub
 import Buttons as But
+import EventHandling as Events
 import PlayerInput as PI
-import Words as W
 import sys
 
 
@@ -55,6 +53,7 @@ class Game():
         self.text_blink_delay = .5
         self.player_score = 0
         self.clock = pygame.time.Clock()
+        self.is_paused = False
 
         # Flags
         self.blinking = True
@@ -90,78 +89,6 @@ class Game():
         self.player_input = None
         self.player_input_obj = None
 
-        # Prompts/Text
-        self.grade_levels = ("1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th")
-        self.gwpm_prompt = "GWPM: "
-        self.input_prompt = "Input: "
-        self.menu_prompt = "Grade Level Vocabulary"
-        self.score_prompt = "Score: "
-        self.start_prompt = "Press Enter When Ready!"
-        self.title_prompt = "Press Enter"
-
-        # Media
-        self.bg_image = pygame.image.load("Media/underwater.jpg")
-        self.pause_bg = pygame.image.load("Media/underwater.jpg")
-        self.button_hover_sound = pygame.mixer.Sound("Media/bubble.ogg")
-        self.game_music = "Media/gameMusic1.mp3"
-        self.grade_1st = pygame.image.load("Media/1st_grade.png")
-        self.grade_2nd = pygame.image.load("Media/2nd_grade.png")
-        self.grade_3rd = pygame.image.load("Media/3rd_grade.png")
-        self.grade_4th = pygame.image.load("Media/4th_grade.png")
-        self.grade_5th = pygame.image.load("Media/5th_grade.png")
-        self.grade_6th = pygame.image.load("Media/6th_grade.png")
-        self.grade_7th = pygame.image.load("Media/7th_grade.png")
-        self.grade_8th = pygame.image.load("Media/8th_grade.png")
-        self.all_vocab = (
-            self.grade_1st,
-            self.grade_2nd,
-            self.grade_3rd,
-            self.grade_4th,
-            self.grade_5th,
-            self.grade_6th,
-            self.grade_7th,
-            self.grade_8th
-        )
-        self.grade_1st_hovering = pygame.image.load("Media/1st_grade_hovering.png")
-        self.grade_2nd_hovering = pygame.image.load("Media/2nd_grade_hovering.png")
-        self.grade_3rd_hovering = pygame.image.load("Media/3rd_grade_hovering.png")
-        self.grade_4th_hovering = pygame.image.load("Media/4th_grade_hovering.png")
-        self.grade_5th_hovering = pygame.image.load("Media/5th_grade_hovering.png")
-        self.grade_6th_hovering = pygame.image.load("Media/6th_grade_hovering.png")
-        self.grade_7th_hovering = pygame.image.load("Media/7th_grade_hovering.png")
-        self.grade_8th_hovering = pygame.image.load("Media/8th_grade_hovering.png")
-        self.menu_header = pygame.image.load("Media/menu_prompt.png")
-        self.mute_image = pygame.image.load("Media/mute.png")
-        self.pause_image = pygame.image.load("Media/pause.png")
-        self.speed_image = pygame.image.load("Media/speed.png")
-        self.mute_hovering = pygame.image.load("Media/mute_hovering.png")
-        self.pause_hovering = pygame.image.load("Media/pause_hovering.png")
-        self.speed_up_hovering = pygame.image.load("Media/speed_up_hovering.png")
-        self.speed_down_hovering = pygame.image.load("Media/speed_down_hovering.png")
-        self.speed_up = pygame.image.load("Media/speed_up.png")
-        self.speed_down = pygame.image.load("Media/speed_down.png")
-        self.title_music = "Media/titleScreenMusic.mp3"
-        self.title_text = pygame.image.load("Media/title_image.png")
-        self.right_corner = pygame.image.load("Media/bubbles/right_bubble.png")
-        self.left_corner = pygame.image.load("Media/bubbles/left_bubble.png")
-        self.game_button_left = pygame.image.load("Media/bubbles/game_button_left.png")
-        self.game_button_right = pygame.image.load("Media/bubbles/game_button_right.png")
-        self.speed_change = pygame.image.load("Media/bubbles/speed_change.png")
-        self.game_menu_top_left = pygame.image.load("Media/bubbles/game_menu_top_left.png")
-        self.game_menu_top_right = pygame.image.load("Media/bubbles/game_menu_top_right.png")
-
-
-
-        self.test = pygame.image.load("Media/test.png")
-        self.test_hovering = pygame.image.load("Media/test_hover.png")
-
-
-
-
-
-
-
-
         # Menu Parameters
         self.x_menu_col_1 = self.screenW / 4
         self.x_menu_col_2 = self.screenW / 4 * 2
@@ -172,13 +99,74 @@ class Game():
         self.y_menu_col_2 = self.screenH / 4 * 2
         self.y_menu_col_3 = self.screenH / 4 * 3
 
+        # Prompts/Text
+        self.grade_levels = ("1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th")
+        self.gwpm_prompt = "GWPM: "
+        self.input_prompt = "Input: "
+        self.menu_prompt = "Grade Level Vocabulary"
+        self.score_prompt = "Score: "
+        self.start_prompt = "Press Enter When Ready!"
+        self.title_prompt = "Press Enter"
+
+        # Game Media
+        self.bg_image = pygame.image.load("Media/underwater.jpg")
+        self.pause_bg = pygame.image.load("Media/underwater.jpg")
+        self.title_text = pygame.image.load("Media/title_image.png")
+        self.right_corner = pygame.image.load("Media/bubbles/right_bubble.png")
+        self.left_corner = pygame.image.load("Media/bubbles/left_bubble.png")
+        self.game_button_left = pygame.image.load("Media/bubbles/game_button_left.png")
+        self.game_button_right = pygame.image.load("Media/bubbles/game_button_right.png")
+        self.speed_change = pygame.image.load("Media/bubbles/speed_change.png")
+
+        # Sound Media
+        self.button_hover_sound = pygame.mixer.Sound("Media/bubble.ogg")
+        self.game_music = "Media/gameMusic1.mp3"
+        self.title_music = "Media/titleScreenMusic.mp3"
+
+        # Button Media
+        self.menu_header = pygame.image.load("Media/menu_prompt.png")
+        self.mute_image = pygame.image.load("Media/mute.png")
+        self.pause_image = pygame.image.load("Media/pause.png")
+        self.speed_image = pygame.image.load("Media/speed.png")
+        self.speed_up = pygame.image.load("Media/speed_up.png")
+        self.speed_down = pygame.image.load("Media/speed_down.png")
+        self.grade_1st = pygame.image.load("Media/1st_grade.png")
+        self.grade_2nd = pygame.image.load("Media/2nd_grade.png")
+        self.grade_3rd = pygame.image.load("Media/3rd_grade.png")
+        self.grade_4th = pygame.image.load("Media/4th_grade.png")
+        self.grade_5th = pygame.image.load("Media/5th_grade.png")
+        self.grade_6th = pygame.image.load("Media/6th_grade.png")
+        self.grade_7th = pygame.image.load("Media/7th_grade.png")
+        self.grade_8th = pygame.image.load("Media/8th_grade.png")
+        self.all_vocab = (
+            self.grade_1st, 
+            self.grade_2nd, 
+            self.grade_3rd, 
+            self.grade_4th, 
+            self.grade_5th, 
+            self.grade_6th, 
+            self.grade_7th, 
+            self.grade_8th
+        )
+
+        # Button Hover Media
+        self.grade_1st_hovering = pygame.image.load("Media/1st_grade_hovering.png")
+        self.grade_2nd_hovering = pygame.image.load("Media/2nd_grade_hovering.png")
+        self.grade_3rd_hovering = pygame.image.load("Media/3rd_grade_hovering.png")
+        self.grade_4th_hovering = pygame.image.load("Media/4th_grade_hovering.png")
+        self.grade_5th_hovering = pygame.image.load("Media/5th_grade_hovering.png")
+        self.grade_6th_hovering = pygame.image.load("Media/6th_grade_hovering.png")
+        self.grade_7th_hovering = pygame.image.load("Media/7th_grade_hovering.png")
+        self.grade_8th_hovering = pygame.image.load("Media/8th_grade_hovering.png")
+        self.mute_hovering = pygame.image.load("Media/mute_hovering.png")
+        self.speed_up_hovering = pygame.image.load("Media/speed_up_hovering.png")
+        self.speed_down_hovering = pygame.image.load("Media/speed_down_hovering.png")
+
+
 
     #####################
     #      Getters      #
     ##################### 
-    def get_word_object(self, word):
-        return W.Word(self, word)
-
     def get_menu_buttons(self):
         return But.Button.get_menu_buttons(self)
 
@@ -265,27 +253,24 @@ class Game():
         self.word_delay_score_multiplier = round(self.word_delay_score_multiplier, 2)
         return
 
-    def set_game_buttons_visible(self):
-        for button in But.Button.buttons:
-            button.visible = True
-        return
-
-    def set_game_buttons_hidden(self):
-        for button in But.Button.buttons:
-            button.visible = False
-        return
-
 
     #####################
     #      Drawing      #
     #####################
-    def draw_buttons(self, screen):
+    def draw_buttons(self, screen, game_button=False):
         for button in But.Button.buttons:
             button.draw(screen, self)
+            if (game_button):
+                Bub.Bubbles.draw_button_bubble(button, screen, self)
         return
     
     def draw_bg_image(self, screen):
         screen.blit(self.bg_image, (0,0))
+        return
+
+    def draw_corner_bubbles(self, screen):
+        Bub.Bubbles.draw_corner_bubble(screen, self)
+        Bub.Bubbles.draw_corner_bubble(screen, self, True)
         return
    
     def draw_blink_text(self, screen, text, start_screen):
@@ -300,11 +285,7 @@ class Game():
         return
 
     def draw_bubbles(self, screen):
-        for bubble in Bub.Bubbles.bubble_array:
-            if not (bubble.draw(screen, self)):
-                if (bubble.pop_bubble(screen)):
-                    Bub.Bubbles.bubble_array.remove(bubble)
-        Bub.Bubbles.update_bubbles(self, self)
+        Bub.Bubbles.draw_bubbles(self, self, screen)
         return
 
 
@@ -312,59 +293,128 @@ class Game():
     #   Event Handling  #
     #####################
     def quit_game(self):
-        pygame.quit()
-        sys.exit(0)
+        Events.quit_game()
 
     def play_music(self, music):
-        music = pygame.mixer.music.load(music)
-        pygame.mixer.music.play(-1)
-        self.music_playing = True
+        Events.play_music(self, music)
         return
-
-    def check_frame_count(self):
-        if (self.frame_count >= self.max_FPS):
-            self.frame_count = 0
-            self.seconds += 1
-            self.add_word_seconds += 1
-        return
-
-    def check_quick_frame_count(self):
-        max_FPS_fraction = self.max_FPS * self.add_word_delay
-        if (self.quick_frame_count == max_FPS_fraction):
-            self.quick_frame_count = 0
-            return True
-        self.quick_frame_count += 1
-        return False
-
-    def blink_text(self, screen, text, start_screen):
-        if (self.update_seconds(self.text_blink_delay)):
-            if (self.blinking):
-                self.blinking = False
-            else:
-                self.blinking = True
-        if (self.blinking):
-            self.draw_blink_text(screen, text, start_screen)
-        return
-
-    def update_seconds(self, delay):
-        self.frame_tracker += 1
-        if (self.frame_tracker == (self.max_FPS * delay)):
-            self.frame_tracker = 0
-            self.seconds += 1
-            return True
-        return False
 
     def add_word_bubble(self, word, screen):
-        image_size = self.menu_header.get_size()
-        y_offset = word.y - image_size[1] / 2
-        Bub.Bubbles.bubble_array.append(Bub.Bubbles(self, True, word.x, y_offset))
+        Bub.Bubbles.add_word_bubble(self, word, screen)
         return
 
     def pop_word_bubbles(self, screen):
-        for bubble in Bub.Bubbles.bubble_array:
-            if (bubble.pop_bubble(screen)):
-                Bub.Bubbles.bubble_array.remove(bubble)
+        Bub.Bubbles.pop_word_bubbles(screen)
         return
+
+    def blink_text(self, screen, text, start_screen):
+        Events.blink_text(self, screen, text, start_screen)
+        return
+
+    def check_frame_count(self):
+        Events.check_frame_count(self)
+        return
+
+    def check_quick_frame_count(self):
+        status = Events.check_quick_frame_count(game)
+        return status
+
+    def update_seconds(self, delay):
+        status = Events.update_seconds(self, delay)
+        return status
+
+    def check_game_events(self, buttons):
+        status = Events.check_game_events(self, buttons)
+        return status
+
+    def check_menu_events(self, buttons):
+        status = Events.check_menu_events(self, buttons)
+        return status
+
+    def check_title_events(self):
+        status = Events.check_title_events(self)
+        return status
+
+
+#####################
+#    Menu Screen    #
+#####################
+def draw_menu_header(screen, game):
+    image_size = game.menu_header.get_size()
+    x = (game.screenW - image_size[0]) / 2
+    y = 0
+    screen.blit(game.menu_header, (x,y))
+    return
+
+def draw_menu(screen, game, buttons):
+    index = 0
+    for button in buttons:
+        screen.blit(game.all_vocab[index], (button.x, button.y))
+        index += 1     
+    return
+
+def draw_menu_screen(screen, game, buttons):
+    game.frame_count += 1
+    game.draw_bg_image(screen)
+    game.draw_bubbles(screen)
+    draw_menu_header(screen, game)
+    draw_menu(screen, game, buttons)
+    game.draw_buttons(screen)
+    pygame.display.update()
+    game.check_frame_count()
+    return
+
+def menu_screen(screen, game):
+    buttons = game.get_menu_buttons()
+    while(True):
+        game.clock.tick(game.max_FPS)
+        if (game.check_menu_events(buttons)):
+            break
+        draw_menu_screen(screen, game, buttons)
+    game.reset_buttons()
+    game.frame_count = 0
+    return
+
+
+#####################
+#    Title/Start    #
+#####################
+def draw_title(screen, game):
+    text_size = game.title_text.get_size()
+    x = (game.screenW - text_size[0]) / 2
+    y = game.top_padding
+    screen.blit(game.title_text, (x,y))
+    return
+
+def draw_screen(screen, game, start_screen=False):
+    game.clock.tick(game.max_FPS)
+    game.frame_count += 1
+    game.draw_bg_image(screen)
+    if (start_screen):
+        game.blink_text(screen, game.start_prompt, start_screen)
+    else:
+        draw_title(screen, game)
+        game.blink_text(screen, game.title_prompt, start_screen)
+    game.draw_bubbles(screen)
+    pygame.display.update()
+    game.check_frame_count()
+    return
+
+def title_screen(screen, game):
+    game.play_music(game.title_music)
+    while (True):
+        if (game.check_title_events()):
+            break
+        draw_screen(screen, game)
+    return
+
+def start_screen(screen, game):
+    while (True):
+        if (game.check_title_events()):
+            game.words_moving = True
+            break
+        draw_screen(screen, game, True)
+    return
 
 
 #####################
@@ -376,9 +426,9 @@ def main():
     game.set_player_input()
     game.pause_bg.set_alpha(200)
 
-    TitleScreen.title_screen(screen, game)
-    MenuScreen.menu_screen(screen, game)
-    TitleScreen.start_screen(screen, game)
+    title_screen(screen, game)
+    menu_screen(screen, game)
+    start_screen(screen, game)
     GameScreen.play(screen, game)
 
 if __name__ == "__main__":
