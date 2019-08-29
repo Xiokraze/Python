@@ -3,17 +3,22 @@ pygame.init()
 import Draw
 import Events
 import Player
-import Sphere
+import Spheres
 from PIL import ImageFont
 
 
+#####################
+#     Game Class    #
+#####################
 class Game:
     def __init__(self):
+
         # Screen
         self.title = "Fracture"
         self.title_prompt = "PRESS ENTER"
         self.screen_width = 800
         self.screen_height = 600
+        self.background = (0,0,0)
 
         # Fonts/Colors
         self.master_font = "Media/ariblk.ttf"
@@ -52,48 +57,54 @@ class Game:
         return
 
 
+#####################
+# Game Time Handler #
+#####################
+def continue_game(game, title_screen=False):
+    if not (Events.check_game_events(title_screen)):
+        return False
+    game.clock.tick(game.max_FPS)
+    game.frame_count += 1
+    Events.check_frame_count(game)
+    return True
 
 
-
-
+#####################
+#    Title Screen   #
+#####################
 def title_screen(game, screen):
-    while (True):
-        if (Events.check_title_events(game)):
-            break
-        game.clock.tick(game.max_FPS)
-        game.frame_count += 1
-        Events.check_frame_count(game)
-        # add background
-        Draw.title_image(game, screen)
+    title_screen = True
+    while (continue_game(game, title_screen)):
+        Draw.title_screen(game, screen)
         Events.blink_text(game, screen, game.title_prompt)
         pygame.display.update()
+    
     return
 
 
+#####################
+#    Game Handler   #
+#####################
 def play_game(game, screen):
-    game.seconds = 0
-    Sphere.Sphere(game)
+    Spheres.Sphere(game)
     player = Player.Player(game)
-    while (True):
-        if not (Events.check_game_events()):
-            break
-        game.clock.tick(game.max_FPS)
-        game.frame_count += 1
-        Events.check_frame_count(game)
-        screen.fill((0,0,0))
-        Draw.spheres(game, screen, Sphere.Sphere.sphere_list)
-        Sphere.update(game)
-        Draw.player(screen, player)
+    while (continue_game(game)):
+        Draw.draw_game(game, screen, player, Spheres.Sphere.sphere_list)
+        Spheres.update(game)
         player.get_input(game)
-        pygame.display.update()
+    return
 
+
+#####################
+#        Main       #
+#####################
 def main():
     game = Game()
     screen = game.set_screen()
 
     title_screen(game, screen)
     play_game(game, screen)
-
+    Events.quit_game()
 
 
 if __name__ == "__main__":

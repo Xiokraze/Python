@@ -31,7 +31,7 @@
     <Compile Include="Player.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Sphere.py">
+    <Compile Include="Spheres.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

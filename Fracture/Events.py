@@ -16,7 +16,6 @@ def update_seconds(game):
     blink_frame_count = game.max_FPS * game.blink_delay
     if (game.blink_frame_count == (blink_frame_count)):
         game.blink_frame_count = 0
-        game.seconds += 1
         return True
     return False
 
@@ -57,12 +56,14 @@ def check_title_events(game):
 
 
 
-def check_game_events():
+def check_game_events(title_screen=False):
     mouse_position = pygame.mouse.get_pos()
     events = pygame.event.get()
     for event in events:
         if (event.type == pygame.QUIT):
-            quit_game()
-        #elif (event.type == pygame.KEYDOWN):
-
+            return False
+        if (title_screen):
+            if (event.type == pygame.KEYDOWN):
+                if (event.key == pygame.K_RETURN):
+                    return False       
     return True
