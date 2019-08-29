@@ -1,10 +1,12 @@
+import pygame
+
 
 class Sphere:
     sphere_list = []
     def __init__(self, game):
         self.image = game.sphere
-        self.speed = 1
-        self.width, self.height = self.get_sphere_size()
+        self.speed = 2
+        self.width, self.height = game.get_image_size(self.image)
         self.x = 100
         self.y = game.screen_height - 100
         self.right = True
@@ -13,17 +15,6 @@ class Sphere:
         self.down = False
         Sphere.sphere_list.append(self)
 
-    def get_sphere_size(self):
-        image_size = self.image.get_size()
-        width = image_size[0]
-        height = image_size[1]
-        return width, height
-
-
-def draw(game, screen):
-    for sphere in Sphere.sphere_list:
-        screen.blit(sphere.image, (sphere.x,sphere.y))
-    return
 
 def edge_bounce(game, sphere):
     # Right Border

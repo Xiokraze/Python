@@ -16,3 +16,14 @@ def blink_text(game, screen, text):
     text = game.word_font.render(text, 1, game.text_color)
     screen.blit(text, (x,y))
     return
+
+# Spheres
+def spheres(game, screen, spheres):
+    for sphere in spheres:
+        screen.blit(sphere.image, (sphere.x,sphere.y))
+    return
+
+# Player
+def player(screen, player):
+    screen.blit(player.image, (player.x, player.y))
+    return

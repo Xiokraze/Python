@@ -2,6 +2,7 @@ import pygame
 pygame.init()
 import Draw
 import Events
+import Player
 import Sphere
 from PIL import ImageFont
 
@@ -23,7 +24,7 @@ class Game:
 
         # Time Handling
         self.clock = pygame.time.Clock()
-        self.max_FPS = 50
+        self.max_FPS = 60
         self.frame_count = 0
         self.blink_frame_count = 0
         self.blink_delay = .5
@@ -33,6 +34,12 @@ class Game:
         # Media
         self.title_image = pygame.image.load("Media/title_image.png")
         self.sphere = pygame.image.load("Media/spheres/dark_blue.png")
+
+    def get_image_size(self, image):
+        image_size = image.get_size()
+        width = image_size[0]
+        height = image_size[1]
+        return width, height
 
     def set_screen(self):
         pygame.display.set_caption(self.title)
@@ -45,6 +52,10 @@ class Game:
         return
 
 
+
+
+
+
 def title_screen(game, screen):
     while (True):
         if (Events.check_title_events(game)):
@@ -52,32 +63,28 @@ def title_screen(game, screen):
         game.clock.tick(game.max_FPS)
         game.frame_count += 1
         Events.check_frame_count(game)
-        screen.fill((0,0,0))
+        # add background
         Draw.title_image(game, screen)
         Events.blink_text(game, screen, game.title_prompt)
         pygame.display.update()
     return
 
-def blink_text(game, screen, text):
-    font_size = game.font.getsize(text)
-    x = (game.screen_width / 2) - (font_size[0] / 2)
-    y = (game.screen_height / 2) + font_size[1]
-    text = game.word_font.render(text, 1, game.text_color)
-    screen.blit(text, (x,y))
-    return
 
 def play_game(game, screen):
     game.seconds = 0
     Sphere.Sphere(game)
+    player = Player.Player(game)
     while (True):
-        if not (Events.check_game_events(game)):
+        if not (Events.check_game_events()):
             break
         game.clock.tick(game.max_FPS)
         game.frame_count += 1
         Events.check_frame_count(game)
         screen.fill((0,0,0))
+        Draw.spheres(game, screen, Sphere.Sphere.sphere_list)
         Sphere.update(game)
-        Sphere.draw(game, screen)
+        Draw.player(screen, player)
+        player.get_input(game)
         pygame.display.update()
 
 def main():

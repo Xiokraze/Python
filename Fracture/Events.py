@@ -1,4 +1,5 @@
 import pygame
+import pygame.locals as pl
 import sys
 import Draw
 
@@ -53,22 +54,15 @@ def check_title_events(game):
 #####################
 #  Gameplay Events  #
 #####################
-def check_game_events(game):
+
+
+
+def check_game_events():
     mouse_position = pygame.mouse.get_pos()
     events = pygame.event.get()
     for event in events:
         if (event.type == pygame.QUIT):
             quit_game()
         #elif (event.type == pygame.KEYDOWN):
-            #if event.key == pl.K_ESCAPE:
-            #    if (game.words_moving):
-            #        game.words_moving = False
-            #        game.is_paused = True
-            #    else:
-            #        game.words_moving = True
-            #        game.is_paused = False
-        #elif (event.type == pygame.MOUSEMOTION):
-        #    check_game_mouse_position(mouse_position, buttons, game)
-        #elif (event.type == pygame.MOUSEBUTTONDOWN):
-        #    click_button(mouse_position, buttons, game)
+
     return True
