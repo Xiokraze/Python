@@ -73,31 +73,28 @@ def move_sphere(sphere, radians):
         sphere.y += speed
     return
 
-def get_deflection_degree(sphere, player, player_segments):
+def get_deflection_degree(sphere, player, player_segments): # TODO refine x check
     # Player image _______________________________
     #             [___|___|___|___|___|___|___|___]
     # Segments      1   2   3   4   5   6   7   8
-
-
-
-
-    #segment_position = 1
-    #for segment in player_segments:
-    #    player_start = segment[0]
-    #    player_end = segment[1]
-    #    if (sphere.x >= player_start and sphere.x < player_end):
-    #        print(segment_position)
-            #length = len(player_segments)
-            #for i in range(1, length + 1):
-            #    if (sphere.left):
-            #        if (i == segment_position):
-            #            return sphere.player_deflection_angles[length-i]
-            #    elif (sphere.right):
-            #        if (i == segment_position):
-            #            return sphere.player_deflection_angles[i-1]
-        #segment_position += 1
-        # TODO fix bug
-    #print(f"wtf...    {sphere.left} {sphere.right} {sphere.up} {sphere.down}")
+    segment_position = 1
+    for segment in player_segments:
+        seg_start = math.floor(segment[0])
+        if (segment_position == 1):
+            seg_start -= sphere.width
+        if (segment_position == 8):
+            seg_end += sphere.width / 2
+        seg_end = math.ceil(segment[1])
+        floor_x = math.floor(sphere.x)
+        if (floor_x >= seg_start and floor_x <= seg_end):
+            length = len(player_segments)
+            for i in range(1, length + 1):
+                if (i == segment_position):
+                    if (sphere.left):
+                        return sphere.player_deflection_angles[length-i]
+                    else:
+                        return sphere.player_deflection_angles[i-1]
+        segment_position += 1
     return 0
 
 def player_collision(sphere, player):
@@ -113,9 +110,8 @@ def update(game, player, spheres):
         if (sphere.down):
             if (player.sphere_collision(sphere)):
                 player_collision(sphere, player)
-        #elif (object_collision()):
-        #    # TODO handle checking for object collisions
-        #    pass
+        elif (object_collision(sphere, game)):
+            print("object collision")
         move_sphere(sphere, radians)
         edge_collision(game, sphere, radians)
     return

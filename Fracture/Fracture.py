@@ -2,6 +2,7 @@ import pygame
 pygame.init()
 import Draw
 import Events
+import Levels
 import Player
 import Spheres
 from PIL import ImageFont
@@ -26,6 +27,10 @@ class Game:
         self.text_color = (255,255,255)
         self.font = ImageFont.truetype(self.master_font, self.font_size)
         self.word_font = pygame.font.Font(self.master_font, self.font_size)
+
+        # Important Variables
+        self.level = None
+        self.level_number = 1
 
         # Time Handling
         self.clock = pygame.time.Clock()
@@ -88,10 +93,10 @@ def title_screen(game, screen):
 #    Game Handler   #
 #####################
 def play_game(game, screen):
-    for i in range(5):
-        Spheres.Sphere(game)
+    Spheres.Sphere(game)
     player = Player.Player(game)
     while (continue_game(game)):
+        game.level = Levels.Level(game)
         spheres = Spheres.Sphere.sphere_list
         Draw.draw_game(game, screen, player, spheres)
         Spheres.update(game, player, spheres)

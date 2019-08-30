@@ -52,10 +52,21 @@ def draw_player(screen, player):
 
 
 #####################
+#       Level       #
+#####################
+def draw_level(game, screen):
+    for block in game.level.blocks:
+        screen.blit(block[0], (block[1]))
+    return
+
+
+
+#####################
 #        Game       #
 #####################
 def draw_game(game, screen, player, spheres):
     screen.fill(game.background)
+    draw_level(game, screen)
     draw_player(screen, player)
     draw_spheres(game, screen, spheres)
     pygame.display.update()

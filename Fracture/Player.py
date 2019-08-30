@@ -7,13 +7,13 @@ class Player:
         self.image = pygame.image.load("Media/player/player_default.png")
         self.width, self.height = game.get_image_size(self.image)
         self.x, self.y = self.get_start_location(game)
-        self.speed = 1
+        self.speed = 5
         self.top_border_width = 2
         self.rect = (self.x-2, self.y, self.width+4, self.height+2)
 
     def get_start_location(self, game):
         x = game.screen_width / 2 - self.width / 2
-        y = game.screen_height - self.height * 10
+        y = game.screen_height - self.height * 2
         return x, y
 
 
