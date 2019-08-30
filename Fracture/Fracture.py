@@ -40,6 +40,8 @@ class Game:
         self.title_image = pygame.image.load("Media/title_image.png")
         self.sphere = pygame.image.load("Media/spheres/dark_blue.png")
 
+
+
     def get_image_size(self, image):
         image_size = image.get_size()
         width = image_size[0]
@@ -86,11 +88,13 @@ def title_screen(game, screen):
 #    Game Handler   #
 #####################
 def play_game(game, screen):
-    Spheres.Sphere(game)
+    for i in range(200):
+        Spheres.Sphere(game)
     player = Player.Player(game)
     while (continue_game(game)):
-        Draw.draw_game(game, screen, player, Spheres.Sphere.sphere_list)
-        Spheres.update(game)
+        spheres = Spheres.Sphere.sphere_list
+        Draw.draw_game(game, screen, player, spheres)
+        Spheres.update(game, player, spheres)
         player.get_input(game)
     return
 
@@ -102,7 +106,7 @@ def main():
     game = Game()
     screen = game.set_screen()
 
-    title_screen(game, screen)
+    #title_screen(game, screen)
     play_game(game, screen)
     Events.quit_game()
 

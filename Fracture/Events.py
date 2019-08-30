@@ -53,9 +53,6 @@ def check_title_events(game):
 #####################
 #  Gameplay Events  #
 #####################
-
-
-
 def check_game_events(title_screen=False):
     mouse_position = pygame.mouse.get_pos()
     events = pygame.event.get()
