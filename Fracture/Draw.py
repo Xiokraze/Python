@@ -47,7 +47,7 @@ def draw_spheres(game, screen, spheres):
 #####################
 def draw_player(screen, player):
     screen.blit(player.image, (player.x, player.y))
-    pygame.draw.rect(screen, (0,255,0), player.rect, 2)
+    #pygame.draw.rect(screen, (0,255,0), player.rect, 2)
     return
 
 

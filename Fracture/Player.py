@@ -7,7 +7,8 @@ class Player:
         self.image = pygame.image.load("Media/player/player_default.png")
         self.width, self.height = game.get_image_size(self.image)
         self.x, self.y = self.get_start_location(game)
-        self.speed = 5
+        self.speed = 1
+        self.top_border_width = 2
         self.rect = (self.x-2, self.y, self.width+4, self.height+2)
 
     def get_start_location(self, game):
@@ -70,12 +71,15 @@ class Player:
     def sphere_collision(self, sphere):
         x_collision = False
         y_collision = False
-        if (sphere.x >= self.x - sphere.width and sphere.x <= self.x + self.width + sphere.width):
-            x_collision = True
-        sphere_y = sphere.y + sphere.height + sphere.speed
-        if (sphere_y >= self.y and sphere_y <= self.y + 3 and sphere.down):
-            y_collision = True
-        if (x_collision and y_collision):
-            return True
-        else:
-            return False
+        left_offset = self.x
+        right_offset = self.x + self.width + sphere.width / 2
+        x_floor = math.floor(sphere.x + sphere.width / 2)
+        y_floor = math.floor(sphere.y + sphere.height)
+        for px in range(sphere.speed):
+            if (y_floor + px == self.y):
+                y_collision = True
+            if (x_floor + px >= left_offset and x_floor + px <= right_offset):
+                x_collision = True
+            if (y_collision and x_collision):
+                return True
+        return False

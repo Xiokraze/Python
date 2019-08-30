@@ -88,7 +88,7 @@ def title_screen(game, screen):
 #    Game Handler   #
 #####################
 def play_game(game, screen):
-    for i in range(200):
+    for i in range(5):
         Spheres.Sphere(game)
     player = Player.Player(game)
     while (continue_game(game)):

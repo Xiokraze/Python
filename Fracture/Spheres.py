@@ -73,40 +73,46 @@ def move_sphere(sphere, radians):
         sphere.y += speed
     return
 
-def get_deflection_degree(sphere, player_segments):
+def get_deflection_degree(sphere, player, player_segments):
     # Player image _______________________________
     #             [___|___|___|___|___|___|___|___]
     # Segments      1   2   3   4   5   6   7   8
-    segment_position = 1
-    for segment in player_segments:
-        player_start = segment[0]
-        player_end = segment[1]
-        if (sphere.x >= player_start and sphere.x < player_end):
-            length = len(player_segments)
-            for i in range(1, length + 1):
-                if (sphere.left):
-                    if (i == segment_position):
-                        return sphere.player_deflection_angles[length-i]
-                elif (sphere.right):
-                    if (i == segment_position):
-                        return sphere.player_deflection_angles[i-1]
-        segment_position += 1
+
+
+
+
+    #segment_position = 1
+    #for segment in player_segments:
+    #    player_start = segment[0]
+    #    player_end = segment[1]
+    #    if (sphere.x >= player_start and sphere.x < player_end):
+    #        print(segment_position)
+            #length = len(player_segments)
+            #for i in range(1, length + 1):
+            #    if (sphere.left):
+            #        if (i == segment_position):
+            #            return sphere.player_deflection_angles[length-i]
+            #    elif (sphere.right):
+            #        if (i == segment_position):
+            #            return sphere.player_deflection_angles[i-1]
+        #segment_position += 1
         # TODO fix bug
-    print("wtf")
-    return 90
+    #print(f"wtf...    {sphere.left} {sphere.right} {sphere.up} {sphere.down}")
+    return 0
 
 def player_collision(sphere, player):
     sphere.up = True
     sphere.down = False
     player_segments = player.get_player_segments()
-    sphere.degree_direction = get_deflection_degree(sphere, player_segments)
+    sphere.degree_direction = get_deflection_degree(sphere, player, player_segments)
     return
 
 def update(game, player, spheres):
     for sphere in spheres:
         radians = math.radians(sphere.degree_direction)
-        if (player.sphere_collision(sphere)):
-            player_collision(sphere, player)
+        if (sphere.down):
+            if (player.sphere_collision(sphere)):
+                player_collision(sphere, player)
         #elif (object_collision()):
         #    # TODO handle checking for object collisions
         #    pass
