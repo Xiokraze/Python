@@ -13,7 +13,7 @@ class Player:
 
     def get_start_location(self, game):
         x = game.screen_width / 2 - self.width / 2
-        y = game.screen_height - self.height * 2
+        y = game.screen_height - self.height * 5
         return x, y
 
 
@@ -57,9 +57,9 @@ class Player:
     #####################
     def get_player_segments(self):
     # Player image _______________________________
-    #             [___|___|___|___|___|___|___|___]
-    # Segments      1   2   3   4   5   6   7   8
-        num_segments = 8
+    #             [_______|_______|_______|_______]
+    # Segments        1       2       3       4
+        num_segments = 4
         segment_width = self.width / num_segments
         segments = []
         for i in range(num_segments):
@@ -69,17 +69,13 @@ class Player:
         return segments
 
     def sphere_collision(self, sphere):
-        x_collision = False
-        y_collision = False
-        left_offset = self.x
-        right_offset = self.x + self.width + sphere.width / 2
-        x_floor = math.floor(sphere.x + sphere.width / 2)
-        y_floor = math.floor(sphere.y + sphere.height)
-        for px in range(sphere.speed):
-            if (y_floor + px == self.y):
-                y_collision = True
-            if (x_floor + px >= left_offset and x_floor + px <= right_offset):
-                x_collision = True
-            if (y_collision and x_collision):
-                return True
+        # Center of circle's x coordinate
+        x = sphere.circle_x
+        # Bottom of circle
+        y = sphere.circle_y + sphere.circle_radius
+
+        if (x >= self.x and x <= self.x + self.width):
+            for px in range(sphere.speed_y):
+                if (int(y + px) == self.y):
+                    return True
         return False

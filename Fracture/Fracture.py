@@ -45,6 +45,9 @@ class Game:
         self.title_image = pygame.image.load("Media/title_image.png")
         self.sphere = pygame.image.load("Media/spheres/dark_blue.png")
 
+        # Block Media
+        self.blue_block = pygame.image.load("Media/blocks/blue_01.png")
+
 
 
     def get_image_size(self, image):
@@ -53,15 +56,15 @@ class Game:
         height = image_size[1]
         return width, height
 
+    def draw_blink_text(self, screen, text):
+        Draw.blink_text(self, screen, text)
+        return
+
     def set_screen(self):
         pygame.display.set_caption(self.title)
         size = (self.screen_width, self.screen_height)
         screen = pygame.display.set_mode(size)
         return screen
-
-    def draw_blink_text(self, screen, text):
-        Draw.blink_text(self, screen, text)
-        return
 
 
 #####################
@@ -93,10 +96,11 @@ def title_screen(game, screen):
 #    Game Handler   #
 #####################
 def play_game(game, screen):
-    Spheres.Sphere(game)
+    for i in range(20):
+        Spheres.Sphere(game)
     player = Player.Player(game)
+    game.level = Levels.Level(game)
     while (continue_game(game)):
-        game.level = Levels.Level(game)
         spheres = Spheres.Sphere.sphere_list
         Draw.draw_game(game, screen, player, spheres)
         Spheres.update(game, player, spheres)

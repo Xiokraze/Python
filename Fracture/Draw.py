@@ -38,6 +38,12 @@ def blink_text(game, screen, prompt):
 #####################
 def draw_spheres(game, screen, spheres):
     for sphere in spheres:
+        pygame.draw.circle(
+            screen, 
+            sphere.circle_color, 
+            (int(sphere.circle_x), int(sphere.circle_y)), 
+            sphere.circle_radius
+        )
         screen.blit(sphere.image, (sphere.x,sphere.y))
     return
 
@@ -55,8 +61,7 @@ def draw_player(screen, player):
 #       Level       #
 #####################
 def draw_level(game, screen):
-    for block in game.level.blocks:
-        screen.blit(block[0], (block[1]))
+    game.level.draw_blocks(screen)
     return
 
 
