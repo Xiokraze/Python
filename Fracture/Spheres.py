@@ -16,16 +16,44 @@ class Sphere:
         self.radians = math.radians(self.angle)
         self.x = game.screen_width / 2
         self.y = game.screen_height / 2
-        self.player_deflection_angles = [290, 330, 30, 70]
+        self.player_deflection_angles = [300, 340, 20, 60]
 
         # Generate circle for more accurate collision detection
         self.circle_color = (0,255,0)
         self.circle_x = int(self.x + self.width / 2)
         self.circle_y = int(self.y + self.height / 2)
         self.circle_radius = int(self.width/2)
+        self.collision_coordinates = self.get_collision_coordinates()
 
         # Add the sphere to the spheres list
         Sphere.sphere_list.append(self)
+
+    # Get 8 (x,y) coordinates on the circle for more accurate collision 
+    # detection. The first 4 are where the circle crosses the x/y axes. The 
+    # second 4 are calculated by taking the sin and cos at 45 degree angles
+    # from the center of the circle (distance is the radius).
+    def get_collision_coordinates(self):
+        # Add the 4 coordinates on the x/y axes
+        coords = []
+        coords.append([self.circle_x, self.circle_y - self.circle_radius])
+        coords.append([self.circle_x, self.circle_y + self.circle_radius])
+        coords.append([self.circle_x - self.circle_radius, self.circle_y])
+        coords.append([self.circle_x + self.circle_radius, self.circle_y])
+        # Add the 4 different 45 degree (x,y) coordinates
+        angle = 45
+        right_angle = 90
+        for i in range(4):
+            radians = math.radians(angle)
+            x = self.circle_x + (self.circle_radius * (math.cos(radians)))
+            y = self.circle_y + (self.circle_radius * (math.sin(radians)))
+            coords.append([x,y])
+            angle += right_angle
+        # Round all the coordinates to the nearest pixel
+        for coord in coords:
+            coord[0] = int(coord[0])
+            coord[1] = int(coord[1])
+
+        return coords
 
 
 #def edge_collision(game, sphere, radians):
@@ -64,22 +92,19 @@ def get_segment_position(sphere, player_segments):
         segment_position += 1
     return segment_position
 
-#def player_deflect(sphere, player, player_segments): # TODO refine x check
+def player_deflect(sphere, player, player_segments): # TODO refine x check
 #    # Player image _______________________________
 #    #             [_______|_______|_______|_______]
 #    # Segments        1       2       3       4
-#    segment_position = get_segment_position(sphere, player_segments)
-#    index = segment_position - 1
-#    sphere.angle = sphere.player_deflection_angles[index]
-#    sphere.radians = math.radians(sphere.angle)
-#    if (sphere.radians < 0):
-#        sphere.radians *= -1
-#    sphere.speed_y *= -1
-#    return
+    segment_position = get_segment_position(sphere, player_segments)
+    index = segment_position - 1
+    sphere.angle = sphere.player_deflection_angles[index]
+    sphere.radians = math.radians(sphere.angle)
+    return
 
 def player_collision(sphere, player):
     player_segments = player.get_player_segments()
-    #player_deflect(sphere, player, player_segments)
+    player_deflect(sphere, player, player_segments)
     sphere.speed_y *= -1
     return
 
@@ -87,7 +112,8 @@ def update(game, player, spheres):
     for sphere in spheres:
         if (player.sphere_collision(sphere)):
                 player_collision(sphere, player)
-        #if (game.level.check_block_collision(sphere, game)):
+        if (game.level.check_block_collision(sphere, game)):
+            pass
         #    block_collision(sphere, radians)
         move_sphere(sphere)
         edge_collision(game, sphere)
