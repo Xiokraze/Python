@@ -96,7 +96,7 @@ def title_screen(game, screen):
 #    Game Handler   #
 #####################
 def play_game(game, screen):
-    for i in range(20):
+    for i in range(1):
         Spheres.Sphere(game)
     player = Player.Player(game)
     game.level = Levels.Level(game)
