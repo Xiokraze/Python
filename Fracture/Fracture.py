@@ -1,110 +1,22 @@
 import pygame
+pygame.mixer.pre_init(44100, -16, 2, 2048)
+pygame.mixer.init()
 pygame.init()
-import Draw
-import Events
-import Levels
-import Player
-import Spheres
-from PIL import ImageFont
-
-
-#####################
-#     Game Class    #
-#####################
-class Game:
-    def __init__(self):
-
-        # Screen
-        self.title = "Fracture"
-        self.title_prompt = "PRESS ENTER"
-        self.screen_width = 800
-        self.screen_height = 600
-        self.background = (0,0,0)
-
-        # Fonts/Colors
-        self.master_font = "Media/ariblk.ttf"
-        self.font_size = 20
-        self.text_color = (255,255,255)
-        self.font = ImageFont.truetype(self.master_font, self.font_size)
-        self.word_font = pygame.font.Font(self.master_font, self.font_size)
-
-        # Important Variables
-        self.level = None
-        self.level_number = 1
-
-        # Time Handling
-        self.clock = pygame.time.Clock()
-        self.max_FPS = 60
-        self.frame_count = 0
-        self.blink_frame_count = 0
-        self.blink_delay = .5
-        self.blinking = True
-        self.seconds = 0
-
-        # Media
-        self.title_image = pygame.image.load("Media/title_image.png")
-        self.sphere = pygame.image.load("Media/spheres/dark_blue.png")
-
-        # Block Media
-        self.blue_block = pygame.image.load("Media/blocks/blue_01.png")
-
-
-
-    def get_image_size(self, image):
-        image_size = image.get_size()
-        width = image_size[0]
-        height = image_size[1]
-        return width, height
-
-    def draw_blink_text(self, screen, text):
-        Draw.blink_text(self, screen, text)
-        return
-
-    def set_screen(self):
-        pygame.display.set_caption(self.title)
-        size = (self.screen_width, self.screen_height)
-        screen = pygame.display.set_mode(size)
-        return screen
-
-
-#####################
-# Game Time Handler #
-#####################
-def continue_game(game, title_screen=False):
-    if not (Events.check_game_events(title_screen)):
-        return False
-    game.clock.tick(game.max_FPS)
-    game.frame_count += 1
-    Events.check_frame_count(game)
-    return True
-
-
-#####################
-#    Title Screen   #
-#####################
-def title_screen(game, screen):
-    title_screen = True
-    while (continue_game(game, title_screen)):
-        Draw.title_screen(game, screen)
-        Events.blink_text(game, screen, game.title_prompt)
-        pygame.display.update()
-    
-    return
+import game_classes
 
 
 #####################
 #    Game Handler   #
 #####################
-def play_game(game, screen):
-    for i in range(1):
-        Spheres.Sphere(game)
-    player = Player.Player(game)
-    game.level = Levels.Level(game)
-    while (continue_game(game)):
-        spheres = Spheres.Sphere.sphere_list
-        Draw.draw_game(game, screen, player, spheres)
-        Spheres.update(game, player, spheres)
-        player.get_input(game)
+def play_game(game):
+    game_classes.Sphere(game)
+    player = game_classes.Player(game)
+    while (game.continue_game()):
+        spheres = game_classes.Sphere.sphere_list
+        game.draw_game(player, spheres)
+        for sphere in spheres:
+            sphere.update(game, player)
+        player.get_player_movement(game)
     return
 
 
@@ -112,11 +24,10 @@ def play_game(game, screen):
 #        Main       #
 #####################
 def main():
-    game = Game()
-    screen = game.set_screen()
+    game = game_classes.Game()
 
-    #title_screen(game, screen)
-    play_game(game, screen)
+    game.title_screen()
+    play_game(game)
     Events.quit_game()
 
 

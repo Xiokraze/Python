@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>9e9c4638-2d72-45e2-8cc1-54e23f92ca21</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Fracture.py</StartupFile>
+    <StartupFile>fracture.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,20 +21,14 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Draw.py">
+    <Compile Include="game_classes.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Events.py">
+    <Compile Include="drawing.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Fracture.py" />
-    <Compile Include="Levels.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Player.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Spheres.py">
+    <Compile Include="fracture.py" />
+    <Compile Include="game_levels.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
