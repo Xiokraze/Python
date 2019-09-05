@@ -188,6 +188,8 @@ class Player:
 
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
+        rect = (self.x - 2, self.y - 2, self.width + 4, self.height + 4)
+        pygame.draw.rect(screen, (0,0,255), rect, 2)
         return
 
     #####################
@@ -201,7 +203,7 @@ class Player:
             if (sphere.circle_x >= x_start and sphere.circle_x <= x_end):
                 return segment_position
             segment_position += 1
-        return 3
+        return
 
     def get_player_segments(self):
     # Player image _______________________________
@@ -266,10 +268,11 @@ class Sphere:
     sphere_list = []
     def __init__(self, game):
         self.image = game.sphere_image
-        self.speed_x = 5
-        self.speed_y = -self.speed_x
+        self.default_speed_x = 5
+        self.speed_x = self.default_speed_x
+        self.speed_y = -self.default_speed_x
         self.width, self.height = game.get_image_size(self.image)
-        self.angle = random.randint(10, 70)#45
+        self.angle = 45
         self.radians = math.radians(self.angle)
         self.x = game.screen_width / 2
         self.y = game.screen_height - self.x
@@ -336,16 +339,24 @@ class Sphere:
         # TODO what happens when blocks are hit
         return
 
-    def player_collision(self, player, sphere):
-        # Player image _______________________________
-        # Angle       [__300*_|__340*_|__20*__|__10*__]
-        # Segments        0       1       2       3
-        player.segments = player.get_player_segments()
-        segment = player.get_segment_position(sphere)
-        self.angle = self.player_deflection_angles[segment]
-        self.radians = abs(math.radians(self.angle))
+    #def player_collision(self, player):
+    #    # Player image _______________________________
+    #    # Angle       [__300*_|__340*_|__20*__|__60*__]
+    #    # Segments        0       1       2       3
+    #    self.speed_x *= -1
+    #    player.segments = player.get_player_segments()
+    #    segment = player.get_segment_position(self)
+    #    self.angle = self.player_deflection_angles[segment]
+    #    self.radians = math.radians(self.angle)
+    #    return
+    def player_collision(self, player):
+        if (self.speed_x > 0):
+            self.speed *= -1
+        self.angle = 300
+        angle_offset = (player.x + player.width/2) - (self.x+self.width/2)
+        self.angle -= angle_offset
+        self.radians = math.radians(self.angle)
         return
-
 
     def update(self, game, player):
         if (game.level.sphere_edge_collision(self, game)):
@@ -356,7 +367,7 @@ class Sphere:
             self.block_collision()
         if (game.level.player_sphere_collision(self, player)):
             self.speed_y *= -1
-            self.player_collision(player, self)
+            self.player_collision(player)
         self.move()
         return
 
@@ -455,7 +466,7 @@ class Level:
         x = sphere.circle_x
         y = sphere.circle_y + sphere.circle_radius
         if (x >= player.x and x <= player.x + player.width):
-            for px in range(sphere.speed_y):
+            for px in range(int(sphere.speed_y)):
                 if (int(y + px) == player.y):
                     return True
         return False
@@ -474,10 +485,10 @@ class Level:
         radius = sphere.circle_radius
         if (x < self.x_left + radius or x > self.x_right - radius):
             sphere.speed_x *= -1
-            sphere.hit_wall_sound.play()
+            #sphere.hit_wall_sound.play()
         if (y < self.y_top + radius):
             sphere.speed_y *= -1
-            sphere.hit_wall_sound.play()
+            #sphere.hit_wall_sound.play()
         if (y > game.screen_height - radius):
             sphere.speed_y *= -1
             #return True
