@@ -15,7 +15,8 @@ class Border(pygame.sprite.Sprite): # TODO refractor
         top_padding = 200
         side_padding = 50
         side_height = screen_obj.screen_height - top_padding
-        border_width = 20
+        self.border_width = 20
+        border_width = self.border_width
         border_color = (0,0,255)
 
         if (self.side == "left" or self.side == "right"):
@@ -28,11 +29,11 @@ class Border(pygame.sprite.Sprite): # TODO refractor
                 self.rect.x = screen_obj.screen_width - border_width - side_padding
             self.rect.y = top_padding
         else:
-            width = screen_obj.screen_width - side_padding * 2
+            width = screen_obj.screen_width - side_padding * 2 - self.border_width * 2
             self.image = pygame.Surface([width, border_width])
             self.image.fill(border_color)
             self.rect = self.image.get_rect()
-            self.rect.x = 0 + side_padding
+            self.rect.x = 0 + side_padding + self.border_width
             self.rect.y = top_padding
 
 
@@ -123,11 +124,14 @@ class Game(object):
         return True
 
     def border_collision(self):
-        collisions = pygame.sprite.groupcollide(self.sphere_sprites, self.border_sprites, 0, 0).keys()
-        if (collisions):
-            print("%s" % collisions)
-            # TODO figure out how to access the sprite dictionary that's been returned
-                
+        collisions =  pygame.sprite.groupcollide(self.sphere_sprites, self.border_sprites, 0, 0)
+        for sphere in collisions:
+            border = collisions[sphere][0]
+            if (border.side == "left" or border.side == "right"):
+               sphere.speed_x *= -1
+            if (border.side == "top"):
+                if (sphere.speed_y > 0):
+                    sphere.speed_y *= -1
         return
 
     def play(self):
@@ -136,6 +140,7 @@ class Game(object):
         while (self.continue_game()):
             self.screen_obj.screen.fill((0,0,0))
             self.border_sprites.draw(self.screen_obj.screen)
+            #self.sphere_sprites.clear(self.screen_obj.screen, (0,0,0))
             self.sphere_sprites.draw(self.screen_obj.screen)           
             self.sphere_sprites.update(self)
             pygame.display.update()
