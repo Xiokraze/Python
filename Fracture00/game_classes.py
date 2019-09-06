@@ -12,11 +12,11 @@ from PIL import ImageFont
 class Game:
     def __init__(self):
         # Screen
-        self.title = "Fracture"
+        #self.title = "Fracture"
         self.title_prompt = "PRESS ENTER"
-        self.screen_width = 800
-        self.screen_height = 800
-        self.screen = self.set_screen()
+        #self.screen_width = 800
+        #self.screen_height = 800
+        #self.screen = self.set_screen()
 
         # Fonts/Colors
         self.master_font = "Media/ariblk.ttf"
@@ -32,11 +32,11 @@ class Game:
         self.blink_frame_count = 0
         self.blink_delay = .5
         self.blinking = True
-        self.seconds = 0
+        #self.seconds = 0
 
         # Media
         self.title_image = pygame.image.load("Media/title_image.png")
-        self.sphere_image = pygame.image.load("Media/spheres/dark_blue.png")
+        #self.sphere_image = pygame.image.load("Media/spheres/dark_blue.png")
         self.player_image = pygame.image.load("Media/player/player_default.png")
 
         # Block Media
@@ -80,28 +80,28 @@ class Game:
         y = (self.screen_height / 2) + font_size[1]
         return x, y
 
-    @staticmethod
-    def get_game_events(title_screen=False):
-        mouse_position = pygame.mouse.get_pos()
-        events = pygame.event.get()
-        for event in events:
-            if (event.type == pygame.QUIT):
-                return False
-            if (title_screen):
-                if (event.type == pygame.KEYDOWN):
-                    if (event.key == pygame.K_RETURN):
-                        return False       
-        return True
+    #@staticmethod
+    #def get_game_events(title_screen=False):
+    #    mouse_position = pygame.mouse.get_pos()
+    #    events = pygame.event.get()
+    #    for event in events:
+    #        if (event.type == pygame.QUIT):
+    #            return False
+    #        if (title_screen):
+    #            if (event.type == pygame.KEYDOWN):
+    #                if (event.key == pygame.K_RETURN):
+    #                    return False       
+    #    return True
 
     def set_game_level(self):
         level = Level(self)
         return level
 
-    def set_screen(self):
-        pygame.display.set_caption(self.title)
-        size = (self.screen_width, self.screen_height)
-        screen = pygame.display.set_mode(size)
-        return screen
+    #def set_screen(self):
+    #    pygame.display.set_caption(self.title)
+    #    size = (self.screen_width, self.screen_height)
+    #    screen = pygame.display.set_mode(size)
+    #    return screen
 
 
     #####################
@@ -134,27 +134,27 @@ class Game:
     #####################
     #     Game Time     #
     #####################
-    def check_frame_count(self):
-        if (self.frame_count >= self.max_FPS):
-            self.frame_count = 0
-            self.seconds += 1
-        return
+    #def check_frame_count(self):
+    #    if (self.frame_count >= self.max_FPS):
+    #        self.frame_count = 0
+    #        self.seconds += 1
+    #    return
 
-    def continue_game(self, title_screen=False):
-        if not (self.get_game_events(title_screen)):
-            return False
-        self.clock.tick(self.max_FPS)
-        self.frame_count += 1
-        self.check_frame_count()
-        return True
+    #def continue_game(self, title_screen=False):
+    #    if not (self.get_game_events(title_screen)):
+    #        return False
+    #    self.clock.tick(self.max_FPS)
+    #    self.frame_count += 1
+    #    self.check_frame_count()
+    #    return True
 
-    def update_seconds(self):
-        self.blink_frame_count += 1
-        blink_frame_count = self.max_FPS * self.blink_delay
-        if (self.blink_frame_count == (blink_frame_count)):
-            self.blink_frame_count = 0
-            return True
-        return False
+    #def update_seconds(self):
+    #    self.blink_frame_count += 1
+    #    blink_frame_count = self.max_FPS * self.blink_delay
+    #    if (self.blink_frame_count == (blink_frame_count)):
+    #        self.blink_frame_count = 0
+    #        return True
+    #    return False
 
     def blink_text(self, prompt):
         if (self.update_seconds()):
@@ -166,10 +166,10 @@ class Game:
             drawing.draw_blink_text(self, prompt)
         return
 
-    @staticmethod
-    def quit_game():
-        pygame.quit()
-        sys.exit(0)
+    #@staticmethod
+    #def quit_game():
+    #    pygame.quit()
+    #    sys.exit(0)
 
 
 #####################
@@ -299,14 +299,14 @@ class Sphere:
         screen.blit(self.image, (self.x,self.y))
         return
 
-    def move(self):
-        move_x = self.speed_x * math.sin(self.radians)
-        move_y = self.speed_y * math.cos(self.radians)
-        self.x += move_x
-        self.circle_x += move_x
-        self.y += move_y
-        self.circle_y += move_y
-        return
+    #def move(self):
+    #    move_x = self.speed_x * math.sin(self.radians)
+    #    move_y = self.speed_y * math.cos(self.radians)
+    #    self.x += move_x
+    #    self.circle_x += move_x
+    #    self.y += move_y
+    #    self.circle_y += move_y
+    #    return
 
     # Get 8 (x,y) coordinates on the circle for more accurate collision 
     # detection. The first 4 are where the circle crosses the x/y axes. The 
