@@ -186,63 +186,63 @@ class Player:
         self.segments = self.get_player_segments()
 
 
-    def draw(self, screen):
-        screen.blit(self.image, (self.x, self.y))
-        rect = (self.x - 2, self.y - 2, self.width + 4, self.height + 4)
-        pygame.draw.rect(screen, (0,0,255), rect, 2)
-        return
+    #def draw(self, screen):
+    #    screen.blit(self.image, (self.x, self.y))
+    #    rect = (self.x - 2, self.y - 2, self.width + 4, self.height + 4)
+    #    pygame.draw.rect(screen, (0,0,255), rect, 2)
+    #    return
 
     #####################
     #      Getters      #
     #####################
-    def get_segment_position(self, sphere):
-        segment_position = 0
-        for segment in self.segments:
-            x_start = segment[0]
-            x_end = segment[1]
-            if (sphere.circle_x >= x_start and sphere.circle_x <= x_end):
-                return segment_position
-            segment_position += 1
-        return
+    #def get_segment_position(self, sphere):
+    #    segment_position = 0
+    #    for segment in self.segments:
+    #        x_start = segment[0]
+    #        x_end = segment[1]
+    #        if (sphere.circle_x >= x_start and sphere.circle_x <= x_end):
+    #            return segment_position
+    #        segment_position += 1
+    #    return
 
-    def get_player_segments(self):
-    # Player image _______________________________
-    #             [___0___|___1___|___2___|___3___]
-    # Segments    x      x1      x2      x3      x4
-        segments = []
-        num_segments = 4
-        fraction = .25
-        multiplier = 0
-        for i in range(num_segments):
-            x1 = int(self.x + self.width * multiplier)
-            multiplier += fraction
-            x2 = int(self.x + self.width * multiplier)
-            segments.append([x1, x2])
-        return segments
+    #def get_player_segments(self):
+    ## Player image _______________________________
+    ##             [___0___|___1___|___2___|___3___]
+    ## Segments    x      x1      x2      x3      x4
+    #    segments = []
+    #    num_segments = 4
+    #    fraction = .25
+    #    multiplier = 0
+    #    for i in range(num_segments):
+    #        x1 = int(self.x + self.width * multiplier)
+    #        multiplier += fraction
+    #        x2 = int(self.x + self.width * multiplier)
+    #        segments.append([x1, x2])
+    #    return segments
 
-    def get_start_location(self, game):
-        x = game.screen_width / 2 - self.width / 2
-        y = game.screen_height - self.height * 5
-        return x, y
+    #def get_start_location(self, game):
+    #    x = game.screen_width / 2 - self.width / 2
+    #    y = game.screen_height - self.height * 5
+    #    return x, y
 
-    def get_player_movement(self, game):
-        # Mouse
-        if (pygame.mouse.get_pressed()[0]):
-            pygame.mouse.set_visible(False)
-            mouse_pos = pygame.mouse.get_pos()
-            if (mouse_pos[0] < self.x + self.width / 2):
-                self.move_left(game)
-            if (mouse_pos[0] > self.x + self.width / 2):
-                self.move_right(game)
-        else:
-            pygame.mouse.set_visible(True)
-        # Left/Right arrow keys
-        keys = pygame.key.get_pressed()
-        if (keys[pygame.K_LEFT]):
-            self.move_left(game)
-        if (keys[pygame.K_RIGHT]):
-            self.move_right(game)
-        return
+    #def get_player_movement(self, game):
+    #    # Mouse
+    #    if (pygame.mouse.get_pressed()[0]):
+    #        pygame.mouse.set_visible(False)
+    #        mouse_pos = pygame.mouse.get_pos()
+    #        if (mouse_pos[0] < self.x + self.width / 2):
+    #            self.move_left(game)
+    #        if (mouse_pos[0] > self.x + self.width / 2):
+    #            self.move_right(game)
+    #    else:
+    #        pygame.mouse.set_visible(True)
+    #    # Left/Right arrow keys
+    #    keys = pygame.key.get_pressed()
+    #    if (keys[pygame.K_LEFT]):
+    #        self.move_left(game)
+    #    if (keys[pygame.K_RIGHT]):
+    #        self.move_right(game)
+    #    return
 
 
     #####################

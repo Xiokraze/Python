@@ -11,9 +11,9 @@ class Border(pygame.sprite.Sprite):  # TODO refactor
         super().__init__()
         self.side = border_position
         top_padding = 200
-        side_padding = 50
+        side_padding = screen_obj.x_min
         side_height = screen_obj.screen_height - top_padding
-        self.border_width = 20
+        self.border_width = screen_obj.border_width
         border_width = self.border_width
         border_color = (0, 0, 255)
 
@@ -24,10 +24,12 @@ class Border(pygame.sprite.Sprite):  # TODO refactor
             if self.side == "left":
                 self.rect.x = side_padding
             else:
-                self.rect.x = screen_obj.screen_width - border_width - side_padding
+                x = screen_obj.screen_width - border_width - side_padding
+                self.rect.x = x
             self.rect.y = top_padding
         else:
-            width = screen_obj.screen_width - side_padding * 2 - self.border_width * 2
+            screen_width = screen_obj.screen_width
+            width = screen_width - side_padding * 2 - self.border_width * 2
             self.image = pygame.Surface([width, border_width])
             self.image.fill(border_color)
             self.rect = self.image.get_rect()
@@ -56,7 +58,53 @@ class Sphere(pygame.sprite.Sprite):
 
     def update(self, game):
         game.border_collision()
+        game.player_collision()
         self.move()
+        return
+
+
+class Player(pygame.sprite.Sprite):
+    def __init__(self, screen_obj):
+        super().__init__()
+        self.image = pygame.image.load("Media/player/player_default.png")
+        self.size = self.image.get_size()
+        self.rect = self.image.get_rect()
+        self.rect.x = screen_obj.screen_width / 2 - self.size[1] / 2
+        self.rect.y = screen_obj.screen_height - self.size[1] * 2
+        self.speed = 7
+        self.x_min = screen_obj.x_min
+        self.x_max = screen_obj.x_max
+        self.border_padding = screen_obj.border_width
+
+    def move_left(self):
+        x = self.rect.x - self.speed - self.border_padding
+        if x > self.x_min:
+            self.rect.x -= self.speed
+        return
+
+    def move_right(self):
+        x = self.rect.x + self.size[0] + self.speed + self.border_padding
+        if x < self.x_max:
+            self.rect.x += self.speed
+        return
+
+    def update(self):
+        # Mouse
+        if pygame.mouse.get_pressed()[0]:
+            pygame.mouse.set_visible(False)
+            mouse_pos = pygame.mouse.get_pos()
+            if mouse_pos[0] < self.rect.x + self.size[0] / 2:
+                self.move_left()
+            if mouse_pos[0] > self.rect.x + self.size[0] / 2:
+                self.move_right()
+        # Left/Right arrow keys
+        else:
+            pygame.mouse.set_visible(True)
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_LEFT]:
+                self.move_left()
+            if keys[pygame.K_RIGHT]:
+                self.move_right()
         return
 
 
@@ -65,6 +113,9 @@ class Screen(object):
         self.title = "Fracture"
         self.screen_width = 800
         self.screen_height = 800
+        self.x_min = 50
+        self.x_max = self.screen_width - self.x_min
+        self.border_width = 20
         self.screen = self.set_screen()
 
     def set_screen(self):
@@ -89,6 +140,9 @@ class Game(object):
 
         return
 
+    #####################
+    #    Game Control   #
+    #####################
     def check_frame_count(self):
         if self.frame_count >= self.max_FPS:
             self.frame_count = 0
@@ -102,6 +156,11 @@ class Game(object):
         self.frame_count += 1
         self.check_frame_count()
         return True
+
+    @staticmethod
+    def quit_game():
+        pygame.quit()
+        sys.exit(0)
 
     #####################
     #      Getters      #
@@ -128,14 +187,29 @@ class Game(object):
     def get_sprites(self):
         self.get_border_sprites()
         self.sphere_sprites.add(Sphere(self.screen_obj))
-        # self.player_sprites.add(Player(self.screen_obj))
+        self.player_sprites.add(Player(self.screen_obj))
+        return
+
+    #####################
+    #     Collision     #
+    #####################
+    def player_collision(self):
+        collisions = pygame.sprite.groupcollide(
+            self.sphere_sprites,
+            self.player_sprites,
+            0,
+            0
+        )
+        for sphere in collisions:
+            player = collisions[sphere][0]
+            # TODO complete player collision
         return
 
     def border_collision(self):
         collisions = pygame.sprite.groupcollide(
-            self.sphere_sprites, 
-            self.border_sprites, 
-            0, 
+            self.sphere_sprites,
+            self.border_sprites,
+            0,
             0
         )
         for sphere in collisions:
@@ -153,15 +227,11 @@ class Game(object):
             self.screen_obj.screen.fill((0, 0, 0))
             self.border_sprites.draw(self.screen_obj.screen)
             self.sphere_sprites.draw(self.screen_obj.screen)    
-            # self.player_sprites.draw(self.screen_obj.screen)
+            self.player_sprites.draw(self.screen_obj.screen)
             self.sphere_sprites.update(self)
+            self.player_sprites.update()
             pygame.display.update()
         return
-
-
-def quit_game():
-    pygame.quit()
-    sys.exit(0)
 
 
 #####################
@@ -171,7 +241,7 @@ def main():
     game = Game()
     # game.title_screen()
     game.play()
-    quit_game()
+    game.quit_game()
 
 
 if __name__ == "__main__":

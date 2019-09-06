@@ -531,3 +531,8 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
+Fracture/.idea/modules.xml
+Fracture/.idea/codeStyles/codeStyleConfig.xml
+Fracture/.idea/workspace.xml
+Fracture/.idea/misc.xml
+Fracture/.idea/Fracture.iml
