@@ -42,6 +42,65 @@ class Border(pygame.sprite.Sprite):  # TODO refactor
                 self.rect.y = screen_obj.screen_height
 
 
+class Block(pygame.sprite.Sprite):
+    def __init__(self, block):
+        super().__init__()
+        self.image = block[0]
+        self.rect = self.image.get_rect()
+        self.rect.x = block[1]
+        self.rect.y = block[2]
+
+
+class Level(object):
+    def __init__(self, level):
+        self.level = level
+        self.background = self.get_background()
+        self.blocks = self.get_blocks()
+
+    def get_blocks(self):
+        blocks = []
+        for block in Levels.get_positions(self.level):
+            blocks.append(block)
+        return blocks
+
+    def get_background(self):
+        if self.level == 1:
+            background = pygame.image.load("Media/backgrounds/space1.png")
+        return background
+
+    def set_blocks(self):
+        self.blocks = self.get_blocks()
+        return
+
+    def set_background(self):
+        self.background = self.get_background()
+        return
+
+    def set_level(self, level):
+        self.level = level
+        return
+
+    def check_level(self, level_num):
+        if level_num != self.level:
+            return True
+        return False
+
+
+class Levels:
+    @staticmethod
+    def get_positions(level):
+        blue = pygame.image.load("Media/blocks/blue_01.png")
+        if level == 1:
+            blocks = (
+                (blue, 300, 400),
+                (blue, 400, 400),
+                (blue, 600, 400),
+                (blue, 500, 600),
+                (blue, 100, 400),
+            )
+        return blocks
+
+
 class Player(pygame.sprite.Sprite):
     def __init__(self, screen_obj):
         super().__init__()
@@ -131,6 +190,11 @@ class Sphere(pygame.sprite.Sprite):
         self.x_max = screen_obj.screen_width - screen_obj.x_max - self.size[0]
         self.y_max = screen_obj.top_padding + screen_obj.border_width + self.size[1]
 
+    def set_block_deflection_angle(self, block):
+        # TODO figure out how to detect which side was hit
+
+        return
+
     def set_border_deflection_angle(self, border):
         if border.side == "left":
             self.angle = 360 - self.angle
@@ -169,6 +233,7 @@ class Sphere(pygame.sprite.Sprite):
     def update(self, game):
         game.border_collision()
         game.player_collision()
+        game.block_collision()
         self.move()
         return
 
@@ -179,6 +244,7 @@ class Game(object):
         self.sphere_sprites = pygame.sprite.RenderUpdates()
         self.border_sprites = pygame.sprite.RenderPlain()
         self.player_sprites = pygame.sprite.RenderUpdates()
+        self.block_sprites = pygame.sprite.RenderPlain()
         self.all_sprites = pygame.sprite.Group()
 
         # Time Handling
@@ -192,6 +258,10 @@ class Game(object):
 
         # Prompts
         self.title_prompt = "PRESS ENTER"
+
+        # Levels
+        self.level_num = 1
+        self.level_obj = Level(self.level_num)
 
         # Fonts/Colors
         self.master_font = "Media/ariblk.ttf"
@@ -257,6 +327,11 @@ class Game(object):
         self.border_sprites.add(Border(self.screen_obj, "bot"))
         return
 
+    def get_block_sprites(self):
+        for block in self.level_obj.blocks:
+            self.block_sprites.add(Block(block))
+        return
+
     def get_all_sprites(self):
         for border in self.border_sprites:
             self.all_sprites.add(border)
@@ -264,12 +339,15 @@ class Game(object):
             self.all_sprites.add(sphere)
         for player in self.player_sprites:
             self.all_sprites.add(player)
+        for block in self.block_sprites:
+            self.all_sprites.add(block)
         return
 
     def get_sprites(self):
         self.get_border_sprites()
         self.sphere_sprites.add(Sphere(self.screen_obj))
         self.player_sprites.add(Player(self.screen_obj))
+        self.get_block_sprites()
         self.get_all_sprites()
         return
 
@@ -281,9 +359,24 @@ class Game(object):
         )
         return border_collision
 
+    def get_sphere_block_collision(self, sphere):
+        block_collision = pygame.sprite.spritecollide(
+            sphere,
+            self.block_sprites,
+            True
+        )
+        return block_collision
+
     #####################
     #     Collision     #
     #####################
+    def block_collision(self):
+        for sphere in self.sphere_sprites:
+            block_collision = self.get_sphere_block_collision(sphere)
+            if block_collision:
+                block = block_collision[0]
+                sphere.set_block_deflection_angle(block)
+
     def player_collision(self):
         collisions = pygame.sprite.groupcollide(
             self.sphere_sprites,
@@ -316,6 +409,10 @@ class Game(object):
             self.player_sprites.update()
             self.sphere_sprites.update(self)
             pygame.display.update()
+
+            # If player has advanced to next level, get appropriate level
+            if self.level_obj.check_level(self.level_num):
+                self.level_obj = Level(self.level_num)
         return
 
     #####################
