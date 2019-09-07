@@ -46,9 +46,25 @@ class Block(pygame.sprite.Sprite):
     def __init__(self, block):
         super().__init__()
         self.image = block[0]
+        self.size = self.image.get_size()
         self.rect = self.image.get_rect()
         self.rect.x = block[1]
         self.rect.y = block[2]
+        # Left Right Top Bot
+        self.sides = self.get_sides()
+
+    def get_sides(self):
+        # Left Right Top Bot
+        sides = []
+        left = self.rect.x
+        right = self.rect.x + self.size[0]
+        top = self.rect.y
+        bot = self.rect.y + self.size[1]
+        sides.append(left)
+        sides.append(right)
+        sides.append(top)
+        sides.append(bot)
+        return sides
 
 
 class Level(object):
@@ -190,9 +206,43 @@ class Sphere(pygame.sprite.Sprite):
         self.x_max = screen_obj.screen_width - screen_obj.x_max - self.size[0]
         self.y_max = screen_obj.top_padding + screen_obj.border_width + self.size[1]
 
-    def set_block_deflection_angle(self, block):
-        # TODO figure out how to detect which side was hit
+    def get_sides(self):
+        # center pixels on each of the sphere's side (left, right, top, bot)
+        sides = []
+        left = (self.rect.x, self.rect.y + self.size[1] / 2)
+        right = (self.rect.x + self.size[0], self.rect.y + self.size[1] / 2)
+        # top of block but bottom y position
+        bot = (self.rect.x + self.size[0] / 2, self.rect.y)
+        # bottom of block but top y position
+        top = (self.rect.x + self.size[0] / 2, self.rect.y + self.size[1])
+        sides.append(left)
+        sides.append(right)
+        sides.append(top)
+        sides.append(bot)
+        return sides
 
+    def get_block_side_collision(self, block):
+        # x/y axes px for each block's side (left, right, top, bot)
+        bs = block.get_sides()
+        # center pixels on each of the sphere's side (left, right, top, bot)
+        sphere_sides = self.get_sides()
+        # Side to return
+        sides = ("left", "right", "top", "bot")
+        index = 0
+        print("testing")
+        for coord in sphere_sides:
+            if bs[0] < coord[0] < bs[1]:
+                if bs[2] < coord[1] < bs[3]:
+                    return sides[index]
+            index += 1
+        return ""
+
+    def set_block_deflection_angle(self, block):
+        block_side = self.get_block_side_collision(block)
+        if block_side == "left" or block_side == "right":
+            self.angle = 360 - self.angle
+        if block_side == "top" or block_side == "bot":
+            self.angle = (180 - self.angle) % 360
         return
 
     def set_border_deflection_angle(self, border):
