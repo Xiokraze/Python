@@ -8,41 +8,8 @@ pygame.mixer.init()
 pygame.init()
 
 
-class Border(pygame.sprite.Sprite):  # TODO refactor
-    def __init__(self, screen_obj, border_position):
-        super().__init__()
-        self.side = border_position
-        side_padding = screen_obj.x_min
-        side_height = screen_obj.screen_height - screen_obj.top_padding
-        self.border_width = screen_obj.border_width
-        border_width = self.border_width
-        border_color = (0, 0, 255)
-
-        if self.side == "left" or self.side == "right":
-            self.image = pygame.Surface([border_width, side_height])
-            self.image.fill(border_color)
-            self.rect = self.image.get_rect()
-            if self.side == "left":
-                self.rect.x = side_padding
-            else:
-                x = screen_obj.screen_width - border_width - side_padding
-                self.rect.x = x
-            self.rect.y = screen_obj.top_padding
-
-        if self.side == "top" or self.side == "bot":
-            screen_width = screen_obj.screen_width
-            width = screen_width - side_padding * 2 - self.border_width * 2
-            self.image = pygame.Surface([width, border_width])
-            self.image.fill(border_color)
-            self.rect = self.image.get_rect()
-            self.rect.x = 0 + side_padding + self.border_width
-            if self.side == "top":
-                self.rect.y = screen_obj.top_padding
-            else:
-                self.rect.y = screen_obj.screen_height
-
-
 class Block(pygame.sprite.Sprite):
+    # Side lists are in order: Left Right Top Bot
     def __init__(self, block):
         super().__init__()
         self.image = block[0]
@@ -50,11 +17,9 @@ class Block(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = block[1]
         self.rect.y = block[2]
-        # Left Right Top Bot
         self.sides = self.get_sides()
 
     def get_sides(self):
-        # Left Right Top Bot
         sides = []
         left = self.rect.x
         right = self.rect.x + self.size[0]
@@ -67,9 +32,52 @@ class Block(pygame.sprite.Sprite):
         return sides
 
 
+class Border(pygame.sprite.Sprite):
+    def __init__(self, screen_obj, border_position):
+        super().__init__()
+        self.side = border_position
+        self.thickness = screen_obj.border_width
+        self.side_height = screen_obj.screen_height - screen_obj.top_padding
+        self.top_width = self.get_top_width(screen_obj)
+        self.color = (0, 0, 255)
+        self.image = self.get_image()
+        self.image.fill(self.color)
+        self.rect = self.image.get_rect()
+        self.rect.x = self.get_rect_x(screen_obj)
+        self.rect.y = self.get_rect_y(screen_obj)
+
+    def get_rect_x(self, screen_obj):
+        if self.side == "left":
+            return screen_obj.x_min
+        elif self.side == "right":
+            return screen_obj.screen_width - screen_obj.x_min - self.thickness
+        else:
+            return screen_obj.x_min + self.thickness
+
+    def get_rect_y(self, screen_obj):
+        if self.side == "left" or self.side == "right" or self.side == "top":
+            return screen_obj.top_padding
+        else:
+            return screen_obj.screen_height
+
+    def get_image(self):
+        if self.side == "left" or self.side == "right":
+            return pygame.Surface([self.thickness, self.side_height])
+        else:
+            return pygame.Surface([self.top_width, self.thickness])
+
+    def get_top_width(self, screen_obj):
+        screen_width = screen_obj.screen_width
+        width = screen_width - screen_obj.x_min * 2 - self.thickness * 2
+        return width
+
+
 class Level(object):
     def __init__(self, level):
         self.level = level
+        self.backgrounds = [
+            pygame.image.load("Media/backgrounds/space1.png")
+        ]
         self.background = self.get_background()
         self.blocks = self.get_blocks()
 
@@ -79,23 +87,28 @@ class Level(object):
             blocks.append(block)
         return blocks
 
+    # Fetches background assigned to each level
     def get_background(self):
         if self.level == 1:
-            background = pygame.image.load("Media/backgrounds/space1.png")
+            background = self.backgrounds[0]  # Space bg
         return background
 
+    # Reload blocks when the current level changes
     def set_blocks(self):
         self.blocks = self.get_blocks()
         return
 
+    # Reload background if current level changes
     def set_background(self):
         self.background = self.get_background()
         return
 
+    # Called to change the current game level
     def set_level(self, level):
         self.level = level
         return
 
+    # Checks if player has advanced to another level
     def check_level(self, level_num):
         if level_num != self.level:
             return True
@@ -103,6 +116,7 @@ class Level(object):
 
 
 class Levels:
+    # Class for simplifying level handling for blocks
     @staticmethod
     def get_positions(level):
         blue = pygame.image.load("Media/blocks/blue_01.png")
@@ -131,6 +145,7 @@ class Player(pygame.sprite.Sprite):
         self.border_padding = screen_obj.border_width
 
     def get_segments(self):
+        # Player image divided into 4 equal segments
         segments = []
         x = self.rect.x
         width = self.size[0]
@@ -173,6 +188,7 @@ class Player(pygame.sprite.Sprite):
 
 
 class Screen(object):
+    # Object to handle screen parameters
     def __init__(self):
         self.title = "Fracture"
         self.screen_width = 800
@@ -193,11 +209,15 @@ class Screen(object):
 class Sphere(pygame.sprite.Sprite):
     def __init__(self, screen_obj):
         super().__init__()
-        self.image = pygame.image.load("Media/spheres/dark_blue.png")
+        self.images = [
+            pygame.image.load("Media/spheres/dark_blue.png")
+            ]
+        self.image = self.images[0]
         self.speed = 5
         self.speed_x = self.speed
         self.speed_y = self.speed * -1
         self.angle = 45
+        self.player_angles = [300, 340, 20, 60]
         self.size = self.image.get_size()
         self.rect = self.image.get_rect()
         self.rect.x = screen_obj.screen_width / 2 - self.size[0] / 2
@@ -211,9 +231,9 @@ class Sphere(pygame.sprite.Sprite):
         sides = []
         left = (self.rect.x, self.rect.y + self.size[1] / 2)
         right = (self.rect.x + self.size[0], self.rect.y + self.size[1] / 2)
-        # top of block but bottom y position
+        # top of block but bottom y px position
         bot = (self.rect.x + self.size[0] / 2, self.rect.y)
-        # bottom of block but top y position
+        # bottom of block but top y px position
         top = (self.rect.x + self.size[0] / 2, self.rect.y + self.size[1])
         sides.append(left)
         sides.append(right)
@@ -221,18 +241,15 @@ class Sphere(pygame.sprite.Sprite):
         sides.append(bot)
         return sides
 
-    def get_block_side_collision(self, block):
-        # x/y axes px for each block's side (left, right, top, bot)
-        bs = block.get_sides()
-        # center pixels on each of the sphere's side (left, right, top, bot)
+    def get_block_side_collision(self, block):  # TODO add corner collision handling
+        block_side = block.get_sides()
+        # center px on each of the sphere's side (left, right, top, bot)
         sphere_sides = self.get_sides()
-        # Side to return
-        sides = ("left", "right", "top", "bot")
+        sides = ("left", "right", "top", "bot")  # Side to return
         index = 0
-        print("testing")
-        for coord in sphere_sides:
-            if bs[0] < coord[0] < bs[1]:
-                if bs[2] < coord[1] < bs[3]:
+        for sphere_side in sphere_sides:
+            if block_side[0] < sphere_side[0] < block_side[1]:
+                if block_side[2] < sphere_side[1] < block_side[3]:
                     return sides[index]
             index += 1
         return ""
@@ -256,28 +273,20 @@ class Sphere(pygame.sprite.Sprite):
             pass  # Place holder for sphere/bottom border collision handling
         return
 
-    def new_angle(self, player_segments):
+    def set_player_deflection_angle(self, player_segments):
+        # Set angle according to which player segments was collided with
         segment_num = 0
         for start, end in player_segments:
             if start <= self.rect.x < end:
                 break
             segment_num += 1
-        if segment_num == 0:
-            self.angle = 300
-        elif segment_num == 1:
-            self.angle = 340
-        elif segment_num == 2:
-            self.angle = 20
-        elif segment_num == 3:
-            self.angle = 60
+        self.angle = self.player_angles[segment_num]
         return
 
     def move(self):
         radians = math.radians(self.angle)
-        move_x = int(self.speed_x * math.sin(radians))
-        move_y = int(self.speed_y * math.cos(radians))
-        self.rect.y += move_y
-        self.rect.x += move_x
+        self.rect.y += int(self.speed_y * math.cos(radians))
+        self.rect.x += int(self.speed_x * math.sin(radians))
         return
 
     def update(self, game):
@@ -437,7 +446,7 @@ class Game(object):
         for sphere in collisions:
             player = collisions[sphere][0]
             segments = player.get_segments()
-            sphere.new_angle(segments)
+            sphere.set_player_deflection_angle(segments)
         return
 
     def border_collision(self):
