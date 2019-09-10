@@ -277,7 +277,7 @@ class Sphere(pygame.sprite.Sprite):
         # Set angle according to which player segments was collided with
         segment_num = 0
         for start, end in player_segments:
-            if start <= self.rect.x < end:
+            if (start - self.size[0]) <= self.rect.x < (end + self.size[0]):
                 break
             segment_num += 1
         self.angle = self.player_angles[segment_num]
