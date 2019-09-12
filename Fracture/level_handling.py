@@ -62,17 +62,17 @@ class Border(pygame.sprite.Sprite):
 
 
 class Level(object):
-    def __init__(self, level):
+    def __init__(self, level, screen_obj):
         self.level = level
         self.backgrounds = [
             pygame.image.load("Media/backgrounds/space1.png")
         ]
         self.background = self.get_background()
-        self.blocks = self.get_blocks()
+        self.blocks = self.get_blocks(screen_obj)
 
-    def get_blocks(self):
+    def get_blocks(self, screen_obj):
         blocks = []
-        for block in Levels.get_positions(self.level):
+        for block in Levels.get_positions(self.level, screen_obj):
             blocks.append(block)
         return blocks
 
@@ -108,15 +108,22 @@ class Level(object):
 class Levels:
     # Class for simplifying level handling for blocks
     @staticmethod
-    def get_positions(level):
+    def get_positions(level, screen_obj):
         blue = pygame.image.load("Media/blocks/blue_01.png")
-        blocks = ()
+        block_size = blue.get_size()
+        x_min = screen_obj.x_min + screen_obj.border_width
+        y_min = screen_obj.top_padding + screen_obj.border_width
+        max_blocks_row = 10
+        blocks = []
+
         if level == 1:
-            blocks = (
-                (blue, 300, 400),
-                (blue, 400, 400),
-                (blue, 600, 400),
-                (blue, 500, 600),
-                (blue, 100, 400),
-            )
+            x = x_min
+            y = y_min
+            for i in range(max_blocks_row):
+                for j in range(max_blocks_row):
+                    if j % 2 != 0:
+                        blocks.append((blue, x, y))
+                    x += block_size[0]
+                x = x_min
+                y += block_size[1]
         return blocks

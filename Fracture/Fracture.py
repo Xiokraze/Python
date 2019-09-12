@@ -9,6 +9,9 @@ pygame.mixer.init()
 pygame.init()
 
 
+# TODO fix collision detection to include corner collisions
+
+
 class Player(pygame.sprite.Sprite):
     def __init__(self, screen_obj):
         super().__init__()
@@ -198,7 +201,7 @@ class Game(object):
 
         # Levels
         self.level_num = 1
-        self.level_obj = level_handling.Level(self.level_num)
+        self.level_obj = level_handling.Level(self.level_num, self.screen_obj)
 
         # Fonts/Colors
         self.master_font = "Media/ariblk.ttf"
