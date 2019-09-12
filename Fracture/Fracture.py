@@ -2,133 +2,11 @@ import math
 import sys
 import random
 from PIL import ImageFont
+import level_handling
 import pygame
 pygame.mixer.pre_init(44100, -16, 2, 2048)
 pygame.mixer.init()
 pygame.init()
-
-
-class Block(pygame.sprite.Sprite):
-    # Side lists are in order: Left Right Top Bot
-    def __init__(self, block):
-        super().__init__()
-        self.image = block[0]
-        self.size = self.image.get_size()
-        self.rect = self.image.get_rect()
-        self.rect.x = block[1]
-        self.rect.y = block[2]
-        self.sides = self.get_sides()
-
-    def get_sides(self):
-        sides = []
-        left = self.rect.x
-        right = self.rect.x + self.size[0]
-        top = self.rect.y
-        bot = self.rect.y + self.size[1]
-        sides.append(left)
-        sides.append(right)
-        sides.append(top)
-        sides.append(bot)
-        return sides
-
-
-class Border(pygame.sprite.Sprite):
-    def __init__(self, screen_obj, border_position):
-        super().__init__()
-        self.side = border_position
-        self.thickness = screen_obj.border_width
-        self.side_height = screen_obj.screen_height - screen_obj.top_padding
-        self.top_width = self.get_top_width(screen_obj)
-        self.color = (0, 0, 255)
-        self.image = self.get_image()
-        self.image.fill(self.color)
-        self.rect = self.image.get_rect()
-        self.rect.x = self.get_rect_x(screen_obj)
-        self.rect.y = self.get_rect_y(screen_obj)
-
-    def get_rect_x(self, screen_obj):
-        if self.side == "left":
-            return screen_obj.x_min
-        elif self.side == "right":
-            return screen_obj.screen_width - screen_obj.x_min - self.thickness
-        else:
-            return screen_obj.x_min + self.thickness
-
-    def get_rect_y(self, screen_obj):
-        if self.side == "left" or self.side == "right" or self.side == "top":
-            return screen_obj.top_padding
-        else:
-            return screen_obj.screen_height
-
-    def get_image(self):
-        if self.side == "left" or self.side == "right":
-            return pygame.Surface([self.thickness, self.side_height])
-        else:
-            return pygame.Surface([self.top_width, self.thickness])
-
-    def get_top_width(self, screen_obj):
-        screen_width = screen_obj.screen_width
-        width = screen_width - screen_obj.x_min * 2 - self.thickness * 2
-        return width
-
-
-class Level(object):
-    def __init__(self, level):
-        self.level = level
-        self.backgrounds = [
-            pygame.image.load("Media/backgrounds/space1.png")
-        ]
-        self.background = self.get_background()
-        self.blocks = self.get_blocks()
-
-    def get_blocks(self):
-        blocks = []
-        for block in Levels.get_positions(self.level):
-            blocks.append(block)
-        return blocks
-
-    # Fetches background assigned to each level
-    def get_background(self):
-        if self.level == 1:
-            background = self.backgrounds[0]  # Space bg
-        return background
-
-    # Reload blocks when the current level changes
-    def set_blocks(self):
-        self.blocks = self.get_blocks()
-        return
-
-    # Reload background if current level changes
-    def set_background(self):
-        self.background = self.get_background()
-        return
-
-    # Called to change the current game level
-    def set_level(self, level):
-        self.level = level
-        return
-
-    # Checks if player has advanced to another level
-    def check_level(self, level_num):
-        if level_num != self.level:
-            return True
-        return False
-
-
-class Levels:
-    # Class for simplifying level handling for blocks
-    @staticmethod
-    def get_positions(level):
-        blue = pygame.image.load("Media/blocks/blue_01.png")
-        if level == 1:
-            blocks = (
-                (blue, 300, 400),
-                (blue, 400, 400),
-                (blue, 600, 400),
-                (blue, 500, 600),
-                (blue, 100, 400),
-            )
-        return blocks
 
 
 class Player(pygame.sprite.Sprite):
@@ -320,7 +198,7 @@ class Game(object):
 
         # Levels
         self.level_num = 1
-        self.level_obj = Level(self.level_num)
+        self.level_obj = level_handling.Level(self.level_num)
 
         # Fonts/Colors
         self.master_font = "Media/ariblk.ttf"
@@ -351,12 +229,26 @@ class Game(object):
         return
 
     def continue_game(self, title_screen=False):
-        if not (self.get_game_events(title_screen)):
+        if self.get_game_events(title_screen):
             return False
         self.clock.tick(self.max_FPS)
         self.frame_count += 1
         self.check_frame_count()
         return True
+
+    def play(self):
+        self.get_sprites()
+        while self.continue_game():
+            self.draw_game_background()
+            self.all_sprites.draw(self.screen_obj.screen)
+            self.player_sprites.update()
+            self.sphere_sprites.update(self)
+            pygame.display.update()
+
+            # # If player has advanced to next level, get appropriate level
+            # if self.level_obj.check_level(self.level_num):
+            #     self.level_obj = Level(self.level_num)
+        return
 
     @staticmethod
     def quit_game():
@@ -372,23 +264,23 @@ class Game(object):
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.QUIT:
-                return False
+                return True
             if title_screen:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:
-                        return False       
-        return True
+                        return True
+        return False
 
     def get_border_sprites(self):
-        self.border_sprites.add(Border(self.screen_obj, "left"))
-        self.border_sprites.add(Border(self.screen_obj, "right"))
-        self.border_sprites.add(Border(self.screen_obj, "top"))
-        self.border_sprites.add(Border(self.screen_obj, "bot"))
+        self.border_sprites.add(level_handling.Border(self.screen_obj, "left"))
+        self.border_sprites.add(level_handling.Border(self.screen_obj, "right"))
+        self.border_sprites.add(level_handling.Border(self.screen_obj, "top"))
+        self.border_sprites.add(level_handling.Border(self.screen_obj, "bot"))
         return
 
     def get_block_sprites(self):
         for block in self.level_obj.blocks:
-            self.block_sprites.add(Block(block))
+            self.block_sprites.add(level_handling.Block(block))
         return
 
     def get_all_sprites(self):
@@ -458,20 +350,6 @@ class Game(object):
                     sphere.kill()
                     continue
                 sphere.set_border_deflection_angle(border)
-        return
-
-    def play(self):
-        self.get_sprites()
-        while self.continue_game():
-            self.draw_game_background()
-            self.all_sprites.draw(self.screen_obj.screen)
-            self.player_sprites.update()
-            self.sphere_sprites.update(self)
-            pygame.display.update()
-
-            # If player has advanced to next level, get appropriate level
-            if self.level_obj.check_level(self.level_num):
-                self.level_obj = Level(self.level_num)
         return
 
     #####################
