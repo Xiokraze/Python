@@ -9,9 +9,6 @@ pygame.mixer.init()
 pygame.init()
 
 
-# TODO fix collision detection to include corner collisions
-
-
 class Player(pygame.sprite.Sprite):
     def __init__(self, screen_obj):
         super().__init__()
@@ -116,17 +113,25 @@ class Sphere(pygame.sprite.Sprite):
         bot = (self.rect.x + self.size[0] / 2, self.rect.y)
         # bottom of block but top y px position
         top = (self.rect.x + self.size[0] / 2, self.rect.y + self.size[1])
+        top_left = (self.rect.x, self.rect.y)
+        top_right = (self.rect.x + self.size[0], self.rect.y)
+        bot_left = (self.rect.x, self.rect.y + self.size[1])
+        bot_right = (self.rect.x + self.size[0], self.rect.y + self.size[1])
         sides.append(left)
         sides.append(right)
         sides.append(top)
         sides.append(bot)
+        sides.append(top_left)
+        sides.append(top_right)
+        sides.append(bot_left)
+        sides.append(bot_right)
         return sides
 
     def get_block_side_collision(self, block):  # TODO add corner collision handling
         block_side = block.get_sides()
-        # center px on each of the sphere's side (left, right, top, bot)
         sphere_sides = self.get_sides()
-        sides = ("left", "right", "top", "bot")  # Side to return
+        sides = ("left", "right", "top", "bot",
+                 "top_left", "top_right", "bot_left", "bot_right")
         index = 0
         for sphere_side in sphere_sides:
             if block_side[0] < sphere_side[0] < block_side[1]:
@@ -139,8 +144,13 @@ class Sphere(pygame.sprite.Sprite):
         block_side = self.get_block_side_collision(block)
         if block_side == "left" or block_side == "right":
             self.angle = 360 - self.angle
-        if block_side == "top" or block_side == "bot":
+        elif block_side == "top" or block_side == "bot":
             self.angle = (180 - self.angle) % 360
+        else:
+            angle = self.angle - 360
+            if angle < 0:
+                angle = 360 - angle
+            self.angle = angle
         return
 
     def set_border_deflection_angle(self, border):

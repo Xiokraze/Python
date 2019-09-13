@@ -30,7 +30,6 @@ class Border(pygame.sprite.Sprite):
         self.top_width = self.get_top_width(screen_obj)
         self.color = (0, 0, 255)
         self.image = self.get_image()
-        self.image.fill(self.color)
         self.rect = self.image.get_rect()
         self.rect.x = self.get_rect_x(screen_obj)
         self.rect.y = self.get_rect_y(screen_obj)
@@ -119,11 +118,11 @@ class Levels:
         if level == 1:
             x = x_min
             y = y_min
-            for i in range(max_blocks_row):
-                for j in range(max_blocks_row):
-                    if j % 2 != 0:
+            for i in range(10):
+                if i % 2 == 0 and i != 0:
+                    for j in range(max_blocks_row):
                         blocks.append((blue, x, y))
-                    x += block_size[0]
-                x = x_min
+                        x += block_size[0]
+                    x = x_min
                 y += block_size[1]
         return blocks
