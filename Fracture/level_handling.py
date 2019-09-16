@@ -22,6 +22,12 @@ class Block(pygame.sprite.Sprite):
 
 
 class Border(pygame.sprite.Sprite):
+    border_left = pygame.image.load("Media/borders/gray/graphite_left.png")
+    border_right = pygame.image.load("Media/borders/gray/graphite_right.png")
+    border_top = pygame.image.load("Media/borders/gray/graphite_top.png")
+    corner_left = pygame.image.load("Media/borders/gray/graphite_top_left.png")
+    corner_right = pygame.image.load("Media/borders/gray/graphite_top_right.png")
+
     def __init__(self, screen_obj, border_position):
         super().__init__()
         self.side = border_position
@@ -30,9 +36,62 @@ class Border(pygame.sprite.Sprite):
         self.top_width = self.get_top_width(screen_obj)
         self.color = (0, 0, 255)
         self.image = self.get_image()
+        #self.image.fill(self.color)
         self.rect = self.image.get_rect()
         self.rect.x = self.get_rect_x(screen_obj)
         self.rect.y = self.get_rect_y(screen_obj)
+
+    def draw_top(self, screen_obj):
+        image = Border.border_top
+        size = image.get_size()
+        x = self.rect.x + size[0] / 2
+        y = self.rect.y
+        while True:
+            screen_obj.screen.blit(image, (x, y))
+            x += size[0]
+            if x > screen_obj.x_max - size[0]:
+                break
+        return
+
+    def draw_corners(self, screen_obj):
+        left_corner = Border.corner_left
+        right_corner = Border.corner_right
+        size = left_corner.get_size()  # Both corners are the same size, just need one
+        # Draw left corner
+        x = self.rect.x - size[0] / 2
+        y = self.rect.y
+        screen_obj.screen.blit(left_corner, (x, y))
+        # Draw right corner
+        x = screen_obj.x_max - size[0]
+        screen_obj.screen.blit(right_corner, (x, y))
+        return
+
+    def draw(self, screen_obj):
+        if self.side == "left" or self.side == "right":
+            if self.side == "left":
+                image = Border.border_left
+            else:
+                image = Border.border_right
+            size = image.get_size()
+            if self.side == "left":
+                x = self.rect.x
+            else:
+                x = self.rect.x - size[0] / 2
+            y = self.rect.y + size[1]
+            self.draw_sides(image, x, y, size, screen_obj)
+        elif self.side == "top":
+            self.draw_corners(screen_obj)
+            self.draw_top(screen_obj)
+        return
+
+    @staticmethod
+    def draw_sides(image, x, y, size, screen_obj):
+        while True:
+            screen_obj.screen.blit(image, (x, y))
+            y += size[1]
+            if y > screen_obj.screen_height:
+                break
+        return
 
     def get_rect_x(self, screen_obj):
         if self.side == "left":

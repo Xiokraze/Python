@@ -254,6 +254,7 @@ class Game(object):
         while self.continue_game():
             self.draw_game_background()
             self.all_sprites.draw(self.screen_obj.screen)
+            self.draw_borders()
             self.player_sprites.update()
             self.sphere_sprites.update(self)
             pygame.display.update()
@@ -366,6 +367,19 @@ class Game(object):
         return
 
     #####################
+    #      Drawing      #
+    #####################
+    def draw_borders(self):
+        for border in self.border_sprites:
+            border.draw(self.screen_obj)
+        return
+
+    def draw_game_background(self):
+        # self.screen_obj.screen.blit(self.game_background, (0, 0))
+        self.screen_obj.screen.fill((0, 0, 0))
+        return
+
+    #####################
     #    Title Screen   #
     #####################
     def blink_text(self):
@@ -385,11 +399,6 @@ class Game(object):
         x = self.screen_obj.screen_width / 2 - size[0] / 2
         y = self.screen_obj.screen_height / 2 + size[1]
         self.screen_obj.screen.blit(text, (x, y))
-        return
-
-    def draw_game_background(self):
-        # self.screen_obj.screen.blit(self.game_background, (0, 0))
-        self.screen_obj.screen.fill((0, 0, 0))
         return
 
     def draw_title_image(self):
