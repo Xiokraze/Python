@@ -11,13 +11,17 @@ class Block(pygame.sprite.Sprite):
         self.rect.y = block[2]
         self.size = self.image.get_size()
         self.sides = self.get_sides()
+        self.health = block[3]
 
     def get_sides(self):
-        left = self.rect.x
-        right = self.rect.x + self.size[0]
-        top = self.rect.y
-        bot = self.rect.y + self.size[1]
-        sides = [left, right, top, bot]
+        # Returns a list of the x or y coordinates for the 4 sides. The order
+        # is always left, right, top, bottom.
+        sides = [
+            self.rect.x,
+            self.rect.x + self.size[0],
+            self.rect.y,
+            self.rect.y + self.size[1]
+        ]
         return sides
 
 
@@ -142,8 +146,8 @@ class Level(object):
         return background
 
     # Reload blocks when the current level changes
-    def set_blocks(self):
-        self.blocks = self.get_blocks()
+    def set_blocks(self, screen_obj):
+        self.blocks = self.get_blocks(screen_obj)
         return
 
     # Reload background if current level changes
@@ -177,10 +181,11 @@ class Levels:
         if level == 1:
             x = x_min
             y = y_min
+            health = 1
             for i in range(10):
-                if i % 2 == 0 and i != 0:
+                if i == 9:
                     for j in range(max_blocks_row):
-                        blocks.append((blue, x, y))
+                        blocks.append((blue, x, y, health))
                         x += block_size[0]
                     x = x_min
                 y += block_size[1]
