@@ -247,7 +247,7 @@ class Game(object):
 
         # Levels
         self.level_num = 1
-        self.level_obj = level_handling.Level(self.level_num, self.screen_obj)
+        self.level_obj = self.get_level_obj()
 
         # Fonts/Colors
         self.master_font = "Media/ariblk.ttf"
@@ -294,12 +294,18 @@ class Game(object):
         self.check_frame_count()
         return True
 
+    def get_level_obj(self):
+        level = level_handling.Level(self.level_num, self.screen_obj)
+        return level
+
     def check_level_status(self):
         # Checks how many blocks remain. If none, the level is complete.
         # TODO add level completion.
         if len(self.block_sprites) == 0:
-            print("winner")
-        return
+            self.level_num += 1
+            self.level_obj = self.get_level_obj()
+            return True
+        return False
 
     def play(self):
         # Primary game loop function. Gets the initial game start sprite lists,
@@ -311,8 +317,11 @@ class Game(object):
             self.draw_borders()
             self.player_sprites.update()
             self.sphere_sprites.update(self)
-            self.check_level_status()
             pygame.display.update()
+            if self.check_level_status():
+                for sprite in self.all_sprites:
+                    sprite.kill()
+                self.get_sprites()
 
             # TODO
             # # If player has advanced to next level, get appropriate level
