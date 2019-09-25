@@ -227,6 +227,8 @@ class Game(object):
     # Primary game object class that handles the game's functionality.
     def __init__(self):
         self.screen_obj = Screen()
+
+        # Sprites
         self.sphere_sprites = pygame.sprite.RenderUpdates()
         self.border_sprites = pygame.sprite.RenderPlain()
         self.player_sprites = pygame.sprite.RenderUpdates()
@@ -245,7 +247,7 @@ class Game(object):
         # Prompts
         self.title_prompt = "PRESS ENTER"
 
-        # Levels
+        # Level
         self.level_num = 1
         self.level_obj = self.get_level_obj()
 
@@ -263,6 +265,18 @@ class Game(object):
     #####################
     #    Game Control   #
     #####################
+    def reset_sprites(self):
+        for sprite in self.all_sprites:
+            sprite.kill()
+        self.get_sprites()
+        return
+
+    def update(self):
+        self.player_sprites.update()
+        self.sphere_sprites.update(self)
+        pygame.display.update()
+        return
+
     def update_seconds(self):
         # Time handler for tracking the on/off of blinking text. Compares a
         # copy of the number of game frames against the max frames per second
@@ -294,19 +308,6 @@ class Game(object):
         self.check_frame_count()
         return True
 
-    def get_level_obj(self):
-        level = level_handling.Level(self.level_num, self.screen_obj)
-        return level
-
-    def check_level_status(self):
-        # Checks how many blocks remain. If none, the level is complete.
-        # TODO add level completion.
-        if len(self.block_sprites) == 0:
-            self.level_num += 1
-            self.level_obj = self.get_level_obj()
-            return True
-        return False
-
     def play(self):
         # Primary game loop function. Gets the initial game start sprite lists,
         # draws screen and sprite images, then updates the sprites and display.
@@ -315,13 +316,9 @@ class Game(object):
             self.draw_game_background()
             self.all_sprites.draw(self.screen_obj.screen)
             self.draw_borders()
-            self.player_sprites.update()
-            self.sphere_sprites.update(self)
-            pygame.display.update()
-            if self.check_level_status():
-                for sprite in self.all_sprites:
-                    sprite.kill()
-                self.get_sprites()
+            self.update()
+            if self.get_level_status():
+                self.reset_sprites()
 
             # TODO
             # # If player has advanced to next level, get appropriate level
@@ -329,15 +326,22 @@ class Game(object):
             #     self.level_obj = Level(self.level_num)
         return
 
-    @staticmethod
-    def quit_game():
-        # Handles the game closing, quits pygame and exits the program.
-        pygame.quit()
-        sys.exit(0)
-
     #####################
     #      Getters      #
     #####################
+    def get_level_status(self):
+        # Checks how many blocks remain. If none, the level is complete.
+        # TODO add level completion.
+        if len(self.block_sprites) == 0:
+            self.level_num += 1
+            self.level_obj = self.get_level_obj()
+            return True
+        return False
+
+    def get_level_obj(self):
+        level = level_handling.Level(self.level_num, self.screen_obj)
+        return level
+
     @staticmethod
     def get_game_events(title_screen=False):
         # Gets pygame events and returns true/false if the user quit the game
@@ -348,7 +352,7 @@ class Game(object):
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.QUIT:
-                return True
+                quit_game()
             if title_screen:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:
@@ -522,13 +526,18 @@ class Game(object):
 #####################
 #        Main       #
 #####################
+def quit_game():
+    # Handles the game closing, quits pygame and exits the program.
+    pygame.quit()
+    sys.exit(0)
+
 def main():
     # Primary application loop. Initializes the game object, runs the title
     # screen, plays the game, and quits.
     game = Game()
     game.title_screen()
     game.play()
-    game.quit_game()
+    quit_game()
 
 
 if __name__ == "__main__":
