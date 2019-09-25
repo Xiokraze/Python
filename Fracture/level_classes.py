@@ -1,5 +1,4 @@
 import pygame
-import sprite_classes
 
 
 class Level(object):
@@ -12,6 +11,9 @@ class Level(object):
         self.background = self.get_background()
         self.blocks = self.get_blocks(screen_obj)
 
+    #####################
+    #      Getters      #
+    #####################
     def get_blocks(self, screen_obj):
         # Returns a list of blocks of the corresponding level
         blocks = []
@@ -24,8 +26,16 @@ class Level(object):
         background = None
         if self.level == 1:
             background = self.backgrounds[0]  # Space bg
+        elif self.level == 2:
+            pass
+        # TODO, add additional levels and backgrounds
+        # elif self.level == 3:
+            # etc...
         return background
 
+    #####################
+    #      Setters      #
+    #####################
     def set_blocks(self, screen_obj):
         # Loads blocks when the current level changes
         self.blocks = self.get_blocks(screen_obj)
@@ -41,12 +51,6 @@ class Level(object):
         self.level = level
         return
 
-    def check_level(self, level_num):
-        # Checks if player has advanced to another level
-        if level_num != self.level:
-            return True
-        return False
-
 
 class Levels:
     # Class for simplifying level handling for blocks
@@ -57,12 +61,14 @@ class Levels:
 
     @staticmethod
     def get_positions(level, screen_obj):
+        # Get the positions of the current level's blocks
         max_blocks_row = 10
         max_blocks_col = 10
         x_min = screen_obj.x_min + screen_obj.border_width
         y_min = screen_obj.top_padding + screen_obj.border_width
         blocks = []
 
+        # LEVEL 01
         if level == 1:
             x = x_min
             y = y_min
@@ -76,6 +82,7 @@ class Levels:
                     x = x_min
                 y += Levels.block_size[1]
 
+        # LEVEL 02
         elif level == 2:
             x = x_min
             y = y_min
@@ -88,5 +95,8 @@ class Levels:
                         x += Levels.block_size[0]
                     x = x_min
                 y += Levels.block_size[1]
+
+        # elif level == 3:
+            # etc...
 
         return blocks

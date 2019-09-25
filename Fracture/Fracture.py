@@ -2,7 +2,7 @@
 import sys
 import random
 from PIL import ImageFont
-import level_handling
+import level_classes
 import sprite_classes
 import pygame
 pygame.mixer.pre_init(44100, -16, 2, 2048)
@@ -10,30 +10,29 @@ pygame.mixer.init()
 pygame.init()
 
 
-class Screen(object):
-    # Screen object
-    def __init__(self):
-        self.title = "Fracture"
-        self.screen_width = 800
-        self.screen_height = 800
-        self.top_padding = 200
-        self.x_min = 50
-        self.x_max = self.screen_width - self.x_min
-        self.border_width = 20
-        self.screen = self.set_screen()
-
-    # Sets pygame window title display mode
-    def set_screen(self):
-        pygame.display.set_caption(self.title)
-        size = (self.screen_width, self.screen_height)
-        screen = pygame.display.set_mode(size)
-        return screen
-
-
 class Game(object):
     # Primary game object class that handles the game's functionality.
+    class Screen(object):
+        # Screen object
+        def __init__(self):
+            self.title = "Fracture"
+            self.screen_width = 800
+            self.screen_height = 800
+            self.top_padding = 200
+            self.x_min = 50
+            self.x_max = self.screen_width - self.x_min
+            self.border_width = 20
+            self.screen = self.set_screen()
+
+        # Sets pygame window title display mode
+        def set_screen(self):
+            pygame.display.set_caption(self.title)
+            size = (self.screen_width, self.screen_height)
+            screen = pygame.display.set_mode(size)
+            return screen
+
     def __init__(self):
-        self.screen_obj = Screen()
+        self.screen_obj = self.Screen()
 
         # Sprites
         self.sphere_sprites = pygame.sprite.RenderUpdates()
@@ -73,12 +72,14 @@ class Game(object):
     #    Game Control   #
     #####################
     def reset_sprites(self):
+        # When a level changes, resets all sprites.
         for sprite in self.all_sprites:
             sprite.kill()
         self.get_sprites()
         return
 
     def update(self):
+        # Call update functions on sprites and the display.
         self.player_sprites.update()
         self.sphere_sprites.update(self)
         pygame.display.update()
@@ -124,29 +125,18 @@ class Game(object):
             self.all_sprites.draw(self.screen_obj.screen)
             self.draw_borders()
             self.update()
-            if self.get_level_status():
+            # If no blocks remain, update the current level
+            if len(self.block_sprites) == 0:
+                self.level_num += 1
                 self.reset_sprites()
-
-            # TODO
-            # # If player has advanced to next level, get appropriate level
-            # if self.level_obj.check_level(self.level_num):
-            #     self.level_obj = Level(self.level_num)
+                self.level_obj = self.get_level_obj()
         return
 
     #####################
     #      Getters      #
     #####################
-    def get_level_status(self):
-        # Checks how many blocks remain. If none, the level is complete.
-        # TODO add level completion.
-        if len(self.block_sprites) == 0:
-            self.level_num += 1
-            self.level_obj = self.get_level_obj()
-            return True
-        return False
-
     def get_level_obj(self):
-        level = level_handling.Level(self.level_num, self.screen_obj)
+        level = level_classes.Level(self.level_num, self.screen_obj)
         return level
 
     @staticmethod
