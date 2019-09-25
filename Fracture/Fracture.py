@@ -41,6 +41,11 @@ class Game(object):
         self.block_sprites = pygame.sprite.RenderPlain()
         self.all_sprites = pygame.sprite.Group()
 
+        # Game Statistics
+        self.player_lives = 3
+        self.lives_px_offset = 5
+        self.score = 0
+
         # Time Handling
         self.clock = pygame.time.Clock()
         self.max_FPS = 60
@@ -67,17 +72,11 @@ class Game(object):
         # Media
         self.game_background = pygame.image.load("Media/backgrounds/space1.png")
         self.title_image = pygame.image.load("Media/title_image.png")
+        self.player_lives_image = pygame.image.load("Media/player/player_default.png")
 
     #####################
     #    Game Control   #
     #####################
-    def reset_sprites(self):
-        # When a level changes, resets all sprites.
-        for sprite in self.all_sprites:
-            sprite.kill()
-        self.get_sprites()
-        return
-
     def update(self):
         # Call update functions on sprites and the display.
         self.player_sprites.update()
@@ -116,20 +115,44 @@ class Game(object):
         self.check_frame_count()
         return True
 
+    def player_missed_sphere(self, sphere):
+        sphere.kill()
+        self.player_lives -= 1
+        if self.player_lives == 0:
+            print("game over")
+        else:
+            self.get_new_sphere()
+        return
+
+    def reset_sprites(self):
+        # When a level changes, resets all sprites.
+        for sprite in self.all_sprites:
+            sprite.kill()
+        self.get_sprites()
+        return
+
+    def level_completed(self):
+        # Level has been completed, increases current level number, gets the
+        # new level object, and resets all the sprites.
+        self.level_num += 1
+        self.level_obj = self.get_level_obj()
+        self.reset_sprites()
+        return
+
     def play(self):
         # Primary game loop function. Gets the initial game start sprite lists,
         # draws screen and sprite images, then updates the sprites and display.
         self.get_sprites()
         while self.continue_game():
             self.draw_game_background()
+            self.draw_hud()
             self.all_sprites.draw(self.screen_obj.screen)
             self.draw_borders()
             self.update()
-            # If no blocks remain, update the current level
+
+            # Check if the level has been completed.
             if len(self.block_sprites) == 0:
-                self.level_num += 1
-                self.reset_sprites()
-                self.level_obj = self.get_level_obj()
+                self.level_completed()
         return
 
     #####################
@@ -174,18 +197,22 @@ class Game(object):
         # Adds all sprite groups to a primary group.
         for border in self.border_sprites:
             self.all_sprites.add(border)
-        for sphere in self.sphere_sprites:
-            self.all_sprites.add(sphere)
         for player in self.player_sprites:
             self.all_sprites.add(player)
         for block in self.block_sprites:
             self.all_sprites.add(block)
         return
 
+    def get_new_sphere(self):
+        self.sphere_sprites.add(sprite_classes.Sphere(self.screen_obj))
+        for sphere in self.sphere_sprites:
+            self.all_sprites.add(sphere)
+        return
+
     def get_sprites(self):
         # Handles creation of all the sprite groups.
         self.get_border_sprites()
-        self.sphere_sprites.add(sprite_classes.Sphere(self.screen_obj))
+        self.get_new_sphere()
         self.player_sprites.add(sprite_classes.Player(self.screen_obj))
         self.get_block_sprites()
         self.get_all_sprites()
@@ -230,10 +257,10 @@ class Game(object):
             border_collision = self.get_sphere_border_collision(sphere)
             if border_collision:
                 border = border_collision[0]
-                if border.side == "bot":
-                    sphere.kill()
-                    continue
-                sphere.set_border_deflection_angle(border)
+                if border.side == "bot" and len(self.sphere_sprites) == 1:
+                    self.player_missed_sphere(sphere)
+                else:
+                    sphere.set_border_deflection_angle(border)
         return
 
     def block_collision(self):
@@ -276,6 +303,20 @@ class Game(object):
     def draw_game_background(self):
         # self.screen_obj.screen.blit(self.game_background, (0, 0))
         self.screen_obj.screen.fill((0, 0, 0))
+        return
+
+    def draw_player_lives(self):
+        for player in self.player_sprites:
+            image = self.player_lives_image
+            x = player.x_min
+            y = self.screen_obj.top_padding - self.screen_obj.border_width
+            for i in range(self.player_lives):
+                self.screen_obj.screen.blit(image, (x, y))
+                x += player.size[0] + self.lives_px_offset
+        return
+
+    def draw_hud(self):
+        self.draw_player_lives()
         return
 
     #####################

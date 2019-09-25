@@ -272,7 +272,6 @@ class Sphere(pygame.sprite.Sprite):
     def set_block_deflection_angle(self, block):
         # Calculates the sphere's new angle based on the side of the block hit.
         block_side = self.get_block_side_collision(block)
-        print(block_side)
         if block_side == "left" or block_side == "right":
             self.angle = 360 - self.angle
         elif block_side == "top" or block_side == "bot":
