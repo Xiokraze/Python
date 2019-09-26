@@ -73,6 +73,8 @@ class Game(object):
         self.game_background = pygame.image.load("Media/backgrounds/space1.png")
         self.title_image = pygame.image.load("Media/title_image.png")
         self.player_lives_image = pygame.image.load("Media/player/player_default.png")
+        self.splash_level = pygame.image.load("Media/splash_level.png")
+        self.splash_complete = pygame.image.load("Media/splash_complete.png")
 
     #####################
     #    Game Control   #
@@ -93,6 +95,18 @@ class Game(object):
         if self.blink_frame_count == blink_frame_count:
             self.blink_frame_count = 0
             return True
+        return False
+
+    def blink_text(self, prompt):
+        # Handles blinking title screen text.
+        if self.update_seconds():
+            if self.blinking:
+                self.blinking = False
+                return True
+            else:
+                self.blinking = True
+        if self.blinking:
+            self.draw_blink_text(prompt)
         return False
 
     def check_frame_count(self):
@@ -118,9 +132,7 @@ class Game(object):
     def player_missed_sphere(self, sphere):
         sphere.kill()
         self.player_lives -= 1
-        if self.player_lives == 0:
-            print("game over")
-        else:
+        if self.player_lives != 0:
             self.get_new_sphere()
         return
 
@@ -137,11 +149,14 @@ class Game(object):
         self.level_num += 1
         self.level_obj = self.get_level_obj()
         self.reset_sprites()
+        self.draw_level_splash_screen()
         return
 
     def play(self):
-        # Primary game loop function. Gets the initial game start sprite lists,
-        # draws screen and sprite images, then updates the sprites and display.
+        # The primary game loop function. Gets the initial starting sprite
+        # lists, draws the screen and sprite images, updates the sprites and
+        # display, then checks if the level is complete or player has run out
+        # of lives.
         self.get_sprites()
         while self.continue_game():
             self.draw_game_background()
@@ -150,9 +165,23 @@ class Game(object):
             self.draw_borders()
             self.update()
 
+            # Check if the player has run out of lives.
+            if self.player_lives == 0:
+                print("game over")
+                break
+
             # Check if the level has been completed.
             if len(self.block_sprites) == 0:
                 self.level_completed()
+        return
+
+    def title_screen(self):
+        # Handles the game's title screen.
+        while self.continue_game(True):
+            self.draw_game_background()
+            self.draw_title_image()
+            self.blink_text(self.title_prompt)
+            pygame.display.update()
         return
 
     #####################
@@ -295,6 +324,23 @@ class Game(object):
     #####################
     #      Drawing      #
     #####################
+    def draw_title_image(self):
+        # Draws the title screen game text.
+        size = self.title_image.get_size()
+        x = self.screen_obj.screen_width / 2 - size[0] / 2
+        y = size[1]
+        self.screen_obj.screen.blit(self.title_image, (x, y))
+        return
+
+    def draw_blink_text(self, prompt):
+        # Draws the title screen blink text.
+        text = self.word_font.render(prompt, 1, self.text_color)
+        size = self.font.getsize(prompt)
+        x = self.screen_obj.screen_width / 2 - size[0] / 2
+        y = self.screen_obj.screen_height / 2 + size[1]
+        self.screen_obj.screen.blit(text, (x, y))
+        return
+
     def draw_borders(self):
         for border in self.border_sprites:
             border.draw(self.screen_obj)
@@ -317,46 +363,34 @@ class Game(object):
 
     def draw_hud(self):
         self.draw_player_lives()
+        # TODO draw score
+        # TODO draw level number
         return
 
-    #####################
-    #    Title Screen   #
-    #####################
-    def blink_text(self):
-        # Handles blinking title screen text.
-        if self.update_seconds():
-            if self.blinking:
-                self.blinking = False
-                return True
-            else:
-                self.blinking = True
-        if self.blinking:
-            self.draw_blink_text(self.title_prompt)
-        return False
-
-    def draw_blink_text(self, prompt):
-        # Draws the title screen blink text.
-        text = self.word_font.render(prompt, 1, self.text_color)
-        size = self.font.getsize(prompt)
-        x = self.screen_obj.screen_width / 2 - size[0] / 2
-        y = self.screen_obj.screen_height / 2 + size[1]
-        self.screen_obj.screen.blit(text, (x, y))
-        return
-
-    def draw_title_image(self):
-        # Draws the title screen game text.
-        size = self.title_image.get_size()
+    def draw_level_image(self):
+        # Draws the splash screen "Level" text
+        size = self.splash_level.get_size()
         x = self.screen_obj.screen_width / 2 - size[0] / 2
         y = size[1]
-        self.screen_obj.screen.blit(self.title_image, (x, y))
+        self.screen_obj.screen.blit(self.splash_level, (x, y))
+
+        size = self.splash_complete.get_size()
+        x = self.screen_obj.screen_width / 2 - size[0] / 2
+        y = size[1] * 2
+        self.screen_obj.screen.blit(self.splash_complete, (x, y))
         return
 
-    def title_screen(self):
-        # Handles the game's title screen.
+    def draw_level_splash_background(self):
+        # self.screen_obj.screen.fill((100, 100, 100))
+        self.screen_obj.screen.fill((0, 0, 0))
+        return
+
+    def draw_level_splash_screen(self):
+        # Handles the game's splash screen when levels are completed
         while self.continue_game(True):
-            self.draw_game_background()
-            self.draw_title_image()
-            self.blink_text()
+            self.draw_level_splash_background()
+            self.draw_level_image()
+            self.blink_text(self.title_prompt)
             pygame.display.update()
         return
 
