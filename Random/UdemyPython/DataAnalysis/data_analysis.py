@@ -1,15 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
+from pandas import Series, DataFrame
 import webbrowser
 
-
-
-
-
-
-
-
-
+def open_web_url():
+    website = "https://docs.scipy.org/doc/numpy/reference/ufuncs.html#available-ufuncs"
+    webbrowser.open(website)
+    return
 
 def numpy_basics():
     # np.array()
@@ -110,19 +108,157 @@ def universal_array_functions():
     print(np.add(arr1, arr2))
     return
 
-def open_web_url():
-    website = "https://docs.scipy.org/doc/numpy/reference/ufuncs.html#available-ufuncs"
-    webbrowser.open(website)
+def array_processing():
+    # np.meshgrid
+    # np.where()
+    # np.unique()
+    # np.in1d()
+    # plt.imshow()
+    # plt.colorbar()
+    # plt.title()
+    # plt.show()
+    # zip()
+    # array.sum()
+    # array.mean()
+    # array.std()
+    # array.var()  variance
+    # array.any()  true if any value is true
+    # array.all()  true only if all values are true
+    # array.sort()
+    points = np.arange(-5, 5, 0.01)
+    dx, dy = np.meshgrid(points, points)
+    z = (np.sin(dx) + np.sin(dy))
+    plt.imshow(z)
+    plt.colorbar()
+    plt.title("Plot for sin(x) + sin(y)")
+    plt.show()
+
+
+    A = np.array([1, 2, 3, 4])
+    B = np.array([100, 200, 300, 400])
+    condition = np.array([True, True, False, False])
+    # list comprehension
+    answer = [(A_val if cond else B_val) for A_val, B_val, cond in zip(A, B, condition)]
+    print(answer)
+    # same as above, but replacing comprehension with where
+    answer2 = np.where(condition, A, B)
+    print(answer2)
+
+    from numpy.random import randn
+    arr = randn(5, 5)
+    answer3 = np.where(arr<0, 0, arr)
+    print(answer3)
+
+    arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+    print(arr.sum())
+    print(arr.sum(0))
+    print(arr.mean())
+    print(arr.std())
+    print(arr.var())
+    bool_arr = np.array([True, False, True])
+    print(bool_arr.any())
+    print(bool_arr.all())
+
+    arr = randn(5)
+    print(arr)
+    arr.sort()
+    print(arr)
+
+    countries = np.array(["France", "Germany", "USA", "Russia", "USA", "Mexico", "Germany"])
+    print(np.unique(countries))
+    print(np.in1d(["France", "USA", "Sweden"], countries))
     return
 
-def main():
+def array_input_output():
+    # np.save()
+    # np.load() "file.npy"
+    # np.savez() "file.npz"
+    # np.savetxt()
+    # np.loadtxt()
+    arr = np.arange(5)
+    np.save("myarray", arr)
+    arr = np.arange(10)
+    print(arr)
+    saved_arr = np.load("myarray.npy")
+    print(saved_arr)
+
+    # save multiple arrrays to a zip file
+    arr1 = np.load("myarray.npy")
+    arr2 = arr
+    np.savez("ziparray.npz", x=arr1, y=arr2)
+    arrays = np.load("ziparray.npz")
+    print(arrays["x"])
+    print(arrays["y"])
+
+    arr = np.array([[1, 2, 3], [4, 5, 6]])
+    np.savetxt("mytextarray.txt", arr, delimiter=',')
+    arr = np.loadtxt("mytextarray.txt", delimiter=',')
+    print(arr)
+    return
+
+def numpy_basics():
     # open_web_url()
     # numpy_basics()
     # numpy_arrays_scalars()
     # numpy_array_indexing()
     # numpy_array_transposition()
     # universal_array_functions()
-    array_processing
+    # array_processing()
+    # array_input_output()
+    return
+
+
+def pandas_series():
+    obj = Series([3, 6, 9, 12])
+    print(obj)
+    print(obj.values)
+    print(obj.index)
+
+    ww2_cas = Series([8700000, 4300000, 3000000, 2100000, 400000], index=["USSR", "Germany", "China", "Japan", "USA"])
+    print(ww2_cas)
+    print(ww2_cas["USA"])
+    # countries with casualties > 4 million
+    print(ww2_cas[ww2_cas > 4000000])
+    print("USSR" in ww2_cas)
+
+    ww2_dict = ww2_cas.to_dict()
+    print(ww2_dict)
+    ww2_series = Series(ww2_dict)
+    print(ww2_series)
+
+    countries = ["China", "Germany", "Japan", "USA", "USSR", "Argentina"]
+    obj2 = Series(ww2_dict, index=countries)
+    print(obj2)
+    print(pd.isnull(obj2))
+    print(pd.notnull(obj2))
+
+    print(ww2_series + obj2)
+
+    obj2.name = "World War 2 Casualties"
+    print(obj2)
+    obj2.index.name = "Countries"
+    print(obj2)
+
+    return
+
+def data_frame():
+    website = "http://en.wikipedia.org/wiki/NFL_win-loss_records"
+    # webbrowser.open(website)
+    nfl_frame = pd.read_clipboard()
+    # print(nfl_frame)
+    print(nfl_frame.columns)
+    return
+
+def pandas_basics():
+    # pandas_series()
+    data_frame()  # pandas can read clipboard data
+    return
+
+def main():
+    numpy_basics()
+    pandas_basics()
+
+
     return
 
 
