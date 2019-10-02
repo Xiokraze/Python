@@ -9,6 +9,7 @@ def open_web_url():
     webbrowser.open(website)
     return
 
+# numpy
 def numpy_basics():
     # np.array()
     # np.shape
@@ -207,7 +208,7 @@ def numpy_basics():
     # array_input_output()
     return
 
-
+ # pandas
 def pandas_series():
     obj = Series([3, 6, 9, 12])
     print(obj)
@@ -245,13 +246,88 @@ def data_frame():
     website = "http://en.wikipedia.org/wiki/NFL_win-loss_records"
     # webbrowser.open(website)
     nfl_frame = pd.read_clipboard()
-    # print(nfl_frame)
+    print(nfl_frame)
     print(nfl_frame.columns)
+    print(nfl_frame.Team)
+    print(nfl_frame["First NFL Season"])
+
+    dframe = DataFrame(nfl_frame, columns=["Team", "First NFL Season", "Won"])
+    print(dframe)
+
+    print(nfl_frame.head()) # prints first 5, pass a number for specific amount
+    print(nfl_frame.tail()) # same as head, but for last 5
+    print(nfl_frame.ix[3])	# prints specific row
+    nfl_frame["Division"] = "Yay"
+    print(nfl_frame)
+    nfl_frame["GP"] = np.arange(5)
+    print(nfl_frame)
+
+
+    divisions = Series(["1st", "2nd"], index=[4,0])
+    print(divisions)
+    nfl_frame["Division"] = divisions
+    print(nfl_frame)
+
+    del nfl_frame["Division"]
+    print(nfl_frame)
+
+    data = {"City":["SF", "LA", "NYC"], "Population":[83700, 3880000, 8400000]}
+    city_frame = DataFrame(data)
+    print(city_frame)
     return
+
+def index_objects():
+	my_series = Series([1, 2, 3, 4], index=['A', 'B', 'C', 'D'])
+	my_index = my_series.index
+	print(my_index)
+	print(my_index[2])
+	print(my_index[2:])
+	return
+
+def reindexing():
+	ser1 = Series([1, 2, 3, 4], index=['A', 'B', 'C', 'D'])
+	print(ser1)
+	ser2 = ser1.reindex(['A', 'B', 'C', 'D', 'E', 'F'])
+	print(ser2)
+	ser2 = ser2.reindex(['A', 'B', 'C', 'D', 'E', 'F', 'G'], fill_value=0)
+	print(ser2)
+
+	ser3 = Series(["USA", "Mexico", "Canada"], index=[0, 5, 10])
+	print(ser3)
+	ranger = range(15)
+	print(ser3.reindex(ranger, method="ffill"))
+
+	dframe = DataFrame(np.random.randn(25).reshape((5, 5)), 
+		index=['A', 'B', 'D', 'E', 'F'], 
+		columns=["col1", "col2", "col3", "col4", "col5"])
+	print(dframe)
+	dframe2 = dframe.reindex(['A', 'B', 'C', 'D', 'E', 'F'])
+	print(dframe2)
+	new_cols = ["col1", "col2", "col3", "col4", "col5", "col6"]
+	dframe2.reindex(columns=new_cols)
+	print(dframe2)
+
+	# print(dframe.ix[['A', 'B', 'C', 'D', 'E', 'F'], new_cols])
+	return
+
+def drop_entry():
+	ser1 = Series(np.arange(3), index=['a', 'b', 'c'])
+	print(ser1)
+	print(ser1.drop('b'))
+	dframe1 = DataFrame(np.arange(9).reshape((3, 3)), index=["SF", "LA", "NY"], columns=["pop", "pip", "pap"])
+	print(dframe1)
+	print(dframe1.drop("LA"))
+	dframe2 = dframe1.drop("LA")
+	print(dframe2)
+	print(dframe1.drop("pap", axis=1))
+	return
 
 def pandas_basics():
     # pandas_series()
-    data_frame()  # pandas can read clipboard data
+    # data_frame()  # pandas can read clipboard data
+    # index_objects()
+    # reindexing()
+    drop_entry()
     return
 
 def main():
