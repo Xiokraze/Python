@@ -208,7 +208,7 @@ def numpy_basics():
     # array_input_output()
     return
 
- # pandas
+# pandas
 def pandas_series():
     obj = Series([3, 6, 9, 12])
     print(obj)
@@ -322,12 +322,39 @@ def drop_entry():
 	print(dframe1.drop("pap", axis=1))
 	return
 
+def selecting_entries():
+	# ser1 = Series(np.arange(3), index=['A', 'B', 'C'])
+	# ser1 = 2*ser1
+	# print(ser1)
+	# print(f"ser1[1]: {ser1[1]}  ser1['B']: {ser1['B']}")
+	# print(ser1[0:3])
+	# print(ser1[['A', 'B']])
+	# print(ser1[ser1 > 3])
+	# ser1[ser1 > 3] = 10
+	# print(ser1)
+
+	dframe = DataFrame(np.arange(25).reshape((5,5)), index=['NYC', 'LA', 'SF', 'DC', 'CHI'],
+		columns=['A', 'B', 'C', 'D', 'E'])
+	print(dframe['B'])
+	print()
+	print(dframe[['B', 'E']])
+	print()
+	print(dframe[dframe['C'] > 8])
+	print()
+	print(dframe > 10)
+	print()
+	print(dframe.ix['LA'])
+	print()
+	print(dframe.ix[1])
+	return
+
 def pandas_basics():
     # pandas_series()
     # data_frame()  # pandas can read clipboard data
     # index_objects()
     # reindexing()
-    drop_entry()
+    # drop_entry()
+    selecting_entries()
     return
 
 def main():
