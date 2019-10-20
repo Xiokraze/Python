@@ -130,6 +130,9 @@ class Game(object):
         return True
 
     def player_missed_sphere(self, sphere):
+        # If the sphere goes off the bottom of the screen, remove it and
+        # decrement the number of player lives. If the player has at least
+        # one life, reset the sphere.
         sphere.kill()
         self.player_lives -= 1
         if self.player_lives != 0:

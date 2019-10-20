@@ -1,7 +1,7 @@
 import os
 
-#ticker = ['ACB', 'DIS', 'MCIG', 'MSFT', 'NTDOY', 'NVDA', 'SNE', 'TTWO', 'TCEHY', 'XLNX']
-#columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
+# ticker = ['ACB', 'MSFT', 'NTDOY', 'SNE', 'TTWO']
+# columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
 
 class Console:                                                      # Initiate Class for clearing the console
     clear = lambda: os.system('cls')                                # Class variable for clearing the console screen
