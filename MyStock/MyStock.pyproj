@@ -24,9 +24,6 @@
     <Compile Include="Functions.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Input.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="MyStock.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
