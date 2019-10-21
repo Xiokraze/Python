@@ -15,7 +15,7 @@ class ticker():
     def __init__(self):
         self.symbols = ["MSFT", "NTDOY", "SNE", "TTWO", "Select All"]
         self.names = ["Microsoft", "Nintendo", "Sony", "Take-Two Interactive"]
-        self.columns = ["Date", "Open", "High", "Low", "Close", "Adj Close", "Volume"]
+        self.columns = ["Open", "High", "Low", "Close", "Adj Close", "Volume"]
         return
 
     def get_values(self, symbols, user_input, num_options, list):
@@ -61,7 +61,7 @@ class csv_stock_data():
 
     @staticmethod
     def get_file_data(file, user_option):
-        column = user_option[0] - 1
+        column = user_option[0]
         start_year = None
         current_year = None
         days = 0
@@ -87,7 +87,6 @@ class csv_stock_data():
                     days = 1
                     data_total = data
                     current_year += 1
-        print(annual_averages)
         return annual_averages
 
     def get_data(self, user_stocks, user_option, files):
@@ -96,6 +95,8 @@ class csv_stock_data():
                 with open(file, 'r') as stock:
                     annual_averages = self.get_file_data(file, user_option)
                     self.stock_annual_averages.append(annual_averages)
+                    for average in annual_averages:
+                        print(average)
             except:
                 print(f"Failed to open/read {file}")
         return
