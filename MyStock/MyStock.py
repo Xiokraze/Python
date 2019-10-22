@@ -24,9 +24,11 @@ class ticker():
             if num_options in user_input:
                 values = self.symbols[:num_options - 1]
             else:
-                values = [list[user_input[0] - 1]]
+                values = []
+                for index in user_input:
+                    values.append(self.symbols[index - 1])
         else:
-            values = user_input
+            values = user_input[0] - 1
         return values
 
     def get_list(self, symbols):
@@ -59,44 +61,46 @@ class csv_stock_data():
         year = int(year[2])
         return year
 
-    @staticmethod
-    def get_file_data(file, user_option):
-        column = user_option[0]
+    def get_file_data(self, file, user_option):
         start_year = None
         current_year = None
         days = 0
         data_total = 0
-        annual_averages = []
+        annual_averages = {}
         with open(file, 'r') as file:
             reader = csv.reader(file)
             next(reader)
             for row in reader:
                 if start_year == None:
-                    start_year = csv_stock_data.get_year(row)
+                    start_year = self.get_year(row)
                     current_year = start_year
-                if current_year == csv_stock_data.get_year(row):
+                if current_year == self.get_year(row):
                     days += 1
                     try:
-                        data = float(row[column])
+                        data = float(row[user_option])
                         data_total += data
                     except ValueError:
                         continue
                 else:
-                    annual_average = data_total / days
-                    annual_averages.append(annual_average)
+                    annual_average = round(data_total / days, 2)
+                    annual_averages[current_year] = annual_average
                     days = 1
                     data_total = data
                     current_year += 1
         return annual_averages
 
+    def print_data(self):
+        count = 0
+        for stock in self.stock_annual_averages:
+           count += 1
+        print(count)
+        return
+
     def get_data(self, user_stocks, user_option, files):
         for file in files:
             try:
-                with open(file, 'r') as stock:
-                    annual_averages = self.get_file_data(file, user_option)
-                    self.stock_annual_averages.append(annual_averages)
-                    for average in annual_averages:
-                        print(average)
+                annual_averages = self.get_file_data(file, user_option)
+                self.stock_annual_averages.append(annual_averages)
             except:
                 print(f"Failed to open/read {file}")
         return
@@ -152,6 +156,7 @@ def main():
     user_option = stocks.get_menu_options(stocks, False)
     files = get_file_names(user_stocks, user_option)
     data.get_data(user_stocks, user_option, files)
+    data.print_data()
     return
 
   
