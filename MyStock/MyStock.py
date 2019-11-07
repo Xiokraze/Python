@@ -1,59 +1,118 @@
-# Joshua Worthington
 
 import csv
-import Functions as F
 import os
+from datetime import datetime
 
 
 class screen():
     clear = lambda: os.system("cls")
 
-class ticker():
-    # Handles presenting user with menu options and converts chosen
-    # stocks to their appropriate .csv file name. Gets stock file names
-    # and data options.
+
+class stock_input():
     def __init__(self):
         self.symbols = ["MSFT", "NTDOY", "SNE", "TTWO", "Select All"]
         self.names = ["Microsoft", "Nintendo", "Sony", "Take-Two Interactive"]
         self.columns = ["Open", "High", "Low", "Close", "Adj Close", "Volume"]
+        self.user_stocks = None
+        self.user_option = None
+        self.user_stocks_text = None
+        self.user_option_text = None
         return
 
-    def get_values(self, symbols, user_input, num_options, list):
-        # Returns appropriate stock symbol(s)
-        if symbols:
-            if num_options in user_input:
-                values = self.symbols[:num_options - 1]
-            else:
-                values = []
-                for index in user_input:
-                    values.append(self.symbols[index - 1])
-        else:
-            values = user_input[0] - 1
-        return values
+    def get_option_text(self):
+        index = self.user_option
+        return self.columns[index - 1]
 
-    def get_list(self, symbols):
-        # Returns appropriate list options
-        if symbols:
-            return self.symbols
-        else:
-            return self.columns
+    def get_stock_text(self):
+        symbols = []
+        for index in self.user_stocks:
+            symbols.append(self.symbols[index])
+        return symbols
 
-    def get_menu_options(self, stocks, symbols=True):
-        # Returns user input from a list of options
+    def get_num_options(self, is_stocks):
+        if is_stocks:
+            return len(self.symbols)
+        return len(self.columns)
+
+    def print_menu(self, is_stocks):
+        # Prints numbered list of options
+        if is_stocks:
+            print("Enter the stock number(s) you would like to view:")
+            list = self.symbols
+        else:
+            print("Which annual averages would you like to view? ")
+            list = self.columns
+        count = 1
+        for option in list:
+            print(f" {count}: {option}")
+            count += 1
+        return
+
+    def get_input_prompt(self, is_stocks, num_options):
+        option = "options" if is_stocks else "an option"
+        prompt = (f"Enter {option} between 1 and {num_options}: ")
+        return prompt
+
+    def valid_input(self, user_input, is_stocks, num_options):
+        # Checks if a user didn't enter anything, then for duplicates,
+        # then for correct menu numbers, and if looking at options, for
+        # more than one entry.
+        if len(user_input) != 0:
+            if len(user_input) == len(set(user_input)):
+                for num in user_input:
+                    if num < 1 or num > num_options:
+                        return False
+                if not is_stocks:
+                    if len(user_input) > 1:
+                        return False
+                return True
+        return False
+
+    def get_user_input(self, is_stocks=False):
+        num_options = self.get_num_options(is_stocks)
         while True:
-            list = self.get_list(symbols)
-            num_options = len(list)
-            user_input = get_user_input(list, num_options, symbols) 
-            if user_input != None:
-                break
+            try:
+                self.print_menu(is_stocks)
+                prompt = self.get_input_prompt(is_stocks, num_options)
+                user_input = [int(x) for x in input(prompt).split()]
+                if (self.valid_input(user_input, is_stocks, num_options)):
+                    if is_stocks:
+                        if num_options in user_input:
+                            user_input = [i for i in range(num_options - 1)]
+                    break
+                screen.clear()
+            except ValueError:
+                pass
         screen.clear()
-        values = self.get_values(symbols, user_input, num_options, list)
-        return values
+        if is_stocks:
+            return user_input
+        else:
+            return user_input[0]
 
-class csv_stock_data():
-    stock_annual_averages = []
-    def __init__(self):
+    def reset_user_input(self):
+        self.user_stocks = self.get_user_input(True)
+        self.user_option = self.get_user_input()
+        self.user_stocks_text = self.get_stock_text()
+        self.user_option_text = self.get_option_text()
         return
+
+
+class csv_data():
+    def __init__(self):
+        self.annual_averages = []
+        self.current_year = datetime.now().year
+        self.oldest_year = None
+        self.column_width = 13
+        self.file_names = None
+        return
+
+    @staticmethod
+    def get_file_names(user_stocks):
+        # Returns concatenated list of stock symbols and .csv extension
+        file_names = []
+        for stock in user_stocks:
+            file_names.append(f"{stock}.csv")
+        return file_names
 
     @staticmethod
     def get_year(row):
@@ -61,7 +120,13 @@ class csv_stock_data():
         year = int(year[2])
         return year
 
-    def get_file_data(self, file, user_option):
+    def set_oldest_year(self, year):
+        if self.oldest_year == None:
+            self.oldest_year = year
+        elif year < self.oldest_year:
+            self.oldest_year = year
+
+    def get_annual_averages(self, file, user_option):
         start_year = None
         current_year = None
         days = 0
@@ -87,78 +152,58 @@ class csv_stock_data():
                     days = 1
                     data_total = data
                     current_year += 1
+        self.set_oldest_year(start_year)
         return annual_averages
 
-    def print_data(self):
-        count = 0
-        for stock in self.stock_annual_averages:
-           count += 1
-        print(count)
-        return
-
-    def get_data(self, user_stocks, user_option, files):
-        for file in files:
+    def reset_data(self, user_stocks, user_option, user_option_text):
+        self.file_names = self.get_file_names(user_stocks)
+        for file in self.file_names:
             try:
-                annual_averages = self.get_file_data(file, user_option)
-                self.stock_annual_averages.append(annual_averages)
+                annual_averages = self.get_annual_averages(file, user_option)
+                self.annual_averages.append(annual_averages)
             except:
-                print(f"Failed to open/read {file}")
+                print(f"Failed to open/read {file}.")
+        self.print_header(user_stocks, user_option_text)
+        self.print_data(user_stocks)
         return
 
-def valid_user_input(user_input, num_options):
-    # Verifies the numbers entered by the user are within the option parameters
-    for num in user_input:
-        if num >= 1 and num <= num_options:
-            return True
-    return False
+    def print_header(self, user_stocks, user_option_text):
+        text = user_option_text + " Avg"
+        print(f"{text:<{self.column_width}}", end="")
+        for stock in user_stocks:
+            print(f"{stock:>{self.column_width}}", end="")
+        print()
+        return
 
-def print_menu_list(list, symbols):
-    # Prints numbered list of options
-    if symbols:
-        print("Enter the stock number(s) you would like to view:")
-    else:
-        print("Which option would you like to view? ")
-    count = 1
-    for option in list:
-        print(f" {count}: {option}")
-        count += 1
-    return
+    def print_data(self, user_stocks):
+        year = self.oldest_year
+        while year < self.current_year:
+            print(f"{year:<{self.column_width}}", end="")
+            for stock in self.annual_averages:
+                if year in stock:
+                    print(f"{stock[year]:{self.column_width}}", end="")
+                else:
+                    no_data = "-"
+                    print(f"{no_data:>{self.column_width}}", end="")
+            year += 1
+            print()
 
-def get_user_input(list, num_options, symbols):
-    # Returns validated user input from a list of options
-    try:
-        print_menu_list(list, symbols)
-        if symbols:
-            option = "options"
-        else:
-            option = "an option"
-        prompt = (f"Enter {option} between 1 and {num_options}: ")
-        user_input = [int(x) for x in input(prompt).split()]
-        if (valid_user_input(user_input, num_options)):
-            return user_input
-    except ValueError:
-        pass
-    screen.clear()
-    return None
-
-def get_file_names(user_stocks, options):
-    # Returns concatenated list of stock symbols and .csv extension
-    file_names = []
-    for stock in user_stocks:
-        file_names.append(f"{stock}.csv")
-    return file_names
+        return
 
 
 def main():
-    stocks = ticker()
-    data = csv_stock_data()
-    user_stocks = stocks.get_menu_options(stocks)       
-    user_option = stocks.get_menu_options(stocks, False)
-    files = get_file_names(user_stocks, user_option)
-    data.get_data(user_stocks, user_option, files)
-    data.print_data()
+    stocks = stock_input()
+    data = csv_data()
+
+    stocks.reset_user_input()
+    data.reset_data(
+        stocks.user_stocks_text, 
+        stocks.user_option, 
+        stocks.user_option_text
+    )
+
     return
 
-  
-if __name__=="__main__":                                            # If module is run as a main program
-    main()                                                          # Enter the main loop
+
+if __name__=="__main__":
+    main()
